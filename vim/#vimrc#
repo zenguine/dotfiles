@@ -1,0 +1,166 @@
+    :autocmd!
+"set terminal title and stifle shell messages
+set title
+set shortmess=atI
+
+" consolidate swap file locations
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" Surround.vim configurations
+nmap s ysi
+nmap S ysa
+nmap s$ ys$
+nmap sv gvs
+
+set nohlsearch
+set viminfo='100,f1
+" Press F2 to word-wrap a block of text. It's almost like using Word
+" Star all over again.
+
+map #2 !}fmt -65
+
+" Personally, I wouldn't use a C++ keyword as a Java identifier, but
+" if someone else does, I don't want an ugly display, so turn off
+" flagging of this as an error:
+
+let java_allow_cpp_keywords=1
+
+set autoindent
+set cmdheight=2
+
+" Strewth, what a mess. Copied from the vim docs, if memory serves.
+set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
+set ignorecase
+set formatoptions=orc
+set history=20
+set hlsearch
+set incsearch
+set keywordprg=
+set mouse=a
+set mousehide
+set mousemodel=popup_setpos
+set nowrapscan
+set path=.,/usr/include,/usr/local/include
+set smartcase
+set nosmartindent
+set smarttab
+set showmode
+set textwidth=70
+set viminfo='50,\"10000,n~/.viminfo
+set wildchar=9
+set wildignore+=*.class,*.pyc
+jset wildmode=longest,list,full
+set wildmenu
+set nocompatible
+set number
+set hidden
+set title
+set autochdir
+set virtualedit=all
+let mapleader = ','
+nnoremap ' `
+nnoremap ` '
+nnoremap ; :
+set scrolloff=3
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+" Display trailing whitespace with <leader>s
+set listchars=tab:>-,trail:·,eol:$
+"nmap <silent> <leader>ws :set nolist!<CR>
+
+" Vim Latex stuff
+syntax on
+filetype plugin on
+filetype indent on
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+
+:autocmd FileType *		set shiftwidth=4
+:autocmd FileType xml,html	set shiftwidth=2
+:autocmd FileType java,c,cc,cpp	set nocindent
+"
+" Easy closing of window splits
+nnoremap <Leader>c <C-w>c
+
+set makeprg=ant
+" Enable easy NERDTree toggling
+nnoremap <Leader>n :NERDTreeToggle<CR>
+"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nnoremap <A-j> :m+<CR>==
+nnoremap <A-k> :m-2<CR>==
+nnoremap <A-h> <<
+nnoremap <A-l> >>
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+inoremap <A-h> <Esc><<`]a
+inoremap <A-l> <Esc>>>`]a
+vnoremap <A-j> :m'>+<CR>gv=gv
+vnoremap <A-k> :m-2<CR>gv=gv
+vnoremap <A-h> <gv
+vnoremap <A-l> >gv
+
+" Better window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Highlight cursor line only in active window
+au WinEnter * setlocal cursorline
+au WinLeave * setlocal nocursorline
+
+" Leaves insert mode after 15 seconds of no input
+au CursorHoldI * stopinsert
+au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
+au InsertLeave * let &updatetime=updaterestore
+" Insert mode - map jk to <Esc>
+imap jk <Esc>
+" Easy editting of this file.
+nmap <Leader>s :source ~/.vimrc<CR>
+" Make "Y" behavior consistent
+nmap Y y$
+
+"Status line gnarliness
+set laststatus=2
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+ 
+" Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
+" Auto change directory to current file
+set autochdir
+
+" GVIM specific
+:color wombat
+set guioptions-=T
+set guioptions-=r
+set guifont=Anonymous\ Pro\ 12
+
+" Vundle Configuration
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage vundle - required
+Bundle 'gmarik/vundle'
+
+" my bundles here
+" github repos:
+Bundle 'tpope/vim-fugitive'
+Bundle 'motemen/git-vim'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/nerdtree'
+Bundle 'bufexplorer.zip'
+Bundle 'gmarik/github-search.vim'
+Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
+Bundle 'haskell.vim'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'indent/haskell.vim'
+Bundmsanders/snipmatele ''
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'wincent/Command-T'
+
+filetype plugin indent on
+
+
+

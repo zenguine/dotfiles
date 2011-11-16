@@ -1,0 +1,13 @@
+ln -s .dotfiles/vimrc ~/.vimrc
+ln -s .dotfiles/gvimrc ~/.gvimrc
+ln -s .dotfiles/vim ~/.vim
+ln -s .dotfiles/xmonad ~/.xmonad
+ln -s .dotfiles/emacs ~/.emacs.d
+ln -s .dotfiles/zshrc ~/.zshrc
+ln -s .dotfiles/zsh ~/.zsh
+ln -s .dotfiles/pentadactylrc ~/.pentadactylrc
+ln -s .dotfiles/Xmodmap ~/.Xmodmap
+ln -s .dotfiles/Xresources ~/.Xresources
+ln -s .dotfiles/xmobarrc ~/.xmobarrc
+ln -s .dotfiles/bin ~/bin
+
