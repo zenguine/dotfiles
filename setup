@@ -1,3 +1,4 @@
+pwd >> debug.txt
 ln -s .dotfiles/vimrc ~/.vimrc
 ln -s .dotfiles/gvimrc ~/.gvimrc
 ln -s .dotfiles/vim ~/.vim
@@ -14,6 +15,8 @@ ln -s .dotfiles/bin ~/bin
 git submodule init
 git submodule update
 
-cd .dotfiles/vim/bundle/command-t/ruby/command-t
+pwd >> debug.txt
+cd vim/bundle/command-t/ruby/command-t
+pwd >> debug.txt
 ruby extconf.rb
 rake make
