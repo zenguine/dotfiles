@@ -57,7 +57,6 @@ set wildignore+=*.class,*.pyc
 set wildmode=longest,list,full
 set wildmenu
 set nocompatible
-set number
 set hidden
 set title
 set autochdir
@@ -72,6 +71,11 @@ nnoremap : ;
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+
+" Always show line numbers, but only in current window.
+set number
+:au WinEnter * :setlocal number
+:au WinLeave * :setlocal nonumber
 
 " Display trailing whitespace with <leader>s
 set listchars=tab:>-,trail:·,eol:$
