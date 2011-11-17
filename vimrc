@@ -163,6 +163,7 @@ set autochdir
 filetype plugin indent on
 
 nnoremap <Leader>r :CommandTBuffer<CR>
+nnoremap <Leader>t :CommandT<CR>
 
 " Color scheme for terminal mode
 color herald
