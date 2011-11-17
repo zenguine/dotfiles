@@ -1,22 +1,38 @@
-pwd >> debug.txt
-ln -s .dotfiles/vimrc ~/.vimrc
-ln -s .dotfiles/gvimrc ~/.gvimrc
-ln -s .dotfiles/vim ~/.vim
-ln -s .dotfiles/xmonad ~/.xmonad
-ln -s .dotfiles/emacs ~/.emacs.d
-ln -s .dotfiles/zshrc ~/.zshrc
-ln -s .dotfiles/zsh ~/.zsh
-ln -s .dotfiles/pentadactylrc ~/.pentadactylrc
-ln -s .dotfiles/Xmodmap ~/.Xmodmap
-ln -s .dotfiles/Xresources ~/.Xresources
-ln -s .dotfiles/xmobarrc ~/.xmobarrc
-ln -s .dotfiles/bin ~/bin
+#!/bin/bash
 
+bakdir=~/old_dotfiles
+mkdir $bakdir
+
+# Checks if file already exists with the name of the link to be
+# created.  if so, moves it to a specified backup directory
+function linkup {
+    if [ -e $2 ]; then
+        mv $2 $bakdir
+        echo "Moved $2 to $bakdir"
+    fi
+    ln -s $1 $2
+    echo "$1 <- $2 soft link created"
+}
+
+# Create home dir soft links to files in ~/.dotfiles
+linkup .dotfiles/vimrc ~/.vimrc
+linkup .dotfiles/gvimrc ~/.gvimrc
+linkup .dotfiles/vim ~/.vim
+linkup .dotfiles/xmonad ~/.xmonad
+linkup .dotfiles/emacs ~/.emacs.d
+linkup .dotfiles/zshrc ~/.zshrc
+linkup .dotfiles/zsh ~/.zsh
+linkup .dotfiles/pentadactylrc ~/.pentadactylrc
+linkup .dotfiles/Xmodmap ~/.Xmodmap
+linkup .dotfiles/Xresources ~/.Xresources
+linkup .dotfiles/xmobarrc ~/.xmobarrc
+linkup .dotfiles/bin ~/bin
+
+# Update vim plugin git submodules
 git submodule init
 git submodule update
 
-pwd >> debug.txt
+# Additional setup for vim command-t plugin
 cd vim/bundle/command-t/ruby/command-t
-pwd >> debug.txt
 ruby extconf.rb
 rake make
