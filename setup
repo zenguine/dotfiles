@@ -15,11 +15,13 @@ function linkup {
 }
 
 # Create home dir soft links to files in ~/.dotfiles
+linkup .dotfiles/bashrc ~/.bashrc
 linkup .dotfiles/vimrc ~/.vimrc
 linkup .dotfiles/gvimrc ~/.gvimrc
 linkup .dotfiles/vim ~/.vim
 linkup .dotfiles/xmonad ~/.xmonad
-linkup .dotfiles/emacs ~/.emacs.d
+linkup .dotfiles/emacs.d ~/.emacs.d
+linkup .dotfiles/emacs ~/.emacs
 linkup .dotfiles/zshrc ~/.zshrc
 linkup .dotfiles/zsh ~/.zsh
 linkup .dotfiles/pentadactylrc ~/.pentadactylrc
