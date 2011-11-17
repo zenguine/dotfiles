@@ -1,3 +1,3 @@
-#bash/aliases
-bash/config
-bash/env
+source .bash/aliases
+source .bash/config
+source .bash/env

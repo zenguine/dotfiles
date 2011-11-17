@@ -1,0 +1,18 @@
+Configuration files from my home directory put under version control.
+
+Requirements for install:
+Ruby and ruby-dev package installed
+
+To install:
+git clone http://github.com/phenguin/dotfiles .dotfiles
+cd .dotfiles
+./setup
+
+The setup script does the following things:
+1. Symlinks the appropriate configuration files in your home
+directories to point to the files in this folder.  If these files
+already exists it moves them to a backup directory called
+"old_dotfiles".
+2. Runs git submodule update and git submodule init to pull the latest
+version of the vim plugins that I use.
+3. Compiles an external library used for the command-T vim plugin.

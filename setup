@@ -15,6 +15,7 @@ function linkup {
 }
 
 # Create home dir soft links to files in ~/.dotfiles
+linkup .dotfiles/bash ~/.bash
 linkup .dotfiles/bashrc ~/.bashrc
 linkup .dotfiles/vimrc ~/.vimrc
 linkup .dotfiles/gvimrc ~/.gvimrc

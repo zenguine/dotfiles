@@ -1,3 +1,4 @@
+source .bashrc
 export PATH=$PATH:~/bin
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
@@ -62,44 +63,7 @@ else
 fi
 
 unsetopt ALL_EXPORT
-# # --------------------------------------------------------------------
-# # aliases
-# # --------------------------------------------------------------------
 
-alias slrn="slrn -n"
-alias man='LC_ALL=C LANG=C man'
-alias f=finger
-alias ll='ls -al'
-alias ls='ls --color=auto '
-alias offlineimap-tty='offlineimap -u TTY.TTYUI'
-alias hnb-partecs='hnb $HOME/partecs/partecs-hnb.xml'
-alias rest2html-css='rst2html --embed-stylesheet --stylesheet-path=/usr/share/python-docutils/s5_html/themes/default/print.css'
-alias e='emacs -nw'
-alias g='gvim --remote-silent'
-alias v='vim'
-alias e='emacs -nw'
-alias g='gvim --remote-silent'
-alias v='vim'
-alias e='emacs -nw'
-alias g='gvim --remote-silent'
-alias v='vim'
-alias ..='cd ..'
-alias ...='cd ../..'
-#if [[ $HOSTNAME == "kamna" ]] {
-#	alias emacs='emacs -l ~/.emacs.kamna'
-#}	
-
-# alias	=clear
-
-#chpwd() {
-#     [[ -t 1 ]] || return
-#     case $TERM in
-#     sun-cmd) print -Pn "\e]l%~\e\\"
-#     ;;
-#    *xterm*|screen|rxvt|(dt|k|E)term) print -Pn "\e]2;%~\a"
-#    ;;
-#    esac
-#}
 selfupdate(){
         URL="http://stuff.mit.edu/~jdong/misc/zshrc"
         echo "Updating zshrc from $URL..."
