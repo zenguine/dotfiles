@@ -1,0 +1,15 @@
+# Ignore changes to files made in subrepositories since they arne't
+# managed locally
+
+vim/bundle/fugitive/*
+vim/bundle/git-vim/*
+vim/bundle/github-search/*
+vim/bundle/latex-suite/*
+vim/bundle/haskell.vim/*
+vim/bundle/haskellmode-vim/*
+vim/bundle/command-t/*
+vim/bundle/bufkill/*
+vim/bundle/nerdtree/*
+vim/bundle/vim-surround/*
+vim/bundle/snipmate/*
+vim/bundle/nerdcommenter/*
