@@ -34,3 +34,9 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = http://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/bundle/vim-bufonly"]
+	path = vim/bundle/vim-bufonly
+	url = https://github.com/duff/vim-bufonly.git

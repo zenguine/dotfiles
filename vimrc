@@ -41,6 +41,7 @@ set mouse=a
 set mousehide
 set mousemodel=popup_setpos
 set nowrapscan
+set nowrap
 set path=.,/usr/include,/usr/local/include
 set smartcase
 set nosmartindent
@@ -67,7 +68,6 @@ let mapleader = ','
 nnoremap ' `
 nnoremap ` '
 nnoremap ; :
-nnoremap : ;
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -96,7 +96,7 @@ filetype indent on
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 
-:autocmd FileType *		set shiftwidth=4
+:autocmd FileType *		set shiftwidth=2
 :autocmd FileType xml,html	set shiftwidth=2
 :autocmd FileType java,c,cc,cpp	set nocindent
 "
@@ -141,11 +141,18 @@ au CursorHoldI * stopinsert
 au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
 au InsertLeave * let &updatetime=updaterestore
 
+" taglist configuration
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_WinWidth = 50
+map <leader>q :TlistToggle<cr>
+map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
 " Easy editting of this file.
-nmap <Leader>s :source ~/.vimrc<CR>
+nmap <Leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent
 nmap Y y$

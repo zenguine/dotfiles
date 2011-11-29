@@ -1,4 +1,5 @@
 # Ignore changes to files made in subrepositories since they arne't
 # managed locally
 
-#vim/bundle/*
+zsh/cache/*
+*.o

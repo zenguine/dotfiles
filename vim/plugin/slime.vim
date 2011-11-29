@@ -28,6 +28,7 @@ endfunction
 vnoremap <C-c><C-c> "ry :call Send_to_Screen(@r)<CR>
 nnoremap <C-c><C-c> "ryap :call Send_to_Screen(@r)<CR>
 nnoremap <C-c><CR> :call Send_to_Screen("\r")<CR>
+nnoremap <C-c><C-l> mpgg"ryG'p :call Send_to_Screen(@r)<CR>
 
 nnoremap <C-c>v :call Screen_Vars()<CR>
 

@@ -44,6 +44,6 @@ main = do
         ]
 
 startup :: X ()
-startup = do spawn "xmonad_startup"
+startup = do spawn "startup"
 
 
