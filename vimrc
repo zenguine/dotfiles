@@ -125,6 +125,7 @@ vnoremap <A-l> >gv
 " Better window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
+nnoremap <C-@> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
@@ -146,12 +147,15 @@ let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
 map <leader>q :TlistToggle<cr>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" uses ghci to generate haskell tags file recursively from cwd
+map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
 " Easy editting of this file.
+nmap <Leader>v :e ~/.vimrc<CR>
 nmap <Leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent
@@ -164,6 +168,7 @@ set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 " Create Blank Newlines and stay in Normal mode
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
+
 " Auto change directory to current file
 set autochdir
 
@@ -174,6 +179,11 @@ nnoremap <Leader>t :CommandT<CR>
 
 " Color scheme for terminal mode
 color herald
+
+" Haskell-mode stuff
+au BufEnter *.hs compiler ghc
+let g:haddock_browser = "/usr/bin/firefox"
+let g:ghc = "/usr/bin/ghc"
 
 " use vim to read pdf files text
 autocmd BufReadPre *.pdf set ro nowrap

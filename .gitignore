@@ -3,3 +3,5 @@
 
 zsh/cache/*
 *.o
+xmonad/xmonad-i386-linux
+xmonad/xmonad.o
