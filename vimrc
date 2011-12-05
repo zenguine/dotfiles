@@ -193,6 +193,13 @@ autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 
+" Supertab completion stuff
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+imap <C-g> <C-R>=TriggerSnippet()<CR>
+
 " Add python libraries to path so can use gf on module name to view
 " source
 python << EOF

@@ -40,3 +40,6 @@
 [submodule "vim/bundle/vim-bufonly"]
 	path = vim/bundle/vim-bufonly
 	url = https://github.com/duff/vim-bufonly.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
