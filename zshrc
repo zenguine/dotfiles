@@ -1,4 +1,5 @@
 source .bashrc
+export PYTHONSTARTUP=~/.pythonrc
 export PATH=$PATH:~/bin
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
