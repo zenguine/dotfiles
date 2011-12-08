@@ -1,5 +1,6 @@
 source .bashrc
 export PYTHONSTARTUP=~/.pythonrc
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export PATH=$PATH:~/bin
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
