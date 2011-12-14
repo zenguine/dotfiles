@@ -16,13 +16,9 @@ set shortmess=atI
 set nohlsearch
 set viminfo='100,f1
 
-" Press F2 to word-wrap a block of text. It's almost like using Word
-" Star all over again.
-map #2 !}fmt -65
-
 set autoindent
 set cmdheight=2
-
+" test blah blah"
 " Strewth, what a mess. Copied from the vim docs, if memory serves.
 set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
@@ -54,13 +50,11 @@ set complete=.,w,b,t
 set textwidth=70
 set viminfo='50,\"10000,n~/.viminfo
 set wildchar=9
-set wildignore+=*.class,*.pyc
+set wildignore+=*.pyc,*.hi,*.o
 set wildmode=longest,list,full
 set wildmenu
 set nocompatible
 set hidden
-set title
-set autochdir
 set splitright
 set splitbelow
 set virtualedit=all
@@ -72,12 +66,31 @@ set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" Always show line numbers, but only in current window.
-set number
-:au WinEnter * :setlocal number
-:au WinLeave * :setlocal nonumber
+" Line numbering settings:
+" Function to toggle relative vs absolute line numbering
+function! ToggleNumbering()
+    if exists("+relativenumber")
+        if &relativenumber
+            set number
+        else
+            set relativenumber
+        endif
+    else
+        set number!
+    endif
+endfunc
 
-" Display trailing whitespace with <leader>s
+" Set relative line numbering by default is it exists
+if exists('+relativenumber')
+    set relativenumber
+else
+    set number
+endif
+
+" leader-z to switch between rel/abs line numbering schemes
+noremap <leader>z :call ToggleNumbering()<CR>
+
+" Display trailing whitespace with <leader>ws
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>ws :set nolist!<CR>
 
@@ -86,7 +99,7 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
-" Spacebar toggles highlighting
+" Spacebar removes search highlighting
 nnoremap <space> :nohl<CR>
 
 " Vim Latex stuff
@@ -101,14 +114,14 @@ set grepprg=grep\ -nH\ $*
 :autocmd FileType java,c,cc,cpp	set nocindent
 "
 " Easy closing of window splits
-nnoremap <Leader>d <C-w>c
+nnoremap <leader>d <C-w>c
 
 set makeprg=ant
-"
+
 " Enable easy NERDTree toggling
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 "
-"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-h> <<
@@ -138,7 +151,7 @@ au CursorHoldI * stopinsert
 au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
 au InsertLeave * let &updatetime=updaterestore
 
-" taglist configuration
+" taglist and ctags configuration
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
 map <leader>q :TlistToggle<cr>
@@ -150,11 +163,11 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
-" Easy editting of this file.
-nmap <Leader>v :e ~/.vimrc<CR>
-nmap <Leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
+" leader-v to edit .vimrc file. leader-s to source both vimrc and gvimrc
+nmap <leader>v :e ~/.vimrc<CR>
+nmap <leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
 
-" Make "Y" behavior consistent
+" Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
 
 "Status line gnarliness
@@ -165,38 +178,39 @@ set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]%{fugitive#statusline()}
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
-" Auto change directory to current file
-set autochdir
-
 filetype plugin indent on
+                                         
+" CommandT and other buffer navigation settings---------------
+let g:CommandTMatchWindowReverse = 1
 
-nnoremap <Leader>r :CommandTBuffer<CR>
-nnoremap <Leader>t :CommandT<CR>
+" double percentage sign in command mode is expanded to directory of current file 
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" ,, switches between most recently viewed buffers
+nnoremap <leader><leader> <C-^>
+
+" leader-f to search files in project home, leader-F in current file
+" dir
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
 " Color scheme for terminal mode
 color herald
 
-" Haskell-mode stuff
+" Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc
 let g:haddock_browser = "/usr/bin/firefox"
 let g:ghc = "/usr/bin/ghc"
 
-" use vim to read pdf files text
-autocmd BufReadPre *.pdf set ro nowrap
-autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
-autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
-autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
-autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
-autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 
-" Supertab completion stuff
+" Supertab completion stuff---------------
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
 imap <C-g> <C-R>=TriggerSnippet()<CR>
 
-" Better window navigation
+" Better window navigation---------------
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-@> <C-w>j
@@ -213,3 +227,21 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
+
+" use vim to read pdf files text
+autocmd BufReadPre *.pdf set ro nowrap
+autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
+autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
+autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
+autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
+autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+
+" No arrow keys allowed
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>

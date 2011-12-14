@@ -1,3 +1,9 @@
+[submodule "vim/bundle/bufkill"]
+	path = vim/bundle/bufkill
+	url = http://github.com/vim-scripts/bufkill.vim
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = http://github.com/wincent/Command-T
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
@@ -7,39 +13,30 @@
 [submodule "vim/bundle/github-search"]
 	path = vim/bundle/github-search
 	url = http://github.com/gmarik/github-search.vim
-[submodule "vim/bundle/latex-suite"]
-	path = vim/bundle/latex-suite
-	url = http://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX
 [submodule "vim/bundle/haskell.vim"]
 	path = vim/bundle/haskell.vim
 	url = http://github.com/vim-scripts/haskell.vim
 [submodule "vim/bundle/haskellmode-vim"]
 	path = vim/bundle/haskellmode-vim
 	url = http://github.com/lukerandall/haskellmode-vim
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = http://github.com/wincent/Command-T
-[submodule "vim/bundle/bufkill"]
-	path = vim/bundle/bufkill
-	url = http://github.com/vim-scripts/bufkill.vim
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = http://github.com/tpope/vim-surround
-[submodule "vim/bundle/snipmate"]
-	path = vim/bundle/snipmate
-	url = http://github.com/msanders/snipmate.vim
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = http://github.com/scrooloose/nerdcommenter
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = http://github.com/msanders/snipmate.vim
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = http://github.com/tpope/vim-surround
 [submodule "vim/bundle/vim-bufonly"]
 	path = vim/bundle/vim-bufonly
 	url = https://github.com/duff/vim-bufonly.git
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
