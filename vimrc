@@ -7,6 +7,9 @@ call pathogen#helptags()
 set title
 set shortmess=atI
 
+" Set default working directory
+cd ~/code
+
 set nohlsearch
 set viminfo='100,f1
 
