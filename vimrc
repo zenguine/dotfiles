@@ -7,12 +7,6 @@ call pathogen#helptags()
 set title
 set shortmess=atI
 
-" Surround.vim configurations
-"nmap s ysi
-"nmap S ysa
-"nmap s$ ys$
-"nmap sv gvs
-
 set nohlsearch
 set viminfo='100,f1
 
@@ -170,6 +164,9 @@ nmap <leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
 
+" Gundo mappings
+map <leader>u :GundoToggle<CR>
+
 "Status line gnarliness
 set laststatus=2
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]%{fugitive#statusline()}
@@ -182,6 +179,7 @@ filetype plugin indent on
                                          
 " CommandT and other buffer navigation settings---------------
 let g:CommandTMatchWindowReverse = 1
+let g:CommandTMaxHeight = 20
 
 " double percentage sign in command mode is expanded to directory of current file 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
