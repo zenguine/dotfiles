@@ -1,6 +1,6 @@
 
 " GVIM specific
-:color wombat
+:color molokai
 set guioptions-=T
 set guioptions-=r
 set guioptions+=c
