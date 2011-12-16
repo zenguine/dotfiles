@@ -12,7 +12,6 @@ setopt APPEND_HISTORY
 # setopt AUTO_REMOVE_SLASH
 # setopt AUTO_RESUME		# tries to resume command of same name
 unsetopt BG_NICE		# do NOT nice bg commands
-setopt CORRECT			# command CORRECTION
 setopt EXTENDED_HISTORY		# puts timestamps in the history
 # setopt HASH_CMDS		# turns on hashing
 #
@@ -30,7 +29,7 @@ unsetopt bgnice autoparamslash
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
+zmodload -ap zsh/mapfile mapfile &>/dev/null
 
 
 PATH="/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"

@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+ # If not running interactively, do not do anything, otherwise startup
+ # tmux
+[[ $- != *i* ]] && return
+[[ $TERM != "screen" ]] && tmuxgo && exit
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace

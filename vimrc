@@ -191,9 +191,10 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader><leader> <C-^>
 
 " leader-f to search files in project home, leader-F in current file
-" dir
+" dir, leader-r to search files currently open in buffers
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+map <leader>r :CommandTFlush<cr>\|:CommandTBuffer<cr>
 
 " Color scheme for terminal mode
 color herald
