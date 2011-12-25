@@ -133,7 +133,8 @@ vnoremap <A-h> <gv
 vnoremap <A-l> >gv
  
 " Tab to switch between matching braces
-nnoremap <Tab> %
+nmap <Tab> %
+vmap <Tab> %
 
 " Fix wrapped line behavior
 nnoremap j gj
@@ -169,6 +170,10 @@ nmap Y y$
 
 " Gundo mappings
 map <leader>u :GundoToggle<CR>
+
+" Buffer next and previous mappings
+map <leader>bn :bn<cr>
+map <leader>bp :bp<cr>
 
 "Status line gnarliness
 set laststatus=2
