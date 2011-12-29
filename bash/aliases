@@ -23,3 +23,6 @@ alias gco='git checkout'
 alias ga='git add'
 alias gc='git commit -v'
 alias gca='git commit -a -v'
+
+# Alias for cd from home directory
+alias cdh='cd;cd '
