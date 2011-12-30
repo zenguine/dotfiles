@@ -1,7 +1,7 @@
 source .bashrc
 export PYTHONSTARTUP=~/.pythonrc
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
 #setopt NOTIFY

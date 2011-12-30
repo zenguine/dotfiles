@@ -7,3 +7,4 @@ xmonad/xmonad-i386-linux
 xmonad/xmonad.o
 xmonad/.gitignore
 \#emacs\#
+bin/heroku
