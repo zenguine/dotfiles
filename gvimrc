@@ -1,6 +1,6 @@
 
 " GVIM specific
-:color molokai
+:color eddie
 set guioptions-=T
 set guioptions-=r
 set guioptions+=c

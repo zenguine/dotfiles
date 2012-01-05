@@ -202,7 +202,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>r :CommandTFlush<cr>\|:CommandTBuffer<cr>
 
 " Color scheme for terminal mode
-color herald
+color eddie
 
 " Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc
