@@ -215,7 +215,7 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-imap <C-g> <C-R>=TriggerSnippet()<CR>
+" imap <C-g> <C-R>=TriggerSnippet()<CR>
 
 " Better window navigation---------------
 nnoremap <C-h> <C-w>h
@@ -252,3 +252,8 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" Sparkup settings
+"let g:sparkupExecuteMapping = '<c-b>'
+let g:sparkupNextMapping = '<c-f>'
+
