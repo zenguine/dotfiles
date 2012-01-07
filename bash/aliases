@@ -16,6 +16,7 @@ alias ll='ls -al'
 alias man='LC_ALL=C LANG=C man'
 alias v='vim'
 alias x='exit'
+alias open= 'gnome-open'
 
 # Git aliases
 alias gs='git status'

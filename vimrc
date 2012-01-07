@@ -256,4 +256,5 @@ imap <right> <nop>
 " Sparkup settings
 "let g:sparkupExecuteMapping = '<c-b>'
 let g:sparkupNextMapping = '<c-f>'
+let g:sparkupPreviousMapping = '<c-b>'
 
