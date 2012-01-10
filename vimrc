@@ -210,13 +210,15 @@ let g:haddock_browser = "/usr/bin/firefox"
 let g:ghc = "/usr/bin/ghc"
 
 
+" Ultisnips settings
+let g:UltiSnipsSnippetDirectories = ["bundle/ultisnips/UltiSnips"]
+
+
 " Supertab completion stuff---------------
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
-
-" imap <C-g> <C-R>=TriggerSnippet()<CR>
 
 " Better window navigation---------------
 nnoremap <C-h> <C-w>h
