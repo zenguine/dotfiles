@@ -214,6 +214,7 @@ let g:ghc = "/usr/bin/ghc"
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
 " imap <C-g> <C-R>=TriggerSnippet()<CR>
 
