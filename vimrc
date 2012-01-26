@@ -54,10 +54,13 @@ set nocompatible
 set hidden
 set splitright
 set splitbelow
+set number
 set virtualedit=all
 let mapleader = ','
-nnoremap ' `
-nnoremap ` '
+onoremap ' `
+onoremap ` '
+vnoremap ' `
+vnoremap ` '
 nnoremap ; :
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
@@ -134,8 +137,9 @@ vnoremap <A-h> <gv
 vnoremap <A-l> >gv
  
 " Tab to switch between matching braces
-nmap <Tab> %
-vmap <Tab> %
+onoremap <Tab> %
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 " Fix wrapped line behavior
 nnoremap j gj
