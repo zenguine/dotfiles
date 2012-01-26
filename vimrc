@@ -78,11 +78,12 @@ function! ToggleNumbering()
 endfunc
 
 " Set relative line numbering by default is it exists
-if exists('+relativenumber')
-    set relativenumber
-else
-    set number
-endif
+
+"if exists('+relativenumber')
+    "set relativenumber
+"else
+    "set number
+"endif
 
 " leader-z to switch between rel/abs line numbering schemes
 noremap <leader>z :call ToggleNumbering()<CR>
@@ -218,7 +219,7 @@ let g:UltiSnipsSnippetDirectories = ["bundle/ultisnips/UltiSnips"]
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
+"let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
 " Better window navigation---------------
 nnoremap <C-h> <C-w>h
