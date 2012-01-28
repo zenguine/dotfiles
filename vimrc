@@ -137,9 +137,9 @@ vnoremap <A-h> <gv
 vnoremap <A-l> >gv
  
 " Tab to switch between matching braces
-onoremap <Tab> %
-nnoremap <Tab> %
-vnoremap <Tab> %
+"onoremap <Tab> %
+"nnoremap <Tab> %
+"vnoremap <Tab> %
 
 " Fix wrapped line behavior
 nnoremap j gj
