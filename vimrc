@@ -225,6 +225,7 @@ let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 "let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
+
 " Better window navigation---------------
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -261,8 +262,43 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" <leader>lc - 'location change' to switched pwd of vim to directory
+" of current file
+nmap <leader>lcd :cd %%<CR>
+
 " Sparkup settings
 "let g:sparkupExecuteMapping = '<c-b>'
 let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 
+
+" Quickfix functionality
+nnoremap <c-q> :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QFStateToggle()
+  if g:quickfix_is_open
+    let g:quickfix_is_open = 0
+  else
+    let g:quickfix_is_open = 1
+  endif
+endfunction
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+" <leader>a to open up ack search
+nmap <leader>a :call QFStateToggle()<cr>:Ack! -i 
+
+nmap <c-f> :cn<CR>
+nmap <c-b> :cp<CR>
