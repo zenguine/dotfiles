@@ -82,11 +82,11 @@ endfunc
 
 " Set relative line numbering by default is it exists
 
-"if exists('+relativenumber')
-    "set relativenumber
-"else
-    "set number
-"endif
+if exists('+relativenumber')
+    set relativenumber
+else
+    set number
+endif
 
 " leader-z to switch between rel/abs line numbering schemes
 noremap <leader>z :call ToggleNumbering()<CR>
@@ -121,7 +121,7 @@ set makeprg=ant
 
 " Enable easy NERDTree toggling
 nnoremap <leader>n :NERDTreeToggle<CR>
-"
+
 "Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
@@ -137,9 +137,9 @@ vnoremap <A-h> <gv
 vnoremap <A-l> >gv
  
 " Tab to switch between matching braces
-"onoremap <Tab> %
-"nnoremap <Tab> %
-"vnoremap <Tab> %
+onoremap <Tab> %
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 " Fix wrapped line behavior
 nnoremap j gj
@@ -348,3 +348,6 @@ endfunction
 
 nnoremap <leader>vi :call InlineVariable()<cr>
 vnoremap <leader>ve :call ExtractVariable()<cr>
+
+" Scratch window mapping
+nnoremap <leader><Tab> :Sscratch<CR>
