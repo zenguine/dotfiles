@@ -57,10 +57,8 @@ set splitbelow
 set number
 set virtualedit=all
 let mapleader = ','
-onoremap ' `
-onoremap ` '
-vnoremap ' `
-vnoremap ` '
+noremap ' `
+noremap ` '
 nnoremap ; :
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
@@ -95,13 +93,8 @@ noremap <leader>z :call ToggleNumbering()<CR>
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>ws :set nolist!<CR>
 
-" Folding stuff
-set foldenable
-set foldmethod=indent
-set foldlevel=99
-
 " Spacebar removes search highlighting
-nnoremap <space> :nohl<CR>
+nnoremap <leader><space> :nohl<CR>
 
 " Vim Latex stuff
 syntax on
@@ -116,8 +109,6 @@ set grepprg=grep\ -nH\ $*
 "
 " Easy closing of window splits
 nnoremap <leader>d <C-w>c
-
-set makeprg=ant
 
 " Enable easy NERDTree toggling
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -137,9 +128,7 @@ vnoremap <A-h> <gv
 vnoremap <A-l> >gv
  
 " Tab to switch between matching braces
-onoremap <Tab> %
-nnoremap <Tab> %
-vnoremap <Tab> %
+map <Tab> %
 
 " Fix wrapped line behavior
 nnoremap j gj
@@ -168,7 +157,7 @@ imap jk <Esc>
 
 " leader-v to edit .vimrc file. leader-s to source both vimrc and gvimrc
 "nmap <leader>v :e ~/.vimrc<CR>
-nmap <leader>s :source ~/.vimrc<CR> :source ~/.gvimrc<CR>
+nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
@@ -204,7 +193,7 @@ nnoremap <leader><leader> <C-^>
 " dir, leader-r to search files currently open in buffers
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-"map <leader>r :CommandTFlush<cr>\|:CommandTBuffer<cr>
+map <leader>r :CommandTFlush<cr>\|:CommandTBuffer<cr>
 
 " Color scheme for terminal mode
 color eddie
@@ -274,6 +263,11 @@ nmap <leader>lcd :cd %%<CR>
 let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 
+" Quickfix and location list mappings
+nmap <c-p> :cprevious<CR>zvzz
+nmap <c-n> :cnext<CR>zvzz
+nmap <a-n> :lnext<CR>zvzz
+nmap <a-p> :lprevious<CR>zvzz
 
 " Quickfix functionality
 nnoremap <c-q> :call QuickfixToggle()<cr>
@@ -303,8 +297,6 @@ endfunction
 " <leader>a to open up ack search
 nmap <leader>a :call QFStateToggle()<cr>:Ack! -i 
 
-nmap <c-f> :cn<CR>
-nmap <c-b> :cp<CR>
 
 function! ExtractVariable()
   let name = input("Variable name: ")
@@ -346,8 +338,59 @@ function! InlineVariable()
   :let @b = l:tmp_b
 endfunction
 
-nnoremap <leader>vi :call InlineVariable()<cr>
+nnoremap<leader>vi :call InlineVariable()<cr>
 vnoremap <leader>ve :call ExtractVariable()<cr>
 
 " Scratch window mapping
 nnoremap <leader><Tab> :Sscratch<CR>
+
+" Dont jump on * or #
+nmap * *''
+nmap # #''
+
+" Easier to type
+noremap H ^
+noremap L g_
+
+" Fix linewise visual selection of various text objects
+nnoremap VV V
+nnoremap Vit vitVkoj
+nnoremap Vat vatV
+nnoremap Vab vabV
+nnoremap VaB vaBV
+
+" Complete remappings
+inoremap <c-f> <c-x><c-f>
+inoremap <c-l> <c-x><c-l>
+
+" Emacs bindings in command line mode
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+  
+" Folding stuff
+set foldenable
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+vnoremap <space> za
+
+function! MyFoldText() 
+  let line = getline(v:foldstart)
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+  " expand tabs into spaces
+  let onetab = strpart(' ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction 
+
+set foldtext=MyFoldText()
+
+" 'Splint line' - converse to J (join lines)
+nnoremap S i<cr><esc><right>
+" Dont insert space between joined lines with J, gJ for that behavior
+nnoremap J Jx
+nnoremap gJ J
