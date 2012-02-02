@@ -192,6 +192,12 @@ preexec_functions+='preexec_update_git_vars'
 precmd_functions+='precmd_update_git_vars'
 chpwd_functions+='chpwd_update_git_vars'
  
+alias j='z'
+alias t='python bin/sjl-t/t.py --task-dir ~/tasks --list tasks'
+
+echo "[$(t | wc -l | sed -e's/ *//')] unfinished tasks: "
+t
+
 # Set the prompt.
 PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} %% '
 
@@ -199,3 +205,10 @@ PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} %% '
 
 source ~/.zsh/custom.zsh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# configuration for "z" script
+. ~/.dotfiles/bin/z.sh
+function precmd () {
+  _z --add "$(pwd -P)"
+}
+

@@ -155,8 +155,9 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
-" leader-v to edit .vimrc file. leader-s to source both vimrc and gvimrc
-"nmap <leader>v :e ~/.vimrc<CR>
+" convenient file editting for important files
+nmap <leader>ev :e ~/.dotfiles/vimrc<CR>
+nmap <leader>ez :e ~/.dotfiles/zshrc<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
