@@ -198,3 +198,4 @@ PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} %% '
 # source ~/.zsh/syntax-highlight/zsh-syntax-highlighting.zsh
 
 source ~/.zsh/custom.zsh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
