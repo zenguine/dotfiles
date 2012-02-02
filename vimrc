@@ -341,9 +341,6 @@ endfunction
 nnoremap<leader>vi :call InlineVariable()<cr>
 vnoremap <leader>ve :call ExtractVariable()<cr>
 
-" Scratch window mapping
-nnoremap <leader><Tab> :Sscratch<CR>
-
 " Dont jump on * or #
 nmap * *''
 nmap # #''
@@ -394,3 +391,68 @@ nnoremap S i<cr><esc><right>
 " Dont insert space between joined lines with J, gJ for that behavior
 nnoremap J Jx
 nnoremap gJ J
+"
+" Fugitive {{{
+
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gadd<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
+
+" }}}
+
+" Scratch {{{
+
+command! ScratchToggle call ScratchToggle()
+
+function! ScratchToggle() " {{{
+  if exists("w:is_scratch_window")
+    unlet w:is_scratch_window
+    exec "q"
+  else
+    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
+    let w:is_scratch_window = 1
+  endif
+endfunction " }}}
+
+nnoremap <silent> <leader><tab> :ScratchToggle<cr>
+
+" }}}
+"
+" Text objects--------------------------------------------------
+" Next and Last {{{
+
+" Motion for "next/last object". For example, "din(" would go to the next "()"
+" pair and delete its contents.
+
+onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+
+onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
+xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
+onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
+xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
+
+function! s:NextTextObject(motion, dir)
+  let c = nr2char(getchar())
+
+  if c ==# "b"
+      let c = "("
+  elseif c ==# "B"
+      let c = "{"
+  elseif c ==# "d"
+      let c = "["
+  endif
+
+  exe "normal! ".a:dir.c."v".a:motion.c
+endfunction
+
+" }}}
