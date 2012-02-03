@@ -27,3 +27,5 @@ alias ga='git add'
 alias gc='git commit -v'
 alias gca='git commit -a -v'
 
+# Alias tmux for 256 color support
+alias tmux='tmux -2'

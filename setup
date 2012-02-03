@@ -32,6 +32,8 @@ linkup .dotfiles/xmobarrc ~/.xmobarrc
 linkup .dotfiles/bin ~/bin
 linkup .dotfiles/pythonrc ~/.pythonrc
 linkup .dotfiles/tmux.conf ~/.tmux.conf
+linkup .dotfiles/xsession ~/.xsession
+linkup .dotfiles/Xdefaults ~/.Xdefaults
 
 # Update vim plugin git submodules
 git submodule init

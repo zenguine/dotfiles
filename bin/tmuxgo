@@ -48,5 +48,5 @@ tmux new-session -d -s $SESSION
 # all done. select starting window and get to work
 # you may need to cycle through windows and type in passwords
 # if you don't use ssh keys
-tmux select-window -t $SESSION:2
+tmux select-window -t $SESSION:0
 tmux attach -t $SESSION

@@ -5,7 +5,7 @@
  # If not running interactively, do not do anything, otherwise startup
  # tmux
 [[ $- != *i* ]] && return
-[[ $TERM != "screen" ]] && tmuxgo && exit
+[[ $TERM != "screen-256color" ]] && tmuxgo && exit
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
