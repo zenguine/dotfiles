@@ -207,7 +207,7 @@ source ~/.zsh/custom.zsh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # configuration for "z" script
-. ~/.dotfiles/bin/z.sh
+. ~/bin/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }

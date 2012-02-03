@@ -11,7 +11,11 @@ task :install do
     overwrite = false
     backup = false
     file = link_file.split("/").last.split(".linkme").last
-    target = "#{ENV["HOME"]}/.#{file}"
+    if file != 'bin'
+      target = "#{ENV["HOME"]}/.#{file}"
+    else
+      target = "#{ENV["HOME"]}/#{file}"
+    end
 
     if File.exists?(target) || File.symlink?(target)
       unless skip_all || overwrite_all || backup_all
@@ -29,6 +33,7 @@ task :install do
       `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
     `ln -s "$PWD/#{link_file}" "#{target}"` unless skip_all
+
   end
 
   # Update vim plugin git submodules

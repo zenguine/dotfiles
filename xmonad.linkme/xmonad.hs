@@ -12,7 +12,7 @@ import System.IO
     -- need the xmobar path or config file, use: xmproc <- spawnPipe "xmobar"
  
 -- Define terminal
-myTerminal = "xterm -fn 'Dejavu Sans Mono' -fs 12"
+myTerminal = "xterm -fn 'Dejavu Sans Mono for Powerline' -fs 12"
 -- Define amount and names of workspaces
 myWorkspaces = ["1:main","2:dev","3:www","4:media","5:mail","6:chat"]
 -- Define the workspace each application goes to
