@@ -31,9 +31,6 @@
 [submodule "vim.linkme/bundle/supertab"]
 	path = vim.linkme/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "vim.linkme/bundle/taglist"]
-	path = vim.linkme/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "vim.linkme/bundle/vim-repeat"]
 	path = vim.linkme/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -70,3 +67,6 @@
 [submodule "vim.linkme/bundle/vim-powerline"]
 	path = vim.linkme/bundle/vim-powerline
 	url = http://github.com/Lokaltog/vim-powerline.git
+[submodule "vim.linkme/bundle/tagbar"]
+	path = vim.linkme/bundle/tagbar
+	url = http://github.com/majutsushi/tagbar.git
