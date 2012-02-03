@@ -15,7 +15,7 @@ set viminfo='100,f1
 
 set autoindent
 set cmdheight=2
-" test blah blah"
+set tags+=gems.tags
 " Strewth, what a mess. Copied from the vim docs, if memory serves.
 set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
@@ -43,7 +43,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set showmode
-set complete=.,w,b,t
+" set complete=.,w,b,t
 set textwidth=70
 set viminfo='50,\"10000,n~/.viminfo
 set wildchar=9
@@ -216,7 +216,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-"let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-]>"
 
 
 " Better window navigation---------------
