@@ -1,0 +1,13 @@
+modified:   .gitignore
+deleted:    bin/xmonad_startup
+modified:   vim/bundle/command-t (untracked content)
+modified:   vim/bundle/git-vim (untracked content)
+modified:   vim/bundle/latex-suite (untracked content)
+modified:   vim/bundle/snipmate (untracked content)
+modified:   vim/bundle/taglist (untracked content)
+deleted:    vim/plugin/slime.vim
+modified:   vimrc
+modified:   zsh/cache/jcullen-ThinkPad-X61-Tablet/DEBS_avail
+
+bin/startup
+vim/haskellmode.config
