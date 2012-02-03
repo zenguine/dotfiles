@@ -1,7 +1,6 @@
 " Pathogen configuration
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-
     :autocmd!
 "set terminal title and stifle shell messages
 set title
@@ -94,7 +93,7 @@ set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>ws :set nolist!<CR>
 
 " Spacebar removes search highlighting
-nnoremap <leader><space> :nohl<CR>
+nnoremap <space> :nohl<CR>
 
 " Vim Latex stuff
 syntax on
@@ -156,8 +155,8 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 imap jk <Esc>
 
 " convenient file editting for important files
-nmap <leader>ev :e ~/.dotfiles/vimrc<CR>
-nmap <leader>ez :e ~/.dotfiles/zshrc<CR>
+nmap <leader>ev :e ~/.dotfiles/vimrc.linkme<CR>
+nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
@@ -369,8 +368,6 @@ cnoremap <c-e> <end>
 set foldenable
 set foldmethod=indent
 set foldlevel=99
-nnoremap <space> za
-vnoremap <space> za
 
 function! MyFoldText() 
   let line = getline(v:foldstart)
@@ -457,3 +454,6 @@ function! s:NextTextObject(motion, dir)
 endfunction
 
 " }}}
+
+" vim-powerline config
+let g:Powerline_symbols = 'fancy'
