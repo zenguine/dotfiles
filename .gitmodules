@@ -1,69 +1,69 @@
-[submodule "vim/bundle/bufkill"]
-	path = vim/bundle/bufkill
+[submodule "vim.linkme/bundle/bufkill"]
+	path = vim.linkme/bundle/bufkill
 	url = http://github.com/vim-scripts/bufkill.vim
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
+[submodule "vim.linkme/bundle/command-t"]
+	path = vim.linkme/bundle/command-t
 	url = http://github.com/wincent/Command-T
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
+[submodule "vim.linkme/bundle/fugitive"]
+	path = vim.linkme/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/git-vim"]
-	path = vim/bundle/git-vim
+[submodule "vim.linkme/bundle/git-vim"]
+	path = vim.linkme/bundle/git-vim
 	url = http://github.com/motemen/git-vim.git
-[submodule "vim/bundle/github-search"]
-	path = vim/bundle/github-search
+[submodule "vim.linkme/bundle/github-search"]
+	path = vim.linkme/bundle/github-search
 	url = http://github.com/gmarik/github-search.vim
-[submodule "vim/bundle/haskell.vim"]
-	path = vim/bundle/haskell.vim
+[submodule "vim.linkme/bundle/haskell.vim"]
+	path = vim.linkme/bundle/haskell.vim
 	url = http://github.com/vim-scripts/haskell.vim
-[submodule "vim/bundle/haskellmode-vim"]
-	path = vim/bundle/haskellmode-vim
+[submodule "vim.linkme/bundle/haskellmode-vim"]
+	path = vim.linkme/bundle/haskellmode-vim
 	url = http://github.com/lukerandall/haskellmode-vim
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+[submodule "vim.linkme/bundle/nerdtree"]
+	path = vim.linkme/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
+[submodule "vim.linkme/bundle/vim-surround"]
+	path = vim.linkme/bundle/vim-surround
 	url = http://github.com/tpope/vim-surround
-[submodule "vim/bundle/vim-bufonly"]
-	path = vim/bundle/vim-bufonly
+[submodule "vim.linkme/bundle/vim-bufonly"]
+	path = vim.linkme/bundle/vim-bufonly
 	url = https://github.com/duff/vim-bufonly.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
+[submodule "vim.linkme/bundle/supertab"]
+	path = vim.linkme/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
+[submodule "vim.linkme/bundle/taglist"]
+	path = vim.linkme/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
+[submodule "vim.linkme/bundle/vim-repeat"]
+	path = vim.linkme/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
+[submodule "vim.linkme/bundle/gundo"]
+	path = vim.linkme/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
-[submodule "vim/bundle/vim-matchit"]
-	path = vim/bundle/vim-matchit
+[submodule "vim.linkme/bundle/vim-matchit"]
+	path = vim.linkme/bundle/vim-matchit
 	url = https://github.com/edsono/vim-matchit.git
-[submodule "vim/bundle/ruby-matchit"]
-	path = vim/bundle/ruby-matchit
+[submodule "vim.linkme/bundle/ruby-matchit"]
+	path = vim.linkme/bundle/ruby-matchit
 	url = https://github.com/vim-scripts/ruby-matchit.git
-[submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
+[submodule "vim.linkme/bundle/vim-rails"]
+	path = vim.linkme/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
+[submodule "vim.linkme/bundle/ultisnips"]
+	path = vim.linkme/bundle/ultisnips
 	url = http://github.com/phenguin/ultisnips
-[submodule "vim/bundle/vim-css-color"]
-	path = vim/bundle/vim-css-color
+[submodule "vim.linkme/bundle/vim-css-color"]
+	path = vim.linkme/bundle/vim-css-color
 	url = https://github.com/skammer/vim-css-color.git
-[submodule "vim/bundle/ack-vim"]
-	path = vim/bundle/ack-vim
-	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/vim-scratch"]
-	path = vim/bundle/vim-scratch
+[submodule "vim.linkme/bundle/vim-scratch"]
+	path = vim.linkme/bundle/vim-scratch
 	url = https://github.com/duff/vim-scratch.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
+[submodule "vim.linkme/bundle/syntastic"]
+	path = vim.linkme/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
+[submodule "vim.linkme/bundle/vim-commentary"]
+	path = vim.linkme/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim.linkme/bundle/ack-vim"]
+	path = vim.linkme/bundle/ack-vim
+	url = https://github.com/mileszs/ack.vim.git
