@@ -1,3 +1,6 @@
+export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH 
+export PATH='/home/jcullen/.cabal/bin':$PATH
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -6,6 +9,11 @@
  # tmux
 [[ $- != *i* ]] && return
 [[ $TERM != "screen-256color" ]] && tmuxgo && exit
+
+# fan control function - fan 0 to turn off fan
+function fan() {
+  echo level $@ | sudo tee /proc/acpi/ibm/fan
+}
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -27,9 +35,6 @@ fi
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
-
-export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH 
-export PATH='/home/jcullen/.cabal/bin':$PATH
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window

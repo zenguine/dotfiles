@@ -59,6 +59,7 @@ let mapleader = ','
 noremap ' `
 noremap ` '
 nnoremap ; :
+nnoremap q; q:
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -87,10 +88,6 @@ endif
 
 " leader-z to switch between rel/abs line numbering schemes
 noremap <leader>z :call ToggleNumbering()<CR>
-
-" Display trailing whitespace with <leader>ws
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>ws :set nolist!<CR>
 
 " Spacebar removes search highlighting
 nnoremap <space> :nohl<CR>
@@ -196,7 +193,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>r :CommandTFlush<cr>\|:CommandTBuffer<cr>
 
 " Color scheme for terminal mode
-color eddie
+color desert
 
 " Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc

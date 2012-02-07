@@ -1,3 +1,6 @@
 if [ -f $HOME/.Xdefaults ]; then
   xrdb -merge $HOME/.Xdefaults
 fi
+
+/* exec startxfce4 */
+exec xmonad

@@ -1,4 +1,5 @@
-source .bashrc
+cd
+source ~/.bashrc
 export PYTHONSTARTUP=~/.pythonrc
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
@@ -193,7 +194,7 @@ precmd_functions+='precmd_update_git_vars'
 chpwd_functions+='chpwd_update_git_vars'
  
 alias j='z'
-alias t='python bin/sjl-t/t.py --task-dir ~/tasks --list tasks'
+alias t='python2 ~/bin/sjl-t/t.py --task-dir ~/tasks --list tasks'
 
 echo "[$(t | wc -l | sed -e's/ *//')] unfinished tasks: "
 t
