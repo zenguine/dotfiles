@@ -59,7 +59,7 @@ let mapleader = ','
 noremap ' `
 noremap ` '
 nnoremap ; :
-nnoremap q; q:
+vnoremap ; :
 set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>

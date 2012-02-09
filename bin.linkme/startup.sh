@@ -1,9 +1,27 @@
-xmodmap -e 'remove Lock = Caps_Lock' &
-xmodmap -e 'keysym Caps_Lock = Control_L' &
-xmodmap -e 'add Control = Control_L' &
-gnome-power-manager &
-trayer &
-gnome-volume-control-applet &
+#! /bin/sh
+
+xrdb -merge .Xresources &
+
+xsetroot -solid black &
+eval $(cat ~/.fehbg) &
+
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --height 15 --transparent true --tint 0x000000 &
+
+# gajim &
+xscreensaver -nosplash &
+
+# gnome-settings-daemon &
+
+# if [ -x /usr/bin/gnome-power-manager ] ; then
+#    sleep 1
+#    gnome-power-manager &
+# fi
+
+if [ -x /usr/bin/nm-applet ] ; then
+   nm-applet --sm-disable &
+fi
+
+dropbox start &
 gvim &
 firefox &
 clementine &
