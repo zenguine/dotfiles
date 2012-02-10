@@ -13,9 +13,6 @@
 [submodule "vim.linkme/bundle/github-search"]
 	path = vim.linkme/bundle/github-search
 	url = http://github.com/gmarik/github-search.vim
-[submodule "vim.linkme/bundle/haskell.vim"]
-	path = vim.linkme/bundle/haskell.vim
-	url = http://github.com/vim-scripts/haskell.vim
 [submodule "vim.linkme/bundle/haskellmode-vim"]
 	path = vim.linkme/bundle/haskellmode-vim
 	url = http://github.com/lukerandall/haskellmode-vim
