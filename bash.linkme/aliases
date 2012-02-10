@@ -19,6 +19,7 @@ alias man='LC_ALL=C LANG=C man'
 alias v='vim'
 alias x='exit'
 alias open= 'gnome-open'
+alias locate='locate -i --regexp'
 
 # Git aliases
 alias gs='git status'
