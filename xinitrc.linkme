@@ -15,6 +15,7 @@ fi
 # exec gnome-session
 # exec startkde
 xmodmap ~/.xmodmaprc
-exec ck-launch-session xmonad
+xsetroot -cursor_name left_ptr
+exec ck-launch-session dbus-launch xmonad
 # exec startxfce4
 # ...or the Window Manager of your choice

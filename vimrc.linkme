@@ -78,6 +78,10 @@ function! ToggleNumbering()
     endif
 endfunc
 
+" Sane regex syntax
+noremap / /\v
+noremap ? ?\v
+
 " Set relative line numbering by default is it exists
 
 if exists('+relativenumber')
@@ -215,13 +219,29 @@ set completeopt=menuone,longest,preview
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-]>"
 
 
-" Better window navigation---------------
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-@> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Better window navigation
+" C-[hjkl] moves to neighboring window or if it doesn't exist then it
+" creates it.
 
+function! WinMove(key) 
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr()) "we havent moved
+    if (match(a:key,'[jk]')) "were we going up/down
+      wincmd v
+    else 
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+
+nnoremap <C-h> :call WinMove('h')<CR>
+nnoremap <C-j> :call WinMove('j')<CR>
+nnoremap <C-@> :call WinMove('j')<CR>
+nnoremap <C-k> :call WinMove('k')<CR>
+nnoremap <C-l> :call WinMove('l')<CR>
+ 
 " Add python libraries to path so can use gf on module name to view
 " source
 python << EOF
@@ -242,10 +262,10 @@ autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 
 " No arrow keys allowed
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+nmap <left>  :3wincmd <<cr>
+nmap <right> :3wincmd ><cr>
+nmap <up>    :3wincmd +<cr>
+nmap <down>  :3wincmd -<cr>
 imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
