@@ -81,6 +81,8 @@ endfunc
 " Sane regex syntax
 noremap / /\v
 noremap ? ?\v
+noremap n nzz
+noremap N Nzz
 
 " Set relative line numbering by default is it exists
 
