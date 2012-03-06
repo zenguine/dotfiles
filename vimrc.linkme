@@ -169,8 +169,8 @@ nmap Y y$
 map <leader>u :GundoToggle<CR>
 
 " Buffer next and previous mappings
-map <leader>bn :bn<cr>
-map <leader>bp :bp<cr>
+map <c-f> :bn<cr>
+map <c-b> :bp<cr>
 
 "Status line gnarliness
 set laststatus=2
