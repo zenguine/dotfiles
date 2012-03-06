@@ -96,10 +96,10 @@ else
 endif
 
 " leader-z to switch between rel/abs line numbering schemes
-noremap <leader>z :call ToggleNumbering()<CR>
+noremap <silent> <leader>z :call ToggleNumbering()<CR>
 
 " Spacebar removes search highlighting
-nnoremap <space> :nohl<CR>
+nnoremap <silent> <space> :nohl<CR>
 
 " Vim Latex stuff
 syntax on
@@ -116,11 +116,11 @@ set grepprg=grep\ -nH\ $*
 nnoremap <leader>d <C-w>c
 
 " Enable easy NERDTree toggling
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 
 "Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
+nnoremap <silent> <A-j> :m+<CR>==
+nnoremap <silent> <A-k> :m-2<CR>==
 nnoremap <A-h> <<
 nnoremap <A-l> >>
 inoremap <A-j> <Esc>:m+<CR>==gi
@@ -151,7 +151,7 @@ au InsertLeave * let &updatetime=updaterestore
 " taglist and ctags configuration
 " let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 " let Tlist_WinWidth = 50
-map <leader>q :TagbarToggle<cr>
+map <silent> <leader>q :TagbarToggle<cr>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
@@ -169,11 +169,11 @@ nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 nmap Y y$
 
 " Gundo mappings
-map <leader>u :GundoToggle<CR>
+map <silent> <leader>u :GundoToggle<CR>
 
 " Buffer next and previous mappings
-map <c-f> :bn<cr>
-map <c-b> :bp<cr>
+map <silent> <c-f> :bn<cr>
+map <silent> <c-b> :bp<cr>
 
 "Status line gnarliness
 set laststatus=2
@@ -241,11 +241,11 @@ function! WinMove(key)
   endif
 endfunction
 
-nnoremap <C-h> :call WinMove('h')<CR>
-nnoremap <C-j> :call WinMove('j')<CR>
-nnoremap <C-@> :call WinMove('j')<CR>
-nnoremap <C-k> :call WinMove('k')<CR>
-nnoremap <C-l> :call WinMove('l')<CR>
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-@> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
  
 " Add python libraries to path so can use gf on module name to view
 " source
@@ -286,13 +286,15 @@ let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 
 " Quickfix and location list mappings
-nmap <c-p> :cprevious<CR>zvzz
-nmap <c-n> :cnext<CR>zvzz
-nmap <a-n> :lnext<CR>zvzz
-nmap <a-p> :lprevious<CR>zvzz
+nmap <silent> <c-p> :cprevious<CR>zvzz
+nmap <silent> <c-n> :cnext<CR>zvzz
+
+" Location list mappings primarily for syntastic
+nmap <silent> <a-n> :lnext<CR>zvzz
+nmap <silent> <a-p> :lprevious<CR>zvzz
 
 " Quickfix functionality
-nnoremap <c-q> :call QuickfixToggle()<cr>
+nnoremap <silent> <c-q> :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 
@@ -303,6 +305,8 @@ function! QFStateToggle()
     let g:quickfix_is_open = 1
   endif
 endfunction
+
+let g:quickfix_return_to_window = winnr()
 
 function! QuickfixToggle()
     if g:quickfix_is_open
@@ -407,6 +411,7 @@ endfunction
 set foldtext=MyFoldText()
 
 " 'Splint line' - converse to J (join lines)
+
 nnoremap S i<cr><esc><right>
 " Dont insert space between joined lines with J, gJ for that behavior
 nnoremap J Jx
