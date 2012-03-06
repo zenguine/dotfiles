@@ -84,6 +84,9 @@ noremap ? ?\v
 noremap n nzz
 noremap N Nzz
 
+" if you forget to sudo..
+cmap w!! %!sudo tee > /dev/null %
+
 " Set relative line numbering by default is it exists
 
 if exists('+relativenumber')
