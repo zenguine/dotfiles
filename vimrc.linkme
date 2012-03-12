@@ -178,6 +178,9 @@ map <silent> <c-b> :bp<cr>
 "Status line gnarliness
 set laststatus=2
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]%{fugitive#statusline()}
+
+" Fugitive config and Git
+autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
  
 " Create Blank Newlines and stay in Normal mode
 nnoremap <silent> zj o<Esc>

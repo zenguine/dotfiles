@@ -24,9 +24,9 @@ if [ -x /usr/bin/nm-applet ] ; then
 fi
 
 dropbox start &
-gvim &
+gtk-redshift -l 42:71 -t 5700:2500 &
 # firefox &
-clementine &
+# clementine &
 deluge &
 
 # export WINDOW_MANAGER=xmonad
