@@ -18,3 +18,21 @@ set-window-option -g window-status-current-bg red
 
 # Enable 256 color support
 set -g default-terminal "screen-256color"
+unbind r
+bind r source-file ~/.tmux.conf
+
+unbind C-o
+bind C-o select-pane -t :.+
+
+unbind h
+bind h select-pane -L
+unbind j
+bind j select-pane -D
+unbind k
+bind k select-pane -U
+unbind l
+bind l select-pane -R
+
+unbind s
+bind s split-window
+bind v split-window -h
