@@ -5,4 +5,4 @@ map a <C-p>
 :set hintkeys=asdfghjkl;
 :toolbarshow Bookmarks Toolbar
 :set passkeys+=reddit.com:jkcClLnNpPfFrs<CR>
-:set passkeys+=rememberthemilk.com:tcpdfgsulyrz1234ankjihm<Del><Tab><Esc>
+:set passkeys+=rememberthemilk.com:tcpfgsulyrz1234ankjihm<Del><Tab><Esc>

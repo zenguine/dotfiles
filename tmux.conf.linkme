@@ -2,6 +2,7 @@ set -g prefix C-t
 unbind C-b
 bind C-t send-prefix
 bind-key C-t last-window
+bind-key x kill-pane
 
 # Set window notifications
 setw -g monitor-activity on

@@ -24,7 +24,7 @@ if [ -x /usr/bin/nm-applet ] ; then
 fi
 
 dropbox start &
-gtk-redshift -l 42:71 -t 5700:2500 &
+gtk-redshift -l 42.21:-71.5 -t 5700:3700 &
 # firefox &
 # clementine &
 deluge &

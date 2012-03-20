@@ -33,13 +33,16 @@ set mouse=a
 set mousehide
 set mousemodel=popup_setpos
 set nowrapscan
-set nowrap
+set wrap
+set linebreak
+set formatoptions+=l
+set nolist
 set path=.,/usr/include,/usr/local/include
 set smartcase
 set nosmartindent
 set smarttab
 set tabstop=2
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set showmode
 " set complete=.,w,b,t
@@ -108,8 +111,8 @@ filetype indent on
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 
-:autocmd FileType *		set shiftwidth=2
-:autocmd FileType xml,html	set shiftwidth=2
+:autocmd FileType *		set shiftwidth=4
+:autocmd FileType xml,html	set shiftwidth=4
 :autocmd FileType java,c,cc,cpp	set nocindent
 "
 " Easy closing of window splits
