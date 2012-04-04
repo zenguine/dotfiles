@@ -8,3 +8,4 @@ xmonad/xmonad.o
 xmonad/.gitignore
 \#emacs\#
 bin/heroku
+vim.linkme/undo

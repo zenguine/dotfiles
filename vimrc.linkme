@@ -20,7 +20,9 @@ set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
 set formatoptions=orc
 set history=1000
-set undolevels=1000
+
+set undolevels=1000 "maximum number of changes that can be undone
+
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set visualbell
 set noerrorbells
@@ -84,6 +86,8 @@ endfunc
 " Sane regex syntax
 noremap / /\v
 noremap ? ?\v
+
+" Autocenter some movement commands
 noremap n nzz
 noremap N Nzz
 
@@ -92,11 +96,12 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Set relative line numbering by default is it exists
 
-if exists('+relativenumber')
-    set relativenumber
-else
-    set number
-endif
+" if exists('+relativenumber')
+"     set relativenumber
+" else
+"     set number
+" endif
+
 
 " leader-z to switch between rel/abs line numbering schemes
 noremap <silent> <leader>z :call ToggleNumbering()<CR>
@@ -166,6 +171,7 @@ imap jk <Esc>
 " convenient file editting for important files
 nmap <leader>ev :e ~/.dotfiles/vimrc.linkme<CR>
 nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
+nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
@@ -208,7 +214,7 @@ map <leader>F :CommandT %%<cr>
 map <leader>r :CommandTBuffer<cr>
 
 " Color scheme for terminal mode
-color desert
+" color desert
 
 " Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc
@@ -382,11 +388,11 @@ noremap H ^
 noremap L g_
 
 " Fix linewise visual selection of various text objects
-nnoremap VV V
-nnoremap Vit vitVkoj
-nnoremap Vat vatV
-nnoremap Vab vabV
-nnoremap VaB vaBV
+" nnoremap VV V
+" nnoremap Vit vitVkoj
+" nnoremap Vat vatV
+" nnoremap Vab vabV
+" nnoremap VaB vaBV
 
 " Complete remappings
 inoremap <c-f> <c-x><c-f>
