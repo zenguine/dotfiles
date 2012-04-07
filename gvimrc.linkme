@@ -1,8 +1,10 @@
 
 " GVIM specific
 "This is a temporary hack so we get the dark version of solarized
-:color molokai
+
+:set background=dark
 :color solarized
+
 set guioptions-=T
 set guioptions-=m
 set guioptions-=r

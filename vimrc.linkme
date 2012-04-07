@@ -214,7 +214,7 @@ map <leader>F :CommandT %%<cr>
 map <leader>r :CommandTBuffer<cr>
 
 " Color scheme for terminal mode
-" color desert
+color molokai
 
 " Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc
@@ -394,7 +394,7 @@ noremap L g_
 " nnoremap Vab vabV
 " nnoremap VaB vaBV
 
-" Complete remappings
+" Completion remappings
 inoremap <c-f> <c-x><c-f>
 inoremap <c-l> <c-x><c-l>
 
@@ -493,6 +493,10 @@ function! s:NextTextObject(motion, dir)
 endfunction
 
 " }}}
+"
+" blahdeeblah
+
+set t_Co=256
 
 " vim-powerline config
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'

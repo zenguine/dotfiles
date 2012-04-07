@@ -7,8 +7,8 @@ export PATH='/home/jcullen/.cabal/bin':$PATH
 
  # If not running interactively, do not do anything, otherwise startup
  # tmux
-[[ $- != *i* ]] && return
-[[ $TERM != "screen-256color" ]] && tmuxgo && exit
+# [[ $- != *i* ]] && return                 
+# [[ $TERM != "screen-256color" ]] && tmuxgo && exit
 
 # fan control function - fan 0 to turn off fan
 function fan() {
