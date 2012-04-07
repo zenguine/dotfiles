@@ -4,9 +4,6 @@
 [submodule "vim.linkme/bundle/command-t"]
 	path = vim.linkme/bundle/command-t
 	url = http://github.com/wincent/Command-T
-[submodule "vim.linkme/bundle/git-vim"]
-	path = vim.linkme/bundle/git-vim
-	url = http://github.com/motemen/git-vim.git
 [submodule "vim.linkme/bundle/github-search"]
 	path = vim.linkme/bundle/github-search
 	url = http://github.com/gmarik/github-search.vim
