@@ -73,7 +73,9 @@ set splitright
 set splitbelow
 set number
 set virtualedit=all
+set lazyredraw
 let mapleader = ','
+
 noremap ' `
 noremap ` '
 nnoremap ; :
@@ -106,15 +108,6 @@ noremap N Nzz
 
 " if you forget to sudo..
 cmap w!! %!sudo tee > /dev/null %
-
-" Set relative line numbering by default is it exists
-
-" if exists('+relativenumber')
-"     set relativenumber
-" else
-"     set number
-" endif
-
 
 " leader-z to switch between rel/abs line numbering schemes
 noremap <silent> <leader>z :call ToggleNumbering()<CR>
