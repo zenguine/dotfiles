@@ -6,6 +6,11 @@ call pathogen#helptags()
 set title
 set shortmess=atI
 
+" vim-powerline config
+let g:Powerline_symbols='fancy'
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+
 " Set default working directory
 cd ~/code
 
@@ -498,5 +503,3 @@ endfunction
 
 set t_Co=256
 
-" vim-powerline config
-" let g:Powerline_symbols = 'fancy'

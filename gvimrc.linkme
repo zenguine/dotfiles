@@ -9,5 +9,5 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=r
 set guioptions+=c
-set guifont=Dejavu\ Sans\ Mono\ 12
+set guifont=Inconsolata\ for\ Powerline\ 12
 set winaltkeys=no
