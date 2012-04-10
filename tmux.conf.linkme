@@ -8,13 +8,8 @@ bind-key x kill-pane
 setw -g monitor-activity on
 set -g visual-activity on
 
-# Set status bar
-# set -g status-bg black
-# set -g status-fg white
-# set -g status-left ‘#[fg=green]#H’
-
 # Highlight active window
-set-window-option -g window-status-current-bg blue
+set-window-option -g window-status-current-bg colour35
 
 # JUST ADDED START
 
@@ -22,16 +17,17 @@ set -g default-terminal "screen-256color"
 set -g history-limit 1000
  
 # THEME
+set -g base-index 1
 set -g status-bg black
 set -g status-fg white
-set -g status-interval 60
 set -g status-left-length 30
-set -g status-left '#[fg=green](#S) #(whoami)@#H#[default]'
+set -g status-left '#[fg=colour214] #H #[default]'
 set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=blue]%H:%M#[default]'
- 
+set -g status-interval 1
+set -g status-justify centre # center align window list
+
 # set correct term
-set -g default-terminal screen-256color
- 
+
 # JUST ADDED END
 
 # Enable 256 color support
@@ -54,3 +50,5 @@ bind l select-pane -R
 unbind s
 bind s split-window
 bind v split-window -h
+
+setw -g xterm-keys on
