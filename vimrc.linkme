@@ -401,13 +401,6 @@ nmap # #''
 noremap H ^
 noremap L g_
 
-" Fix linewise visual selection of various text objects
-" nnoremap VV V
-" nnoremap Vit vitVkoj
-" nnoremap Vat vatV
-" nnoremap Vab vabV
-" nnoremap VaB vaBV
-
 " Completion remappings
 inoremap <c-f> <c-x><c-f>
 inoremap <c-l> <c-x><c-l>
@@ -505,10 +498,6 @@ function! s:NextTextObject(motion, dir)
 
   exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
-
-" }}}
-"
-" blahdeeblah
 
 set t_Co=256
 
