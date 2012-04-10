@@ -3,9 +3,11 @@
 
 zsh/cache/*
 *.o
-xmonad/xmonad-i386-linux
-xmonad/xmonad.o
+xmonad.linkme/xmonad-i386-linux
+xmonad.linkme/xmonad.o
 xmonad/.gitignore
 \#emacs\#
 bin/heroku
 vim.linkme/undo
+vim.linkme/.netrwhist
+
