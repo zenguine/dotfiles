@@ -33,12 +33,12 @@ IRC_NICK=$USER
 tmux has-session -t $SESSION
 if [ $? -eq 0 ]; then
     echo "Session $SESSION already exists. Attaching."
-    tmux attach -t $SESSION
+    tmux -2 attach -t $SESSION
     exit 0;
 fi
  
 # create a new session, named $SESSION, and detach from it
-tmux new-session -d -s $SESSION
+tmux -2 new-session -d -s $SESSION
  
 # Now populate the session with the windows you use every day
 # Some windows I specifically want at a particular index.
@@ -48,5 +48,5 @@ tmux new-session -d -s $SESSION
 # all done. select starting window and get to work
 # you may need to cycle through windows and type in passwords
 # if you don't use ssh keys
-tmux select-window -t $SESSION:0
-tmux attach -t $SESSION
+tmux -2 select-window -t $SESSION:0
+tmux -2 attach -t $SESSION

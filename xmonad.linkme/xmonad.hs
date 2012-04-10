@@ -26,7 +26,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
       delta = 5/100 
 
 -- Define terminal
-myTerminal = "sakura"
+myTerminal = "urxvt"
 
 -- Define amount and names of workspaces
 myWorkspaces = ["1:main","2:dev","3:www","4:media","5:mail","6:chat"]

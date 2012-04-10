@@ -1,4 +1,5 @@
 export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH 
+export LANG=en_US.UTF-8
 export PATH='/home/jcullen/.cabal/bin':$PATH
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -7,8 +8,8 @@ export PATH='/home/jcullen/.cabal/bin':$PATH
 
  # If not running interactively, do not do anything, otherwise startup
  # tmux
-# [[ $- != *i* ]] && return                 
-# [[ $TERM != "screen-256color" ]] && tmuxgo && exit
+[[ $- != *i* ]] && return                 
+[[ $TERM != "screen-256color" ]] && tmuxgo
 
 # fan control function - fan 0 to turn off fan
 function fan() {

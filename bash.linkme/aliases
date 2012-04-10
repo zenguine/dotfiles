@@ -11,7 +11,7 @@ alias f=finger
 alias g='gvim --remote-silent'
 alias gv='gvim'
 alias hnb-partecs='hnb $HOME/partecs/partecs-hnb.xml'
-alias ls='ls --color=auto '
+alias ls='ls -h --color=auto '
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -al'

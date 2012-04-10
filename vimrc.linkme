@@ -6,6 +6,14 @@ call pathogen#helptags()
 set title
 set shortmess=atI
 
+" These are so we can use alt key mappings in a terminal without
+" eightBitInput i.e. urxvt
+set <A-h>=h
+set <A-j>=j
+set <A-k>=k
+set <A-l>=l
+set <A-]>=]
+
 " vim-powerline config
 let g:Powerline_symbols='fancy'
 set encoding=utf-8
@@ -219,7 +227,8 @@ map <leader>F :CommandT %%<cr>
 map <leader>r :CommandTBuffer<cr>
 
 " Color scheme for terminal mode
-color molokai
+set background=dark
+color solarized
 
 " Haskell-mode stuff---------------
 au BufEnter *.hs compiler ghc

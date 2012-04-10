@@ -196,8 +196,8 @@ chpwd_functions+='chpwd_update_git_vars'
 alias j='z'
 alias t='python2 ~/bin/sjl-t/t.py --task-dir ~/tasks --list tasks'
 
-echo "[$(t | wc -l | sed -e's/ *//')] unfinished tasks: "
-t
+# echo "[$(t | wc -l | sed -e's/ *//')] unfinished tasks: "
+# t
 
 # Set the prompt.
 PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} %% '
