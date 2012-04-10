@@ -43,7 +43,17 @@ tmux -2 new-session -d -s $SESSION
 # Now populate the session with the windows you use every day
 # Some windows I specifically want at a particular index.
 # I always want IRC in window 0 and Email in window 1.
- 
+
+# 0 - VIM
+tmux new-window -t $SESSION:0 -n -k vim 'vim --servername main --remote-silent'
+
+# 1 - Mail
+tmux new-window    -t $SESSION:1 -n mail alpine
+# 2 - Music (on one workstation, nothing on another)
+# So that I can quickly hit ^b2<spacebar> to pause my tunes, I always put music in window 2.
+# Makefile target does this: mpg123 --shuffle --control --list *m3u
+#tmux new-window -t $SESSION:2 -n music 'cd ~/Music; make music'
+tmux new-window    -t $SESSION:2 -n temp # just to leave 2 empty
  
 # all done. select starting window and get to work
 # you may need to cycle through windows and type in passwords

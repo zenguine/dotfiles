@@ -181,7 +181,12 @@ nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
-nmap Y y$
+nmap Y "*y$
+" Share default system clipboard so can paste to/from tmux
+noremap y "*y
+noremap yy "*yy
+noremap p "*p
+noremap P "*P
 
 " Gundo mappings
 map <silent> <leader>u :GundoToggle<CR>
