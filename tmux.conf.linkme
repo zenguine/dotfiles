@@ -29,9 +29,16 @@ set -g status-justify centre # center align window list
 unbind r
 bind r source-file ~/.tmux.conf
 
-unbind C-o
-bind C-o select-pane -t :.+
+# unbind C-o
+# bind C-o select-pane -t :.+
 
+# Resizing panes
+bind-key C-h resize-pane -L 5
+bind-key C-j resize-pane -D 3
+bind-key C-k resize-pane -U 3
+bind-key C-l resize-pane -R 5
+
+# Moving between panes
 unbind h
 bind h select-pane -L
 unbind j

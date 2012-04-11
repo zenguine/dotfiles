@@ -33,7 +33,7 @@ IRC_NICK=$USER
 tmux has-session -t $SESSION
 if [ $? -eq 0 ]; then
     echo "Session $SESSION already exists. Attaching."
-    tmux -2 attach -t $SESSION
+    tmux -2 new-session -t $SESSION
     exit 0;
 fi
  

@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/jcullen/.vim'
 let g:netrw_dirhist_2='/home/jcullen/.vim/showmarks.txt'
 let g:netrw_dirhist_3='/home/jcullen/src/andrewdougherty/svm'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/home/jcullen/.vim_bak'
 let g:netrw_dirhist_5='/home/jcullen/src/wagerlabs/openpoker'
 let g:netrw_dirhist_6='/home/jcullen/src/mongodb/mongo-c-driver'
 let g:netrw_dirhist_7='/home/jcullen/src/yi-editor/yi'
+let g:netrw_dirhist_8='/home/jcullen/.dotfiles'
