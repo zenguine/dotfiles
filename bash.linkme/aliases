@@ -17,13 +17,17 @@ alias la='ls -A'
 alias ll='ls -al'
 alias man='LC_ALL=C LANG=C man'
 alias v='vim'
-# alias vs='vim --servername main --remote-silent 2> /dev/null || vim --servername main'
 alias x='exit'
 alias open= 'gnome-open'
 alias locate='locate -i --regexp'
 
 vs () {
-    vim --servername main --remote-silent 2> /dev/null $@ || vim --servername main $@
+    if [ -z "$1" ]
+    then
+        (vim --serverlist | grep -i 'main' && echo "Already have a server active, if you want a new one do it manually") || vim --servername main
+    else
+        vim --servername main --remote-silent "$@" 2> /dev/null || vim --servername main "$@"
+    fi
 }
 
 # Git aliases
