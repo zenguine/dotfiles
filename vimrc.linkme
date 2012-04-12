@@ -26,7 +26,7 @@ set nohlsearch
 set viminfo='100,f1
 
 set autoindent
-set cmdheight=2
+set cmdheight=1
 set tags+=gems.tags
 " Strewth, what a mess. Copied from the vim docs, if memory serves.
 set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
@@ -249,13 +249,11 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-
 " Supertab completion stuff---------------
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-]>"
-
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Better window navigation
 " C-[hjkl] moves to neighboring window or if it doesn't exist then it
@@ -421,30 +419,32 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
-function! MyFoldText() 
-  let line = getline(v:foldstart)
-  let nucolwidth = &fdc + &number * &numberwidth
-  let windowwidth = winwidth(0) - nucolwidth - 3
-  let foldedlinecount = v:foldend - v:foldstart
-  " expand tabs into spaces
-  let onetab = strpart(' ', 0, &tabstop)
-  let line = substitute(line, '\t', onetab, 'g')
-  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction 
+" function! MyFoldText() 
+"   let line = getline(v:foldstart)
+"   let nucolwidth = &fdc + &number * &numberwidth
+"   let windowwidth = winwidth(0) - nucolwidth - 3
+"   let foldedlinecount = v:foldend - v:foldstart
+"   " expand tabs into spaces
+"   let onetab = strpart(' ', 0, &tabstop)
+"   let line = substitute(line, '\t', onetab, 'g')
+"   let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+"   let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+"   return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+" endfunction 
 
-set foldtext=MyFoldText()
+" set foldtext=MyFoldText()
 
 " 'Splint line' - converse to J (join lines)
-
 nnoremap S i<cr><esc><right>
+
 " Dont insert space between joined lines with J, gJ for that behavior
 nnoremap J Jx
 nnoremap gJ J
-"
-" Fugitive {{{
 
+" Execute last recorded macro with Q
+nnoremap Q @@
+
+" Fugitive 
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -456,13 +456,12 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
 
-" }}}
-
-" Scratch {{{
-
+" Scratch
 command! ScratchToggle call ScratchToggle()
 
-function! ScratchToggle() " {{{
+nnoremap <silent> <leader><tab> :ScratchToggle<cr>
+
+function! ScratchToggle() "
   if exists("w:is_scratch_window")
     unlet w:is_scratch_window
     exec "q"
@@ -470,14 +469,10 @@ function! ScratchToggle() " {{{
     exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
     let w:is_scratch_window = 1
   endif
-endfunction " }}}
+endfunction
 
-nnoremap <silent> <leader><tab> :ScratchToggle<cr>
-
-" }}}
-"
 " Text objects--------------------------------------------------
-" Next and Last {{{
+" Next and Last
 
 " Motion for "next/last object". For example, "din(" would go to the next "()"
 " pair and delete its contents.
