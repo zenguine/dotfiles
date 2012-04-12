@@ -61,7 +61,7 @@ set shiftwidth=4
 set expandtab
 set showmode
 " set complete=.,w,b,t
-set textwidth=70
+" set textwidth=70
 set viminfo='50,\"10000,n~/.viminfo
 set wildchar=9
 set wildignore+=*.pyc,*.hi,*.o
@@ -154,6 +154,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Highlight cursor line only in active window
+set cursorline
 au WinEnter * setlocal cursorline
 au WinLeave * setlocal nocursorline
 
@@ -182,14 +183,23 @@ nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
-" Share default system clipboard so can paste to/from tmux
-" noremap y "*y
-" noremap yy "*yy
-" noremap p "*p
-" noremap P "*P
 
 " Gundo mappings
 map <silent> <leader>u :GundoToggle<CR>
+
+" Persistent undo
+if exists("+undofile")
+    " undofile - This allows you to use undos after exiting and restarting
+    " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+    " :help undo-persistence
+    " This is only present in 7.3+
+    if isdirectory($HOME . '/.vim/undo') == 0
+        :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    endif
+    set undodir=./.vim-undo//
+    set undodir+=~/.vim/undo//
+    set undofile
+endif
 
 " Buffer next and previous mappings
 map <silent> <c-f> :bn<cr>
@@ -197,7 +207,6 @@ map <silent> <c-b> :bp<cr>
 
 "Status line gnarliness
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]%{fugitive#statusline()}
 
 " Fugitive config and Git
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
@@ -291,8 +300,8 @@ autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 
 " No arrow keys allowed
-nmap <left>  :3wincmd <<cr>
-nmap <right> :3wincmd ><cr>
+nmap <left>  :3wincmd ><cr>
+nmap <right> :3wincmd <<cr>
 nmap <up>    :3wincmd +<cr>
 nmap <down>  :3wincmd -<cr>
 imap <up> <nop>
