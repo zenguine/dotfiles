@@ -1,7 +1,7 @@
-set -g prefix C-t
+set -g prefix C-a
 unbind C-b
-bind C-t send-prefix
-bind-key C-t last-window
+bind C-a send-prefix
+bind-key C-a last-window
 bind-key x kill-pane
 
 # Set window notifications

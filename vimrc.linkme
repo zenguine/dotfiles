@@ -20,7 +20,7 @@ set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 
 " Set default working directory
-cd ~/code
+" cd ~/code
 
 set nohlsearch
 set viminfo='100,f1
