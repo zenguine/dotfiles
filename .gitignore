@@ -10,3 +10,9 @@ bin/heroku
 vim.linkme/undo
 vim.linkme/.netrwhist
 
+oh-my-zsh.linkme/locals.zsh
+oh-my-zsh.linkme/log/.zsh_history
+oh-my-zsh.linkme/projects.zsh
+oh-my-zsh.linkme/cache
+oh-my-zsh.linkme/*.swp
+

@@ -29,6 +29,8 @@ set -g status-justify centre # center align window list
 unbind r
 bind r source-file ~/.tmux.conf
 
+set-window-option -g automatic-rename off
+
 # unbind C-o
 # bind C-o select-pane -t :.+
 
