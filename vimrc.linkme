@@ -19,13 +19,11 @@ let g:Powerline_symbols='fancy'
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 
-" Set default working directory
-" cd ~/code
-
 set nohlsearch
 set viminfo='100,f1
 
 set autoindent
+set autoread " automatically update open buffers when change externally.
 set cmdheight=1
 set tags+=gems.tags
 " Strewth, what a mess. Copied from the vim docs, if memory serves.
@@ -501,5 +499,5 @@ function! s:NextTextObject(motion, dir)
   exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
-set t_Co=256
+set t_Co=256 " seems important in order to get 256 color support or something..
 

@@ -20,6 +20,7 @@ alias v='vim'
 alias x='exit'
 alias open= 'gnome-open'
 alias locate='locate -i --regexp'
+alias lock='xscreensaver-command --lock'
 
 vs () {
     if [ -z "$1" ]
