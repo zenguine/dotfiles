@@ -1,12 +1,14 @@
 set -g prefix C-a
 unbind C-b
-bind C-a send-prefix
+bind a send-prefix
 bind-key C-a last-window
 bind-key x kill-pane
+bind-key C-q kill-session
 
 # Set window notifications
 setw -g monitor-activity on
 set -g visual-activity on
+setw -g aggressive-resize on
 
 # Highlight active window
 set-window-option -g window-status-current-bg colour35

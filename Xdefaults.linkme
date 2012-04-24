@@ -49,5 +49,8 @@ URxvt.boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=12
 URxvt.eightBitInput:       True
 URxvt.termName:rxvt-unicode
 
+urxvt*transparent: true
+urxvt*shading: 15
+
 XTerm*faceName: Dejavu Sans Mono for Powerline
-XTerm*faceSize: 12
+XTerm*faceSize: 11
