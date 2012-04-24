@@ -9,6 +9,12 @@ bind-key C-q kill-session
 bind-key m command-prompt -p "Move window from (session:window): "  "move-window -s '%%'"
 bind-key C-m command-prompt -p "Link window from (session:window):"  "link-window -s '%%'"
 
+# / to open a man page in a new window
+bind-key / command-prompt -p "Open man page:"  "split-window -h 'exec man %%'"
+
+# C-f to choose a new tmux session
+bind-key C-f choose-session
+
 # Set window notifications
 setw -g monitor-activity on
 set -g visual-activity on
@@ -20,25 +26,11 @@ set-window-option -g window-status-current-bg colour35
 set -g default-terminal "screen-256color"
 set -g history-limit 1000
 
-# THEME
-# set -g status-bg black
-# set -g status-fg white
-# set -g status-left-length 30
-# set -g status-left '#[fg=colour214] #H #[default]'
-# set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=blue]%H:%M#[default]'
-# set -g status-interval 1
-# set -g status-justify centre # center align window list
-
-# JUST ADDED END
-
 # Enable 256 color support
 unbind r
 bind r source-file ~/.tmux.conf
 
 set-window-option -g automatic-rename on
-
-# unbind C-o
-# bind C-o select-pane -t :.+
 
 # Resizing panes
 bind-key C-h resize-pane -L 5
@@ -56,13 +48,16 @@ bind k select-pane -U
 unbind l
 bind l select-pane -R
 
+# Vim-style pane splitting
 unbind s
 bind s split-window
+bind C-s split-window -p '25' 
 bind v split-window -h
+bind C-v split-window -h -p '25'
 
 setw -g xterm-keys on
 
-# Testing new tmux status
+# Pretty tmux statusbar
 set -g status-left-length 52
 set -g status-right-length 451
 set -g status-fg white
