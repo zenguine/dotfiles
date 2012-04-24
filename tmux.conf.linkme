@@ -35,7 +35,7 @@ set -g history-limit 1000
 unbind r
 bind r source-file ~/.tmux.conf
 
-set-window-option -g automatic-rename off
+set-window-option -g automatic-rename on
 
 # unbind C-o
 # bind C-o select-pane -t :.+
