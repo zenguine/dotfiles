@@ -9,6 +9,7 @@ xmonad/.gitignore
 bin/heroku
 vim.linkme/undo
 vim.linkme/.netrwhist
+\#*\#
 
 oh-my-zsh.linkme/locals.zsh
 oh-my-zsh.linkme/log/.zsh_history
