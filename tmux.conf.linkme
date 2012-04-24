@@ -5,6 +5,10 @@ bind-key C-a last-window
 bind-key x kill-pane
 bind-key C-q kill-session
 
+# Moving / linking windows between tmux sessions
+bind-key m command-prompt -p "Move window from (session:window): "  "move-window -s '%%'"
+bind-key C-m command-prompt -p "Link window from (session:window):"  "link-window -s '%%'"
+
 # Set window notifications
 setw -g monitor-activity on
 set -g visual-activity on

@@ -22,6 +22,7 @@ alias open= 'gnome-open'
 alias locate='locate -i --regexp'
 alias lock='xscreensaver-command --lock'
 
+# Function either sends the argument files to be editted in the active vim server, or creates the vim server first if it doesn't already exist
 vs () {
     if [ -z "$1" ]
     then
@@ -31,7 +32,53 @@ vs () {
     fi
 }
 
-# Git aliases
+# TMUX ---------------
+
+alias tl='tmux list-sessions'
+
+# If the first argument is the name of a currently running tmux session -> attach to it
+# otherwise, create a session with the specified name
+ts () {
+    if [ -z "$1" ]
+    then
+        echo 'No tmux session name specified. Defaulting to session name: main'
+        TMUXSESSION="main"
+    else
+        TMUXSESSION=$1
+    fi
+    # if the session is already running, just attach to it.
+    tmux has-session -t $TMUXSESSION
+    if [ $? -eq 0 ] 
+    then
+        echo "Tmux session $TMUXSESSION already exists. Attaching."
+        tmux -2 attach -t $TMUXSESSION
+    else
+        tmux -2 new -s $TMUXSESSION
+    fi
+}
+
+# Convenient killing of unneeded tmux session provided by:
+# tk <session-name>
+tk () {
+    if [ -z "$1" ]
+    then
+        echo 'Error: Please specify a valid tmux-session name to kill'
+    else
+        TMUXSESSION=$1
+        # if the session is already running, just attach to it.
+        tmux has-session -t $TMUXSESSION
+        if [ $? -eq 0 ] 
+        then
+            echo "Killing tmux session $TMUXSESSION"
+            tmux kill-session -t $TMUXSESSION
+        else
+            echo "Tmux session $TMUXSESSION does not exist. Nothing to kill"
+        fi
+    fi
+}
+
+
+# Git aliases - - - - - - - - - - - - - - -
 alias gs='git status'
 alias gco='git checkout'
 alias ga='git add'
