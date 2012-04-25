@@ -41,11 +41,11 @@ XTerm*termName:  xterm-256color
 *color7:                #eee8d5
 *color15:               #fdf6e3
 
-URxvt.font:                 xft:DejaVu Sans Mono for Powerline:regular:size=13
-URxvt.imFont:               xft:DejaVu Sans Mono for Powerline:regular:size=13
-URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:bold:size=13
-URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:italic:size=13
-URxvt.boldItalicFont:       xft:DejaVu Sans Mono for Powerline:bold:italic:size=13
+URxvt.font:                 xft:Inconsolata for Powerline:regular:size=14
+URxvt.imFont:               xft:Inconsolata for Powerline:regular:size=14
+URxvt.boldFont:             xft:Inconsolata for Powerline:bold:size=14
+URxvt.italicFont:           xft:Inconsolata for Powerline:italic:size=14
+URxvt.boldItalicFont:       xft:Inconsolata for Powerline:bold:italic:size=14
 URxvt.eightBitInput:       True
 URxvt.termName:rxvt-unicode
 
