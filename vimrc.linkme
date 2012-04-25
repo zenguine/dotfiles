@@ -175,10 +175,13 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
-" convenient file editting for important files
+" convenient file editting for frequently editted dotfiles
 nmap <leader>ev :e ~/.dotfiles/vimrc.linkme<CR>
 nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
 nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
+nmap <leader>et :e ~/.dotfiles/tmux.conf.linkme<CR>
+nmap <leader>ex :e ~/.dotfiles/xmonad.linkme/xmonad.hs<CR>
+nmap <leader>es :e ~/.dotfiles/bin.linkme/startup.sh<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 
 " Make "Y" behavior consistent with 'D','C', etc.
