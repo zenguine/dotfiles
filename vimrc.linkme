@@ -3,8 +3,8 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
     :autocmd!
 "set terminal title and stifle shell messages
-set title
-set shortmess=atI
+set title           
+set shortmess=atI 
 
 " These are so we can use alt key mappings in a terminal without
 " eightBitInput i.e. urxvt
@@ -16,6 +16,7 @@ set <A-]>=]
 
 " vim-powerline config
 let g:Powerline_symbols='fancy'
+call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 
