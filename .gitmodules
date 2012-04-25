@@ -40,9 +40,6 @@
 [submodule "vim.linkme/bundle/ultisnips"]
 	path = vim.linkme/bundle/ultisnips
 	url = http://github.com/phenguin/ultisnips
-[submodule "vim.linkme/bundle/vim-css-color"]
-	path = vim.linkme/bundle/vim-css-color
-	url = https://github.com/skammer/vim-css-color.git
 [submodule "vim.linkme/bundle/vim-scratch"]
 	path = vim.linkme/bundle/vim-scratch
 	url = https://github.com/duff/vim-scratch.git

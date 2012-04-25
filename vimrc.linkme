@@ -16,7 +16,8 @@ set <A-]>=]
 
 " vim-powerline config
 let g:Powerline_symbols='fancy'
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+" Enable line below if you want the whitespace marker
+" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 
@@ -295,6 +296,13 @@ autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
 autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+
+" Fixing some filetype detection
+au BufRead *tmux* set filetype=tmux
+au BufRead *xsession* set filetype=sh
+au BufRead *Xdefaults* set filetype=xdefaults
+au BufRead *Xmodmap* set filetype=xmodmap
+au BufRead *pentadactylrc* set filetype=vim
 
 " No arrow keys allowed
 nmap <left>  :3wincmd ><cr>
