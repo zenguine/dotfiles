@@ -25,12 +25,19 @@ alias locate='locate -i --regexp'
 alias lock='xscreensaver-command --lock'
 
 # Function either sends the argument files to be editted in the active vim server, or creates the vim server first if it doesn't already exist
+# Further, if we are in a tmux session, each tmux session gets its own vim server depending on the session name
 vs () {
+    if [[ "$TERM" == "screen-256color" ]]; then # if we're in a tmux session
+        SERVERNAME="tmux-`tmux list-panes -F '#{session_name}'`-vim" # give session its own vim server
+    else
+        SERVERNAME='default' # else, default
+    fi
+
     if [ -z "$1" ]
     then
-        (vim --serverlist | grep -i 'main' && echo "Already have a server active, if you want a new one do it manually") || vim --servername main
+        (vim --serverlist | grep -i "$SERVERNAME" && echo "Already have a server active, if you want a new one do it manually") || vim --servername "$SERVERNAME"
     else
-        vim --servername main --remote-silent "$@" 2> /dev/null || vim --servername main "$@"
+        vim --servername "$SERVERNAME" --remote-silent "$@" 2> /dev/null || vim --servername "$SERVERNAME" "$@"
     fi
 }
 

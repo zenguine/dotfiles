@@ -1,8 +1,8 @@
 #!/bin/sh
 
-SESSION='Pydev'
+SESSION='pydev'
 
-if [ -z "$1"]
+if [ -z "$1" ]
 then
     WORKINGDIR='/home/jcullen/code'
 else
