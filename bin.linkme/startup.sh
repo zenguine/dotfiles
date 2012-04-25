@@ -28,6 +28,7 @@ gtk-redshift -l 42.21:-71.5 -t 5700:3100 &
 # firefox &
 # clementine &
 deluge &
+tmux-init & # Set up initial tmux environment
 
 # export WINDOW_MANAGER=xmonad
 # gnome-session &
