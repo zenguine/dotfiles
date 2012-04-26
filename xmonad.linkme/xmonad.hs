@@ -75,14 +75,14 @@ myTiled = named "Tall" $ ResizableTall 1 0.03 0.5 []            -- (9,5)
 myTerminal = "urxvt"
 
 -- Define amount and names of workspaces
-myWorkspaces = ["1:main","2:dev","3:www","4:media","5:mail","6:chat"]
+myWorkspaces = ["main","dev","www","media","mail","chat"]
 
 -- Define the workspace each application goes to
 myManageHook = composeAll
-   [className =? "Firefox" --> doShift "3:www",
-   className =? "Gvim" --> doShift "2:dev",
-   className =? "Emacs" --> doShift "2:dev",
-   className =? "Clementine" --> doShift "4:media",
+   [className =? "Firefox" --> doShift "www",
+   className =? "Gvim" --> doShift "dev",
+   className =? "Emacs" --> doShift "dev",
+   className =? "Clementine" --> doShift "media",
    resource =? "desktop_window" --> doIgnore,
    className =? "Xmessage" --> doFloat]
 
@@ -121,8 +121,10 @@ main = do
         , ("M4-S-k", sendMessage $ Swap U)                             --  "
         , ("M4-S-j", sendMessage $ Swap D)                             --  "
 
-        , ("M4-S-l"), spawn "xscreensaver-command -lock")
-        ] 
+        , ("M4-S-l", spawn "xscreensaver-command -lock")
+        , ("M4-S-v", spawn "urxvt -e alsamixer")
+  
+        ]                  
         
 
 startup :: X ()
