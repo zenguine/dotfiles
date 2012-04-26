@@ -4,7 +4,7 @@ SESSION='pydev'
 
 if [ -z "$1" ]
 then
-    WORKINGDIR='/home/jcullen/code'
+    WORKINGDIR="$PWD"
 else
     WORKINGDIR=$1
 fi

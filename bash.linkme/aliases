@@ -28,7 +28,7 @@ alias lock='xscreensaver-command --lock'
 # Further, if we are in a tmux session, each tmux session gets its own vim server depending on the session name
 vs () {
     if [[ "$TERM" == "screen-256color" ]]; then # if we're in a tmux session
-        SERVERNAME="tmux-`tmux list-panes -F '#{session_name}'`-vim" # give session its own vim server
+        SERVERNAME="tmux-`tmux list-panes -F '#{session_name}' | head -1`-vim" # give session its own vim server
     else
         SERVERNAME='default' # else, default
     fi
