@@ -1,5 +1,5 @@
-set -g prefix C-a
 unbind C-b
+set -g prefix C-a
 bind a send-prefix
 bind-key C-a last-window
 bind-key x kill-pane
@@ -12,8 +12,10 @@ bind-key C-m command-prompt -p "Link window from (session:window):"  "link-windo
 # / to open a man page in a new window
 bind-key / command-prompt -p "Open man page:"  "split-window -h 'exec man %%'"
 
-# C-f to choose a new tmux session
+# C-f to choose a new tmux session, ( or ) to move between
 bind-key C-f choose-session
+bind-key -r ( switch-client -p
+bind-key -r ) switch-client -n
 
 # Set window notifications
 setw -g monitor-activity on
@@ -26,27 +28,41 @@ set-window-option -g window-status-current-bg colour35
 set -g default-terminal "screen-256color"
 set -g history-limit 1000
 
-# Enable 256 color support
+# r sources tmux configuratoin without restart
 unbind r
 bind r source-file ~/.tmux.conf
 
 set-window-option -g automatic-rename on
 
+# Mouse stuff
+setw -g mode-mouse off
+set -g mouse-select-pane off
+set -g mouse-select-window off
+
 # Resizing panes
-bind-key C-h resize-pane -L 5
-bind-key C-j resize-pane -D 3
-bind-key C-k resize-pane -U 3
-bind-key C-l resize-pane -R 5
+bind-key -r H resize-pane -L 5
+bind-key -r J resize-pane -D 3
+bind-key -r K resize-pane -U 3
+bind-key -r L resize-pane -R 5
+
+# Maximize and restore a pane
+unbind Up
+bind Up new-window -d -n tmp \; swap-pane -s tmp.0 \; select-window -t tmp
+unbind Down
+bind Down last-window \; swap-pane -s tmp.0 \; kill-window -t tmp
+
+# Quick window traversal
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
 
 # Moving between panes
-unbind h
-bind h select-pane -L
-unbind j
-bind j select-pane -D
-unbind k
-bind k select-pane -U
-unbind l
-bind l select-pane -R
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
+# Pane logging
+bind P pipe-pane -o "cat >>~/#S-#W-%d-%b.log" \; display "Toggled logging to ~/#S-#W-%d-%b.log"
 
 # Vim-style pane splitting
 unbind s
@@ -71,3 +87,4 @@ set -g message-attr bold
 set -g status-left '#[fg=colour235,bg=colour252,bold] ❐ #S #[fg=colour252,bg=colour238,nobold]⮀#[fg=colour245,bg=colour238,bold] #(whoami) #[fg=colour238,bg=colour234,nobold]⮀'
 set -g window-status-format "#[fg=white,bg=colour234] #I #W "
 set -g window-status-current-format "#[fg=colour234,bg=colour39]⮀#[fg=colour25,bg=colour39,noreverse,bold] #I ⮁ #W #[fg=colour39,bg=colour234,nobold]⮀"
+set -g status-right "#(battery Discharging)#(battery Charging) | #[fg=cyan]%d %b %R"

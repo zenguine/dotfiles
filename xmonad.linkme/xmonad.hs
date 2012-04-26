@@ -7,6 +7,10 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import System.IO
 
+import XMonad.Prompt
+import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.AppendFile
+
 -- make sure to edit paths to xmobar and .xmobarrc to match your system.
     -- If xmobar is in your $PATH, and its config is in ~/.xmobarrc you don't
     -- need the xmobar path or config file, use: xmproc <- spawnPipe "xmobar"
@@ -56,7 +60,9 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
-        } `additionalKeys`
+        } `additionalKeysP`
+        [ ("M4-n", appendFilePrompt defaultXPConfig "/home/jcullen/notes.txt")
+        ] `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")

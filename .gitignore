@@ -9,6 +9,7 @@ xmonad/.gitignore
 bin/heroku
 vim.linkme/undo
 vim.linkme/.netrwhist
+vim.linkme/bundle/*
 \#*\#
 
 oh-my-zsh.linkme/locals.zsh
@@ -17,3 +18,5 @@ oh-my-zsh.linkme/projects.zsh
 oh-my-zsh.linkme/cache
 oh-my-zsh.linkme/*.swp
 
+xmonad.linkme/history
+xmonad.linkme/xmonad.hi
