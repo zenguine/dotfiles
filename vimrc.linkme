@@ -98,6 +98,9 @@ function! ToggleNumbering()
     endif
 endfunc
 
+nnoremap + <C-a>
+nnoremap - <C-x>
+
 " Sane regex syntax
 noremap / /\v
 noremap ? ?\v

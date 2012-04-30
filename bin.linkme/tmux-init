@@ -16,13 +16,11 @@ tmux new-session -d -s $SESSION -n shell
 tmux new-window -t $SESSION:1 -n vim
 tmux new-window -t $SESSION:2 -n irc
 tmux new-window -t $SESSION:3 -n mail
-tmux new-window -t $SESSION:4 -n vol
 
 tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; clear" C-m
 tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; clear; vs" C-m
 tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; clear; irssi" C-m
 tmux send-keys -t $SESSION:3 "cd $WORKINGDIR; clear; mutt" C-m
-tmux send-keys -t $SESSION:4 "cd $WORKINGDIR; clear; alsamixer" C-m
 
 tmux select-window -t $SESSION:0
 # tmux -2 attach-session -d -t $SESSION
