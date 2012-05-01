@@ -61,3 +61,6 @@
 [submodule "vim.linkme/bundle/vim-fugitive"]
 	path = vim.linkme/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim.linkme/bundle/ctrlp"]
+	path = vim.linkme/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
