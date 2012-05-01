@@ -1,9 +1,6 @@
 [submodule "vim.linkme/bundle/bufkill"]
 	path = vim.linkme/bundle/bufkill
 	url = http://github.com/vim-scripts/bufkill.vim
-[submodule "vim.linkme/bundle/command-t"]
-	path = vim.linkme/bundle/command-t
-	url = http://github.com/wincent/Command-T
 [submodule "vim.linkme/bundle/github-search"]
 	path = vim.linkme/bundle/github-search
 	url = http://github.com/gmarik/github-search.vim
