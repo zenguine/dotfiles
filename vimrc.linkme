@@ -173,6 +173,7 @@ map <silent> <leader>q :TagbarToggle<cr>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
+map <leader>tp :!pytags.py %%/**/*.py<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Insert mode - map jk to <Esc>
@@ -207,10 +208,6 @@ if exists("+undofile")
     set undofile
 endif
 
-" Buffer next and previous mappings
-map <silent> <c-f> :bn<cr>
-map <silent> <c-b> :bp<cr>
-
 "Status line gnarliness
 set laststatus=2
 
@@ -224,9 +221,16 @@ nnoremap <silent> zk O<Esc>
 filetype plugin indent on
                                          
 " CommandT and other buffer navigation settings---------------
-let g:CommandTMatchWindowReverse = 1
-let g:CommandTMaxHeight = 20
+" let g:CommandTMatchWindowReverse = 1
+" let g:CommandTMaxHeight = 20
 
+" CtrlP Settings
+let g:ctrlp_map = '<c-p>'
+nnoremap <silent> <C-r> :CtrlPBuffer<cr>
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_open_multiple_files = '2vr'
+let g:ctrlp_extensions = ['tag','buffertag']
+"
 " double percentage sign in command mode is expanded to directory of current file 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -330,12 +334,12 @@ let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 
 " Quickfix and location list mappings
-nmap <silent> <c-p> :cprevious<CR>zvzz
-nmap <silent> <c-n> :cnext<CR>zvzz
+nmap <silent> <c-b> :cprevious<CR>zvzz
+nmap <silent> <c-f> :cnext<CR>zvzz
 
 " Location list mappings primarily for syntastic
-nmap <silent> <a-n> :lnext<CR>zvzz
-nmap <silent> <a-p> :lprevious<CR>zvzz
+nmap <silent> <a-b> :lnext<CR>zvzz
+nmap <silent> <a-f> :lprevious<CR>zvzz
 
 " Quickfix functionality
 nnoremap <silent> <c-q> :call QuickfixToggle()<cr>
