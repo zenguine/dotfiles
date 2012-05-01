@@ -40,9 +40,10 @@ task :install do
   `git submodule init`
   `git submodule update`
 
+  # No longer needed since command-t replaced with ctrlp
   # Additional setup for vim command-t plugin
-  Dir.chdir 'vim.linkme/bundle/command-t/ruby/command-t'
-  `ruby extconf.rb`
-  `rake make`
+  # Dir.chdir 'vim.linkme/bundle/command-t/ruby/command-t'
+  # `ruby extconf.rb`
+  # `rake make`
 
 end
