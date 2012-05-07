@@ -245,6 +245,7 @@ map <leader>r :CommandTBuffer<cr>
 
 " Color scheme for terminal mode
 set background=dark
+let g:solarized_termcolors=16
 color solarized
 
 " Haskell-mode stuff---------------
