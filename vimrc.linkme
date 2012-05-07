@@ -220,10 +220,6 @@ nnoremap <silent> zk O<Esc>
 
 filetype plugin indent on
                                          
-" CommandT and other buffer navigation settings---------------
-" let g:CommandTMatchWindowReverse = 1
-" let g:CommandTMaxHeight = 20
-
 " CtrlP Settings
 let g:ctrlp_map = '<c-p>'
 nnoremap <silent> <C-r> :CtrlPBuffer<cr>
@@ -236,12 +232,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " ,, switches between most recently viewed buffers
 nnoremap <leader><leader> <C-^>
-
-" leader-f to search files in project home, leader-F in current file
-" dir, leader-r to search files currently open in buffers
-map <leader>f :CommandT<cr>
-map <leader>F :CommandT %%<cr>
-map <leader>r :CommandTBuffer<cr>
 
 " Color scheme for terminal mode
 set background=dark
