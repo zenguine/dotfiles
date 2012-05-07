@@ -5,6 +5,9 @@ bind-key C-a last-window
 bind-key x kill-pane
 bind-key C-q kill-session
 
+# Default shell
+set-option -g default-shell /bin/zsh
+
 # Moving / linking windows between tmux sessions
 bind-key m command-prompt -p "Move window from (session:window): "  "move-window -s '%%'"
 bind-key C-m command-prompt -p "Link window from (session:window):"  "link-window -s '%%'"
