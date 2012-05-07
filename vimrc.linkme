@@ -511,3 +511,37 @@ endfunction
 
 set t_Co=256 " seems important in order to get 256 color support or something..
 
+" Vimux configuration related settings
+
+let VimuxHeight = "30"
+
+" Prompt for a command to run
+map <leader>rp :PromptVimTmuxCommand<CR>
+
+" Run last command executed by RunVimTmuxCommand
+map <leader>rl :RunLastVimTmuxCommand<CR>
+
+" Inspect runner pane
+map <leader>ri :InspectVimTmuxRunner<CR>
+
+" Close all other tmux panes in current window
+map <leader>rx :CloseVimTmuxPanes<CR>
+
+" Interrupt any command running in the runner pane
+map <leader>rs :InterruptVimTmuxRunner<CR>
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <leader>rr "vy :call RunVimTmuxCommand(@v . "\n", 0)<CR>
+
+" Select current paragraph and send it to tmux
+nmap <leader>rr vip<leader>rr<CR>
+
+" Select current paragraph and send it to tmux
+nmap <leader>rf ggVG<leader>rr<CR>
+
+" A fix related to the version of ruby vim was compiled with
+ruby << EOF
+class Object
+  def flush; end unless Object.new.respond_to?(:flush)
+end
+EOF
