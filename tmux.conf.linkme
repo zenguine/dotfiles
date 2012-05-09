@@ -8,6 +8,15 @@ bind-key C-q kill-session
 # Default shell
 set-option -g default-shell /bin/zsh
 
+# Copy mode settings with vim hotkeys
+setw -g mode-keys vi
+bind [ copy-mode
+unbind n
+unbind p
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
 # Moving / linking windows between tmux sessions
 bind-key m command-prompt -p "Move window from (session:window): "  "move-window -s '%%'"
 bind-key C-m command-prompt -p "Link window from (session:window):"  "link-window -s '%%'"
@@ -50,19 +59,19 @@ bind-key -r L resize-pane -R 5
 
 # Maximize and restore a pane
 unbind Up
-bind Up new-window -d -n tmp \; swap-pane -s tmp.0 \; select-window -t tmp
+bind -n Up new-window -d -n zoom \; swap-pane -s zoom.-1 \; select-window -t zoom
 unbind Down
-bind Down last-window \; swap-pane -s tmp.0 \; kill-window -t tmp
+bind -n Down last-window \; swap-pane -s zoom.0 \; kill-window -t tmp
 
 # Quick window traversal
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
 # Moving between panes
-bind -r h select-pane -L
-bind -r j select-pane -D
-bind -r k select-pane -U
-bind -r l select-pane -R
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # Pane logging
 bind P pipe-pane -o "cat >>~/#S-#W-%d-%b.log" \; display "Toggled logging to ~/#S-#W-%d-%b.log"
