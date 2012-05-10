@@ -134,10 +134,34 @@ set grepprg=grep\ -nH\ $*
 :autocmd FileType *		set shiftwidth=4
 :autocmd FileType xml,html	set shiftwidth=4
 :autocmd FileType java,c,cc,cpp	set nocindent
-"
-" Easy closing of window splits
-nnoremap <leader>d <C-w>c
 
+" Window navigation quick shortcuts
+nnoremap <leader>wd <C-w>c
+nnoremap <silent> <leader>wo :on<CR>
+
+" Better window navigation
+" C-[hjkl] moves to neighboring window or if it doesn't exist then it
+" creates it.
+
+function! WinMove(key) 
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr()) "we havent moved
+    if (match(a:key,'[jk]')) "were we going up/down
+      wincmd v
+    else 
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-@> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
+ 
 " Enable easy NERDTree toggling
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 
@@ -261,29 +285,6 @@ let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
-" Better window navigation
-" C-[hjkl] moves to neighboring window or if it doesn't exist then it
-" creates it.
-
-function! WinMove(key) 
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr()) "we havent moved
-    if (match(a:key,'[jk]')) "were we going up/down
-      wincmd v
-    else 
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
-
-nnoremap <silent> <C-h> :call WinMove('h')<CR>
-nnoremap <silent> <C-j> :call WinMove('j')<CR>
-nnoremap <silent> <C-@> :call WinMove('j')<CR>
-nnoremap <silent> <C-k> :call WinMove('k')<CR>
-nnoremap <silent> <C-l> :call WinMove('l')<CR>
- 
 " Add python libraries to path so can use gf on module name to view
 " source
 python << EOF
