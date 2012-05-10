@@ -64,3 +64,6 @@
 [submodule "vim.linkme/bundle/vimux"]
 	path = vim.linkme/bundle/vimux
 	url = https://github.com/benmills/vimux.git
+[submodule "vim.linkme/bundle/easymotion"]
+	path = vim.linkme/bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
