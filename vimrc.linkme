@@ -74,6 +74,8 @@ set splitbelow
 set number
 set virtualedit=all
 set lazyredraw
+set showcmd
+set tildeop # tilde behaves as an operator
 let mapleader = ','
 
 noremap ' `
