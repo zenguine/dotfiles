@@ -225,9 +225,6 @@ filetype plugin indent on
                                          
 " CtrlP Settings
 let g:ctrlp_map = '<c-p>'
-nnoremap <silent> <c-p>f :CtrlP<cr>
-nnoremap <silent> <c-p>b :CtrlPBuffer<cr>
-nnoremap <silent> <c-p>t :CtrlPBufTagAll<cr>
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_multiple_files = '2vr'
 let g:ctrlp_extensions = ['tag','buffertag']
