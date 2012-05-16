@@ -75,7 +75,7 @@ set number
 set virtualedit=all
 set lazyredraw
 set showcmd
-set tildeop # tilde behaves as an operator
+set tildeop " tilde behaves as an operator
 let mapleader = ','
 
 noremap ' `
@@ -329,15 +329,15 @@ let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 
 " Quickfix and location list mappings
-nmap <silent> <c-b> :cprevious<CR>zvzz
-nmap <silent> <c-f> :cnext<CR>zvzz
+nmap ]q :cnext<CR>zvzz
+nmap [q :cprevious<CR>zvzz
 
 " Location list mappings primarily for syntastic
-nmap <silent> <a-b> :lnext<CR>zvzz
-nmap <silent> <a-f> :lprevious<CR>zvzz
+nmap ]l :lnext<CR>zvzz
+nmap [l :lprevious<CR>zvzz
 
 " Quickfix functionality
-nnoremap <silent> <c-q> :call QuickfixToggle()<cr>
+nmap <silent> ,tq :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 
