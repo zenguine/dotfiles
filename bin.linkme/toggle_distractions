@@ -1,6 +1,0 @@
-cp /etc/hosts /etc/hosts.tmp
-rm /etc/hosts
-mv /etc/hosts.bak /etc/hosts
-mv /etc/hosts.tmp /etc/hosts.bak
-echo 'Current /etc/hosts data:'
-cat /etc/hosts
