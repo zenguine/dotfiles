@@ -6,21 +6,6 @@ call pathogen#helptags()
 set title           
 set shortmess=atI 
 
-" " These are so we can use alt key mappings in a terminal without
-" " eightBitInput i.e. urxvt
-" set <A-h>=h
-" set <A-j>=j
-" set <A-k>=k
-" set <A-l>=l
-" set <A-]>=]
-
-" vim-powerline config
-let g:Powerline_symbols='fancy'
-" Enable line below if you want the whitespace marker
-" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
-set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
-
 set nohlsearch
 set viminfo='100,f1
 
@@ -33,9 +18,6 @@ set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
 set formatoptions=orc
 set history=1000
-
-set undolevels=1000 "maximum number of changes that can be undone
-
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set visualbell
 set noerrorbells
@@ -78,135 +60,32 @@ set showcmd
 set tildeop " tilde behaves as an operator
 let mapleader = ','
 
+set scrolloff=3
+
+" MAPPINGS {{{
+
+
 noremap ' `
 noremap ` '
 nnoremap ; :
 vnoremap ; :
-set scrolloff=3
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" Line numbering settings:
-" Function to toggle relative vs absolute line numbering
-function! ToggleNumbering()
-    if exists("+relativenumber")
-        if &relativenumber
-            set number
-        else
-            set relativenumber
-        endif
-    else
-        set number!
-    endif
-endfunc
-
-" Easymotion settings
-let g:EasyMotion_leader_key = '<leader><leader>'
 
 nnoremap + <C-a>
 nnoremap - <C-x>
-
-" Sane regex syntax
-noremap / /\v
-noremap ? ?\v
-
-" Autocenter some movement commands
-noremap n nzz
-noremap N Nzz
-
 " if you forget to sudo..
 cmap w!! %!sudo tee > /dev/null %
 
 "execute current line with bash and output result
 noremap ,ye "vyy:r!<C-r>v<Backspace><CR>
 
-" leader-z to switch between rel/abs line numbering schemes
-noremap <silent> <leader>z :call ToggleNumbering()<CR>
-
-" Spacebar removes search highlighting
-nnoremap <silent> <space> :nohl<CR>
-
-" Vim Latex stuff
-syntax on
-filetype plugin on
-filetype indent on
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
-
-:autocmd FileType *		set shiftwidth=4
-:autocmd FileType xml,html	set shiftwidth=4
-:autocmd FileType java,c,cc,cpp	set nocindent
-
-" Window navigation quick shortcuts
-nnoremap <leader>wd <C-w>c
-nnoremap <silent> <leader>wo :on<CR>
-
-" Better window navigation
-" C-[hjkl] moves to neighboring window or if it doesn't exist then it
-" creates it.
-
-function! WinMove(key) 
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr()) "we havent moved
-    if (match(a:key,'[jk]')) "were we going up/down
-      wincmd v
-    else 
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
-
-nnoremap <silent> <C-h> :call WinMove('h')<CR>
-nnoremap <silent> <C-j> :call WinMove('j')<CR>
-nnoremap <silent> <C-@> :call WinMove('j')<CR>
-nnoremap <silent> <C-k> :call WinMove('k')<CR>
-nnoremap <silent> <C-l> :call WinMove('l')<CR>
- 
-" Enable easy NERDTree toggling
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-
-"Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
-nnoremap <silent> <A-j> :m+<CR>==
-nnoremap <silent> <A-k> :m-2<CR>==
-nnoremap <A-h> <<
-nnoremap <A-l> >>
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-inoremap <A-h> <Esc><<`]a
-inoremap <A-l> <Esc>>>`]a
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
-vnoremap <A-h> <gv
-vnoremap <A-l> >gv
- 
 " Tab to switch between matching braces
 map <Tab> %
-
 " Fix wrapped line behavior
 nnoremap j gj
 nnoremap k gk
-
-" Highlight cursor line only in active window
-set cursorline
-au WinEnter * setlocal cursorline
-au WinLeave * setlocal nocursorline
-
-" Leaves insert mode after 15 seconds of no input
-au CursorHoldI * stopinsert
-au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
-au InsertLeave * let &updatetime=updaterestore
-
-" taglist and ctags configuration
-" let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-" let Tlist_WinWidth = 50
-map <silent> <leader>q :TagbarToggle<cr>
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-" uses ghci to generate haskell tags file recursively from cwd
-map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
-map <F10> :!pytags.py %%/**/*.py<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
@@ -223,7 +102,94 @@ nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
 
-" Gundo mappings
+" Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
+
+" double percentage sign in command mode is expanded to directory of current file 
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" ,, switches between most recently viewed buffers
+nnoremap <leader><space> <C-^>
+
+" No arrow keys allowed
+nmap <left>  :3wincmd ><cr>
+nmap <right> :3wincmd <<cr>
+nmap <up>    :3wincmd +<cr>
+nmap <down>  :3wincmd -<cr>
+
+
+" Easier to type
+noremap H ^
+noremap L g_
+
+" Emacs bindings in command line mode
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+  
+" 'Splint line' - converse to J (join lines)
+nnoremap S i<cr><esc><right>
+
+" Dont insert space between joined lines with J, gJ for that behavior
+nnoremap J Jx
+nnoremap gJ J
+
+
+"}}}
+
+" LINE NUMBERING SETTINGS {{{
+
+" Function to toggle relative vs absolute line numbering
+function! ToggleNumbering()
+    if exists("+relativenumber")
+        if &relativenumber
+            set number
+        else
+            set relativenumber
+        endif
+    else
+        set number!
+    endif
+endfunc
+
+" leader-z to switch between rel/abs line numbering schemes
+noremap <silent> <leader>z :call ToggleNumbering()<CR>
+"}}}
+" PLUGINS AND RELATED {{{
+" Easymotion settings {{{
+let g:EasyMotion_leader_key = '<leader><leader>'
+"}}}
+" Vim-powerline settings {{{
+let g:Powerline_symbols='fancy'
+" Enable line below if you want the whitespace marker
+" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+"}}}
+" Vim latex settings {{{
+syntax on
+filetype plugin on
+filetype indent on
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+"}}}
+" NerdTree Settings {{{
+" Enable easy NERDTree toggling
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+"}}}
+" taglist and ctags configuration {{{
+" let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+" let Tlist_WinWidth = 50
+map <silent> <leader>q :TagbarToggle<cr>
+map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" uses ghci to generate haskell tags file recursively from cwd
+map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
+map <F10> :!pytags.py %%/**/*.py<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+"}}}
+" Gundo and Undo Settings {{{
+
+set undolevels=1000 "maximum number of changes that can be undone
 map <silent> <leader>u :GundoToggle<CR>
 
 " Persistent undo
@@ -239,20 +205,8 @@ if exists("+undofile")
     set undodir+=~/.vim/undo//
     set undofile
 endif
-
-"Status line gnarliness
-set laststatus=2
-
-" Fugitive config and Git
-autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
- 
-" Create Blank Newlines and stay in Normal mode
-nnoremap <silent> zj o<Esc>
-nnoremap <silent> zk O<Esc>
-
-filetype plugin indent on
-                                         
-" CtrlP Settings
+"}}}
+" CtrlP Settings {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_multiple_files = '2vr'
@@ -286,76 +240,35 @@ function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   return split(system(cmd), "\n")
 
 endfunction
-
-" double percentage sign in command mode is expanded to directory of current file 
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
-" ,, switches between most recently viewed buffers
-nnoremap <leader><space> <C-^>
-
-" Color scheme for terminal mode
-set background=dark
-let g:solarized_termcolors=16
-color solarized
-
-" Haskell-mode stuff---------------
+"}}}
+" Haskell-mode settings {{{
 au BufEnter *.hs compiler ghc
 let g:haddock_browser = "/usr/bin/firefox"
 let g:ghc = "/usr/bin/ghc"
-
-
-" Ultisnips settings
+"}}}
+" Ultisnips settings {{{
 let g:UltiSnipsSnippetDirectories = ["bundle/ultisnips/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Supertab completion stuff---------------
+"}}}
+" Supertab and auto-complete {{{
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
-" Add python libraries to path so can use gf on module name to view
-" source
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
-
-" use vim to read pdf files text
-autocmd BufReadPre *.pdf set ro nowrap
-autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
-autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
-autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
-autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
-autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
-
-" Fixing some filetype detection
-au BufRead *tmux*conf* set filetype=tmux
-au BufRead *xsession* set filetype=sh
-au BufRead *Xdefaults* set filetype=xdefaults
-au BufRead *Xmodmap* set filetype=xmodmap
-au BufRead *pentadactylrc* set filetype=vim
-
-" No arrow keys allowed
-nmap <left>  :3wincmd ><cr>
-nmap <right> :3wincmd <<cr>
-nmap <up>    :3wincmd +<cr>
-nmap <down>  :3wincmd -<cr>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-
-" Sparkup settings
+" Completion remappings
+inoremap <c-f> <c-x><c-f>
+inoremap <c-l> <c-x><c-l>
+"}}}
+" Sparkup settings {{{
 "let g:sparkupExecuteMapping = '<c-b>'
 let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
+"}}}
+" Ack-vim, quickfix, and location list settings {{{
+" <leader>a to open up ack search
+nmap <leader>a :call QFStateToggle()<cr>:Ack! -i 
 
 " Quickfix and location list mappings
 nmap ]q :cnext<CR>zvzz
@@ -391,11 +304,200 @@ function! QuickfixToggle()
         let g:quickfix_is_open = 1
     endif
 endfunction
+"}}}
+" Fugitive "{{{
 
-" <leader>a to open up ack search
-nmap <leader>a :call QFStateToggle()<cr>:Ack! -i 
+autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
+ 
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gadd<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
+"}}}
+" Scratch"{{{
+command! ScratchToggle call ScratchToggle()
+
+nnoremap <silent> <leader><tab> :ScratchToggle<cr>
+
+function! ScratchToggle() "
+  if exists("w:is_scratch_window")
+    unlet w:is_scratch_window
+    exec "q"
+  else
+    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
+    let w:is_scratch_window = 1
+  endif
+endfunction
+"}}}
+" Vimux Settings {{{
+let VimuxHeight = "30"
+
+" Run command with current filename as final argument
+map <leader>rb :call RunVimTmuxCommand(input("Command? ") . " " . bufname("%"))<CR>
+
+" Prompt for a command to run
+map <leader>rp :PromptVimTmuxCommand<CR>
+
+" Run last command executed by RunVimTmuxCommand
+map <leader>rl :RunLastVimTmuxCommand<CR>
+
+" Inspect runner pane
+map <leader>ri :InspectVimTmuxRunner<CR>
+
+" Close all other tmux panes in current window
+map <leader>rx :CloseVimTmuxPanes<CR>
+
+" Interrupt any command running in the runner pane
+map <leader>rs :InterruptVimTmuxRunner<CR>
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <leader>rr "vy :call RunVimTmuxCommand(@v . "\n", 0)<CR>
+
+" Select current paragraph and send it to tmux
+nmap <leader>rr vip<leader>rr<CR>
+
+" Select current paragraph and send it to tmux
+nmap <leader>rf ggVG<leader>rr<CR>
+
+" A fix related to the version of ruby vim was compiled with
+ruby << EOF
+class Object
+  def flush; end unless Object.new.respond_to?(:flush)
+end
+EOF
+"}}}
+"}}}
+
+" SEARCH SETTINGS {{{
+
+" Sane regex syntax
+noremap / /\v
+noremap ? ?\v
+
+" Autocenter some movement commands
+noremap n nzz
+noremap N Nzz
+" Spacebar removes search highlighting
+nnoremap <silent> <CR> :nohl<CR>
+
+" Dont jump on * or #
+nmap * *''
+nmap # #''
+
+"}}}
+
+" WINDOW NAVIGATION SETTINGS {{{
+" C-[hjkl] moves to neighboring window or if it doesn't exist then it
+" creates it.
+
+" Window navigation quick shortcuts
+nnoremap <leader>wd <C-w>c
+nnoremap <silent> <leader>wo :on<CR>
+
+function! WinMove(key) 
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr()) "we havent moved
+    if (match(a:key,'[jk]')) "were we going up/down
+      wincmd v
+    else 
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-@> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
+
+" Highlight cursor line only in active window
+set cursorline
+au WinEnter * setlocal cursorline
+au WinLeave * setlocal nocursorline
 
 
+ "}}}
+
+:autocmd FileType *		set shiftwidth=4
+:autocmd FileType xml,html	set shiftwidth=4
+:autocmd FileType java,c,cc,cpp	set nocindent
+
+" Leaves insert mode after 15 seconds of no input
+au CursorHoldI * stopinsert
+au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
+au InsertLeave * let &updatetime=updaterestore
+
+"Status line gnarliness
+set laststatus=2
+
+filetype plugin indent on
+
+" Color scheme for terminal mode
+set background=dark
+let g:solarized_termcolors=16
+color solarized
+
+" CURRENTLY UNUSED (COMMENTED) {{{
+
+" " Add python libraries to path so can use gf on module name to view
+" " source
+" python << EOF
+" import os
+" import sys
+" import vim
+" for p in sys.path:
+"     if os.path.isdir(p):
+"         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+" EOF
+
+" "Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
+" nnoremap <silent> <A-j> :m+<CR>==
+" nnoremap <silent> <A-k> :m-2<CR>==
+" nnoremap <A-h> <<
+" nnoremap <A-l> >>
+" inoremap <A-j> <Esc>:m+<CR>==gi
+" inoremap <A-k> <Esc>:m-2<CR>==gi
+" inoremap <A-h> <Esc><<`]a
+" inoremap <A-l> <Esc>>>`]a
+" vnoremap <A-j> :m'>+<CR>gv=gv
+" vnoremap <A-k> :m-2<CR>gv=gv
+" vnoremap <A-h> <gv
+" vnoremap <A-l> >gv
+
+" " These are so we can use alt key mappings in a terminal without
+" " eightBitInput i.e. urxvt
+" set <A-h>=h
+" set <A-j>=j
+" set <A-k>=k
+" set <A-l>=l
+" set <A-]>=]
+
+"}}}
+" use vim to read pdf files text
+autocmd BufReadPre *.pdf set ro nowrap
+autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
+autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
+autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
+autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
+autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+
+" Fixing some filetype detection
+au BufRead *tmux*conf* set filetype=tmux
+au BufRead *xsession* set filetype=sh
+au BufRead *Xdefaults* set filetype=xdefaults
+au BufRead *Xmodmap* set filetype=xmodmap
+au BufRead *pentadactylrc* set filetype=vim
+
+" Variable Manipulation Functions"{{{
 function! ExtractVariable()
   let name = input("Variable name: ")
   if name == ''
@@ -438,146 +540,30 @@ endfunction
 
 nnoremap<leader>vi :call InlineVariable()<cr>
 vnoremap <leader>ve :call ExtractVariable()<cr>
+"}}}
 
-" Dont jump on * or #
-nmap * *''
-nmap # #''
-
-" Easier to type
-noremap H ^
-noremap L g_
-
-" Completion remappings
-inoremap <c-f> <c-x><c-f>
-inoremap <c-l> <c-x><c-l>
-
-" Emacs bindings in command line mode
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
-  
-" Folding stuff
+" FOLDING SETTINGS {{{
 set foldenable
-set foldmethod=indent
+set foldmethod=marker
 set foldlevel=99
+set foldcolumn=3
+nnoremap <space> za
 
-" function! MyFoldText() 
-"   let line = getline(v:foldstart)
-"   let nucolwidth = &fdc + &number * &numberwidth
-"   let windowwidth = winwidth(0) - nucolwidth - 3
-"   let foldedlinecount = v:foldend - v:foldstart
-"   " expand tabs into spaces
-"   let onetab = strpart(' ', 0, &tabstop)
-"   let line = substitute(line, '\t', onetab, 'g')
-"   let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-"   let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-"   return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-" endfunction 
+function! MyFoldText() 
+  let line = getline(v:foldstart)
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+  " expand tabs into spaces
+  let onetab = strpart(' ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction 
 
-" set foldtext=MyFoldText()
-
-" 'Splint line' - converse to J (join lines)
-nnoremap S i<cr><esc><right>
-
-" Dont insert space between joined lines with J, gJ for that behavior
-nnoremap J Jx
-nnoremap gJ J
-
-" Execute last recorded macro with Q
-nnoremap Q @@
-
-" Fugitive 
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>ga :Gadd<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
-nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
-
-" Scratch
-command! ScratchToggle call ScratchToggle()
-
-nnoremap <silent> <leader><tab> :ScratchToggle<cr>
-
-function! ScratchToggle() "
-  if exists("w:is_scratch_window")
-    unlet w:is_scratch_window
-    exec "q"
-  else
-    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
-    let w:is_scratch_window = 1
-  endif
-endfunction
-
-" Text objects--------------------------------------------------
-" Next and Last
-
-" Motion for "next/last object". For example, "din(" would go to the next "()"
-" pair and delete its contents.
-
-onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-
-onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-
-function! s:NextTextObject(motion, dir)
-  let c = nr2char(getchar())
-
-  if c ==# "b"
-      let c = "("
-  elseif c ==# "B"
-      let c = "{"
-  elseif c ==# "d"
-      let c = "["
-  endif
-
-  exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
+set foldtext=MyFoldText()
+"}}}
 
 set t_Co=256 " seems important in order to get 256 color support or something..
 
-" Vimux configuration related settings
-
-let VimuxHeight = "30"
-
-" Run command with current filename as final argument
-map <leader>rb :call RunVimTmuxCommand(input("Command? ") . " " . bufname("%"))<CR>
-
-" Prompt for a command to run
-map <leader>rp :PromptVimTmuxCommand<CR>
-
-" Run last command executed by RunVimTmuxCommand
-map <leader>rl :RunLastVimTmuxCommand<CR>
-
-" Inspect runner pane
-map <leader>ri :InspectVimTmuxRunner<CR>
-
-" Close all other tmux panes in current window
-map <leader>rx :CloseVimTmuxPanes<CR>
-
-" Interrupt any command running in the runner pane
-map <leader>rs :InterruptVimTmuxRunner<CR>
-
-" If text is selected, save it in the v buffer and send that buffer it to tmux
-vmap <leader>rr "vy :call RunVimTmuxCommand(@v . "\n", 0)<CR>
-
-" Select current paragraph and send it to tmux
-nmap <leader>rr vip<leader>rr<CR>
-
-" Select current paragraph and send it to tmux
-nmap <leader>rf ggVG<leader>rr<CR>
-
-" A fix related to the version of ruby vim was compiled with
-ruby << EOF
-class Object
-  def flush; end unless Object.new.respond_to?(:flush)
-end
-EOF
