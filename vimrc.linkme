@@ -6,13 +6,13 @@ call pathogen#helptags()
 set title           
 set shortmess=atI 
 
-" These are so we can use alt key mappings in a terminal without
-" eightBitInput i.e. urxvt
-set <A-h>=h
-set <A-j>=j
-set <A-k>=k
-set <A-l>=l
-set <A-]>=]
+" " These are so we can use alt key mappings in a terminal without
+" " eightBitInput i.e. urxvt
+" set <A-h>=h
+" set <A-j>=j
+" set <A-k>=k
+" set <A-l>=l
+" set <A-]>=]
 
 " vim-powerline config
 let g:Powerline_symbols='fancy'
