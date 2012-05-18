@@ -6,7 +6,6 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
     :autocmd!
 set nocompatible
-filetype plugin indent on
 
 set t_Co=256 " seems important in order to get 256 color support or something..
 
@@ -63,6 +62,8 @@ set lazyredraw
 set showcmd
 set tildeop " tilde behaves as an operator
 let mapleader = ','
+syntax on
+filetype plugin indent on
 
 set scrolloff=3
 "}}}
