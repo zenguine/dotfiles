@@ -1,18 +1,24 @@
-" Pathogen configuration
+" Vim Configuration Settings
+
+" Initialization {{{
+" Pathogen setup
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
     :autocmd!
+set nocompatible
+filetype plugin indent on
+
+set t_Co=256 " seems important in order to get 256 color support or something..
+
+"}}}
+" Basic Settings {{{
 "set terminal title and stifle shell messages
 set title           
 set shortmess=atI 
-
-set nohlsearch
 set viminfo='100,f1
-
 set autoindent
 set autoread " automatically update open buffers when change externally.
 set cmdheight=1
-set tags+=gems.tags
 " Strewth, what a mess. Copied from the vim docs, if memory serves.
 set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
@@ -42,8 +48,6 @@ set tabstop=2
 set shiftwidth=4
 set expandtab
 set showmode
-" set complete=.,w,b,t
-" set textwidth=70
 set viminfo='50,\"10000,n~/.viminfo
 set wildchar=9
 set wildignore+=*.pyc,*.hi,*.o
@@ -61,17 +65,11 @@ set tildeop " tilde behaves as an operator
 let mapleader = ','
 
 set scrolloff=3
+"}}}
+" General mappings {{{
 
-" MAPPINGS {{{
-
-
-noremap ' `
-noremap ` '
 nnoremap ; :
 vnoremap ; :
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-
 
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -81,8 +79,6 @@ cmap w!! %!sudo tee > /dev/null %
 "execute current line with bash and output result
 noremap ,ye "vyy:r!<C-r>v<Backspace><CR>
 
-" Tab to switch between matching braces
-map <Tab> %
 " Fix wrapped line behavior
 nnoremap j gj
 nnoremap k gk
@@ -90,7 +86,7 @@ nnoremap k gk
 " Insert mode - map jk to <Esc>
 imap jk <Esc>
 
-" convenient file editting for frequently editted dotfiles
+" Mappings to edit important files quickly {{{
 nmap <leader>ev :e ~/.dotfiles/vimrc.linkme<CR>
 nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
 nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
@@ -98,7 +94,7 @@ nmap <leader>et :e ~/.dotfiles/tmux.conf.linkme<CR>
 nmap <leader>ex :e ~/.dotfiles/xmonad.linkme/xmonad.hs<CR>
 nmap <leader>es :e ~/.dotfiles/bin.linkme/startup.sh<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
-
+"}}}
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
 
@@ -112,16 +108,12 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " ,, switches between most recently viewed buffers
 nnoremap <leader><space> <C-^>
 
-" No arrow keys allowed
+" No arrow keys allowed - Remapped to resize windows
 nmap <left>  :3wincmd ><cr>
 nmap <right> :3wincmd <<cr>
 nmap <up>    :3wincmd +<cr>
 nmap <down>  :3wincmd -<cr>
 
-
-" Easier to type
-noremap H ^
-noremap L g_
 
 " Emacs bindings in command line mode
 cnoremap <c-a> <home>
@@ -134,10 +126,8 @@ nnoremap S i<cr><esc><right>
 nnoremap J Jx
 nnoremap gJ J
 
-
 "}}}
-
-" LINE NUMBERING SETTINGS {{{
+" Line Numbering {{{
 
 " Function to toggle relative vs absolute line numbering
 function! ToggleNumbering()
@@ -155,23 +145,20 @@ endfunc
 " leader-z to switch between rel/abs line numbering schemes
 noremap <silent> <leader>z :call ToggleNumbering()<CR>
 "}}}
-" PLUGINS AND RELATED {{{
+" Plugin settings {{{
 " Easymotion settings {{{
 let g:EasyMotion_leader_key = '<leader><leader>'
 "}}}
 " Vim-powerline settings {{{
 let g:Powerline_symbols='fancy'
+
 " Enable line below if you want the whitespace marker
 " call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+
+set laststatus=2
+
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
-"}}}
-" Vim latex settings {{{
-syntax on
-filetype plugin on
-filetype indent on
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
 "}}}
 " NerdTree Settings {{{
 " Enable easy NERDTree toggling
@@ -372,12 +359,14 @@ end
 EOF
 "}}}
 "}}}
-
-" SEARCH SETTINGS {{{
+" Search and movement {{{
 
 " Sane regex syntax
 noremap / /\v
 noremap ? ?\v
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Autocenter some movement commands
 noremap n nzz
@@ -386,12 +375,24 @@ noremap N Nzz
 nnoremap <silent> <CR> :nohl<CR>
 
 " Dont jump on * or #
-nmap * *''
-nmap # #''
+nnoremap * *''
+nnoremap # #''
+
+noremap ' `
+noremap ` '
+
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" Tab to switch between matching braces
+map <Tab> %
+
+" Easier to type
+noremap H ^
+noremap L g_
 
 "}}}
-
-" WINDOW NAVIGATION SETTINGS {{{
+" Window Navigation {{{
 
 " Window navigation quick shortcuts
 nnoremap <leader>wd <C-w>c
@@ -431,27 +432,32 @@ au WinLeave * setlocal nocursorline
 
 
  "}}}
+" Filetype Specific Settings {{{
 
-:autocmd FileType *		set shiftwidth=4
-:autocmd FileType xml,html	set shiftwidth=4
-:autocmd FileType java,c,cc,cpp	set nocindent
+" Fixing some filetype detection {{{
+au BufRead *tmux*conf* set filetype=tmux
+au BufRead *xsession* set filetype=sh
+au BufRead *Xdefaults* set filetype=xdefaults
+au BufRead *Xmodmap* set filetype=xmodmap
+au BufRead *pentadactylrc* set filetype=vim
+"}}}
 
-" Leaves insert mode after 15 seconds of no input
-au CursorHoldI * stopinsert
-au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
-au InsertLeave * let &updatetime=updaterestore
-
-"Status line gnarliness
-set laststatus=2
-
-filetype plugin indent on
-
-" Color scheme for terminal mode
+" PDF {{{
+" use vim to read pdf files text
+autocmd BufReadPre *.pdf set ro nowrap
+autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
+autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
+autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
+autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
+autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+"}}}
+"}}}
+" Color Scheme {{{
 set background=dark
 let g:solarized_termcolors=16
 color solarized
-
-" CURRENTLY UNUSED (COMMENTED) {{{
+"}}}
+" Not being used (commented) {{{
 
 " " Add python libraries to path so can use gf on module name to view
 " " source
@@ -487,22 +493,7 @@ color solarized
 " set <A-]>=]
 
 "}}}
-" use vim to read pdf files text
-autocmd BufReadPre *.pdf set ro nowrap
-autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
-autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
-autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
-autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
-autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
-
-" Fixing some filetype detection
-au BufRead *tmux*conf* set filetype=tmux
-au BufRead *xsession* set filetype=sh
-au BufRead *Xdefaults* set filetype=xdefaults
-au BufRead *Xmodmap* set filetype=xmodmap
-au BufRead *pentadactylrc* set filetype=vim
-
-" Variable Manipulation Functions"{{{
+" Refactoring Functions {{{
 function! ExtractVariable()
   let name = input("Variable name: ")
   if name == ''
@@ -546,12 +537,12 @@ endfunction
 nnoremap<leader>vi :call InlineVariable()<cr>
 vnoremap <leader>ve :call ExtractVariable()<cr>
 "}}}
-
-" FOLDING SETTINGS {{{
+" Folding {{{
 set foldenable
 set foldmethod=marker
 set foldlevel=99
-set foldcolumn=3
+set foldopen-=block
+set foldcolumn=1
 nnoremap <space> za
 
 function! MyFoldText() 
@@ -569,6 +560,3 @@ endfunction
 
 set foldtext=MyFoldText()
 "}}}
-
-set t_Co=256 " seems important in order to get 256 color support or something..
-
