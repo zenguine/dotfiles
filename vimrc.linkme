@@ -306,7 +306,6 @@ function! QuickfixToggle()
 endfunction
 "}}}
 " Fugitive "{{{
-
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
  
 nnoremap <leader>gd :Gdiff<cr>
@@ -393,21 +392,27 @@ nmap # #''
 "}}}
 
 " WINDOW NAVIGATION SETTINGS {{{
-" C-[hjkl] moves to neighboring window or if it doesn't exist then it
-" creates it.
 
 " Window navigation quick shortcuts
 nnoremap <leader>wd <C-w>c
 nnoremap <silent> <leader>wo :on<CR>
 
+" Better window navigation
+" C-[hjkl] moves to neighboring window or if it doesn't exist then it
+" creates it.
+
 function! WinMove(key) 
   let t:curwin = winnr()
   exec "wincmd ".a:key
   if (t:curwin == winnr()) "we havent moved
-    if (match(a:key,'[jk]')) "were we going up/down
-      wincmd v
-    else 
-      wincmd s
+    if a:key == 'k' " going up
+      leftabove new
+    elseif a:key == 'j' " going down
+      rightbelow new
+    elseif a:key == 'h' " going left
+      leftabove vnew
+    elseif a:key == 'l' " going right
+      rightbelow vnew
     endif
     exec "wincmd ".a:key
   endif
