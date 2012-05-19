@@ -1,13 +1,41 @@
 " Vim Configuration Settings
 
 " Initialization {{{
-" Pathogen setup
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-    :autocmd!
 set nocompatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
 
 set t_Co=256 " seems important in order to get 256 color support or something..
+
+"}}}
+" Vundle Plugin List"{{{
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'gmarik/github-search.vim.git'
+Bundle 'lukerandall/haskellmode-vim.git'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'phenguin/ultisnips.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'sjl/gundo.vim.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'vim-scripts/bufkill.vim.git'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'benmills/vimux.git'
+Bundle 'duff/vim-bufonly.git'
+Bundle 'duff/vim-scratch.git'
+Bundle 'edsono/vim-matchit.git'
+Bundle 'ervandew/supertab.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'mileszs/ack.vim.git'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'tpope/vim-commentary.git'
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'vim-scripts/ruby-matchit.git'
 
 "}}}
 " Basic Settings {{{
