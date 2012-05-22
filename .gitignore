@@ -5,6 +5,7 @@ zsh/cache/*
 *.o
 xmonad.linkme/xmonad-i386-linux
 xmonad.linkme/xmonad.o
+xmonad.linkme/xmonad.errors
 xmonad/.gitignore
 bin/heroku
 vim.linkme/undo
