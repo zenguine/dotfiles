@@ -36,6 +36,7 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'vim-scripts/ruby-matchit.git'
+Bundle 'tmhedberg/SimpylFold.git'
 
 "}}}
 " Basic Settings {{{
@@ -128,8 +129,8 @@ nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 nmap Y y$
 
 " Create Blank Newlines and stay in Normal mode
-nnoremap <silent> zj o<Esc>
-nnoremap <silent> zk O<Esc>
+nnoremap <silent> zn o<Esc>
+nnoremap <silent> zp O<Esc>
 
 " double percentage sign in command mode is expanded to directory of current file 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -138,10 +139,10 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader><space> <C-^>
 
 " No arrow keys allowed - Remapped to resize windows
-nmap <left>  :3wincmd ><cr>
-nmap <right> :3wincmd <<cr>
-nmap <up>    :3wincmd +<cr>
-nmap <down>  :3wincmd -<cr>
+nmap <left>  3<c-w><
+nmap <right> 3<c-w>>
+nmap <up>    3<c-w>+
+nmap <down>  3<c-w>-
 
 
 " Emacs bindings in command line mode
@@ -227,6 +228,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_multiple_files = '2vr'
 let g:ctrlp_extensions = ['tag','buffertag']
+let g:ctrlp_match_window_bottom = 0
 
 let g:path_to_matcher = "~/bin/matcher"
 
@@ -269,7 +271,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "}}}
 " Supertab and auto-complete {{{
-au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
@@ -480,6 +481,15 @@ autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 "}}}
+" Python {{{
+augroup ft_python
+    au!
+    " au FileType python set omnifunc=pythoncomplete#Complete
+    " au FileType python setlocal define=^\s*\\(def\\\\|class\\)
+    " au FileType python setlocal foldmethod=indent
+    " au FileType python normal zM
+augroup END
+"}}}
 "}}}
 " Color Scheme {{{
 set background=dark
@@ -573,6 +583,12 @@ set foldlevel=99
 set foldopen-=block
 set foldcolumn=1
 nnoremap <space> za
+vnoremap <space> za
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
+
 
 function! MyFoldText() 
   let line = getline(v:foldstart)
