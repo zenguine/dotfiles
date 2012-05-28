@@ -297,8 +297,8 @@ nmap [q :cprevious<CR>zvzz
 nmap ]l :lnext<CR>zvzz
 nmap [l :lprevious<CR>zvzz
 
-" Quickfix functionality
-nmap <silent> ,tq :call QuickfixToggle()<cr>
+" Quickfix functionality toggling {{{
+nmap <silent> <leader>tq :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 
@@ -322,7 +322,34 @@ function! QuickfixToggle()
         copen
         let g:quickfix_is_open = 1
     endif
+endfunction"}}}
+" Location List toggling {{{
+nmap <silent> <leader>tl :call LocationListToggle()<cr>
+
+let g:locationlist_is_open = 0
+
+function! LLStateToggle()
+  if g:locationlist_is_open
+    let g:locationlist_is_open = 0
+  else
+    let g:locationlist_is_open = 1
+  endif
 endfunction
+
+let g:locationlist_return_to_window = winnr()
+
+function! LocationListToggle()
+    if g:locationlist_is_open
+        lclose
+        let g:locationlist_is_open = 0
+        execute g:locationlist_return_to_window . "wincmd w"
+    else
+        let g:locationlist_return_to_window = winnr()
+        lopen
+        let g:locationlist_is_open = 1
+    endif
+endfunction"}}}
+
 "}}}
 " Fugitive "{{{
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
@@ -404,7 +431,7 @@ nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 noremap n nzz
 noremap N Nzz
 " Spacebar removes search highlighting
-nnoremap <silent> <CR> :nohl<CR>
+nnoremap <silent> <leader>h :nohl<CR>
 
 " Dont jump on * or #
 nnoremap * *''
