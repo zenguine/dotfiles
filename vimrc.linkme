@@ -1,5 +1,4 @@
 " Vim Configuration Settings
-
 " Initialization {{{
 set nocompatible
 set rtp+=~/.vim/vundle/
@@ -12,7 +11,7 @@ Bundle 'gmarik/vundle'
 set t_Co=256 " seems important in order to get 256 color support or something..
 
 "}}}
-" Vundle Plugin List"{{{
+" Vundle Plugin List {{{
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'gmarik/github-search.vim.git'
 Bundle 'lukerandall/haskellmode-vim.git'
@@ -37,6 +36,8 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'vim-scripts/ruby-matchit.git'
 Bundle 'tmhedberg/SimpylFold.git'
+Bundle 'pangloss/vim-javascript'
+Bundle 'javascript.vim'
 
 "}}}
 " Basic Settings {{{
@@ -269,6 +270,7 @@ let g:ghc = "/usr/bin/ghc"
 " Ultisnips settings {{{
 let g:UltiSnipsSnippetDirectories = ["bundle/ultisnips/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnips="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "}}}
@@ -501,7 +503,7 @@ au BufRead *Xmodmap* set filetype=xmodmap
 au BufRead *pentadactylrc* set filetype=vim
 "}}}
 
-" " Haskell {{{
+" Haskell {{{
 " augroup HSK
 "         au Bufenter *.hs compiler ghc
 "         autocmd FileType haskell setlocal formatoptions+=t
@@ -526,14 +528,34 @@ autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 "}}}
+" Vim {{{
+augroup ft_vim
+    au!
+    au FileType vim normal zM
+augroup end
+"}}}
 " Python {{{
 augroup ft_python
     au!
     " au FileType python set omnifunc=pythoncomplete#Complete
     " au FileType python setlocal define=^\s*\\(def\\\\|class\\)
     " au FileType python setlocal foldmethod=indent
-    " au FileType python normal zM
+    au FileType python normal zM
 augroup END
+"}}}
+" Javascript {{{
+function! JavaScriptFold() 
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=MyFoldText()
+endfunction
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
 "}}}
 "}}}
 " Color Scheme {{{
@@ -628,7 +650,7 @@ set foldlevel=99
 set foldopen-=block
 set foldcolumn=1
 nnoremap <space> za
-vnoremap <space> za
+" vnoremap <space> za
 
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
