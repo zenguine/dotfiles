@@ -501,6 +501,22 @@ au BufRead *Xmodmap* set filetype=xmodmap
 au BufRead *pentadactylrc* set filetype=vim
 "}}}
 
+" " Haskell {{{
+" augroup HSK
+"         au Bufenter *.hs compiler ghc
+"         autocmd FileType haskell setlocal formatoptions+=t
+"         autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
+" augroup END
+
+
+" " From Good Haskell Style http://urchin.earth.li/~ian/style/haskell.html
+" setlocal expandtab
+" setlocal tabstop=8
+" setlocal shiftwidth=8
+" setlocal textwidth=79
+
+
+" "}}}
 " PDF {{{
 " use vim to read pdf files text
 autocmd BufReadPre *.pdf set ro nowrap
