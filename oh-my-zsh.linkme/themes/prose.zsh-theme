@@ -24,7 +24,7 @@ PROMPT='
 %h %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
 $(virtualenv_info)$(prompt_char) '
 
-# RPROMPT='$(battery_charge)'
+RPROMPT='$(battery)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -32,5 +32,5 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-local return_status="%{$fg[red]%}%(?..⤬)%{$reset_color%}"
-RPROMPT='${return_status}%{$reset_color%}'
+# local return_status="%{$fg[red]%}%(?..⤬)%{$reset_color%}"
+# RPROMPT='${return_status}%{$reset_color%}'

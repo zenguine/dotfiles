@@ -1,10 +1,12 @@
 #!/bin/sh
 
 CUTE_BATTERY_INDICATOR=1 # Remove line for percentage indication instead of hearts
-HEART_FULL=♥
-HEART_EMPTY=♡
+# HEART_FULL=♥
+# HEART_EMPTY=♡
+HEART_FULL=⮀
+HEART_EMPTY=⮁
 [ -z "$NUM_HEARTS" ] &&
-    NUM_HEARTS=5
+    NUM_HEARTS=7
 
 cutinate()
 {

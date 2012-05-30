@@ -1,0 +1,3 @@
+#compdef ts
+
+_arguments "1:Sessions:(`tmux list-sessions | awk -F':' '{print $1}'`)"
