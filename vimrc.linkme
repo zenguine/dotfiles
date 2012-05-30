@@ -544,7 +544,7 @@ augroup ft_python
 augroup END
 "}}}
 " Javascript {{{
-function! JavaScriptFold() 
+function! JavaScriptFold() " {{{
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -553,9 +553,10 @@ function! JavaScriptFold()
         return substitute(getline(v:foldstart), '{.*', '{...}', '')
     endfunction
     setl foldtext=MyFoldText()
-endfunction
+endfunction"}}}
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
+au FileType javascript normal zM
 "}}}
 "}}}
 " Color Scheme {{{
