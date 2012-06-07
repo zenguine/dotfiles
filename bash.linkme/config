@@ -4,6 +4,12 @@ export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH
 export LANG=en_US.UTF-8
 export PATH='/home/jcullen/.cabal/bin':'/home/jcullen/.gem/ruby/1.9.1/bin':$PATH
 
+# Python virtual environment stuff
+
+# Virualenvwrapper setup
+export WORKON_HOME=~/.virtualenvs/
+source /usr/bin/virtualenvwrapper.sh
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
