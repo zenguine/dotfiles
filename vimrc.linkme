@@ -38,6 +38,8 @@ Bundle 'vim-scripts/ruby-matchit.git'
 Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
 Bundle 'javascript.vim'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-scripts/pythoncomplete.git'
 
 "}}}
 " Basic Settings {{{
@@ -538,8 +540,11 @@ augroup end
 augroup ft_python
     au!
     au FileType python setl omnifunc=pythoncomplete#Complete
-    " au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-    " au FileType python setlocal foldmethod=indent
+    " Next two lines make the python pydoc window auto close with omnicomplete
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+    " Open python files with folds already closed
     au FileType python normal zM
 augroup END
 "}}}
