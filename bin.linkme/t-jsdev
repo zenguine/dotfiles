@@ -1,0 +1,32 @@
+#!/bin/sh
+
+SESSION='jsdev'
+
+if [ -z "$1" ]
+then
+    WORKINGDIR="$PWD"
+else
+    WORKINGDIR=$1
+fi
+
+# if the session is already running, just attach to it.
+tmux has-session -t $SESSION
+if [ $? -eq 0 ]; then
+    echo "Session $SESSION already exists. Attaching."
+    tmux -2 attach -t $SESSION
+    exit 0;
+fi
+
+tmux start-server
+tmux new-session -d -s $SESSION -n shell
+tmux new-window -t $SESSION:1 -n vim
+tmux new-window -t $SESSION:2 -n repl
+
+tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; clear" C-m
+tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; clear; vs" C-m
+tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; clear; js -i" C-m
+
+tmux select-window -t $SESSION:0
+tmux -2 attach-session -d -t $SESSION
+
+
