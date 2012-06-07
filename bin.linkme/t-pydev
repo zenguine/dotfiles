@@ -20,7 +20,7 @@ fi
 tmux start-server
 tmux new-session -d -s $SESSION -n shell
 tmux new-window -t $SESSION:1 -n vim
-tmux new-window -t $SESSION:2 -n ipython
+tmux new-window -t $SESSION:2 -n repl
 
 tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; clear" C-m
 tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; clear; vs" C-m
