@@ -23,7 +23,6 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'vim-scripts/bufkill.vim.git'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'benmills/vimux.git'
-Bundle 'duff/vim-bufonly.git'
 Bundle 'duff/vim-scratch.git'
 Bundle 'edsono/vim-matchit.git'
 Bundle 'ervandew/supertab.git'
@@ -41,6 +40,8 @@ Bundle 'javascript.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/pythoncomplete.git'
 Bundle 'teramako/jscomplete-vim.git'
+Bundle 'vim-scripts/mako.vim--Torborg.git'
+Bundle 'vim-scripts/mako.vim.git'
 
 "}}}
 " Basic Settings {{{
@@ -56,7 +57,7 @@ set comments=s:/*,mb:**,ex:*/,://,b:#,b:##,:%,:XCOMM,n:>,fb:-
 set ignorecase
 set formatoptions=orc
 set history=1000
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.hi,*.o
 set visualbell
 set noerrorbells
 set nobackup
@@ -82,7 +83,6 @@ set expandtab
 set showmode
 set viminfo='50,\"10000,n~/.viminfo
 set wildchar=9
-set wildignore+=*.pyc,*.hi,*.o
 set wildmode=longest,list,full
 set wildmenu
 set nocompatible
@@ -236,13 +236,16 @@ let g:ctrlp_open_multiple_files = '2vr'
 let g:ctrlp_extensions = ['tag','buffertag']
 let g:ctrlp_match_window_bottom = 0
 
-let g:path_to_matcher = "~/bin/matcher"
+" Non-standard part of ctrlp: Specify a filtering regular expression.
+" Regexp must be specified in extended regexp compatible form
+let g:ctrlp_ignore = '\.pyc$|\.o$|\.hi$|\.swp$'
+let g:ctrlp_user_command = ['.git/', "cd %s && git ls-files . -co --exclude-standard | grep -vE '" . g:ctrlp_ignore . "'"]
 
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files . -co --exclude-standard']
+let g:path_to_matcher = "~/bin/matcher"
 
 let g:ctrlp_match_func = { 'match': 'GoodMatch' }
 
-function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
+function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)"{{{
 
   " Create a cache file if not yet exists
   let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
@@ -264,6 +267,7 @@ function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   return split(system(cmd), "\n")
 
 endfunction
+"}}}
 "}}}
 " Haskell-mode settings {{{
 au BufEnter *.hs compiler ghc
@@ -523,17 +527,21 @@ au BufRead *pentadactylrc* set filetype=vim
 
 " "}}}
 " PDF {{{
-" use vim to read pdf files text
-autocmd BufReadPre *.pdf set ro nowrap
-autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
-autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
-autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
-autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
-autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+augroup ft_pdf
+    " use vim to read pdf files text
+    autocmd BufReadPre *.pdf set ro nowrap
+    autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
+    autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
+    autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
+    autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
+    autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+augroup end
 "}}}
 " Vim {{{
 augroup ft_vim
     au!
+    au FileType vim setlocal foldmethod=marker
+    au FileType vim setlocal formatoptions-=t
     au FileType vim normal zM
 augroup end
 "}}}
@@ -542,8 +550,8 @@ augroup ft_python
     au!
     au FileType python setl omnifunc=pythoncomplete#Complete
     " Next two lines make the python pydoc window auto close with omnicomplete
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
     " Open python files with folds already closed
     au FileType python normal zM
@@ -564,6 +572,12 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript normal zM
 au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
+"}}}
+" Mako {{{
+augroup ft_mako
+    au!
+    au BufEnter *.mako setl filetype=mako
+augroup END
 "}}}
 "}}}
 " Color Scheme {{{
