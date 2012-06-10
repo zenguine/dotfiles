@@ -154,7 +154,7 @@ nmap <down>  3<c-w>-
 " Emacs bindings in command line mode
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
-  
+
 " 'Splint line' - converse to J (join lines)
 nnoremap S i<cr><esc><right>
 
@@ -247,24 +247,24 @@ let g:ctrlp_match_func = { 'match': 'GoodMatch' }
 
 function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)"{{{
 
-  " Create a cache file if not yet exists
-  let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
-  if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-    call writefile(a:items, cachefile)
-  endif
-  if !filereadable(cachefile)
-    return []
-  endif
+    " Create a cache file if not yet exists
+    let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
+    if !( filereadable(cachefile) && a:items == readfile(cachefile) )
+        call writefile(a:items, cachefile)
+    endif
+    if !filereadable(cachefile)
+        return []
+    endif
 
-  " a:mmode is currently ignored. In the future, we should probably do
-  " something about that. the matcher behaves like "full-line".
-  let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
-  if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
-    let cmd = cmd.'--no-dotfiles '
-  endif
-  let cmd = cmd.a:str
+    " a:mmode is currently ignored. In the future, we should probably do
+    " something about that. the matcher behaves like "full-line".
+    let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
+    if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
+        let cmd = cmd.'--no-dotfiles '
+    endif
+    let cmd = cmd.a:str
 
-  return split(system(cmd), "\n")
+    return split(system(cmd), "\n")
 
 endfunction
 "}}}
@@ -312,11 +312,11 @@ nmap <silent> <leader>tq :call QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
 
 function! QFStateToggle()
-  if g:quickfix_is_open
-    let g:quickfix_is_open = 0
-  else
-    let g:quickfix_is_open = 1
-  endif
+    if g:quickfix_is_open
+        let g:quickfix_is_open = 0
+    else
+        let g:quickfix_is_open = 1
+    endif
 endfunction
 
 let g:quickfix_return_to_window = winnr()
@@ -338,11 +338,11 @@ nmap <silent> <leader>tl :call LocationListToggle()<cr>
 let g:locationlist_is_open = 0
 
 function! LLStateToggle()
-  if g:locationlist_is_open
-    let g:locationlist_is_open = 0
-  else
-    let g:locationlist_is_open = 1
-  endif
+    if g:locationlist_is_open
+        let g:locationlist_is_open = 0
+    else
+        let g:locationlist_is_open = 1
+    endif
 endfunction
 
 let g:locationlist_return_to_window = winnr()
@@ -362,7 +362,7 @@ endfunction"}}}
 "}}}
 " Fugitive "{{{
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
- 
+
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -380,13 +380,13 @@ command! ScratchToggle call ScratchToggle()
 nnoremap <silent> <leader><tab> :ScratchToggle<cr>
 
 function! ScratchToggle() "
-  if exists("w:is_scratch_window")
-    unlet w:is_scratch_window
-    exec "q"
-  else
-    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
-    let w:is_scratch_window = 1
-  endif
+    if exists("w:is_scratch_window")
+        unlet w:is_scratch_window
+        exec "q"
+    else
+        exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
+        let w:is_scratch_window = 1
+    endif
 endfunction
 "}}}
 " Vimux Settings {{{
@@ -422,7 +422,7 @@ nmap <silent> <leader>rf ggVG<leader>rr<CR>
 " A fix related to the version of ruby vim was compiled with
 ruby << EOF
 class Object
-  def flush; end unless Object.new.respond_to?(:flush)
+def flush; end unless Object.new.respond_to?(:flush)
 end
 EOF
 "}}}
@@ -471,20 +471,20 @@ nnoremap <silent> <leader>wo :on<CR>
 " creates it.
 
 function! WinMove(key) 
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr()) "we havent moved
-    if a:key == 'k' " going up
-      leftabove new
-    elseif a:key == 'j' " going down
-      rightbelow new
-    elseif a:key == 'h' " going left
-      leftabove vnew
-    elseif a:key == 'l' " going right
-      rightbelow vnew
-    endif
+    let t:curwin = winnr()
     exec "wincmd ".a:key
-  endif
+    if (t:curwin == winnr()) "we havent moved
+        if a:key == 'k' " going up
+            leftabove new
+        elseif a:key == 'j' " going down
+            rightbelow new
+        elseif a:key == 'h' " going left
+            leftabove vnew
+        elseif a:key == 'l' " going right
+            rightbelow vnew
+        endif
+        exec "wincmd ".a:key
+    endif
 endfunction
 
 nnoremap <silent> <C-h> :call WinMove('h')<CR>
@@ -499,7 +499,7 @@ au WinEnter * setlocal cursorline
 au WinLeave * setlocal nocursorline
 
 
- "}}}
+"}}}
 " Filetype Specific Settings {{{
 
 " Fixing some filetype detection {{{
@@ -511,10 +511,11 @@ au BufRead *pentadactylrc* set filetype=vim
 "}}}
 
 " Haskell {{{
-" augroup HSK
-"         au Bufenter *.hs compiler ghc
-"         autocmd FileType haskell setlocal formatoptions+=t
-"         autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
+" augroup ft_haskell
+"     autocmd!
+"     au Bufenter *.hs compiler ghc
+"     autocmd FileType haskell setlocal formatoptions+=t
+"     autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
 " augroup END
 
 
@@ -529,6 +530,7 @@ au BufRead *pentadactylrc* set filetype=vim
 " PDF {{{
 augroup ft_pdf
     " use vim to read pdf files text
+    autocmd!
     autocmd BufReadPre *.pdf set ro nowrap
     autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
     autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
@@ -539,7 +541,7 @@ augroup end
 "}}}
 " Vim {{{
 augroup ft_vim
-    au!
+    autocmd!
     au FileType vim setlocal foldmethod=marker
     au FileType vim setlocal formatoptions-=t
     au FileType vim normal zM
@@ -547,7 +549,7 @@ augroup end
 "}}}
 " Python {{{
 augroup ft_python
-    au!
+    autocmd!
     au FileType python setl omnifunc=pythoncomplete#Complete
     " Next two lines make the python pydoc window auto close with omnicomplete
     " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -568,10 +570,13 @@ function! JavaScriptFold() " {{{
     endfunction
     setl foldtext=MyFoldText()
 endfunction"}}}
-au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript normal zM
-au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
+augroup ft_javascript
+    autocmd!
+    au FileType javascript call JavaScriptFold()
+    au FileType javascript setl fen
+    au FileType javascript normal zM
+    au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
+augroup end
 "}}}
 " Mako {{{
 augroup ft_mako
@@ -623,43 +628,43 @@ color solarized
 "}}}
 " Refactoring Functions {{{
 function! ExtractVariable()
-  let name = input("Variable name: ")
-  if name == ''
-    return
-  endif
-  " Enter visual mode (not sure why this is needed since we're already in
-  " visual mode anyway)
-  normal! gv
+    let name = input("Variable name: ")
+    if name == ''
+        return
+    endif
+    " Enter visual mode (not sure why this is needed since we're already in
+    " visual mode anyway)
+    normal! gv
 
-  " Replace selected text with the variable name
-  exec "normal c" . name
-  " Define the variable on the line above
-  exec "normal! O" . name . " = "
-  " Paste the original selected text to be the variable value
-  normal! $p
+    " Replace selected text with the variable name
+    exec "normal c" . name
+    " Define the variable on the line above
+    exec "normal! O" . name . " = "
+    " Paste the original selected text to be the variable value
+    normal! $p
 endfunction
 
 function! InlineVariable()
-  " Copy the variable under the cursor into the 'a' register
-  :let l:tmp_a = @a
-  :normal "ayiw
-  " Delete variable and equals sign
-  :normal 2daW
-  " Delete the expression into the 'b' register
-  :let l:tmp_b = @b
-  :normal "bd$
-  " Delete the remnants of the line
-  :normal dd
-  " Go to the end of the previous line so we can start our search for the
-  " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
-  " work; I'm not sure why.
-  normal k$
-  " Find the next occurence of the variable
-  exec '/\<' . @a . '\>'
-  " Replace that occurence with the text we yanked
-  exec ':.s/\<' . @a . '\>/' . @b
-  :let @a = l:tmp_a
-  :let @b = l:tmp_b
+    " Copy the variable under the cursor into the 'a' register
+    :let l:tmp_a = @a
+    :normal "ayiw
+    " Delete variable and equals sign
+    :normal 2daW
+    " Delete the expression into the 'b' register
+    :let l:tmp_b = @b
+    :normal "bd$
+    " Delete the remnants of the line
+    :normal dd
+    " Go to the end of the previous line so we can start our search for the
+    " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
+    " work; I'm not sure why.
+    normal k$
+    " Find the next occurence of the variable
+    exec '/\<' . @a . '\>'
+    " Replace that occurence with the text we yanked
+    exec ':.s/\<' . @a . '\>/' . @b
+    :let @a = l:tmp_a
+    :let @b = l:tmp_b
 endfunction
 
 nnoremap<leader>vi :call InlineVariable()<cr>
@@ -680,16 +685,16 @@ nnoremap zO zCzO
 
 
 function! MyFoldText() 
-  let line = getline(v:foldstart)
-  let nucolwidth = &fdc + &number * &numberwidth
-  let windowwidth = winwidth(0) - nucolwidth - 3
-  let foldedlinecount = v:foldend - v:foldstart
-  " expand tabs into spaces
-  let onetab = strpart(' ', 0, &tabstop)
-  let line = substitute(line, '\t', onetab, 'g')
-  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+    let line = getline(v:foldstart)
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+    " expand tabs into spaces
+    let onetab = strpart(' ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction 
 
 set foldtext=MyFoldText()
