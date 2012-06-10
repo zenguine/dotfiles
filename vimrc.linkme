@@ -293,72 +293,6 @@ inoremap <c-l> <c-x><c-l>
 let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 "}}}
-" Ack-vim, quickfix, and location list settings {{{
-" <leader>a to open up ack search
-nmap <leader>a :call QFStateToggle()<cr>:Ack! -i 
-
-" Quickfix and location list mappings
-nmap ]q :cnext<CR>zvzz
-nmap [q :cprevious<CR>zvzz
-
-" Location list mappings primarily for syntastic
-nmap ]l :lnext<CR>zvzz
-nmap [l :lprevious<CR>zvzz
-
-" Quickfix functionality toggling {{{
-nmap <silent> <leader>tq :call QuickfixToggle()<cr>
-
-let g:quickfix_is_open = 0
-
-function! QFStateToggle()
-    if g:quickfix_is_open
-        let g:quickfix_is_open = 0
-    else
-        let g:quickfix_is_open = 1
-    endif
-endfunction
-
-let g:quickfix_return_to_window = winnr()
-
-function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
-endfunction"}}}
-" Location List toggling {{{
-nmap <silent> <leader>tl :call LocationListToggle()<cr>
-
-let g:locationlist_is_open = 0
-
-function! LLStateToggle()
-    if g:locationlist_is_open
-        let g:locationlist_is_open = 0
-    else
-        let g:locationlist_is_open = 1
-    endif
-endfunction
-
-let g:locationlist_return_to_window = winnr()
-
-function! LocationListToggle()
-    if g:locationlist_is_open
-        lclose
-        let g:locationlist_is_open = 0
-        execute g:locationlist_return_to_window . "wincmd w"
-    else
-        let g:locationlist_return_to_window = winnr()
-        lopen
-        let g:locationlist_is_open = 1
-    endif
-endfunction"}}}
-
-"}}}
 " Fugitive "{{{
 autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
 
@@ -675,7 +609,7 @@ set foldenable
 set foldmethod=marker
 set foldlevel=99
 set foldopen-=block
-set foldcolumn=1
+set foldcolumn=0
 nnoremap <space> za
 " vnoremap <space> za
 
