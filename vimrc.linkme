@@ -270,7 +270,6 @@ endfunction
 "}}}
 "}}}
 " Haskell-mode settings {{{
-au BufEnter *.hs compiler ghc
 let g:haddock_browser = "/usr/bin/firefox"
 let g:ghc = "/usr/bin/ghc"
 "}}}
@@ -512,6 +511,7 @@ au BufRead *pentadactylrc* set filetype=vim
 
 " Haskell {{{
 " augroup ft_haskell
+"     au BufEnter *.hs compiler ghc
 "     autocmd!
 "     au Bufenter *.hs compiler ghc
 "     autocmd FileType haskell setlocal formatoptions+=t
@@ -544,7 +544,7 @@ augroup ft_vim
     autocmd!
     au FileType vim setlocal foldmethod=marker
     au FileType vim setlocal formatoptions-=t
-    au FileType vim normal zM
+    au FileType vim normal! zM
 augroup end
 "}}}
 " Python {{{
@@ -556,7 +556,7 @@ augroup ft_python
     " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
     " Open python files with folds already closed
-    au FileType python normal zM
+    au FileType python normal! zM
 augroup END
 "}}}
 " Javascript {{{
@@ -574,7 +574,7 @@ augroup ft_javascript
     autocmd!
     au FileType javascript call JavaScriptFold()
     au FileType javascript setl fen
-    au FileType javascript normal zM
+    au FileType javascript normal! zM
     au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
 augroup end
 "}}}
@@ -637,7 +637,7 @@ function! ExtractVariable()
     normal! gv
 
     " Replace selected text with the variable name
-    exec "normal c" . name
+    exec "normal! c" . name
     " Define the variable on the line above
     exec "normal! O" . name . " = "
     " Paste the original selected text to be the variable value
@@ -647,18 +647,18 @@ endfunction
 function! InlineVariable()
     " Copy the variable under the cursor into the 'a' register
     :let l:tmp_a = @a
-    :normal "ayiw
+    :normal! "ayiw
     " Delete variable and equals sign
-    :normal 2daW
+    :normal! 2daW
     " Delete the expression into the 'b' register
     :let l:tmp_b = @b
-    :normal "bd$
+    :normal! "bd$
     " Delete the remnants of the line
-    :normal dd
+    :normal! dd
     " Go to the end of the previous line so we can start our search for the
     " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
     " work; I'm not sure why.
-    normal k$
+    normal! k$
     " Find the next occurence of the variable
     exec '/\<' . @a . '\>'
     " Replace that occurence with the text we yanked
