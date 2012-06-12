@@ -131,6 +131,7 @@ nmap <leader>ex :e ~/.dotfiles/xmonad.linkme/xmonad.hs<CR>
 nmap <leader>es :e ~/.dotfiles/bin.linkme/startup.sh<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 "}}}
+"
 " Make "Y" behavior consistent with 'D','C', etc.
 nmap Y y$
 
@@ -149,6 +150,10 @@ nmap <left>  3<c-w><
 nmap <right> 3<c-w>>
 nmap <up>    3<c-w>+
 nmap <down>  3<c-w>-
+imap <left>  <c-o><left>
+imap <right> <c-o><right>
+imap <up>    <c-o><up>
+imap <down>  <c-o><down>
 
 
 " Emacs bindings in command line mode
