@@ -38,11 +38,12 @@ Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
 Bundle 'javascript.vim'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/pythoncomplete.git'
+" Bundle 'vim-scripts/pythoncomplete.git'
 Bundle 'teramako/jscomplete-vim.git'
 Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'klen/python-mode'
 
 "}}}
 " Basic Settings {{{
@@ -279,6 +280,11 @@ endfunction
 let g:haddock_browser = "/usr/bin/firefox"
 let g:ghc = "/usr/bin/ghc"
 "}}}
+" Python-mode settings {{{u
+let g:pymode_run_key = '<leader>pr'
+let g:pymode_breakpoint_key = '<leader>pb'
+let g:pymode_lint = 0
+"}}}
 " Ultisnips settings {{{
 let g:UltiSnipsSnippetDirectories = ["bundle/ultisnips/UltiSnips"]
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -495,12 +501,20 @@ augroup end
 augroup ft_python
     autocmd!
     au FileType python setl omnifunc=pythoncomplete#Complete
+
+    let g:not_in_cmdwin = 1
     " Next two lines make the python pydoc window auto close with omnicomplete
-    " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    autocmd CursorMovedI * if (pumvisible() == 0 && g:not_in_cmdwin) |pclose|endif
+    autocmd InsertLeave * if (pumvisible() == 0 && g:not_in_cmdwin) |pclose|endif
 
     " Open python files with folds already closed
     au FileType python normal! zM
+augroup END
+
+augroup cmdwin_hack
+    autocmd!
+    autocmd CmdwinEnter * let g:not_in_cmdwin = 0
+    autocmd CmdwinLeave * let g:not_in_cmdwin = 1
 augroup END
 "}}}
 " Javascript {{{
