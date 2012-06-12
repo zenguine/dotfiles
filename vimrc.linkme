@@ -42,6 +42,7 @@ Bundle 'vim-scripts/pythoncomplete.git'
 Bundle 'teramako/jscomplete-vim.git'
 Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
+Bundle 'altercation/vim-colors-solarized.git'
 
 "}}}
 " Basic Settings {{{
@@ -449,13 +450,17 @@ au BufRead *pentadactylrc* set filetype=vim
 "}}}
 
 " Haskell {{{
-" augroup ft_haskell
-"     au BufEnter *.hs compiler ghc
-"     autocmd!
-"     au Bufenter *.hs compiler ghc
-"     autocmd FileType haskell setlocal formatoptions+=t
-"     autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
-" augroup END
+let g:haddock_indexfiledir = "~/.dotfiles/vim.linkme"
+let g:haddock_browser = "/usr/bin/firefox"
+let g:ghc = "/usr/bin/ghc"
+
+augroup ft_haskell
+    autocmd!
+    au BufEnter *.hs compiler ghc
+    au Bufenter *.hs compiler ghc
+    autocmd FileType haskell setlocal formatoptions+=t
+    autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
+augroup END
 
 
 " " From Good Haskell Style http://urchin.earth.li/~ian/style/haskell.html
@@ -526,6 +531,7 @@ augroup END
 "}}}
 " Color Scheme {{{
 set background=dark
+let g:solarized_contrast = "high"
 let g:solarized_termcolors=16
 color solarized
 "}}}
