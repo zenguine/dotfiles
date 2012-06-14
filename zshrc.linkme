@@ -25,10 +25,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git)
+plugins=(archlinux gem npm pip rails git zsh-syntax-highlighting)
 
 source $HOME/.bashrc
 source $ZSH/oh-my-zsh.sh
+
+ZSH_HIGHLIGHT_STYLES[path]='bold'
 
 export PYTHONSTARTUP=~/.pythonrc
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
@@ -51,3 +53,4 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 unsetopt correct_all
+
