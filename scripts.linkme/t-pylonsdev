@@ -11,7 +11,7 @@ fi
 
 if [ -z "$2" ]
 then
-    PYENVIRONMENT="$PWD"
+    PYENVIRONMENT=""
 else
     PYENVIRONMENT=$2
 fi

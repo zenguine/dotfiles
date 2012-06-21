@@ -9,6 +9,13 @@ else
     WORKINGDIR=$1
 fi
 
+if [ -z "$2" ]
+then
+    PYENVIRONMENT=""
+else
+    PYENVIRONMENT=$2
+fi
+
 # if the session is already running, just attach to it.
 tmux has-session -t $SESSION
 if [ $? -eq 0 ]; then
@@ -22,9 +29,9 @@ tmux new-session -d -s $SESSION -n shell
 tmux new-window -t $SESSION:1 -n vim
 tmux new-window -t $SESSION:2 -n repl
 
-tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; clear" C-m
-tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; clear; vs" C-m
-tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; clear; ipython2" C-m
+tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear" C-m
+tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; vs" C-m
+tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; ipython2" C-m
 
 tmux select-window -t $SESSION:0
 tmux -2 attach-session -d -t $SESSION
