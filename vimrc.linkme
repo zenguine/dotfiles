@@ -43,6 +43,7 @@ Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'klen/python-mode'
+Bundle 'rygwdn/rope-omni.git'
 
 "}}}
 " Basic Settings {{{
@@ -146,17 +147,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " ,, switches between most recently viewed buffers
 nnoremap <leader><space> <C-^>
 
-" No arrow keys allowed - Remapped to resize windows
-nmap <left>  3<c-w><
-nmap <right> 3<c-w>>
-nmap <up>    3<c-w>+
-nmap <down>  3<c-w>-
-imap <left>  <c-o><left>
-imap <right> <c-o><right>
-imap <up>    <c-o><up>
-imap <down>  <c-o><down>
-
-
 " Emacs bindings in command line mode
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
@@ -184,8 +174,6 @@ function! ToggleNumbering()
     endif
 endfunc
 
-" leader-z to switch between rel/abs line numbering schemes
-noremap <silent> <leader>z :call ToggleNumbering()<CR>
 "}}}
 " Plugin settings {{{
 " Easymotion settings {{{
@@ -210,7 +198,7 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 " let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 " let Tlist_WinWidth = 50
 map <silent> <leader>q :TagbarToggle<cr>
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
+map <F8> :!/usr/bin/ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
 map <F10> :!pytags.py %%/**/*.py<CR>
@@ -410,6 +398,36 @@ noremap L g_
 nnoremap <leader>wd <C-w>c
 nnoremap <silent> <leader>wo :on<CR>
 
+" No arrow keys allowed - Remapped to resize windows
+nmap <left>  3<c-w><
+nmap <right> 3<c-w>>
+nmap <up>    3<c-w>+
+nmap <down>  3<c-w>-
+imap <left>  <c-o><left>
+imap <right> <c-o><right>
+imap <up>    <c-o><up>
+imap <down>  <c-o><down>
+
+" First attempt at maximize window functionality
+let g:win_maxed_mode = 0
+function! ToggleWinMax()
+    if g:win_maxed_mode
+        wincmd =
+        let g:win_maxed_mode = 0
+    else
+        call MaximizeWindow()
+        let g:win_maxed_mode = 1
+    endif
+endfunction
+
+function! MaximizeWindow()
+    resize +500
+    vertical resize +500
+endfunction
+
+" <leader>z (zoom) to max, unmax window
+nnoremap <silent> <leader>z :call ToggleWinMax()<CR>
+
 " Better window navigation
 " C-[hjkl] moves to neighboring window or if it doesn't exist then it
 " creates it.
@@ -428,6 +446,10 @@ function! WinMove(key)
             rightbelow vnew
         endif
         exec "wincmd ".a:key
+    else " We have moved and if in max mode stay there
+        if g:win_maxed_mode
+            call MaximizeWindow()
+        endif
     endif
 endfunction
 
