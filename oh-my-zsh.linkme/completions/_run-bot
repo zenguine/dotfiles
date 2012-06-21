@@ -1,0 +1,3 @@
+#compdef run-bot
+
+_arguments "1:Scripts:(`ls ~/code/pagezero/bin`)"
