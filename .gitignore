@@ -19,6 +19,7 @@ oh-my-zsh.linkme/projects.zsh
 oh-my-zsh.linkme/cache
 oh-my-zsh.linkme/*.swp
 
+.ropeproject
 xmonad.linkme/history
 xmonad.linkme/xmonad.hi
 xmonad.linkme/xmonad-x86_64-linux
