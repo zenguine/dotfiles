@@ -432,18 +432,34 @@ nnoremap <silent> <leader>z :call ToggleWinMax()<CR>
 " C-[hjkl] moves to neighboring window or if it doesn't exist then it
 " creates it.
 
-function! WinMove(key) 
+function! WinMove(key, blank) 
     let t:curwin = winnr()
     exec "wincmd ".a:key
     if (t:curwin == winnr()) "we havent moved
         if a:key == 'k' " going up
-            leftabove new
+            if a:blank == 1
+                leftabove new
+            else
+                leftabove split
+            endif
         elseif a:key == 'j' " going down
-            rightbelow new
+            if a:blank == 1
+                rightbelow new
+            else
+                rightbelow split
+            endif
         elseif a:key == 'h' " going left
-            leftabove vnew
+            if a:blank == 1
+                leftabove vnew
+            else
+                leftabove vnew
+            endif
         elseif a:key == 'l' " going right
-            rightbelow vnew
+            if a:blank == 1
+                rightbelow vnew
+            else
+                rightbelow vsplit
+            endif
         endif
         exec "wincmd ".a:key
     else " We have moved and if in max mode stay there
@@ -453,11 +469,11 @@ function! WinMove(key)
     endif
 endfunction
 
-nnoremap <silent> <C-h> :call WinMove('h')<CR>
-nnoremap <silent> <C-j> :call WinMove('j')<CR>
-nnoremap <silent> <C-@> :call WinMove('j')<CR>
-nnoremap <silent> <C-k> :call WinMove('k')<CR>
-nnoremap <silent> <C-l> :call WinMove('l')<CR>
+nnoremap <silent> <C-h> :call WinMove('h',0)<CR>
+nnoremap <silent> <C-j> :call WinMove('j',0)<CR>
+nnoremap <silent> <C-@> :call WinMove('j',0)<CR>
+nnoremap <silent> <C-k> :call WinMove('k',0)<CR>
+nnoremap <silent> <C-l> :call WinMove('l',0)<CR>
 
 " Highlight cursor line only in active window
 set cursorline
@@ -484,7 +500,6 @@ let g:ghc = "/usr/bin/ghc"
 augroup ft_haskell
     autocmd!
     au BufEnter *.hs compiler ghc
-    au Bufenter *.hs compiler ghc
     autocmd FileType haskell setlocal formatoptions+=t
     autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
 augroup END
