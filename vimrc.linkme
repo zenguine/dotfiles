@@ -15,6 +15,7 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'gmarik/github-search.vim.git'
 Bundle 'lukerandall/haskellmode-vim.git'
+Bundle 'vim-scripts/haskell.vim'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'phenguin/ultisnips.git'
 Bundle 'scrooloose/nerdtree.git'
@@ -44,6 +45,8 @@ Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'klen/python-mode'
 Bundle 'rygwdn/rope-omni.git'
+Bundle 'vim-scripts/indenthaskell.vim'
+Bundle 'vim-scripts/TaskList.vim'
 
 "}}}
 " Basic Settings {{{
