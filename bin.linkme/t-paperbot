@@ -1,17 +1,17 @@
 #!/bin/sh
 
-SESSION='pagezero'
+SESSION='paperbot'
 
 if [ -z "$1" ]
 then
-    WORKINGDIR="$PWD"
+    WORKINGDIR="~/code/pagezero"
 else
     WORKINGDIR=$1
 fi
 
 if [ -z "$2" ]
 then
-    PYENVIRONMENT=""
+    PYENVIRONMENT="paperbot"
 else
     PYENVIRONMENT=$2
 fi
@@ -36,12 +36,12 @@ tmux new-window -t $SESSION:7 -n aggregate
 
 tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear" C-m
 tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; vs" C-m
-tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; ipython2" C-m
-tmux send-keys -t $SESSION:3 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; run-bot uwsgi" C-m
+tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; ipython" C-m
+tmux send-keys -t $SESSION:3 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; uwsgi -H backend/paperbot_env -s :3031 2>&1 | bin/make-debug-page" C-m
 tmux send-keys -t $SESSION:4 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; mongod --repair; mongod" C-m
 tmux send-keys -t $SESSION:5 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; mongo" C-m
-tmux send-keys -t $SESSION:6 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear;  run-bot scraperd" C-m
-tmux send-keys -t $SESSION:7 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; run-bot aggregationd" C-m
+tmux send-keys -t $SESSION:6 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; scraperd" C-m
+tmux send-keys -t $SESSION:7 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; aggregationd" C-m
 
 tmux select-window -t $SESSION:0
 tmux -2 attach-session -d -t $SESSION
