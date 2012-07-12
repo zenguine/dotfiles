@@ -547,7 +547,7 @@ augroup ft_python
     autocmd InsertLeave * if (pumvisible() == 0 && g:not_in_cmdwin) |pclose|endif
 
     " Open python files with folds already closed
-    au FileType python normal! zM
+    " au FileType python normal! zM
 augroup END
 
 augroup cmdwin_hack
