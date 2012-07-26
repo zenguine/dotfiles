@@ -8,7 +8,7 @@ export PATH='/home/jcullen/.cabal/bin':'/home/jcullen/.gem/ruby/1.9.1/bin':$PATH
 
 # Virualenvwrapper setup
 export WORKON_HOME=~/.virtualenvs/
-source /usr/bin/virtualenvwrapper.sh
+# source /usr/bin/virtualenvwrapper.sh
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
