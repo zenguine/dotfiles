@@ -36,7 +36,7 @@ export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
 export _Z_CMD='j'
 
 # configuration for "z" script
-. ~/bin/z.sh
+. ~/scripts/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }

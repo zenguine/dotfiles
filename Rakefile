@@ -11,7 +11,7 @@ task :install do
     overwrite = false
     backup = false
     file = link_file.split("/").last.split(".linkme").last
-    if file != 'bin'
+    if file != 'scripts'
       target = "#{ENV["HOME"]}/.#{file}"
     else
       target = "#{ENV["HOME"]}/#{file}"

@@ -2,7 +2,7 @@
 
 export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH
 export LANG=en_US.UTF-8
-export PATH='/home/jcullen/.cabal/bin':'/home/jcullen/.gem/ruby/1.9.1/bin':$PATH
+export PATH='/home/jcullen/scripts':'/home/jcullen/.cabal/bin':'/home/jcullen/.gem/ruby/1.9.1/bin':$PATH
 
 # Python virtual environment stuff
 
