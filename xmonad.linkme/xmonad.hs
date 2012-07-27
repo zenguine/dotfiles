@@ -101,7 +101,7 @@ main = do
         , workspaces = myWorkspaces
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppTitle = xmobarColor "purple" "" . shorten 50
                         }
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
         } `additionalKeysP`
@@ -143,6 +143,6 @@ main = do
 
 
 startup :: X ()
-startup = do spawn "startup.sh"
+startup = do spawn "~/scripts/startup.sh"
 
 

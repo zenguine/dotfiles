@@ -544,9 +544,9 @@ augroup END
 "}}}
 " Color Scheme {{{
 set background=dark
-let g:solarized_contrast = "high"
-let g:solarized_termcolors=16
-color solarized
+" let g:solarized_contrast = "high"
+" let g:solarized_termcolors=16
+color tomorrow-night
 "}}}
 " Not being used (commented) {{{
 

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+amixer get Master | \
+    grep 'Front Left\:' | \
+    awk '{print $7 $5}'
+
