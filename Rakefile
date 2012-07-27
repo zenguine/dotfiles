@@ -37,19 +37,19 @@ task :install do
   end
 
   # Update vim plugin git submodules
+  puts "Retrieving git submodules.."
   `git submodule init`
   `git submodule update`
 
   # Build source in build/ sub-dir --------
+  puts "Building source from 'build' sub-directory"
   
   # Install matcher
+  puts "Building: matcher"
   `make -C build/matcher`
   `make -C build/matcher install`
 
-  # No longer needed since command-t replaced with ctrlp
-  # Additional setup for vim command-t plugin
-  # Dir.chdir 'vim.linkme/bundle/command-t/ruby/command-t'
-  # `ruby extconf.rb`
-  # `rake make`
+  puts "Installing vim plugins via BundleInstall (with vundle)"
+  `vim -c 'BundleInstall' -c 'qa'`
 
 end
