@@ -1,0 +1,17 @@
+#!/bin/sh
+
+FILENAME=$1
+TMPFILENAME="output.pstats"
+PYTHONBIN="$(which python)"
+
+if [ -z "$2" ]
+then
+    OUTFILE="output.png"
+else
+    OUTFILE=$2
+fi
+
+$PYTHONBIN -m cProfile -o $TMPFILENAME $FILENAME
+gprof2dot.py -f pstats $TMPFILENAME | dot -Tpng -o $OUTFILE
+rm $TMPFILENAME
+feh $OUTFILE
