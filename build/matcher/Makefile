@@ -10,5 +10,5 @@ $(EXENAME): main.c matcher.c
 
 .PHONY: install
 install: $(EXENAME)
-	install -d $(PREFIX)
+	install -d $(BINDIR)
 	install -m 0755 $< $(BINDIR)

@@ -40,6 +40,12 @@ task :install do
   `git submodule init`
   `git submodule update`
 
+  # Build source in build/ sub-dir --------
+  
+  # Install matcher
+  `make -C build/matcher`
+  `make -C build/matcher install`
+
   # No longer needed since command-t replaced with ctrlp
   # Additional setup for vim command-t plugin
   # Dir.chdir 'vim.linkme/bundle/command-t/ruby/command-t'
