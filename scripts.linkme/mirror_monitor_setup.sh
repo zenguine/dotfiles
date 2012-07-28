@@ -1,1 +1,1 @@
-xrandr --output LVDS1 --auto --output VGA1 --auto
+xrandr --output LVDS2 --auto --output VGA2 --auto
