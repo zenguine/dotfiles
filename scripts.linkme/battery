@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CUTE_BATTERY_INDICATOR=1 # Remove line for percentage indication instead of hearts
+# CUTE_BATTERY_INDICATOR=1 # Remove line for percentage indication instead of hearts
 # HEART_FULL=♥
 # HEART_EMPTY=♡
 HEART_FULL=⮀
@@ -48,8 +48,8 @@ case $(uname -s) in
     "Linux")
         BATPATH=/sys/class/power_supply/BAT0
         STATUS=$BATPATH/status
-        BAT_FULL=$BATPATH/energy_full
-        BAT_NOW=$BATPATH/energy_now
+        BAT_FULL=$BATPATH/charge_full
+        BAT_NOW=$BATPATH/charge_now
         if [ "$1" = `cat $STATUS` -o "$1" = "" ]; then
             linux_get_bat
         fi
