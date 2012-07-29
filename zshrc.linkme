@@ -37,11 +37,42 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
 export _Z_CMD='j'
 
+# Force a reload of completion system if nothing matched; this fixes installing
+# a program and then trying to tab-complete its name
+_force_rehash() {
+    (( CURRENT == 1 )) && rehash
+    return 1 # Because we didn't really complete anything
+}
+
+### History
+setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
 # configuration for "z" script
 . ~/scripts/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }
+
+# I want shared history for ^R, but I don't want another shell's activity to
+# mess with up/down. This does that.
+down-line-or-local-history() {
+    zle set-local-history 1
+    zle down-line-or-history
+    zle set-local-history 0
+}
+zle -N down-line-or-local-history
+up-line-or-local-history() {
+    zle set-local-history 1
+    zle up-line-or-history
+    zle set-local-history 0
+}
+zle -N up-line-or-local-history
+
+bindkey "\e[A" up-line-or-local-history
+bindkey "\e[B" down-line-or-local-history
 
 # Binding to edit current line in editor
 autoload edit-command-line

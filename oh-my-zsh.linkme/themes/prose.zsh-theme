@@ -3,9 +3,9 @@ function collapse_pwd {
 }
 
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
+    git branch >/dev/null 2>/dev/null && echo '☭' && return
     hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '○'
+    echo '⚘'
 }
 
 function virtualenv_info {
@@ -22,7 +22,7 @@ patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset
 
 PROMPT='
 %h %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
-$(virtualenv_info)$(prompt_char) '
+$(virtualenv_info) $(prompt_char) '
 
 # RPROMPT='$(battery)'
 
