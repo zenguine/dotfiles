@@ -1,6 +1,6 @@
 [user]
-    email = jcullen@mit.edu
-    name = Justin Cullen
+	email = jcullen@mit.edu
+	name = Phenguin
 [color]
   ui = true
 [color "branch"]
@@ -102,3 +102,5 @@
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
+[credential]
+	helper = cache --timeout=3600
