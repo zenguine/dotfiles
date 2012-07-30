@@ -1,3 +1,6 @@
+import Data.Ratio ((%))
+import System.IO
+
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -5,7 +8,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
-import System.IO
+
 
 import qualified XMonad.Layout.Magnifier as Mag
 import XMonad.Layout.Accordion
@@ -22,6 +25,8 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.TwoPane
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.WorkspaceDir
+import XMonad.Layout.Spacing
+import XMonad.Layout.IM
 
 import XMonad.Prompt
 import XMonad.Prompt.Man
@@ -32,6 +37,9 @@ import XMonad.Actions.SpawnOn
 -- make sure to edit paths to xmobar and .xmobarrc to match your system.
     -- If xmobar is in your $PATH, and its config is in ~/.xmobarrc you don't
     -- need the xmobar path or config file, use: xmproc <- spawnPipe "xmobar"
+
+gridLayout = spacing 8 $ Grid
+pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
 
 -- specify a custom layout hook.
 myLayoutHook =
@@ -63,6 +71,7 @@ myLayoutHook =
     -- "web" and "irc" start in Full mode and can switch to tiled...
     onWorkspaces ["www","media"] (Full ||| myTiled) $               -- (10,0)
 
+    onWorkspace "chat" pidginLayout $
     -- ...whereas all other workspaces start tall and can switch
     -- to a grid layout with the focused window magnified.
     myTiled |||           -- resizable tall layout
@@ -77,7 +86,7 @@ myTiled = named "Tall" $ ResizableTall 1 0.03 0.5 []            -- (9,5)
 myTerminal = "urxvt"
 
 -- Define amount and names of workspaces
-myWorkspaces = ["main","dev","www","media"] ++ (map show [5..10])
+myWorkspaces = ["main","dev","www","media", "chat"] ++ (map show [5..10])
 
 -- Define the workspace each application goes to
 myManageHook = composeAll
@@ -86,7 +95,8 @@ myManageHook = composeAll
    className =? "Emacs" --> doShift "dev",
    className =? "Clementine" --> doShift "media",
    resource =? "desktop_window" --> doIgnore,
-   className =? "Xmessage" --> doFloat]
+   className =? "Xmessage" --> doFloat,
+   className =? "Pidgin" --> doShift "chat"]
 
 main = do
     xmproc <- spawnPipe "xmobar /home/jcullen/.xmobarrc"
