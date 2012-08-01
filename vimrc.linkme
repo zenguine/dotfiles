@@ -185,6 +185,8 @@ let g:EasyMotion_leader_key = '<leader><leader>'
 "}}}
 " Vim-powerline settings {{{
 let g:Powerline_symbols='fancy'
+let g:Powerline_stl_path_style='filename'
+let g:Powerline_colorscheme='default'
 
 " Enable line below if you want the whitespace marker
 " call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
@@ -585,9 +587,10 @@ augroup END
 "}}}
 " Color Scheme {{{
 set background=dark
+let g:lucius_style='dark'
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
-color tomorrow-night-eighties
+color lucius
 "}}}
 " Not being used (commented) {{{
 
