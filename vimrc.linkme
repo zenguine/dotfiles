@@ -45,7 +45,7 @@ Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'klen/python-mode'
-Bundle 'rygwdn/rope-omni.git'
+" Bundle 'rygwdn/rope-omni.git'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
 
@@ -587,10 +587,9 @@ augroup END
 "}}}
 " Color Scheme {{{
 set background=dark
-let g:lucius_style='dark'
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
-color lucius
+color tomorrow-night
 "}}}
 " Not being used (commented) {{{
 
