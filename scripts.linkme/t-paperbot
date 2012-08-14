@@ -29,21 +29,16 @@ tmux new-session -d -s $SESSION -n shell
 tmux new-window -t $SESSION:1 -n vim
 tmux new-window -t $SESSION:2 -n repl
 tmux new-window -t $SESSION:3 -n uwsgi
-tmux new-window -t $SESSION:4 -n mongod
-tmux new-window -t $SESSION:5 -n mongo
-tmux new-window -t $SESSION:6 -n scrape
-tmux new-window -t $SESSION:7 -n aggregate
+tmux new-window -t $SESSION:4 -n mongo
 
 tmux send-keys -t $SESSION:0 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear" C-m
 tmux send-keys -t $SESSION:1 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; vs" C-m
 tmux send-keys -t $SESSION:2 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; ipython" C-m
 tmux send-keys -t $SESSION:3 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; uwsgi -H backend/paperbot_env -s :3031 2>&1 | bin/make-debug-page" C-m
-tmux send-keys -t $SESSION:4 "cd $WORKINGDIR; workon $PYENVIRONMENT; clear; mongod --repair; mongod" C-m
-tmux send-keys -t $SESSION:5 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; mongo" C-m
-tmux send-keys -t $SESSION:6 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; scraperd" C-m
-tmux send-keys -t $SESSION:7 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; aggregationd" C-m
+tmux send-keys -t $SESSION:4 "cd $WORKINGDIR; workon $PYENVIRONMENT; sleep 4; clear; mongo" C-m
 
 tmux select-window -t $SESSION:0
 tmux -2 attach-session -d -t $SESSION
+
 
 

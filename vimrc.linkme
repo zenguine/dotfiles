@@ -48,6 +48,7 @@ Bundle 'klen/python-mode'
 " Bundle 'rygwdn/rope-omni.git'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
+Bundle 'jimenezrick/vimerl.git'
 
 "}}}
 " Basic Settings {{{
@@ -589,7 +590,7 @@ augroup END
 set background=dark
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
-color tomorrow-night
+color tomorrow-night-trans
 "}}}
 " Not being used (commented) {{{
 

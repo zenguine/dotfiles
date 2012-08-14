@@ -5,6 +5,10 @@ bind-key C-a last-window
 bind-key x kill-pane
 bind-key C-q kill-session
 
+# pane movement
+bind-key E command-prompt -p "join pane from:"  "join-pane -s '%%'"
+bind-key e command-prompt -p "send pane to:"  "join-pane -t '%%'"
+
 # Default shell
 set-option -g default-shell /bin/zsh
 
