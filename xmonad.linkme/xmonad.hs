@@ -32,6 +32,7 @@ import XMonad.Layout.IM
 import XMonad.Prompt
 import XMonad.Prompt.Man
 import XMonad.Prompt.AppendFile
+import XMonad.Prompt.RunOrRaise
 
 import XMonad.Actions.SpawnOn
 
@@ -104,7 +105,7 @@ main = do
     xmonad $ withUrgencyHook dzenUrgencyHook { args = ["-bg", "darkgreen", "-xs", "1"] } $ defaultConfig
         { manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts myLayoutHook
-        , borderWidth = 2
+        , borderWidth = 1
         , normalBorderColor = "#E6E6E6"
         , focusedBorderColor = "#BF00FF"
         , startupHook = startup
@@ -117,18 +118,26 @@ main = do
                         }
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
         } `additionalKeysP`
-        [ ("M4-n", appendFilePrompt defaultXPConfig "/home/jcullen/notes.txt")
+        [ ("M4-n", do 
+            spawn ("date>>"++"/home/jcullen/vimwiki/Scratchpad.wiki")
+            appendFilePrompt defaultXPConfig "/home/jcullen/vimwiki/Scratchpad.wiki"
+        )
+        , ("M4-t", do
+                spawn ("echo -n '* [ ] '>>"++"/home/jcullen/vimwiki/Tasks.wiki")
+                appendFilePrompt defaultXPConfig "/home/jcullen/vimwiki/Tasks.wiki"
+            )
         , ("M4-m", manPrompt defaultXPConfig)
+        , ("M4-o", runOrRaisePrompt defaultXPConfig)
+        , ("M4-<Backspace>", focusUrgent)
         , ("M-C-<Space>", sendMessage $ Toggle NBFULL)              
         , ("M-C-x",       sendMessage $ Toggle REFLECTX)            
         , ("M-C-y",       sendMessage $ Toggle REFLECTY)            
         , ("M-C-m",       sendMessage $ Toggle MIRROR)              
         , ("M-C-b",       sendMessage $ Toggle NOBORDERS)           
-        , ("M4-<Backspace>", focusUrgent)
 
         -- keybindings for common programs
         , ("M-x f", spawnOn "www" "firefox")                             
-        , ("M-x c", spawnOn "media" "clementine")                             
+        , ("M-x b", spawnOn "media" "banshee")                             
         , ("M-x p", spawnOn "main" "pcmanfm")                             
 
         -- window navigation keybindings.
@@ -144,8 +153,6 @@ main = do
         , ("M4-S-C-h", sendMessage $ Move L)                         
         , ("M4-S-C-k", sendMessage $ Move U)                         
         , ("M4-S-C-j", sendMessage $ Move D)                         
-
-        , ("M4-S-l", spawn "xscreensaver-command -lock")
 
         -- volume control
         , ("M4-S-v", spawn "urxvt -e alsamixer")

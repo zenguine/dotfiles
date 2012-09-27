@@ -22,7 +22,7 @@ URxvt*dynamicColors:     on
 URxvt*mapAlert:          true
 URxvt*inheritPixmap:     true
 !! URxvt*tintColor:        #000000
-URxvt*shading:           88
+URxvt*shading:           25
 
 
 !Black

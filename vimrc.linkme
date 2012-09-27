@@ -12,6 +12,7 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 
 "}}}
 " Vundle Plugin List {{{
+
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'gmarik/github-search.vim.git'
 Bundle 'coderifous/textobj-word-column.vim'
@@ -58,6 +59,7 @@ Bundle 'vim-scripts/vimwiki.git'
 Bundle 'vim-scripts/VOoM.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
+Bundle 'hsitz/VimOrganizer.git'
 
 "}}}
 " Basic Settings {{{
@@ -491,7 +493,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
             \ 'template_ext' : '.html',
             \ 'path_html': '~/vimwikihtml'}]
 " }}}
-
+" }}}
 " Window Navigation {{{
 
 " Window navigation quick shortcuts
@@ -683,7 +685,7 @@ augroup END
 
 " For tomorrow night colorscheme
 set background=dark
-color tomorrow-night-trans
+color tomorrow-night
 
 "}}}
 " Not being used (commented) {{{
