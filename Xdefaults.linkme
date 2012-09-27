@@ -12,6 +12,7 @@ URxvt*cursorColor:       #868887
 URxvt*colorBD:           #b4927d
 URxvt*colorUL:          #57956b
 URxvt*internalBorder:    3
+URxvt.urgentOnBell: true
 
 URxvt.transparent:       true
 URxvt*allow_bold:        true

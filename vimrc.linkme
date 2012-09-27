@@ -37,7 +37,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
-Bundle 'javascript.vim'
+" Bundle 'javascript.vim'
 Bundle 'tpope/vim-unimpaired'
 " Bundle 'vim-scripts/pythoncomplete.git'
 Bundle 'teramako/jscomplete-vim.git'
@@ -45,12 +45,19 @@ Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'klen/python-mode'
+Bundle 'vim-scripts/python.vim'
 " Bundle 'rygwdn/rope-omni.git'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'jimenezrick/vimerl.git'
 Bundle 'Shougo/neocomplcache.git'
 Bundle 'Shougo/neocomplcache-snippets-complete.git'
+Bundle 'nathanaelkane/vim-indent-guides.git'
+" Bundle 'xolox/vim-notes'
+Bundle 'vim-scripts/vimwiki.git'
+Bundle 'vim-scripts/VOoM.git'
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-scripts/tlib.git'
 
 "}}}
 " Basic Settings {{{
@@ -437,7 +444,11 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 "}}}
-"}}}
+" Indent Guides {{{
+set ts=4 sw=4 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+" }}}
 " Search and movement {{{
 
 " Sane regex syntax
@@ -471,6 +482,16 @@ noremap H ^
 noremap L g_
 
 "}}}
+
+" Vimwiki settings {{{
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \ 'auto_export' : 1,
+            \ 'template_path' : '~/vimwikihtml/templates/',
+            \ 'template_default' : 'def_template',
+            \ 'template_ext' : '.html',
+            \ 'path_html': '~/vimwikihtml'}]
+" }}}
+
 " Window Navigation {{{
 
 " Window navigation quick shortcuts
@@ -647,7 +668,7 @@ augroup ft_javascript
     autocmd!
     au FileType javascript call JavaScriptFold()
     au FileType javascript setl fen
-    au FileType javascript normal! zM
+    " au FileType javascript normal! zM
     au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
 augroup end
 "}}}
@@ -659,10 +680,11 @@ augroup END
 "}}}
 "}}}
 " Color Scheme {{{
+
+" For tomorrow night colorscheme
 set background=dark
-" let g:solarized_contrast = "high"
-" let g:solarized_termcolors=16
 color tomorrow-night-trans
+
 "}}}
 " Not being used (commented) {{{
 

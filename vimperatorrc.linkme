@@ -1,0 +1,8 @@
+:set cpt=l
+map b <C-n>
+:set! browser.startup.page=1
+map a <C-p>
+:set hintkeys=asdfghjkl;
+:toolbarshow Bookmarks Toolbar
+:set passkeys+=reddit.com:jkcClLnNpPfFrs<CR>
+:set passkeys+=rememberthemilk.com:tcpfgsulyrz1234ankjihm<Del><Tab><Esc>

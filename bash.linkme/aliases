@@ -23,6 +23,7 @@ alias x='exit'
 alias open= 'gnome-open'
 alias locate='locate -i --regexp'
 alias lock='xscreensaver-command --lock'
+alias bp='echo -e "\a"'
 
 # Function either sends the argument files to be editted in the active vim server, or creates the vim server first if it doesn't already exist
 # Further, if we are in a tmux session, each tmux session gets its own vim server depending on the session name

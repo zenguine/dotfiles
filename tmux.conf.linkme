@@ -35,7 +35,7 @@ bind-key -r ) switch-client -n
 
 # Set window notifications
 setw -g monitor-activity on
-set -g visual-activity on
+# set -g visual-activity on
 setw -g aggressive-resize on
 
 # Highlight active window

@@ -4,6 +4,7 @@ import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
@@ -100,7 +101,7 @@ myManageHook = composeAll
 
 main = do
     xmproc <- spawnPipe "xmobar /home/jcullen/.xmobarrc"
-    xmonad $ defaultConfig
+    xmonad $ withUrgencyHook dzenUrgencyHook { args = ["-bg", "darkgreen", "-xs", "1"] } $ defaultConfig
         { manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts myLayoutHook
         , borderWidth = 2
@@ -112,6 +113,7 @@ main = do
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "purple" "" . shorten 50
+                        , ppUrgent = xmobarColor "yellow" "red" . xmobarStrip
                         }
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
         } `additionalKeysP`
@@ -122,6 +124,7 @@ main = do
         , ("M-C-y",       sendMessage $ Toggle REFLECTY)            
         , ("M-C-m",       sendMessage $ Toggle MIRROR)              
         , ("M-C-b",       sendMessage $ Toggle NOBORDERS)           
+        , ("M4-<Backspace>", focusUrgent)
 
         -- keybindings for common programs
         , ("M-x f", spawnOn "www" "firefox")                             
