@@ -33,6 +33,7 @@ import XMonad.Prompt
 import XMonad.Prompt.Man
 import XMonad.Prompt.AppendFile
 import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.Shell
 
 import XMonad.Actions.SpawnOn
 
@@ -128,6 +129,7 @@ main = do
             )
         , ("M4-m", manPrompt defaultXPConfig)
         , ("M4-o", runOrRaisePrompt defaultXPConfig)
+        , ("M4-i", shellPrompt defaultXPConfig)
         , ("M4-<Backspace>", focusUrgent)
         , ("M-C-<Space>", sendMessage $ Toggle NBFULL)              
         , ("M-C-x",       sendMessage $ Toggle REFLECTX)            
