@@ -90,3 +90,8 @@ fi
 
 # For tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+# For gpg-agent
+. $HOME/scripts/gpg-agent.sh
+GPG_TTY=$(tty)
+export GPG_TTY

@@ -48,8 +48,16 @@ case $(uname -s) in
     "Linux")
         BATPATH=/sys/class/power_supply/BAT0
         STATUS=$BATPATH/status
+
+        # Hack for now.. just try both energy and charge
+        if test -f "$BATPATH/charge_full" && test -f "$BATPATH/charge_now"; then
         BAT_FULL=$BATPATH/charge_full
         BAT_NOW=$BATPATH/charge_now
+        else
+            BAT_FULL=$BATPATH/energy_full
+            BAT_NOW=$BATPATH/energy_now
+        fi
+
         if [ "$1" = `cat $STATUS` -o "$1" = "" ]; then
             linux_get_bat
         fi

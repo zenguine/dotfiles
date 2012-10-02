@@ -146,7 +146,7 @@ nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
 nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
 nmap <leader>et :e ~/.dotfiles/tmux.conf.linkme<CR>
 nmap <leader>ex :e ~/.dotfiles/xmonad.linkme/xmonad.hs<CR>
-nmap <leader>es :e ~/.dotfiles/bin.linkme/startup.sh<CR>
+nmap <leader>es :e ~/.dotfiles/scripts.linkme/startup.sh<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 "}}}
 "
