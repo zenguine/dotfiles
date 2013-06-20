@@ -47,8 +47,8 @@ _force_rehash() {
 ### History
 setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
 export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000
-export SAVEHIST=1000000
+export HISTSIZE=30000
+export SAVEHIST=30000
 
 # configuration for "z" script
 . ~/scripts/z.sh
