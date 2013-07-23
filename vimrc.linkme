@@ -13,13 +13,12 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 "}}}
 " Vundle Plugin List {{{
 
-Bundle 'Lokaltog/vim-powerline.git'
+" Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'gmarik/github-search.vim.git'
 " Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'lukerandall/haskellmode-vim.git'
 Bundle 'vim-scripts/haskell.vim'
 Bundle 'majutsushi/tagbar.git'
-" Bundle 'phenguin/ultisnips.git'
 " Bundle 'scrooloose/nerdtree.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tpope/vim-surround.git'
@@ -64,10 +63,13 @@ Bundle 'hsitz/VimOrganizer.git'
 " New plugins for testing
 Bundle 'Shougo/unite.vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kshenoy/vim-signature'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'thinca/vim-ref'
+Bundle 'bling/vim-airline'
 
 "}}}
 " Basic Settings {{{
@@ -206,17 +208,39 @@ let g:EasyMotion_leader_key = '<leader><leader>'
 " Unite settings {{{
 "
 nnoremap [unite] <Nop>
-nmap U [unite]
+nmap <space> [unite]
+
+if executable('ack')
+    let g:unite_source_grep_command='ack'
+    let g:unite_source_grep_default_opts='--no-heading --no-color -a'
+    let g:unite_source_grep_recursive_opt=''
+endif
 
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap [unite]r :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
-nnoremap [unite]f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap [unite]m :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap [unite]o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap [unite]y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap [unite]b :<C-u>Unite -quick-match -no-split -buffer-name=buffer  buffer<cr>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#set_profile('files', 'smartcase', 1)
+call unite#custom#source('line,outline','matchers','matcher_fuzzy')
+
+let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=5000
+let g:unite_prompt='» '
+
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -no-split -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <silent> <C-p> :<C-u>Unite -toggle -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -toggle -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <silent> [unite]o :<C-u>Unite -no-split -buffer-name=outline outline<cr>
+nnoremap <silent> [unite]y :<C-u>Unite -toggle -buffer-name=yanks    history/yank<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -quick-match -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -start-insert -buffer-name=line line<cr> 
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]re :<C-u>Unite ref/erlang -no-split -buffer-name=erlang_docs -start-insert -horizontal<CR>
+nnoremap <silent> [unite]rp :<C-u>Unite ref/pydoc -no-split -buffer-name=python_docs -start-insert -horizontal<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -227,6 +251,13 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+" }}}
+" Vim-Ref settings {{{
+
+let g:ref_use_vimproc = 1
+let g:ref_open = 'vsplit'
+let g:ref_cache_dir = expand('~/.vim/tmp/ref_cache/')
 
 " }}}
 " Vim-powerline settings {{{
@@ -808,7 +839,7 @@ set foldmethod=marker
 set foldlevel=99
 set foldopen-=block
 set foldcolumn=0
-nnoremap <space> za
+" nnoremap <space> za
 " vnoremap <space> za
 
 " Make zO recursively open whatever top level fold we're in, no matter where the
