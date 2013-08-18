@@ -3,7 +3,11 @@
 
 zsh/cache/*
 vim.linkme/.cache/
-vim.linkme/.tmp/
+vim.linkme/tmp/
+~/
+oh-my-zsh.linkme/.gitignore
+oh-my-zsh.linkme/custom/example.zsh
+oh-my-zsh.linkme/custom/example/
 *.o
 xmonad.linkme/xmonad-i386-linux
 xmonad.linkme/xmonad.o
