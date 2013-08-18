@@ -2,6 +2,8 @@
 # managed locally
 
 zsh/cache/*
+vim.linkme/.cache/
+vim.linkme/.tmp/
 *.o
 xmonad.linkme/xmonad-i386-linux
 xmonad.linkme/xmonad.o

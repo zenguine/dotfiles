@@ -23,7 +23,7 @@ Bundle 'majutsushi/tagbar.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'vim-scripts/bufkill.vim.git'
-Bundle 'Lokaltog/vim-easymotion.git'
+" Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'benmills/vimux.git'
 Bundle 'duff/vim-scratch.git'
 Bundle 'edsono/vim-matchit.git'
@@ -872,6 +872,7 @@ set foldcolumn=0
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
+nnoremap - za
 
 
 function! MyFoldText() 
