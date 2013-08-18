@@ -1,4 +1,5 @@
 " Vim Configuration Settings
+" Bundle 'Lokaltog/vim-powerline.git'
 " Initialization {{{
 set nocompatible
 set rtp+=~/.vim/vundle/
@@ -13,7 +14,6 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 "}}}
 " Vundle Plugin List {{{
 
-" Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'gmarik/github-search.vim.git'
 " Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'lukerandall/haskellmode-vim.git'
@@ -69,7 +69,7 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'thinca/vim-ref'
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 
 "}}}
 " Basic Settings {{{
@@ -890,3 +890,27 @@ endfunction
 
 set foldtext=MyFoldText()
 "}}}
+" Status Line {{{
+"Git branch
+function! GitBranch()
+    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+    if branch != ''
+        return '   Git Branch: ' . substitute(branch, '\n', '', 'g')
+    en
+    return ''
+endfunction
+
+function! CurDir()
+    return substitute(getcwd(), '/Users/amir/', "~/", "g")
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
+
+" Format the statusline
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+" }}}
