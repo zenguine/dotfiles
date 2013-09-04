@@ -3,6 +3,8 @@
 " Initialization {{{
 set nocompatible
 set rtp+=~/.vim/vundle/
+" Seems necessary for ultisnips to do filetype detection correctly
+filetype off
 call vundle#rc()
 
 " let Vundle manage Vundle
