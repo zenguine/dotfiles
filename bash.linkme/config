@@ -3,7 +3,10 @@
 export NODE_PATH='/usr/local/lib/jsctags/':$NODE_PATH
 export LANG=en_US.UTF-8
 
-export PATH='/home/jcullen/code/pagezero/bin':'/home/jcullen/scripts':'/home/jcullen/.cabal/bin':'/home/jcullen/.gem/ruby/1.9.1/bin':$PATH
+export PATH="$HOME/build/sbt/bin":"$HOME/code/pagezero/bin":"$HOME/scripts":"$HOME/.cabal/bin":"$HOME/.gem/ruby/1.9.1/bin":$PATH
+
+export SCALA_HOME="$HOME/build/scala-2.10.2/"
+export PATH="$SCALA_HOME/bin":$PATH
 
 # Python virtual environment stuff
 

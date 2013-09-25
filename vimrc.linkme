@@ -1,5 +1,4 @@
 " Vim Configuration Settings
-" Bundle 'Lokaltog/vim-powerline.git'
 " Initialization {{{
 set nocompatible
 set rtp+=~/.vim/vundle/
@@ -61,12 +60,13 @@ Bundle 'vim-scripts/VOoM.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
 Bundle 'hsitz/VimOrganizer.git'
+Bundle 'derekwyatt/vim-scala'
 
 " New plugins for testing
 Bundle 'Shougo/unite.vim'
 Bundle 'Valloric/YouCompleteMe'
 " Bundle 'terryma/vim-multiple-cursors'
-Bundle 'kshenoy/vim-signature'
+" Bundle 'kshenoy/vim-signature'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
@@ -153,11 +153,11 @@ vnoremap > >gv
 imap jk <Esc>
 
 " Mappings to edit important files quickly {{{
-nmap <leader>ev :e ~/.dotfiles/vimrc.linkme<CR>
-nmap <leader>ez :e ~/.dotfiles/zshrc.linkme<CR>
-nmap <leader>eg :e ~/.dotfiles/gvimrc.linkme<CR>
-nmap <leader>et :e ~/.dotfiles/tmux.conf.linkme<CR>
-nmap <leader>ex :e ~/.dotfiles/xmonad.linkme/xmonad.hs<CR>
+nmap <leader>ev :e ~/.vimrc<CR>
+nmap <leader>ez :e ~/.zshrc<CR>
+nmap <leader>eg :e ~/.gvimrc<CR>
+nmap <leader>et :e ~/.tmux.conf<CR>
+nmap <leader>ex :e ~/.xmonad/xmonad.hs<CR>
 nmap <leader>es :e ~/.dotfiles/scripts.linkme/startup.sh<CR>
 nmap <leader>s :source ~/.vimrc<CR>:source ~/.gvimrc<CR>
 "}}}
@@ -290,7 +290,8 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 " let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 " let Tlist_WinWidth = 50
 map <silent> <leader>q :TagbarToggle<cr>
-map <F8> :!/usr/bin/ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
+" map <F8> :!/usr/bin/ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
+map <F8> :!start /min ctags -R .<cr><CR>
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
 map <F10> :!pytags.py %%/**/*.py<CR>
