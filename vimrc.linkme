@@ -15,21 +15,19 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 "}}}
 " Vundle Plugin List {{{
 
+Bundle 'marijnh/tern_for_vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'tristen/vim-sparkup.git'
 Bundle 'gmarik/github-search.vim.git'
-" Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'lukerandall/haskellmode-vim.git'
 Bundle 'vim-scripts/haskell.vim'
 Bundle 'majutsushi/tagbar.git'
-" Bundle 'scrooloose/nerdtree.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'vim-scripts/bufkill.vim.git'
-" Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'benmills/vimux.git'
 Bundle 'duff/vim-scratch.git'
 Bundle 'edsono/vim-matchit.git'
-" Bundle 'ervandew/supertab.git'
-" Bundle 'kien/ctrlp.vim.git'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'tpope/vim-commentary.git'
@@ -38,40 +36,31 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
-" Bundle 'javascript.vim'
 Bundle 'tpope/vim-unimpaired'
-" Bundle 'vim-scripts/pythoncomplete.git'
 Bundle 'teramako/jscomplete-vim.git'
 Bundle 'vim-scripts/mako.vim--Torborg.git'
 Bundle 'vim-scripts/mako.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
-" Bundle 'klen/python-mode'
 Bundle 'vim-scripts/python.vim'
-" Bundle 'rygwdn/rope-omni.git'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'jimenezrick/vimerl.git'
-" Bundle 'Shougo/neocomplcache.git'
-" Bundle 'Shougo/neocomplcache-snippets-complete.git'
 Bundle 'nathanaelkane/vim-indent-guides.git'
-" Bundle 'xolox/vim-notes'
 Bundle 'vim-scripts/vimwiki.git'
 Bundle 'vim-scripts/VOoM.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
 Bundle 'hsitz/VimOrganizer.git'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'vim-scripts/AutoTag'
 
 " New plugins for testing
 Bundle 'Shougo/unite.vim'
 Bundle 'Valloric/YouCompleteMe'
-" Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'kshenoy/vim-signature'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'thinca/vim-ref'
-" Bundle 'bling/vim-airline'
 
 "}}}
 " Basic Settings {{{
@@ -291,7 +280,7 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 " let Tlist_WinWidth = 50
 map <silent> <leader>q :TagbarToggle<cr>
 " map <F8> :!/usr/bin/ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
-map <F8> :!start /min ctags -R .<cr><CR>
+map <F8> :!ctags -R .<cr><CR>
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
 map <F10> :!pytags.py %%/**/*.py<CR>
@@ -508,6 +497,7 @@ EOF
 " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -739,6 +729,7 @@ augroup ft_python
     " Next two lines make the python pydoc window auto close with omnicomplete
     autocmd CursorMovedI * if (pumvisible() == 0 && g:not_in_cmdwin) |pclose|endif
     autocmd InsertLeave * if (pumvisible() == 0 && g:not_in_cmdwin) |pclose|endif
+    " autocmd BufWritePost * :!ctags -R .
 
     " Open python files with folds already closed
     " au FileType python normal! zM
@@ -766,7 +757,6 @@ augroup ft_javascript
     au FileType javascript call JavaScriptFold()
     au FileType javascript setl fen
     " au FileType javascript normal! zM
-    au Filetype javascript setl omnifunc=javascriptcomplete#CompleteJS
 augroup end
 "}}}
 " Mako {{{
