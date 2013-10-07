@@ -45,3 +45,5 @@ vim.linkme/bundle/gundo.vim/tests/vim_test/plugin/words_tools.vim
 vim.linkme/vim.linkme
 vim.linkme/haskellmode.config
 vim.linkme/haskellmode.config
+tags
+tags

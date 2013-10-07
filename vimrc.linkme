@@ -196,6 +196,10 @@ endfunc
 " Easymotion settings {{{
 let g:EasyMotion_leader_key = '<leader><leader>'
 "}}}
+" Tern settings {{{
+let g:tern_map_keyse=1
+let g:tern_show_argument_hints='on_hold'
+"}}}
 " YouCompleteMe settings {{{
 
 let g:ycm_complete_in_comments_and_strings=1
