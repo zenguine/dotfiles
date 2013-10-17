@@ -53,6 +53,7 @@ Bundle 'vim-scripts/tlib.git'
 Bundle 'hsitz/VimOrganizer.git'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'vim-scripts/AutoTag'
+Bundle 'sophacles/vim-processing'
 
 " New plugins for testing
 Bundle 'Shougo/unite.vim'
@@ -262,23 +263,6 @@ let g:ref_open = 'vsplit'
 let g:ref_cache_dir = expand('~/.vim/tmp/ref_cache/')
 
 " }}}
-" Vim-powerline settings {{{
-let g:Powerline_symbols='unicode'
-let g:Powerline_stl_path_style='filename'
-let g:Powerline_colorscheme='default'
-
-" Enable line below if you want the whitespace marker
-" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
-
-set laststatus=2
-
-set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
-"}}}
-" NerdTree Settings {{{
-" Enable easy NERDTree toggling
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-"}}}
 " taglist and ctags configuration {{{
 " let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 " let Tlist_WinWidth = 50
@@ -308,46 +292,6 @@ if exists("+undofile")
     set undodir+=~/.vim/undo//
     set undofile
 endif
-"}}}
-" CtrlP Settings {{{
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_open_multiple_files = '2vr'
-let g:ctrlp_extensions = ['tag','buffertag']
-let g:ctrlp_match_window_bottom = 0
-
-" Non-standard part of ctrlp: Specify a filtering regular expression.
-" Regexp must be specified in extended regexp compatible form
-let g:ctrlp_ignore = '\.pyc$|\.o$|\.hi$|\.swp$'
-let g:ctrlp_user_command = ['.git/', "cd %s && git ls-files . -co --exclude-standard | grep -vE '" . g:ctrlp_ignore . "'"]
-
-let g:path_to_matcher = "~/bin/matcher"
-
-let g:ctrlp_match_func = { 'match': 'GoodMatch' }
-
-function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)"{{{
-
-    " Create a cache file if not yet exists
-    let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
-    if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-        call writefile(a:items, cachefile)
-    endif
-    if !filereadable(cachefile)
-        return []
-    endif
-
-    " a:mmode is currently ignored. In the future, we should probably do
-    " something about that. the matcher behaves like "full-line".
-    let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
-    if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
-        let cmd = cmd.'--no-dotfiles '
-    endif
-    let cmd = cmd.a:str
-
-    return split(system(cmd), "\n")
-
-endfunction
-"}}}
 "}}}
 " Haskell-mode settings {{{
 let g:haddock_browser = "/usr/bin/firefox"
@@ -406,114 +350,6 @@ function! ScratchToggle() "
         let w:is_scratch_window = 1
     endif
 endfunction
-"}}}
-" Vimux Settings {{{
-let VimuxHeight = "30"
-
-" Run command with current filename as final argument
-map <silent> <leader>rb :call RunVimTmuxCommand(input("Command? ") . " " . bufname("%"))<CR>
-
-" Prompt for a command to run
-map <silent> <leader>rp :PromptVimTmuxCommand<CR>
-
-" Run last command executed by RunVimTmuxCommand
-map <silent> <leader>rl :RunLastVimTmuxCommand<CR>
-
-" Inspect runner pane
-map <silent> <leader>ri :InspectVimTmuxRunner<CR>
-
-" Close all other tmux panes in current window
-map <silent> <leader>rx :CloseVimTmuxPanes<CR>
-
-" Interrupt any command running in the runner pane
-map <silent> <leader>rs :InterruptVimTmuxRunner<CR>
-
-" If text is selected, save it in the v buffer and send that buffer it to tmux
-vmap <silent> <leader>rr "vy :call RunVimTmuxCommand(@v . "\n", 0)<CR>
-
-" Select current paragraph and send it to tmux
-nmap <silent> <leader>rr vip<leader>rr<CR>
-
-" Select current paragraph and send it to tmux
-nmap <silent> <leader>rf ggVG<leader>rr<CR>
-
-" A fix related to the version of ruby vim was compiled with
-ruby << EOF
-class Object
-def flush; end unless Object.new.respond_to?(:flush)
-end
-EOF
-"}}}
-" Neocomplcache Settings {{{
-
-" " Disable AutoComplPop.
-" let g:acp_enableAtStartup = 0
-" " Use neocomplcache.
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " Use camel case completion.
-" let g:neocomplcache_enable_camel_case_completion = 1
-" " Use underbar completion.
-" let g:neocomplcache_enable_underbar_completion = 1
-" " Set minimum syntax keyword length.
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" " Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-"     \ 'default' : '',
-"     \ 'vimshell' : $HOME.'/.vimshell_hist',
-"     \ 'scheme' : $HOME.'/.gosh_completions'
-"     \ }
-
-" " Define keyword.
-" if !exists('g:neocomplcache_keyword_patterns')
-"   let g:neocomplcache_keyword_patterns = {}
-" endif
-" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" " Plugin key-mappings.
-" imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-" smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-" inoremap <expr><C-g>     neocomplcache#undo_completion()
-" inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" " SuperTab like snippets behavior.
-" imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" " Recommended key-mappings.
-" " <CR>: close popup and save indent.
-" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" " <TAB>: completion.
-" " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-y>  neocomplcache#close_popup()
-" inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-" " AutoComplPop like behavior.
-" let g:neocomplcache_enable_auto_select = 0
-
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-"   let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-" " autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-" let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-" let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
 "}}}
 " Indent Guides {{{
 set ts=4 sw=4 et
@@ -696,13 +532,6 @@ augroup ft_haskell
 augroup END
 
 
-" " From Good Haskell Style http://urchin.earth.li/~ian/style/haskell.html
-" setlocal expandtab
-" setlocal tabstop=8
-" setlocal shiftwidth=8
-" setlocal textwidth=79
-
-
 " "}}}
 " PDF {{{
 augroup ft_pdf
@@ -775,42 +604,6 @@ augroup END
 " For tomorrow night colorscheme
 set background=dark
 color solarized
-
-"}}}
-" Not being used (commented) {{{
-
-" " Add python libraries to path so can use gf on module name to view
-" " source
-" python << EOF
-" import os
-" import sys
-" import vim
-" for p in sys.path:
-"     if os.path.isdir(p):
-"         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-" EOF
-
-" "Move a line of text using ALT+[jk], (un)indent with ALT+[hl]
-" nnoremap <silent> <A-j> :m+<CR>==
-" nnoremap <silent> <A-k> :m-2<CR>==
-" nnoremap <A-h> <<
-" nnoremap <A-l> >>
-" inoremap <A-j> <Esc>:m+<CR>==gi
-" inoremap <A-k> <Esc>:m-2<CR>==gi
-" inoremap <A-h> <Esc><<`]a
-" inoremap <A-l> <Esc>>>`]a
-" vnoremap <A-j> :m'>+<CR>gv=gv
-" vnoremap <A-k> :m-2<CR>gv=gv
-" vnoremap <A-h> <gv
-" vnoremap <A-l> >gv
-
-" " These are so we can use alt key mappings in a terminal without
-" " eightBitInput i.e. urxvt
-" set <A-h>=h
-" set <A-j>=j
-" set <A-k>=k
-" set <A-l>=l
-" set <A-]>=]
 
 "}}}
 " Refactoring Functions {{{
@@ -889,17 +682,6 @@ set foldtext=MyFoldText()
 "}}}
 " Status Line {{{
 "Git branch
-function! GitBranch()
-    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-    if branch != ''
-        return '   Git Branch: ' . substitute(branch, '\n', '', 'g')
-    en
-    return ''
-endfunction
-
-function! CurDir()
-    return substitute(getcwd(), '/Users/amir/', "~/", "g")
-endfunction
 
 function! HasPaste()
     if &paste
@@ -909,5 +691,5 @@ function! HasPaste()
 endfunction
 
 " Format the statusline
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ \ Line:\ %l/%L
 " }}}
