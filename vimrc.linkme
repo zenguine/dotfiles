@@ -30,10 +30,8 @@ Bundle 'edsono/vim-matchit.git'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'tpope/vim-commentary.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
-Bundle 'tmhedberg/SimpylFold.git'
+" Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'teramako/jscomplete-vim.git'
@@ -42,7 +40,6 @@ Bundle 'vim-scripts/python.vim'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'jimenezrick/vimerl.git'
-Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'vim-scripts/vimwiki.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
@@ -318,20 +315,6 @@ inoremap <c-l> <c-x><c-l>
 let g:sparkupNextMapping = '<c-f>'
 let g:sparkupPreviousMapping = '<c-b>'
 "}}}
-" Fugitive "{{{
-autocmd FileType gitcommit DiffGitCached | wincmd L | wincmd p
-
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>ga :Gadd<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
-nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
-"}}}
 " Scratch"{{{
 command! ScratchToggle call ScratchToggle()
 
@@ -347,11 +330,6 @@ function! ScratchToggle() "
     endif
 endfunction
 "}}}
-" Indent Guides {{{
-set ts=4 sw=4 et
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" }}}
 " Search and movement {{{
 
 " Sane regex syntax
@@ -522,6 +500,7 @@ let g:ghc = "/usr/bin/ghc"
 
 augroup ft_haskell
     autocmd!
+    au FileType haskell UltiSnipsAddFiletypes haskell
     au BufEnter *.hs compiler ghc
     autocmd FileType haskell setlocal formatoptions+=t
     autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
@@ -544,6 +523,8 @@ augroup end
 " Vim {{{
 augroup ft_vim
     autocmd!
+    
+    au FileType vim UltiSnipsAddFiletypes vim
     au FileType vim setlocal foldmethod=marker
     au FileType vim setlocal formatoptions-=t
     au FileType vim normal! zM
@@ -553,6 +534,7 @@ augroup end
 augroup ft_python
     autocmd!
     au FileType python setl omnifunc=pythoncomplete#Complete
+    au FileType python UltiSnipsAddFiletypes python
 
     let g:not_in_cmdwin = 1
     " Next two lines make the python pydoc window auto close with omnicomplete
@@ -585,15 +567,21 @@ augroup ft_javascript
     autocmd!
     au FileType javascript call JavaScriptFold()
     au FileType javascript setl fen
-    " au FileType javascript normal! zM
+    au FileType javascript UltiSnipsAddFiletypes javascript
 augroup end
 "}}}
-" Mako {{{
-augroup ft_mako
-    au!
-    au BufEnter *.mako setl filetype=mako
-augroup END
-"}}}
+" CSS {{{
+augroup ft_css
+    autocmd!
+    au FileType css UltiSnipsAddFiletypes css
+augroup end
+" }}}
+" C {{{
+augroup ft_c
+    autocmd!
+    au FileType c UltiSnipsAddFiletypes c
+augroup end
+" }}}
 "}}}
 " Color Scheme {{{
 
