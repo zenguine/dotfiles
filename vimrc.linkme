@@ -36,7 +36,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'teramako/jscomplete-vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'vim-scripts/python.vim'
 Bundle 'vim-scripts/indenthaskell.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'jimenezrick/vimerl.git'
@@ -44,8 +43,6 @@ Bundle 'vim-scripts/vimwiki.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
 Bundle 'vim-scripts/AutoTag'
-
-" New plugins for testing
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-tag'
 Bundle 'Valloric/YouCompleteMe'
@@ -53,6 +50,9 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'thinca/vim-ref'
+
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'ujihisa/neco-ghc'
 
 "}}}
 " Basic Settings {{{
@@ -234,6 +234,7 @@ nnoremap <silent> [unite]b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 nnoremap <silent> [unite]s :<C-u>Unite -quick-match -no-split -buffer-name=buffer  buffer<cr>
 nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -start-insert -buffer-name=line line<cr> 
 nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]* :<C-u>UniteWithCursorWord -no-quit -buffer-name=search grep:.<cr>
 nnoremap <silent> [unite]re :<C-u>Unite ref/erlang -no-split -buffer-name=erlang_docs -start-insert -horizontal<CR>
 nnoremap <silent> [unite]rp :<C-u>Unite ref/pydoc -no-split -buffer-name=python_docs -start-insert -horizontal<CR>
 
@@ -261,8 +262,6 @@ let g:ref_cache_dir = expand('~/.vim/tmp/ref_cache/')
 map <silent> <leader>q :TagbarToggle<cr>
 " map <F8> :!/usr/bin/ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q %%<CR>
 map <F8> :!ctags -R .<cr><CR>
-" uses ghci to generate haskell tags file recursively from cwd
-map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
 map <F10> :!pytags.py %%/**/*.py<CR>
 
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
@@ -285,10 +284,6 @@ if exists("+undofile")
     set undodir+=~/.vim/undo//
     set undofile
 endif
-"}}}
-" Haskell-mode settings {{{
-let g:haddock_browser = "/usr/bin/firefox"
-let g:ghc = "/usr/bin/ghc"
 "}}}
 " Python-mode settings {{{u
 let g:pymode_run_key = '<leader>pr'
@@ -495,15 +490,27 @@ au BufRead *pentadactylrc* set filetype=vim
 
 " Haskell {{{
 let g:haddock_indexfiledir = "~/.dotfiles/vim.linkme"
-let g:haddock_browser = "/usr/bin/firefox"
+let g:haddock_browser = "/usr/bin/google-chrome"
 let g:ghc = "/usr/bin/ghc"
+
+let g:ghcmod_ghc_options = ['-w']
+hi ghcmodType ctermbg=blue
+let g:ghcmod_type_highlight = 'ghcmodType'
+"
+" uses ghci to generate haskell tags file recursively from cwd
+map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
+nnoremap ,gt :GhcModType<CR>
+let g:ghcmod_hlint_options = ['--ignore=Redundant $', '--ignore=Use if']
+nnoremap ,gc :GhcModTypeClear<CR>
+
 
 augroup ft_haskell
     autocmd!
     au FileType haskell UltiSnipsAddFiletypes haskell
     au BufEnter *.hs compiler ghc
     autocmd FileType haskell setlocal formatoptions+=t
-    autocmd FileType haskell let b:ghc_staticoptions = '-Wall -Werror'
+    autocmd FileType haskell let b:ghc_staticoptions = '-w'
+    autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
 
