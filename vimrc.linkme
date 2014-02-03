@@ -51,9 +51,14 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'thinca/vim-ref'
-
+Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
+
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'PeterRincker/vim-argumentative'
+" Bundle 'justinmk/vim-sneak'
+
 
 "}}}
 " Basic Settings {{{
@@ -106,6 +111,7 @@ set virtualedit=all
 set lazyredraw
 set showcmd
 set tildeop " tilde behaves as an operator
+set backspace=indent,eol,start
 let mapleader = ','
 syntax on
 filetype plugin indent on
@@ -114,8 +120,8 @@ set scrolloff=3
 "}}}
 " General mappings {{{
 
-nnoremap ; :
-vnoremap ; :
+" nnoremap ; :
+" vnoremap ; :
 
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -123,7 +129,7 @@ nnoremap - <C-x>
 cmap w!! %!sudo tee > /dev/null %
 
 "execute current line with bash and output result
-noremap ,ye "vyy:r!<C-r>v<Backspace><CR>
+noremap <leader>ye "vyy:r!<C-r>v<Backspace><CR>
 
 " Fix wrapped line behavior
 nnoremap j gj
@@ -189,6 +195,18 @@ endfunc
 " Easymotion settings {{{
 let g:EasyMotion_leader_key = '<leader><leader>'
 "}}}
+" Rainbow Parentheses settings {{{
+
+" augroup rainbow_parenthesis
+" au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+" augroup END
+
+nnoremap <leader>R :RainbowParenthesesToggle<CR>
+
+"}}}
 " Tern settings {{{
 let g:tern_map_keyse=1
 let g:tern_show_argument_hints='on_hold'
@@ -213,10 +231,10 @@ if executable('ack')
 endif
 
 let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#set_profile('files', 'smartcase', 1)
 call unite#custom#source('line,outline,file,file_rec,file_rec/async','matchers','matcher_fuzzy')
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_enable_start_insert=1
@@ -224,13 +242,13 @@ let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_prompt='» '
 
-nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -no-split -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -no-split -buffer-name=mixed file_rec/async:! buffer file_mru bookmark<cr>
 nnoremap <silent> [unite]f :<C-u>Unite -toggle -no-split -buffer-name=files   -start-insert file_rec/async<cr>
 nnoremap <silent> [unite]t :<C-u>Unite -toggle -no-split -buffer-name=tags   -start-insert tag<cr>
-nnoremap <silent> <C-p> :<C-u>Unite -toggle -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <silent> <C-p> :<C-u>Unite -toggle -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
 nnoremap <silent> [unite]m :<C-u>Unite -toggle -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <silent> [unite]o :<C-u>Unite -no-split -buffer-name=outline outline<cr>
-nnoremap <silent> [unite]y :<C-u>Unite -toggle -buffer-name=yanks    history/yank<cr>
+nnoremap <silent> [unite]y :<C-u>Unite -toggle -buffer-name=yanks history/yank<cr>
 nnoremap <silent> [unite]b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 nnoremap <silent> [unite]s :<C-u>Unite -quick-match -no-split -buffer-name=buffer  buffer<cr>
 nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -start-insert -buffer-name=line line<cr> 
@@ -489,6 +507,15 @@ au BufRead *Xmodmap* set filetype=xmodmap
 au BufRead *pentadactylrc* set filetype=vim
 "}}}
 
+" Hero {{{
+
+augroup ft_hero
+    autocmd!
+    autocmd BufRead,BufNewFile *.hero set filetype=hero
+augroup END
+
+
+" "}}}
 " Haskell {{{
 let g:haddock_indexfiledir = "~/.dotfiles/vim.linkme"
 let g:haddock_browser = "/usr/bin/google-chrome"
@@ -500,9 +527,9 @@ let g:ghcmod_type_highlight = 'ghcmodType'
 "
 " uses ghci to generate haskell tags file recursively from cwd
 map <F9> :!echo ":ctags" \| ghci **/*.hs<CR>
-nnoremap ,gt :GhcModType<CR>
+nnoremap <leader>gt :GhcModType<CR>
 let g:ghcmod_hlint_options = ['--ignore=Redundant $', '--ignore=Use if']
-nnoremap ,gc :GhcModTypeClear<CR>
+nnoremap <leader>gc :GhcModTypeClear<CR>
 
 
 augroup ft_haskell
@@ -578,6 +605,18 @@ augroup ft_javascript
     au FileType javascript UltiSnipsAddFiletypes javascript
 augroup end
 "}}}
+" HTML {{{
+augroup ft_html
+    autocmd!
+    au FileType html UltiSnipsAddFiletypes html
+augroup end
+" }}}
+" Snippets {{{
+augroup ft_sinp
+    autocmd!
+    au FileType snippets UltiSnipsAddFiletypes snippets
+augroup end
+" }}}
 " CSS {{{
 augroup ft_css
     autocmd!
@@ -599,6 +638,23 @@ color solarized
 
 "}}}
 " Refactoring Functions {{{
+
+" Like bufdo but restore the current buffer.
+function! BufDo(command)
+  let currBuff=bufnr("%")
+  execute 'bufdo ' . a:command
+  execute 'buffer ' . currBuff
+endfunction
+com! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
+" Like bufdo but restore the current buffer.
+function! ArgDo(command)
+  let currBuff=bufnr("%")
+  execute 'argdo ' . a:command
+  execute 'buffer ' . currBuff
+endfunction
+com! -nargs=+ -complete=command Argdo call ArgDo(<q-args>)
+
 function! ExtractVariable()
     let name = input("Variable name: ")
     if name == ''

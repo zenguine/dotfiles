@@ -8,7 +8,7 @@ do
 	if [ -d "$directory/.git" ]
        	then
 		cd $directory
-		git pull
+		git pull --recursive
 		cd ..
 	else
 		echo "$directory not a git plugin. Skipping update."
