@@ -16,6 +16,7 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 " Vundle Plugin List {{{
 
 Bundle 'marijnh/tern_for_vim'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tristen/vim-sparkup.git'
 Bundle 'lukerandall/haskellmode-vim.git'
