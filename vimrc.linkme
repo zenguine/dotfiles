@@ -57,7 +57,7 @@ Bundle 'ujihisa/neco-ghc'
 
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'PeterRincker/vim-argumentative'
-" Bundle 'justinmk/vim-sneak'
+Bundle 'justinmk/vim-sneak'
 
 
 "}}}
