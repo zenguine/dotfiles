@@ -90,7 +90,7 @@ tk () {
 
 
 # Git aliases - - - - - - - - - - - - - - -
-alias gs='git status'
+alias gs='git status -sb'
 
 # Alias tmux for 256 color support
 alias tmux='tmux -2'
