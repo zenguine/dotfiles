@@ -16,6 +16,7 @@ set t_Co=256 " seems important in order to get 256 color support or something..
 " Vundle Plugin List {{{
 
 Bundle 'marijnh/tern_for_vim'
+Bundle 'vim-scripts/paredit.vim'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tristen/vim-sparkup.git'
@@ -45,6 +46,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/tlib.git'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'Shougo/unite.vim'
+
 Bundle 'tsukkee/unite-tag'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'h1mesuke/unite-outline'
@@ -195,22 +197,25 @@ endfunc
 
 " Vim-sneak settings {{{
 let g:sneak#streak = 1
-"replace 'f' with inclusive 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-"replace 't' with exclusive 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
+" "replace 'f' with inclusive 1-char Sneak
+" nmap f <Plug>Sneak_f
+" nmap F <Plug>Sneak_F
+" xmap f <Plug>Sneak_f
+" xmap F <Plug>Sneak_F
+" omap f <Plug>Sneak_f
+" omap F <Plug>Sneak_F
+" "replace 't' with exclusive 1-char Sneak
+" nmap t <Plug>Sneak_t
+" nmap T <Plug>Sneak_T
+" xmap t <Plug>Sneak_t
+" xmap T <Plug>Sneak_T
+" omap t <Plug>Sneak_t
+" omap T <Plug>Sneak_T
 
 "}}}
+" Paredit settings {{{
+let g:paredit_shortmaps=1
+" }}}
 
 " Rainbow Parentheses settings {{{
 
@@ -533,6 +538,23 @@ augroup END
 
 
 " "}}}
+" Hero-Scheme {{{
+
+augroup ft_hero
+    autocmd!
+    autocmd BufRead,BufNewFile *.hscm set filetype=scheme
+    autocmd BufRead,BufNewFile *.hscm RainbowParenthesesActivate
+    autocmd BufRead,BufNewFile *.hscm silent! unmap >,
+    autocmd BufRead,BufNewFile *.hscm silent! unmap >p
+    autocmd BufRead,BufNewFile *.hscm silent! unmap >P
+    autocmd BufRead,BufNewFile *.hscm silent! unmap <,
+    autocmd BufRead,BufNewFile *.hscm silent! unmap <p
+    autocmd BufRead,BufNewFile *.hscm silent! unmap <P
+augroup END
+
+
+" "}}}
+" Haskell {{{
 " Haskell {{{
 let g:haddock_indexfiledir = "~/.dotfiles/vim.linkme"
 let g:haddock_browser = "/usr/bin/google-chrome"
