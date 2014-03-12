@@ -46,4 +46,4 @@ vim.linkme/vim.linkme
 vim.linkme/haskellmode.config
 vim.linkme/haskellmode.config
 tags
-tags
+*.*~
