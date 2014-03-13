@@ -47,3 +47,6 @@ vim.linkme/haskellmode.config
 vim.linkme/haskellmode.config
 tags
 *.*~
+emacs.d.linkme/elpa/
+emacs.d.linkme/eshell
+*.dat
