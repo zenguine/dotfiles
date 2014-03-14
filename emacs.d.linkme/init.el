@@ -12,14 +12,18 @@
 (require 'cl)
 ;; Guarantee all packages are installed on start
 (defvar packages-list
-  '(evil 
+  '(evil
+    evil-nerd-commenter
+    evil-leader
+    evil-matchit
     color-theme-solarized 
     smex
     helm
     auto-complete
     python-mode
     flycheck
-    flycheck-haskell)
+    flycheck-haskell
+    fiplr)
   "List of packages needs to be installed at launch")
 
 (defun has-package-not-installed ()
@@ -38,17 +42,38 @@
 
 ; General customization
 
-(load-theme 'solarized-dark)
 (global-linum-mode t)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+; Enable auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
 
 ; Evil mode customization
 (evil-mode 1)
-(helm-mode 1)
+; (helm-mode 1)
 
-(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
+(setq evil-want-C-u-scroll t)
+(define-key evil-insert-state-map "j" 'cofi/maybe-exit)
+(define-key evil-normal-state-map "H" 'evil-digit-argument-or-evil-beginning-of-line)
+(define-key evil-normal-state-map "L" 'evil-end-of-line)
+(define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)
+;; (define-key evil-normal-state-map "\\" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-normal-state-map  (kbd "C-p") 'fiplr-find-file)
+(define-key evil-normal-state-map  (kbd "C-z") 'suspend-emacs)
+(define-key evil-normal-state-map  (kbd "C-c C-z") 'evil-emacs-state)
+(define-key evil-insert-state-map  (kbd "C-z") 'suspend-emacs)
+(define-key evil-insert-state-map  (kbd "C-c C-z") 'evil-emacs-state)
+(define-key evil-emacs-state-map  (kbd "C-z") 'suspend-emacs)
+(define-key evil-emacs-state-map  (kbd "C-c C-z") 'evil-emacs-state)
+
+(define-key evil-normal-state-map  (kbd "M-h") 'evil-window-left)
+(define-key evil-normal-state-map  (kbd "M-j") 'evil-window-down)
+(define-key evil-normal-state-map  (kbd "M-k") 'evil-window-up)
+(define-key evil-normal-state-map  (kbd "M-l") 'evil-window-right)
  
 (evil-define-command cofi/maybe-exit ()
   :repeat change
@@ -56,15 +81,15 @@
   (let ((modified (buffer-modified-p)))
     (insert "j")
     (let ((evt (read-event (format "Insert %c to exit insert state" ?k)
-               nil 0.5)))
+			   nil 0.5)))
       (cond
        ((null evt) (message ""))
        ((and (integerp evt) (char-equal evt ?k))
-    (delete-char -1)
-    (set-buffer-modified-p modified)
-    (push 'escape unread-command-events))
+	(delete-char -1)
+	(set-buffer-modified-p modified)
+	(push 'escape unread-command-events))
        (t (setq unread-command-events (append unread-command-events
-                          (list evt))))))))
+					      (list evt))))))))
 
 ; From solarized color scheme apparently?
 (custom-set-variables
@@ -79,3 +104,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)
+
+(load-theme 'solarized-dark)
