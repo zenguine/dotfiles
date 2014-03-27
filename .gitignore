@@ -50,3 +50,4 @@ tags
 emacs.d.linkme/elpa/
 emacs.d.linkme/eshell
 *.dat
+emacs.d.linkme/url/
