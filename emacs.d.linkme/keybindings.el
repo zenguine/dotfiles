@@ -47,6 +47,7 @@
 
 (define-key evil-normal-state-map "gb" 'ido-switch-buffer)
 (define-key evil-normal-state-map "gs" 'shell)
+(define-key evil-normal-state-map "g$" 'eshell)
 (define-key evil-normal-state-map "gS" 'ansi-term)
 
 (define-key evil-normal-state-map (kbd ", SPC") (lambda ()
