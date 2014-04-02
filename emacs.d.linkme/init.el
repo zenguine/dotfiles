@@ -37,11 +37,13 @@
     helm
     ido-vertical-mode
     ipython
+    jedi
     key-chord
     magit
     projectile
     python-mode
     smex
+    zenburn-theme
     )
   "List of packages needs to be installed at launch")
 
@@ -66,6 +68,7 @@
 ; highlight corresponding paren
 (show-paren-mode t)
 (setq-default highlight-tabs t)
+(setq inhibit-startup-message t)
 (setq-default show-trailing-whitespace t)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -260,37 +263,23 @@ If no root marker is found, the current working directory is used."
  python-shell-completion-string-code
  "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
- ;; pdbtrack constants
- (defconst py-pdbtrack-stack-entry-regexp
-  "^> \\(.*\\)(\\([0-9]+\\))\\([?a-zA-Z0-9_<>]+\\)()"; this is new
- ;  "^> \\([^(]+\\)(\\([0-9]+\\))\\([?a-zA-Z0-9_]+\\)()"
- ;  "^> \\(.*\\)(\\([0-9]+\\))\\([?a-zA-Z0-9_]+\\)()"
-   "Regular expression pdbtrack uses to find a stack trace entry.")
-
-
-;(defconst py-pdbtrack-input-prompt "\n[(<]*[Pp]db[>)]+ "
-(defconst py-pdbtrack-input-prompt "\n[(<]*[Ii]?[Pp]db[>)]+ "; this is new
-   "Regular expression pdbtrack uses to recognize a pdb prompt.")
-;; (py-pdbtrack-overlay-arrow nil)
-;; (setq block (ansi-color-filter-apply block)) ; this is new
-;; (setq target (py-pdbtrack-get-source-buffer block))
 
 ; From solarized color scheme apparently?
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("a53714de04cd4fdb92ed711ae479f6a1d7d5f093880bfd161467c3f589725453" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 (put 'narrow-to-region 'disabled nil)
 
-(load-theme 'solarized-dark)
+(load-theme 'zenburn)
 
 (require 'keybindings)
