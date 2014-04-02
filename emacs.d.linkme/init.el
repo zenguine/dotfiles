@@ -1,4 +1,4 @@
-;; Load ELPA  
+;; Load ELPA
 ;;; -*- lexical-binding: t -*-
 
 (require 'package)
@@ -6,9 +6,9 @@
 (setq evil-want-C-u-scroll t)
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (load "surround.el")
@@ -24,27 +24,31 @@
   '(
     auto-complete
     autopair
-    color-theme-solarized 
+    color-theme-solarized
     evil
     evil-leader
     evil-matchit
     evil-nerd-commenter
     fiplr
+    flx
+    flx-ido
     flycheck
     flycheck-haskell
     helm
+    ido-vertical-mode
     ipython
+    key-chord
     magit
+    projectile
     python-mode
     smex
-    key-chord
     )
   "List of packages needs to be installed at launch")
 
 (defun has-package-not-installed ()
   (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
+	when (not (package-installed-p p)) do (return t)
+	finally (return nil)))
 (when (has-package-not-installed)
   ;; Check for new packages (package versions)
   (message "%s" "Get latest versions of all packages...")
@@ -57,18 +61,30 @@
 
 ; General customization
 
+;; 'y' or 'n' instead of 'yes' or 'no'
+(fset 'yes-or-no-p 'y-or-n-p)
+; highlight corresponding paren
+(show-paren-mode t)
+(setq-default highlight-tabs t)
+(setq-default show-trailing-whitespace t)
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+
+; no backup files
+(setq make-backup-files nil
+      backup-inhibited t
+      auto-save-default nil)
+
 ;; (global-linum-mode t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-c h") help-map)
 
 (autoload 'autopair-global-mode "autopair" nil t)
 (autopair-global-mode)
+(ido-vertical-mode)
+(global-hl-line-mode 1)
 
 ; Enable auto-complete
 (require 'auto-complete-config)
@@ -76,38 +92,19 @@
 
 ; Evil mode customization
 (evil-mode 1)
+
 (ido-mode 1)
+(flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(projectile-global-mode 1)
+
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
 ; (helm-mode 1)
 
 (setq evil-want-C-u-scroll t)
 
-; (define-key evil-emacs-state-map  (kbd "C-c C-z") 'suspend-emacs)
-
-(define-key evil-insert-state-map "j" 'cofi/maybe-exit)
-; (define-key evil-insert-state-map  (kbd "C-c C-z") 'suspend-emacs)
-
-(define-key evil-normal-state-map "H" 'evil-first-non-blank)
-(define-key evil-normal-state-map  (kbd "C-p") 'fiplr-find-file)
-; (define-key evil-normal-state-map  (kbd "C-c C-z") 'suspend-emacs)
-(define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)
-; Mapping for C-i
-(define-key evil-normal-state-map (kbd "H-i") 'evil-jump-forward)
-
-(define-key evil-normal-state-map "L" 'evil-end-of-line)
-
-(define-key evil-normal-state-map (kbd "zn")
-  (lambda () (interactive) (progn
-			     (move-end-of-line nil)
-			     (newline-and-indent))))
-
-
-(define-key evil-normal-state-map (kbd "zp")
-  (lambda () (interactive) (progn
-			     (move-beginning-of-line nil)
-			     (newline-and-indent))))
 
 ; Utility stuff
 
@@ -120,17 +117,17 @@
 The first directory containing one of project-root-markers is the root.
 If no root marker is found, the current working directory is used."
   (let ((cwd (if (buffer-file-name)
-                 (directory-file-name
-                  (file-name-directory (buffer-file-name)))
-               (file-truename "."))))
+		 (directory-file-name
+		  (file-name-directory (buffer-file-name)))
+	       (file-truename "."))))
     (or (find-project-root cwd project-root-markers)
-        cwd)))
+	cwd)))
 
 (defun find-project-root (path root-markers)
   "Tail-recursive part of project-root."
   (let* ((this-dir (file-name-as-directory (file-truename path)))
-         (parent-dir (expand-file-name (concat this-dir "..")))
-         (system-root-dir (expand-file-name "/")))
+	 (parent-dir (expand-file-name (concat this-dir "..")))
+	 (system-root-dir (expand-file-name "/")))
     (cond
      ((root-p path root-markers) this-dir)
      ((equal system-root-dir this-dir) nil)
@@ -140,16 +137,16 @@ If no root marker is found, the current working directory is used."
   "True if any value in SEQ matches PRED."
   (catch 'found
     (cl-map nil (lambda (v)
-                  (when (funcall pred v)
-                    (throw 'found v)))
-            seq)))
+		  (when (funcall pred v)
+		    (throw 'found v)))
+	    seq)))
 
 (defun root-p (path root-markers)
   "Predicate to check if the given directory is a project root."
   (let ((dir (file-name-as-directory path)))
     (anyp (lambda (marker)
-                  (file-exists-p (concat dir marker)))
-                root-markers)))
+		  (file-exists-p (concat dir marker)))
+		root-markers)))
 
 (defun move-window-or-create (dir)
   "Move to window in a direction or create if it doesnt exist"
@@ -163,36 +160,6 @@ If no root marker is found, the current working directory is used."
       (error (progn
 	       (split-window nil nil dir)
 	       (funcall move-func 1))))))
-
-(define-key evil-normal-state-map (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
-(define-key evil-normal-state-map (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
-(define-key evil-normal-state-map (kbd "C-k") (lambda () (interactive) (move-window-or-create 'above)))
-(define-key evil-normal-state-map (kbd "C-l") (lambda () (interactive) (move-window-or-create 'right)))
-
-; Evil "leader" mappings
-
-(define-key evil-normal-state-map ",wd" 'evil-window-delete)
-(define-key evil-normal-state-map ",wo" 'delete-other-windows)
-(define-key evil-normal-state-map ",bd" 'kill-this-buffer)
-(define-key evil-normal-state-map ",bl" 'bs-show)
-(define-key evil-normal-state-map ",ev" (lambda () (interactive)
-					  (find-file "~/.vimrc")))
-(define-key evil-normal-state-map ",ee" (lambda () (interactive)
-					  (find-file "~/.emacs.d/init.el")))
-
-(define-key evil-normal-state-map ",l" 'linum-mode)
-(global-set-key (kbd "\\") 'evilnc-comment-or-uncomment-lines)
-(define-key evil-normal-state-map ",c" 'evilnc-comment-or-uncomment-lines)
-(define-key evil-visual-state-map ",c" 'evilnc-comment-or-uncomment-lines)
-
-
-(define-key evil-normal-state-map "gb" 'ido-switch-buffer)
-(define-key evil-normal-state-map "gs" 'shell)
-(define-key evil-normal-state-map "gS" 'ansi-term)
-
-(define-key evil-normal-state-map (kbd ", SPC") (lambda ()
-						  (interactive)
-						  (switch-to-buffer (other-buffer))))
 
 
 (evil-define-command cofi/maybe-exit ()
@@ -226,7 +193,8 @@ If no root marker is found, the current working directory is used."
     (let ((default-directory (project-root)))
       (start-process "py-test:all"
 		     results-buffer-name
-		     "py.test"))
+		     "py.test"
+		     "-s"))
     (display-buffer results-buffer-name)))
 
 (defun pytest-test-current-file ()
@@ -262,11 +230,11 @@ If no root marker is found, the current working directory is used."
 	  (set-buffer results-buffer-name)
 	  (erase-buffer)))
     (start-process process-name
- 		   results-buffer-name
- 		   "py.test"
- 		   test-file-full
- 		   "-k"
- 		   (format "%s" testname))
+		   results-buffer-name
+		   "py.test"
+		   test-file-full
+		   "-k"
+		   (format "%s" testname))
     (display-buffer results-buffer-name)))
 
 (add-hook 'python-mode-hook (lambda ()
@@ -276,6 +244,8 @@ If no root marker is found, the current working directory is used."
 			      (local-set-key (kbd "C-c t f") 'pytest-test-current-file)
 			      (local-set-key (kbd "C-c t t") 'pytest-test-specific-test)
 			      ))
+
+(add-hook 'comint-mode-hook 'evil-emacs-state)
 
 
 (setq
@@ -301,7 +271,6 @@ If no root marker is found, the current working directory is used."
 ;(defconst py-pdbtrack-input-prompt "\n[(<]*[Pp]db[>)]+ "
 (defconst py-pdbtrack-input-prompt "\n[(<]*[Ii]?[Pp]db[>)]+ "; this is new
    "Regular expression pdbtrack uses to recognize a pdb prompt.")
-
 ;; (py-pdbtrack-overlay-arrow nil)
 ;; (setq block (ansi-color-filter-apply block)) ; this is new
 ;; (setq target (py-pdbtrack-get-source-buffer block))
@@ -323,3 +292,5 @@ If no root marker is found, the current working directory is used."
 (put 'narrow-to-region 'disabled nil)
 
 (load-theme 'solarized-dark)
+
+(require 'keybindings)
