@@ -97,6 +97,8 @@
 (autoload 'pytest-test-all "util" nil t)
 (autoload 'pytest-test-current-file "util" nil t)
 (autoload 'pytest-test-specific-test "util" nil t)
+(autoload 'delete-single-window "util" nil t)
+(autoload 'eshell-here "util" nil t)
 
 ; Enable auto-complete
 (require 'auto-complete-config)
@@ -189,4 +191,7 @@
 
 (load-theme 'zenburn)
 
+(require 'eshell-config)
+(require 'comint-config)
+(require 'evil-config)
 (require 'keybindings)
