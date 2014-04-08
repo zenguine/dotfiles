@@ -23,7 +23,6 @@
 (defvar packages-list
   '(
     auto-complete
-    autopair
     color-theme-solarized
     evil
     evil-leader
@@ -42,6 +41,7 @@
     magit
     projectile
     python-mode
+    smartparens
     smex
     zenburn-theme
     )
@@ -84,8 +84,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(autoload 'autopair-global-mode "autopair" nil t)
-(autopair-global-mode)
 (ido-vertical-mode)
 (global-hl-line-mode 1)
 
@@ -99,6 +97,7 @@
 (autoload 'pytest-test-specific-test "util" nil t)
 (autoload 'delete-single-window "util" nil t)
 (autoload 'eshell-here "util" nil t)
+(autoload 'get-buffers-matching-mode "util" nil t)
 
 ; Enable auto-complete
 (require 'auto-complete-config)
@@ -191,7 +190,11 @@
 
 (load-theme 'zenburn)
 
-(require 'eshell-config)
 (require 'comint-config)
+(require 'eshell-config)
 (require 'evil-config)
+(require 'helm-config)
+(require 'misc-config)
+(require 'my-smartparens-config)
+
 (require 'keybindings)

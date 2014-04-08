@@ -118,13 +118,20 @@ If no root marker is found, the current working directory is used."
     (eshell-send-input)))
 
 (defun delete-single-window (&optional window)
-  "Remove WINDOW from the display.  Default is `selected-window'.
-If WINDOW is the only one in its frame, then `delete-frame' too."
+  "Remove WINDOW from the display.  Default is `selected-window'."
   (interactive)
   (save-current-buffer
     (setq window (or window (selected-window)))
     (select-window window)
     (kill-buffer)
-    (if (one-window-p t)
-	(delete-frame)
+    (if (not (one-window-p t))
 	(delete-window (selected-window)))))
+
+(defun get-buffers-matching-mode (mode)
+  "Returns a list of buffers where their major-mode is equal to MODE"
+  (let ((buffer-mode-matches '()))
+   (dolist (buf (buffer-list))
+     (with-current-buffer buf
+       (if (eq mode major-mode)
+	   (add-to-list 'buffer-mode-matches buf))))
+   buffer-mode-matches))

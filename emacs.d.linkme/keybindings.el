@@ -6,6 +6,7 @@
 (global-set-key (kbd "C-c h") help-map)
 (global-set-key (kbd "C-c h a") 'helm-apropos)
 (global-set-key (kbd "C-c o") 'helm-occur)
+(global-set-key (kbd "C-c C-o") 'helm-multi-occur-in-this-mode)
 (global-set-key (kbd "C-c i") 'helm-imenu)
 (global-set-key (kbd "C-x g") 'magit-status)
 
