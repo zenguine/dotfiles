@@ -1,4 +1,4 @@
-;; Load ELPA
+; Load ELPA
 ;;; -*- lexical-binding: t -*-
 
 (require 'package)
@@ -40,6 +40,7 @@
     jedi
     key-chord
     magit
+    multi-term
     projectile
     python-mode
     smartparens
@@ -73,7 +74,7 @@
 (setq-default show-trailing-whitespace t)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; no backup files
 (setq make-backup-files nil
@@ -129,17 +130,14 @@
 (setq jedi:complete-on-dot t)
 (setq jedi:get-in-function-call-delay 100)
 
-(add-hook 'python-mode-hook (lambda ()
-			      ; (flycheck-mode 0)
-			      (local-set-key (kbd "C-c !") 'python-shell-switch-to-shell)
-			      (local-set-key (kbd "C-c t a") 'pytest-test-all)
-			      (local-set-key (kbd "C-c t f") 'pytest-test-current-file)
-			      (local-set-key (kbd "C-c t t") 'pytest-test-specific-test)
-			      (jedi:setup)
-			      ))
+(defun my-python-mode-hook ()
+  (local-set-key (kbd "C-c !") 'python-shell-switch-to-shell)
+  (local-set-key (kbd "C-c t a") 'pytest-test-all)
+  (local-set-key (kbd "C-c t f") 'pytest-test-current-file)
+  (local-set-key (kbd "C-c t t") 'pytest-test-specific-test)
+  (jedi:setup))
 
-(add-hook 'comint-mode-hook 'evil-emacs-state)
-
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 (setq
  python-shell-interpreter "ipython"
@@ -177,6 +175,7 @@
 (require 'evil-config)
 (require 'helm-config)
 (require 'misc-config)
+(require 'term-config)
 (require 'my-smartparens-config)
 
 (require 'keybindings)
