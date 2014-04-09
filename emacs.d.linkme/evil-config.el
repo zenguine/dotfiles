@@ -1,6 +1,22 @@
 (require 'evil)
 (require 'cl)
 
+(evil-define-command cofi/maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "j")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?k)
+			   nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?k))
+	(delete-char -1)
+	(set-buffer-modified-p modified)
+	(push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+					      (list evt))))))))
+
 (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 (define-key evil-normal-state-map  (kbd "C-p") 'fiplr-find-file)
@@ -22,19 +38,23 @@
 
 ; Evil "leader" mappings
 
-(define-key evil-normal-state-map ",wd" 'evil-window-delete)
-(define-key evil-normal-state-map ",wo" 'delete-other-windows)
-(define-key evil-normal-state-map ",bd" 'kill-this-buffer)
-(define-key evil-normal-state-map ",bl" 'bs-show)
-(define-key evil-normal-state-map ",ev" (lambda () (interactive)
+(define-key evil-normal-state-map " j" 'ace-jump-mode)
+(define-key evil-normal-state-map " J" 'ace-jump-char-mode)
+(define-key evil-normal-state-map " wd" 'evil-window-delete)
+(define-key evil-normal-state-map "  " 'smex)
+(define-key evil-visual-state-map "  " 'smex)
+(define-key evil-normal-state-map " wo" 'delete-other-windows)
+(define-key evil-normal-state-map " bd" 'kill-this-buffer)
+(define-key evil-normal-state-map " bl" 'bs-show)
+(define-key evil-normal-state-map " ev" (lambda () (interactive)
 					  (find-file "~/.vimrc")))
-(define-key evil-normal-state-map ",ee" (lambda () (interactive)
+(define-key evil-normal-state-map " ee" (lambda () (interactive)
 					  (find-file "~/.emacs.d/init.el")))
 
-(define-key evil-normal-state-map ",l" 'linum-mode)
+(define-key evil-normal-state-map " l" 'linum-mode)
 
-(define-key evil-normal-state-map ",c" 'evilnc-comment-or-uncomment-lines)
-(define-key evil-visual-state-map ",c" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-normal-state-map " c" 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map " c" 'evilnc-comment-or-uncomment-lines)
 
 
 (define-key evil-normal-state-map "gb" 'ido-switch-buffer)

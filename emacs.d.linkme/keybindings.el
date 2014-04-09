@@ -9,6 +9,9 @@
 (global-set-key (kbd "C-c C-o") 'helm-multi-occur-in-this-mode)
 (global-set-key (kbd "C-c i") 'helm-imenu)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x k") (lambda ()
+		(interactive)
+		(kill-buffer (current-buffer))))
 
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))

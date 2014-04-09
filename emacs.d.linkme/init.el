@@ -16,12 +16,13 @@
 (global-surround-mode 1)
 (require 'cl)
 
-; Separate tab from C-i
-(define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+(defadvice terminal-init-xterm (around map-S-up-escape-sequence activate)
+  (define-key input-decode-map (kbd "C-i") (kbd "H-i")))
 
 ;; Guarantee all packages are installed on start
 (defvar packages-list
   '(
+    ace-jump-mode
     auto-complete
     color-theme-solarized
     evil
@@ -103,43 +104,21 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-; Evil mode customization
 (evil-mode 1)
-
 (ido-mode 1)
 (flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (projectile-global-mode 1)
-
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
-; (helm-mode 1)
-
 (setq evil-want-C-u-scroll t)
-
 
 ; Utility stuff
 
 ; Find project root based on .git file or something
 
 (setq project-root-markers '(".git" ".svn"))
-
-(evil-define-command cofi/maybe-exit ()
-  :repeat change
-  (interactive)
-  (let ((modified (buffer-modified-p)))
-    (insert "j")
-    (let ((evt (read-event (format "Insert %c to exit insert state" ?k)
-			   nil 0.5)))
-      (cond
-       ((null evt) (message ""))
-       ((and (integerp evt) (char-equal evt ?k))
-	(delete-char -1)
-	(set-buffer-modified-p modified)
-	(push 'escape unread-command-events))
-       (t (setq unread-command-events (append unread-command-events
-					      (list evt))))))))
 
 ;; Mode configuratoin
 ;python
