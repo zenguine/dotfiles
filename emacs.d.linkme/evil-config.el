@@ -35,7 +35,6 @@
 			     (move-beginning-of-line nil)
 			     (newline-and-indent))))
 
-
 ; Evil "leader" mappings
 
 (define-key evil-normal-state-map "]o" 'occur-next)
@@ -71,9 +70,8 @@
 (define-key evil-normal-state-map "g$" 'shell)
 (define-key evil-normal-state-map "gS" 'multi-term-next)
 
-(define-key evil-normal-state-map (kbd ", SPC") (lambda ()
-						  (interactive)
-						  (switch-to-buffer (other-buffer))))
+(define-key evil-normal-state-map (kbd ", SPC") 'switch-to-other-buffer)
+(define-key evil-normal-state-map (kbd "SPC ,") 'switch-to-other-buffer)
 
 ; Key-chord bindings
 (key-chord-define evil-emacs-state-map (kbd "SPC SPC") 'smex)
@@ -86,6 +84,7 @@
 (key-chord-define evil-emacs-state-map (kbd "SPC x") 'delete-single-window)
 (key-chord-define evil-emacs-state-map (kbd "SPC f") 'ido-find-file)
 (key-chord-define evil-emacs-state-map (kbd "SPC b") 'ido-switch-buffer)
+(key-chord-define evil-emacs-state-map (kbd "SPC ,") 'switch-to-other-buffer)
 
 (cl-loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
 				 (pylookup-mode . emacs)

@@ -93,6 +93,7 @@
 (setq key-chord-one-key-delay 0.2)
 
 (autoload 'project-root "util" nil t)
+(autoload 'switch-to-other-buffer "util" nil t)
 (autoload 'multi-term-toggle "util" nil t)
 (autoload 'find-project-root "util" nil t)
 (autoload 'anyp "util" nil t)

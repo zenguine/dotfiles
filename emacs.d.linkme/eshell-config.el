@@ -17,7 +17,8 @@
   (local-set-key (kbd "C-c C-l") 'eshell/clear)
   (local-set-key (kbd "C-d") 'eshell-send-eof-to-process)
   (local-unset-key (kbd "C-j"))
-  (setq-local show-trailing-whitespace nil))
+  (setq-local show-trailing-whitespace nil)
+  (add-to-list 'eshell-visual-commands "watch"))
 
 (eval-after-load 'esh-opt
   '(progn

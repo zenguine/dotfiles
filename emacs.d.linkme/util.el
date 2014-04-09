@@ -19,6 +19,9 @@ If no root marker is found, the current working directory is used."
      ((equal system-root-dir this-dir) nil)
      (t (find-project-root parent-dir root-markers)))))
 
+(defun switch-to-other-buffer () (interactive)
+  (switch-to-buffer (other-buffer)))
+
 (defun multi-term-toggle ()
   "If there is only one multi-term window.. this should toggle between a term
 window and a non-term window"
