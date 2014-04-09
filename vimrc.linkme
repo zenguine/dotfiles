@@ -673,7 +673,7 @@ augroup end
 
 " For tomorrow night colorscheme
 set background=dark
-color solarized
+color zenburn
 
 "}}}
 " Refactoring Functions {{{
