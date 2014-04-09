@@ -75,11 +75,8 @@
 
 ; Key-chord bindings
 (key-chord-define evil-emacs-state-map (kbd "SPC SPC") 'smex)
-(key-chord-define evil-emacs-state-map (kbd "SPC j") 'ace-jump-mode)
-(key-chord-define evil-emacs-state-map (kbd "SPC J") 'ace-jump-char-mode)
 (key-chord-define evil-emacs-state-map (kbd "SPC c") 'evil-window-delete)
 (key-chord-define evil-emacs-state-map (kbd "SPC 1") 'delete-other-windows)
-(key-chord-define evil-emacs-state-map (kbd "SPC l") 'linum-mode)
 (key-chord-define evil-emacs-state-map (kbd "SPC k") 'kill-this-buffer)
 (key-chord-define evil-emacs-state-map (kbd "SPC x") 'delete-single-window)
 (key-chord-define evil-emacs-state-map (kbd "SPC f") 'ido-find-file)
