@@ -38,24 +38,33 @@
 
 ; Evil "leader" mappings
 
-(define-key evil-normal-state-map " j" 'ace-jump-mode)
-(define-key evil-normal-state-map " J" 'ace-jump-char-mode)
-(define-key evil-normal-state-map " wd" 'evil-window-delete)
+(define-key evil-normal-state-map "]o" 'occur-next)
+(define-key evil-normal-state-map "[o" 'occur-prev)
+(define-key evil-normal-state-map "]s" 'forward-sexp)
+(define-key evil-normal-state-map "[s" 'backward-sexp)
+(define-key evil-normal-state-map "]e" 'next-error)
+(define-key evil-normal-state-map "[e" 'previous-error)
+
+(define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
+(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
+(define-key evil-normal-state-map (kbd "SPC j") 'ace-jump-mode)
+(define-key evil-normal-state-map (kbd "SPC J") 'ace-jump-char-mode)
+
+(define-key evil-normal-state-map " c" 'evil-window-delete)
 (define-key evil-normal-state-map "  " 'smex)
 (define-key evil-visual-state-map "  " 'smex)
 (define-key evil-normal-state-map " wo" 'delete-other-windows)
-(define-key evil-normal-state-map " bd" 'kill-this-buffer)
-(define-key evil-normal-state-map " bl" 'bs-show)
+(define-key evil-normal-state-map " 1" 'delete-other-windows)
+(define-key evil-normal-state-map " k" 'kill-this-buffer)
+(define-key evil-normal-state-map " x" 'delete-single-window)
+(define-key evil-normal-state-map " b" 'ido-switch-buffer)
+(define-key evil-normal-state-map " f" 'ido-find-file)
 (define-key evil-normal-state-map " ev" (lambda () (interactive)
 					  (find-file "~/.vimrc")))
 (define-key evil-normal-state-map " ee" (lambda () (interactive)
 					  (find-file "~/.emacs.d/init.el")))
 
 (define-key evil-normal-state-map " l" 'linum-mode)
-
-(define-key evil-normal-state-map " c" 'evilnc-comment-or-uncomment-lines)
-(define-key evil-visual-state-map " c" 'evilnc-comment-or-uncomment-lines)
-
 
 (define-key evil-normal-state-map "gb" 'ido-switch-buffer)
 (define-key evil-normal-state-map "gs" 'eshell-here)
@@ -65,6 +74,18 @@
 (define-key evil-normal-state-map (kbd ", SPC") (lambda ()
 						  (interactive)
 						  (switch-to-buffer (other-buffer))))
+
+; Key-chord bindings
+(key-chord-define evil-emacs-state-map (kbd "SPC SPC") 'smex)
+(key-chord-define evil-emacs-state-map (kbd "SPC j") 'ace-jump-mode)
+(key-chord-define evil-emacs-state-map (kbd "SPC J") 'ace-jump-char-mode)
+(key-chord-define evil-emacs-state-map (kbd "SPC c") 'evil-window-delete)
+(key-chord-define evil-emacs-state-map (kbd "SPC 1") 'delete-other-windows)
+(key-chord-define evil-emacs-state-map (kbd "SPC l") 'linum-mode)
+(key-chord-define evil-emacs-state-map (kbd "SPC k") 'kill-this-buffer)
+(key-chord-define evil-emacs-state-map (kbd "SPC x") 'delete-single-window)
+(key-chord-define evil-emacs-state-map (kbd "SPC f") 'ido-find-file)
+(key-chord-define evil-emacs-state-map (kbd "SPC b") 'ido-switch-buffer)
 
 (cl-loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
 				 (pylookup-mode . emacs)
