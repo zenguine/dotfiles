@@ -136,6 +136,7 @@
 ;python
 
 (setq jedi:complete-on-dot t)
+(setq jedi:install-imenu t)
 (setq jedi:get-in-function-call-delay 100)
 
 (defun my-python-mode-hook ()
