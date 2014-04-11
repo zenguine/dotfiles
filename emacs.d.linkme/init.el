@@ -94,8 +94,8 @@
 (ido-vertical-mode)
 (global-hl-line-mode 1)
 (key-chord-mode +1)
-(setq key-chord-two-keys-delay 0.01)
-(setq key-chord-one-key-delay 0.2)
+(setq key-chord-two-keys-delay 0.015)
+(setq key-chord-one-key-delay 0.08)
 
 (autoload 'project-root "util" nil t)
 (autoload 'switch-to-other-buffer "util" nil t)
