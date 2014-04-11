@@ -1,14 +1,21 @@
 (require 'evil)
 (require 'cl)
 
-(setq evil-magic 'very-magic)
-
 (setq evil-emacs-state-cursor '("red" box))
 (setq evil-normal-state-cursor '("green" box))
 (setq evil-visual-state-cursor '("orange" box))
 (setq evil-insert-state-cursor '("red" bar))
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
+(setq evil-search-module 'evil-search)
+(setq evil-ex-search-vim-style-regexp t)
+(setq evil-magic 'very-magic)
+
+(defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
+  (evil-scroll-line-to-center (line-number-at-pos)))
+
+(defadvice evil-ex-search-previous (after advice-for-evil-ex-search-previous activate)
+  (evil-scroll-line-to-center (line-number-at-pos)))
 
 (evil-define-command cofi/maybe-exit ()
   :repeat change
