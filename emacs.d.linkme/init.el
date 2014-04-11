@@ -74,8 +74,12 @@
 (setq inhibit-startup-message t)
 (setq-default show-trailing-whitespace t)
 
-(add-hook 'before-save-hook 'whitespace-cleanup)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
+(setq c-basic-offset 4)
 
 ; no backup files
 (setq make-backup-files nil
