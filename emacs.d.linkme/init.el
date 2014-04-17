@@ -98,6 +98,9 @@
 (setq key-chord-one-key-delay 0.08)
 
 (autoload 'project-root "util" nil t)
+(autoload 'erc "erc" nil t)
+(autoload 'start-irc "erc-config" nil t)
+(autoload 'start-or-switch-irc "erc-config" nil t)
 (autoload 'switch-to-other-buffer "util" nil t)
 (autoload 'multi-term-toggle "util" nil t)
 (autoload 'find-project-root "util" nil t)
@@ -182,3 +185,5 @@
 (require 'my-smartparens-config)
 
 (require 'keybindings)
+
+(start-or-switch-irc t)
