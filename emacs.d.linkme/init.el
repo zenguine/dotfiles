@@ -6,9 +6,9 @@
 (setq evil-want-C-u-scroll t)
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (load "surround.el")
@@ -52,8 +52,8 @@
 
 (defun has-package-not-installed ()
   (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
+	when (not (package-installed-p p)) do (return t)
+	finally (return nil)))
 (when (has-package-not-installed)
   ;; Check for new packages (package versions)
   (message "%s" "Get latest versions of all packages...")
@@ -129,6 +129,7 @@
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
 (setq evil-want-C-u-scroll t)
+(setq undo-tree-auto-save-history t)
 
 ; Utility stuff
 
@@ -148,7 +149,8 @@
   (local-set-key (kbd "C-c t a") 'pytest-test-all)
   (local-set-key (kbd "C-c t f") 'pytest-test-current-file)
   (local-set-key (kbd "C-c t t") 'pytest-test-specific-test)
-  (jedi:setup))
+  (jedi:setup)
+  (modify-syntax-entry ?_ "w"))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
@@ -164,20 +166,8 @@
  python-shell-completion-string-code
  "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
-
-; From solarized color scheme apparently?
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("a53714de04cd4fdb92ed711ae479f6a1d7d5f093880bfd161467c3f589725453" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 (put 'narrow-to-region 'disabled nil)
 
