@@ -62,8 +62,6 @@
 
 (define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
-(define-key evil-normal-state-map (kbd ", j") 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd ", J") 'ace-jump-char-mode)
 
 (define-key evil-normal-state-map " c" 'evil-window-delete)
 (define-key evil-normal-state-map "  " 'smex)
@@ -87,7 +85,7 @@
 (define-key evil-normal-state-map "g$" 'shell)
 (define-key evil-normal-state-map "gS" 'multi-term-next)
 
-(define-key evil-normal-state-map (kbd ", SPC") 'switch-to-other-buffer)
+(define-key evil-normal-state-map (kbd "SPC ,") 'switch-to-other-buffer)
 
 ; Key-chord bindings
 (key-chord-define evil-emacs-state-map " c" 'evil-window-delete)
