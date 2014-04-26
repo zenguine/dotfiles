@@ -182,6 +182,8 @@
 (require 'helm-config)
 (require 'misc-config)
 (require 'term-config)
+(require 'org-config)
+(require 'evil-org)
 (require 'my-smartparens-config)
 
 (require 'keybindings)
