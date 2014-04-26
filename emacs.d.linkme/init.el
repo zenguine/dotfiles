@@ -134,6 +134,8 @@
 (setq evil-intercept-maps nil)
 (setq evil-want-C-u-scroll t)
 (setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 
 ; Utility stuff
 
