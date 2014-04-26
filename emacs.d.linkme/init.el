@@ -92,6 +92,7 @@
 (scroll-bar-mode -1)
 
 (ido-vertical-mode)
+(sublimity-mode t)
 (global-hl-line-mode 1)
 (key-chord-mode +1)
 (setq key-chord-two-keys-delay 0.015)

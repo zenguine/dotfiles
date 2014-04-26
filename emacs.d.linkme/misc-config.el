@@ -12,6 +12,6 @@
 (require 'sublimity-scroll)
 
 (setq sublimity-scroll-weight 10
-      sublimity-scroll-drift-length 5)
+      sublimity-scroll-drift-length 3)
 
 (provide 'misc-config)
