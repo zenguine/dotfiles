@@ -11,9 +11,9 @@
 
 (setq org-agenda-files (list (concat org-directory "/work.org")
 			     (concat org-directory "/personal.org")
-			     (concat org-directory "/notes.org")))
+			     (concat org-directory "/refile.org")))
 
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/refile.org"))
 
 					; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
