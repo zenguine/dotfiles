@@ -12,9 +12,10 @@
 (global-set-key (kbd "C-c T") 'multi-term)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
+(global-set-key (kbd "C-c m") 'mu4e)
 (global-set-key (kbd "C-x k") (lambda ()
-				(interactive)
-				(kill-buffer (current-buffer))))
+                                (interactive)
+                                (kill-buffer (current-buffer))))
 
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
