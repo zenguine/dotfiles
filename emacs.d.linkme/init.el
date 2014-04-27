@@ -189,6 +189,7 @@
 (require 'org-config)
 (require 'evil-org)
 (require 'mu4e-config)
+(require 'org-mu4e)
 (require 'my-smartparens-config)
 
 (require 'keybindings)

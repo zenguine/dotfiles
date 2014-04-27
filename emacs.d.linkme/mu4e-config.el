@@ -1,6 +1,7 @@
 (require 'mu4e)
 
 ;; default
+(setq mail-user-agent 'mu4e-user-agent)
 (setq mu4e-maildir "~/.mail")
 (setq mu4e-drafts-folder "/drafts")
 (setq mu4e-sent-folder   "/sent")
@@ -51,6 +52,11 @@
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
+
+(defun my-mu4e-mode-hook ()
+  (setq show-trailing-whitespace nil))
+
+(add-hook mu4e-headers-)
 
 ;;----------------------------------------------------------
 ;; ---- END Email client ----
