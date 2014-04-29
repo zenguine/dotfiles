@@ -3,8 +3,8 @@
 (require 'erc-notify)
 
 (setq erc-autojoin-channels-alist '(("freenode.net"
-				     "#emacs" "#haskell" "#python"
-				     "#vim" "##javascript")))
+                                     "#emacs" "#haskell" "#python"
+                                     "#vim" "##javascript")))
 
 (setq erc-kill-buffer-on-part t)
 (setq erc-kill-queries-on-quit t)
@@ -14,9 +14,9 @@
 ;; exclude boring stuff from tracking
 (erc-track-mode t)
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
-				"324" "329" "332" "333" "353" "477"))
+                                "324" "329" "332" "333" "353" "477"))
 
-(setq erc-hide-list '("JOIN" "PART" "NICK"))
+(setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
 
 ;; logging
 (setq erc-log-channels-directory "~/.erc/logs/")
@@ -38,7 +38,7 @@
   (erc-services-mode 1)
   (setq erc-prompt-for-nickserv-password nil)
   (setq erc-nickserv-passwords
-	`((freenode (("jcullen" . ,jcullen-pass))))))
+        `((freenode (("jcullen" . ,jcullen-pass))))))
 
 ;; Notifications
 (autoload 'erc-nick-notify-mode "erc-nick-notify"
@@ -49,10 +49,10 @@ mentioned in an erc channel" t)
 ;; private message notification
 (defun erc-notify-on-private-msg (proc parsed)
   (let ((nick (car (erc-parse-user (erc-response.sender parsed))))
-	(target (car (erc-response.command-args parsed)))
-	(msg (erc-response.contents parsed)))
+        (target (car (erc-response.command-args parsed)))
+        (msg (erc-response.contents parsed)))
     (when (and (erc-current-nick-p target)
-	       (not (erc-is-message-ctcp-and-not-action-p msg)))
+               (not (erc-is-message-ctcp-and-not-action-p msg)))
       (shell-command-to-string
        (format "notify-send -u critical '%s says:' '%s'" nick msg))
       nil)))
