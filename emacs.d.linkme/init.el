@@ -6,9 +6,9 @@
 (setq evil-want-C-u-scroll t)
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (add-to-list 'load-path "~/.emacs.d/mu4e")
@@ -53,8 +53,8 @@
 
 (defun has-package-not-installed ()
   (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
+	when (not (package-installed-p p)) do (return t)
+	finally (return nil)))
 (when (has-package-not-installed)
   ;; Check for new packages (package versions)
   (message "%s" "Get latest versions of all packages...")

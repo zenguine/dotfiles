@@ -14,8 +14,14 @@
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
 (global-set-key (kbd "C-c m") 'mu4e)
 (global-set-key (kbd "C-x k") (lambda ()
-                                (interactive)
-                                (kill-buffer (current-buffer))))
+				(interactive)
+				(kill-buffer (current-buffer))))
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cc" 'org-capture)
+
 
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
