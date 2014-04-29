@@ -161,6 +161,11 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
+(defun my-lisp-mode-hook ()
+  (modify-syntax-entry ?- "w"))
+
+(add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
+
 (setq
  python-shell-interpreter "ipython"
  python-shell-interpreter-args ""
