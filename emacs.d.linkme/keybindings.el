@@ -17,6 +17,9 @@
 				(interactive)
 				(kill-buffer (current-buffer))))
 
+(global-set-key (kbd "C-\\") 'universal-argument)
+(define-key universal-argument-map (kbd "C-\\") 'universal-argument-more)
+
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
