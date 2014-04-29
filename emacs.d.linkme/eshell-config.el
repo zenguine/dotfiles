@@ -1,4 +1,5 @@
 (defun eshell/x (&rest args)
+  (interactive)
   (delete-single-window))
 
 (defun eshell/clear (&rest args)
