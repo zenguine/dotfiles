@@ -8,7 +8,8 @@
  '(erc-nick "jcullen")
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
- '(evil-search-module (quote evil-search)))
+ '(evil-search-module (quote evil-search))
+ '(org-agenda-files (quote ("~/org/personal.org" "~/org/work.org" "~/org/refile.org"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

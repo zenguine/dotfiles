@@ -49,10 +49,10 @@ Example usage:
 
   (defun my-link-descr (msg)
     (let ((subject (or (plist-get msg :subject)
-                       \"No subject\"))
-          (date (or (format-time-string mu4e-headers-date-format
-                    (mu4e-msg-field msg :date))
-                    \"No date\")))
+		       \"No subject\"))
+	  (date (or (format-time-string mu4e-headers-date-format
+		    (mu4e-msg-field msg :date))
+		    \"No date\")))
       (concat subject \" \" date)))
 
   (setq org-mu4e-link-desc-func 'my-link-descr)"
@@ -62,27 +62,47 @@ Example usage:
 (defun org-mu4e-store-link ()
   "Store a link to a mu4e query or message."
   (cond
-    ;; storing links to queries
-    ((eq major-mode 'mu4e-headers-mode)
-      (let* ((query (mu4e-last-query))
-	      desc link)
-	(org-store-link-props :type "mu4e" :query query)
-	(setq
-	  desc (concat "mu4e:query:" query)
-	  link desc)
-	(org-add-link-props :link link :description desc)
-	link))
-      ;; storing links to messages
-    ((eq major-mode 'mu4e-view-mode)
-      (let* ((msg  (mu4e-message-at-point))
-	     (msgid   (or (plist-get msg :message-id) "<none>"))
-	     link)
-       (org-store-link-props :type "mu4e" :link link
-			     :message-id msgid)
-       (setq link (concat "mu4e:msgid:" msgid))
-       (org-add-link-props :link link
-			   :description (funcall org-mu4e-link-desc-func msg))
-       link))))
+   ;; storing links to queries
+   ((eq major-mode 'mu4e-headers-mode)
+    (let* ((query (mu4e-last-query))
+	   desc link)
+      (org-store-link-props :type "mu4e" :query query)
+      (setq
+       desc (concat "mu4e:query:" query)
+       link desc)
+      (org-add-link-props :link link :description desc)
+      link))
+   ;; storing links to messages
+   ((eq major-mode 'mu4e-view-mode)
+    (let* ((msg  (mu4e-message-at-point))
+	   (msgid   (or (plist-get msg :message-id) "<none>"))
+	   (from  (or (plist-get msg :from) '(("none" . "none"))))
+	   (fromname (car (car from)))
+	   (fromaddress (cdr (car from)))
+	   (to  (or (plist-get msg :to) '(("none" . "none"))))
+	   (toname (car (car to)))
+	   (toaddress (cdr (car to)))
+	   (date (plist-get msg :date))
+	   (date-ts (format-time-string (org-time-stamp-format t) date))
+	   (date-ts-ia (format-time-string (org-time-stamp-format t t) date))
+	   (subject  (or (plist-get msg :subject) "<none>"))
+	   link)
+      (org-store-link-props :type "mu4e" :link link
+			    :message-id msgid)
+      (setq link (concat "mu4e:msgid:" msgid))
+      (org-add-link-props :link link
+			  :to (format "%s <%s>" toname toaddress)
+			  :toname toname
+			  :toaddress toaddress
+			  :from (format "%s <%s>" fromname fromaddress)
+			  :fromname fromname
+			  :fromaddress fromaddress
+			  :date date-ts-ia
+			  :date-timestamp date-ts
+			  :date-timestamp-inactive date-ts-ia
+			  :subject subject
+			  :description (funcall org-mu4e-link-desc-func msg))
+      link))))
 
 (org-add-link-type "mu4e" 'org-mu4e-open)
 (add-hook 'org-store-link-functions 'org-mu4e-store-link)
@@ -134,18 +154,18 @@ and images in a multipart/related part."
      (replace-regexp-in-string ;; replace images in html
       "src=\"\\([^\"]+\\)\""
       (lambda (text)
-        (format
-         "src=\"cid:%s\""
-         (let* ((url (and (string-match "src=\"\\([^\"]+\\)\"" text)
-                          (match-string 1 text)))
-                (path (expand-file-name
-                       url (file-name-directory current-file)))
-                (ext (file-name-extension path))
-                (id (replace-regexp-in-string "[\/\\\\]" "_" path)))
-           (add-to-list 'html-images
-                        (org~mu4e-mime-file
+	(format
+	 "src=\"cid:%s\""
+	 (let* ((url (and (string-match "src=\"\\([^\"]+\\)\"" text)
+			  (match-string 1 text)))
+		(path (expand-file-name
+		       url (file-name-directory current-file)))
+		(ext (file-name-extension path))
+		(id (replace-regexp-in-string "[\/\\\\]" "_" path)))
+	   (add-to-list 'html-images
+			(org~mu4e-mime-file
 			  (concat "image/" ext) path id))
-           id)))
+	   id)))
       str)
      html-images)))
 
@@ -186,7 +206,7 @@ and images in a multipart/related part."
 	(goto-char begin)
 	(newline)
 	(insert (org~mu4e-mime-multipart
-		  body html (mapconcat 'identity html-images "\n")))))) 
+		  body html (mapconcat 'identity html-images "\n"))))))
 
 ;; next some functions to make the org/mu4e-compose-mode switch as smooth as
 ;; possible.
@@ -221,7 +241,7 @@ body."
   (when org-mu4e-convert-to-html
     (mu4e-message "Converting to html")
     (org~mu4e-mime-convert-to-html)))
- 
+
 (defun org~mu4e-mime-switch-headers-or-body ()
   "Switch the buffer to either mu4e-compose-mode (when in headers)
 or org-mode (when in the body)."
@@ -252,7 +272,7 @@ or org-mode (when in the body)."
 	;; we're in the headers, but in org-mode?
 	;; if so, switch to mu4e-compose-mode
 	((and (<= (point) sepapoint) (eq major-mode 'org-mode))
-      	  (org~mu4e-mime-undecorate-headers)
+	  (org~mu4e-mime-undecorate-headers)
 	  (mu4e-compose-mode)
 	  (add-hook 'message-send-hook 'org~mu4e-mime-convert-to-html-maybe nil t)))
       ;; and add the hook
