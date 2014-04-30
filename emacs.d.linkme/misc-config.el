@@ -14,4 +14,13 @@
 (setq sublimity-scroll-weight 10
       sublimity-scroll-drift-length 3)
 
+(setq sml/theme 'respectful)
+(setq sml/shorten-directory t)
+(setq sml/shorten-modes t)
+(setq sml/name-width 40)
+(setq sml/mode-width 'full)
+(add-to-list 'sml/replacer-regexp-list '("^~/.dotfiles/emacs.d.linkme/" ":ED:"))
+(add-to-list 'sml/replacer-regexp-list '("^~/.dotfiles/" ":DF:"))
+(sml/setup)
+
 (provide 'misc-config)

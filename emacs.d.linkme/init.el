@@ -7,8 +7,6 @@
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (add-to-list 'load-path "~/.emacs.d/mu4e")
@@ -45,6 +43,7 @@
     multi-term
     projectile
     python-mode
+    smart-mode-line
     smartparens
     smex
     zenburn-theme
