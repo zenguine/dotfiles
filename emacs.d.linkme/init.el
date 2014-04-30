@@ -152,9 +152,9 @@
 
 (defun my-python-mode-hook ()
   (local-set-key (kbd "C-c !") 'python-shell-switch-to-shell)
-  (local-set-key (kbd "C-c t a") 'pytest-test-all)
-  (local-set-key (kbd "C-c t f") 'pytest-test-current-file)
-  (local-set-key (kbd "C-c t t") 'pytest-test-specific-test)
+  (local-set-key (kbd "C-c T a") 'pytest-test-all)
+  (local-set-key (kbd "C-c T f") 'pytest-test-current-file)
+  (local-set-key (kbd "C-c T t") 'pytest-test-specific-test)
   (jedi:setup)
   (modify-syntax-entry ?_ "w"))
 
