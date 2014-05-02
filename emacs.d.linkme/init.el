@@ -81,6 +81,8 @@
 (setq tab-width 4)
 (setq c-basic-offset 4)
 
+(add-to-list 'auto-mode-alist '("\\.hscm\\'" . scheme-mode))
+
 ; no backup files
 (setq make-backup-files nil
       backup-inhibited t
@@ -160,10 +162,15 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
-(defun my-lisp-mode-hook ()
+(defun my-elisp-mode-hook ()
   (modify-syntax-entry ?- "w"))
 
-(add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
+(add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)
+
+(defun my-lisp-interaction-mode-hook ()
+  (local-unset-key (kbd "C-j")))
+
+(add-hook 'lisp-interaction-mode-hook 'my-lisp-interaction-mode-hook)
 
 (setq
  python-shell-interpreter "ipython"
@@ -195,7 +202,11 @@
 (require 'mu4e-config)
 (require 'org-mu4e)
 (require 'my-smartparens-config)
+(require 'sml-config)
+
+; Do this after frame creation because otherwise the respectful theme seems to not
+; grab the colors correctly.
 
 (require 'keybindings)
 
-(start-or-switch-irc t)
+; (start-or-switch-irc t)
