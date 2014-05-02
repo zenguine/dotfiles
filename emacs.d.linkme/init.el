@@ -72,10 +72,9 @@
 (show-paren-mode t)
 (setq-default highlight-tabs t)
 (setq inhibit-startup-message t)
-(setq-default show-trailing-whitespace t)
+(setq-default show-trailing-whitespace nil)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 (setq indent-tabs-mode nil)
 (setq tab-width 4)
