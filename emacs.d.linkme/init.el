@@ -41,6 +41,7 @@
     key-chord
     magit
     multi-term
+    popwin
     projectile
     python-mode
     smart-mode-line
@@ -157,6 +158,7 @@
   (local-set-key (kbd "C-c T f") 'pytest-test-current-file)
   (local-set-key (kbd "C-c T t") 'pytest-test-specific-test)
   (jedi:setup)
+  (jedi:create-nested-imenu-index)
   (modify-syntax-entry ?_ "w"))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
@@ -200,6 +202,7 @@
 (require 'evil-org)
 (require 'mu4e-config)
 (require 'org-mu4e)
+(require 'popwin-config)
 (require 'my-smartparens-config)
 (require 'sml-config)
 
