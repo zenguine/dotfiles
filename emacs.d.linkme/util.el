@@ -70,7 +70,8 @@ window and a non-term window"
     (let ((default-directory (project-root)))
       (start-process "py-test:all"
 		     results-buffer-name
-		     "py.test"))
+		     "jetpack"
+		     "test"))
     (display-buffer results-buffer-name)))
 
 (defun pytest-test-current-file ()
@@ -86,7 +87,8 @@ window and a non-term window"
 	  (erase-buffer)))
     (start-process process-name
 		   results-buffer-name
-		   "py.test"
+		   "jetpack"
+		   "test"
 		   test-file-full)
     (display-buffer results-buffer-name)))
 
@@ -107,7 +109,8 @@ window and a non-term window"
 	  (erase-buffer)))
     (start-process process-name
 		   results-buffer-name
-		   "py.test"
+		   "jetpack"
+		   "test"
 		   test-file-full
 		   "-k"
 		   (format "%s" testname))

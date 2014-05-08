@@ -8,6 +8,7 @@ export PATH="$HOME/build/sbt/bin":"$HOME/code/pagezero/bin":"$HOME/scripts":"$HO
 export SCALA_HOME="$HOME/build/scala-2.10.2/"
 export PATH="$SCALA_HOME/bin":$PATH
 export PATH="$HOME/code/darkdynasty/bin":$PATH
+export PATH="$HOME/code/jetpack/bin":$PATH
 
 # Python virtual environment stuff
 
