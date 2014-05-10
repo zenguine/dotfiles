@@ -10,6 +10,7 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (add-to-list 'load-path "~/.emacs.d/mu4e")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (load "surround.el")
 (require 'surround)
 (global-surround-mode 1)
@@ -23,7 +24,6 @@
   '(
     ace-jump-mode
     auto-complete
-    color-theme-solarized
     evil
     evil-leader
     evil-matchit
@@ -190,7 +190,7 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(load-theme 'zenburn)
+(load-theme 'solarized-dark t)
 
 (require 'comint-config)
 (require 'eshell-config)
