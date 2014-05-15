@@ -43,7 +43,7 @@
 (defun python-package-dir-p (dir)
   (file-exists-p (concat dir "__init__.py")))
 
-(defun python-package-root ()
+(defun python-package-root (&optional silent)
   (interactive)
   (let ((buffer-file-dir (file-name-directory
 			  (expand-file-name
@@ -52,7 +52,9 @@
 	(expand-file-name (vc-find-root
 	 buffer-file-dir
 	 (lambda (dir) (not (python-package-dir-p dir)))))
-      (error "Current directory is not a python package"))))
+      (if silent
+	  nil
+	(error "Current directory is not a python package")))))
 
 (defun file-python-package-name ()
   (interactive)
@@ -108,11 +110,21 @@
   (local-set-key (kbd "C-c T f") 'pytest-test-current-file)
   (local-set-key (kbd "C-c T t") 'pytest-test-specific-test)
   (local-set-key (kbd "C-c C-l") 'my-ipython-shell-load-file-as-module)
-  (jedi:setup)
-  (jedi:create-nested-imenu-index)
+  (hs-minor-mode t)
   (modify-syntax-entry ?_ "w"))
 
+(defun my-jedi-setup ()
+  (defmacro add-args (arg-list arg-name arg-value)
+    `(setq ,arg-list (append ,arg-list (list ,arg-name ,arg-value))))
+  (make-local-variable 'jedi:server-args)
+  (let ((proj-package-root (python-package-root t)))
+    (if proj-package-root
+	(add-args jedi:server-args "--sys-path" proj-package-root)))
+  (jedi:setup)
+  (jedi:create-nested-imenu-index))
+
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'python-mode-hook 'my-jedi-setup)
 (setq elpy-rpc-backend "jedi")
 
 (elpy-enable)
