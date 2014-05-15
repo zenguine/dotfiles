@@ -11,9 +11,11 @@
 (add-to-list 'load-path "~/.emacs.d/elpa")
 (add-to-list 'load-path "~/.emacs.d/mu4e")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+
+(when (require 'evil nil 'noerror)
 (load "surround.el")
 (require 'surround)
-(global-surround-mode 1)
+(global-surround-mode 1))
 (require 'cl)
 
 (defadvice terminal-init-xterm (around map-S-up-escape-sequence activate)
@@ -36,15 +38,14 @@
     guide-key
     helm
     ido-vertical-mode
-    ipython
     jedi
     key-chord
     magit
     multi-term
     popwin
     projectile
-    python-mode
     smart-mode-line
+    sublimity
     smartparens
     smex
     zenburn-theme
@@ -146,22 +147,6 @@
 (setq project-root-markers '(".git" ".svn"))
 
 ;; Mode configuratoin
-;python
-
-(setq jedi:complete-on-dot t)
-(setq jedi:install-imenu t)
-(setq jedi:get-in-function-call-delay 100)
-
-(defun my-python-mode-hook ()
-  (local-set-key (kbd "C-c !") 'python-shell-switch-to-shell)
-  (local-set-key (kbd "C-c T a") 'pytest-test-all)
-  (local-set-key (kbd "C-c T f") 'pytest-test-current-file)
-  (local-set-key (kbd "C-c T t") 'pytest-test-specific-test)
-  (jedi:setup)
-  (jedi:create-nested-imenu-index)
-  (modify-syntax-entry ?_ "w"))
-
-(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 (defun my-elisp-mode-hook ()
   (modify-syntax-entry ?- "w"))
@@ -172,18 +157,6 @@
   (local-unset-key (kbd "C-j")))
 
 (add-hook 'lisp-interaction-mode-hook 'my-lisp-interaction-mode-hook)
-
-(setq
- python-shell-interpreter "ipython"
- python-shell-interpreter-args ""
- python-shell-prompt-regexp "In \\[[0-9]+\\]: "
- python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
- python-shell-completion-setup-code
- "from IPython.core.completerlib import module_completion"
- python-shell-completion-module-string-code
- "';'.join(module_completion('''%s'''))\n"
- python-shell-completion-string-code
- "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -205,6 +178,7 @@
 (require 'popwin-config)
 (require 'my-smartparens-config)
 (require 'sml-config)
+(require 'python-config)
 
 ; Do this after frame creation because otherwise the respectful theme seems to not
 ; grab the colors correctly.
