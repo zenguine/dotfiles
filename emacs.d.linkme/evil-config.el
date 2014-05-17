@@ -61,6 +61,7 @@
 (define-key evil-normal-state-map "[s" 'backward-sexp)
 (define-key evil-normal-state-map "]e" 'next-error)
 (define-key evil-normal-state-map "[e" 'previous-error)
+(define-key evil-normal-state-map "gJ" 'evil-join)
 
 (define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)

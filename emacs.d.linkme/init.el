@@ -1,9 +1,9 @@
 ; Load ELPA
 ;;; -*- lexical-binding: t -*-
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq evil-want-C-u-scroll t)
+(setq evil-move-cursor-back nil)
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -14,9 +14,10 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (when (require 'evil nil 'noerror)
-(load "surround.el")
-(require 'surround)
-(global-surround-mode 1))
+  (load "surround.el")
+  (require 'surround)
+  (global-surround-mode nil))
+
 (require 'cl)
 
 (defadvice terminal-init-xterm (around map-S-up-escape-sequence activate)
@@ -50,6 +51,7 @@
     smartparens
     smex
     zenburn-theme
+    paredit
     )
   "List of packages needs to be installed at launch")
 
@@ -180,10 +182,10 @@
 (require 'my-smartparens-config)
 (require 'sml-config)
 (require 'python-config)
+(require 'paredit-config)
 
 ; Do this after frame creation because otherwise the respectful theme seems to not
 ; grab the colors correctly.
-
 (require 'keybindings)
 
 ; (start-or-switch-irc t)
