@@ -1,10 +1,13 @@
 (require 'erc)
+(require 'erc-nick-colors)
 (require 'erc-log)
 (require 'erc-notify)
 
-(setq erc-autojoin-channels-alist '(("freenode.net"
-                                     "#emacs" "#haskell" "#python"
-                                     "#vim" "##javascript")))
+(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#haskell" "#darkdynasty" "#linux" "#clojure"
+				     "#lesswrong" "#web")))
+
+; Other interesting ones maybe to add: #angularjs #nodejs #nimrod #go-nuts #security #infra-talk
+;                                      ##math #archlinux #git ##javascript #bash ##networking
 
 (setq erc-kill-buffer-on-part t)
 (setq erc-kill-queries-on-quit t)
@@ -40,13 +43,12 @@
   (setq erc-nickserv-passwords
         `((freenode (("jcullen" . ,jcullen-pass))))))
 
-;; Notifications
+; Notifications ---------------------------------------------------------
 (autoload 'erc-nick-notify-mode "erc-nick-notify"
   "Minor mode that calls `erc-nick-notify-cmd' when his nick gets
 mentioned in an erc channel" t)
 (eval-after-load 'erc '(erc-nick-notify-mode t))
 
-;; private message notification
 (defun erc-notify-on-private-msg (proc parsed)
   (let ((nick (car (erc-parse-user (erc-response.sender parsed))))
         (target (car (erc-response.command-args parsed)))
@@ -59,6 +61,25 @@ mentioned in an erc channel" t)
 
 (add-hook 'erc-server-PRIVMSG-functions 'erc-notify-on-private-msg)
 
+(require 'erc-match)
+(setq erc-keywords '("evil"))
+(setq erc-pals '("uint64_t"))
+
+(erc-match-mode t)
+
+(defun erc-match-notify (match-type usernickhost msg)
+  (let* ((nick (first (split-string nick "!")))
+	 (channel (erc-default-target)))
+    (when (member match-type (list 'keyword 'pal))
+      (message (format "%s on %s: %s" nick channel msg))
+      (shell-command-to-string
+       (format "notify-send -u critical '%s on %s:' '%s'" nick channel msg)))))
+
+(add-hook 'erc-text-matched-hook 'erc-match-notify)
+
+; Nick coloring --------------------
+
+; Commands to start erc ---------------------
 (defun start-irc (&optional confirm)
   "Connect to IRC."
   (interactive)
