@@ -36,6 +36,8 @@
 (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 (define-key evil-normal-state-map  (kbd "C-p") 'fiplr-find-file)
+
+(define-key evil-operator-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)
 ; Mapping for C-i
 (define-key evil-normal-state-map (kbd "H-i") 'evil-jump-forward)
@@ -66,7 +68,6 @@
 (define-key evil-normal-state-map " c" 'evil-window-delete)
 (define-key evil-normal-state-map "  " 'smex)
 (define-key evil-visual-state-map "  " 'smex)
-(define-key evil-normal-state-map " wo" 'delete-other-windows)
 (define-key evil-normal-state-map " 1" 'delete-other-windows)
 (define-key evil-normal-state-map " k" 'kill-this-buffer)
 (define-key evil-normal-state-map " x" 'delete-single-window)

@@ -14,6 +14,7 @@
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
 (global-set-key (kbd "C-c m") 'mu4e)
 (global-set-key (kbd "C-,") popwin:keymap)
+(global-set-key (kbd "M-e") 'eval-region)
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
 				(kill-buffer (current-buffer))))
