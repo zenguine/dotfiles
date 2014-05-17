@@ -53,6 +53,14 @@
 			     (move-beginning-of-line nil)
 			     (newline-and-indent))))
 
+(define-key evil-normal-state-map ")" 'forward-sexp)
+(define-key evil-operator-state-map")" 'forward-sexp)
+(define-key evil-motion-state-map")" 'forward-sexp)
+
+(define-key evil-normal-state-map "(" 'backward-sexp)
+(define-key evil-operator-state-map"(" 'backward-sexp)
+(define-key evil-motion-state-map"(" 'backward-sexp)
+
 ; Evil "leader" mappings
 
 (define-key evil-normal-state-map "]o" 'occur-next)
