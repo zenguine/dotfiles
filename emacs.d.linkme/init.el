@@ -29,6 +29,7 @@
     ag
     auto-complete
     evil
+    elpy
     evil-leader
     evil-matchit
     evil-nerd-commenter
