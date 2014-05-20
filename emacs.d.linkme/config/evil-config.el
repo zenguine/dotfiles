@@ -35,7 +35,7 @@
 
 (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
-(define-key evil-normal-state-map  (kbd "C-p") 'fiplr-find-file)
+(define-key evil-normal-state-map  (kbd "C-p") nil)
 
 (define-key evil-operator-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)

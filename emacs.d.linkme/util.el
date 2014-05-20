@@ -1,4 +1,6 @@
+;;; -*- lexical-binding: t -*-
 
+(defun const (val) (lambda (x) val))
 
 (defun add-to-load-path-recursive (basepath)
   (let ((base (expand-file-name basepath)))
