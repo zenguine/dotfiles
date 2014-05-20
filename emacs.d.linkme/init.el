@@ -1,20 +1,19 @@
 ; Load ELPA
 ;;; -*- lexical-binding: t -*-
+(add-to-list 'load-path "~/.emacs.d")
 (require 'package)
+(require 'my-autoloads)
 (setq package-enable-at-startup nil)
 (setq evil-want-C-u-scroll t)
 (setq evil-move-cursor-back nil)
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/elpa")
-(add-to-list 'load-path "~/.emacs.d/mu4e")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-theme-path-recursive "~/.emacs.d/themes")
+(add-to-load-path-recursive "~/.emacs.d/config")
+(add-to-load-path-recursive "~/.emacs.d/site-lisp")
 
 (when (require 'evil nil 'noerror)
-  (load "surround.el")
   (require 'surround)
   (global-surround-mode nil))
 
@@ -104,23 +103,6 @@
 (setq key-chord-two-keys-delay 0.015)
 (setq key-chord-one-key-delay 0.08)
 
-(autoload 'project-root "util" nil t)
-(autoload 'erc "erc" nil t)
-(autoload 'start-irc "erc-config" nil t)
-(autoload 'start-or-switch-irc "erc-config" nil t)
-(autoload 'switch-to-other-buffer "util" nil t)
-(autoload 'multi-term-toggle "util" nil t)
-(autoload 'find-project-root "util" nil t)
-(autoload 'anyp "util" nil t)
-(autoload 'root-p "util" nil t)
-(autoload 'move-window-or-create "util" nil t)
-(autoload 'pytest-test-all "util" nil t)
-(autoload 'pytest-test-current-file "util" nil t)
-(autoload 'pytest-test-specific-test "util" nil t)
-(autoload 'delete-single-window "util" nil t)
-(autoload 'eshell-here "util" nil t)
-(autoload 'get-buffers-matching-mode "util" nil t)
-
 ; Enable auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
@@ -184,8 +166,6 @@
 (require 'python-config)
 (require 'paredit-config)
 
-; Do this after frame creation because otherwise the respectful theme seems to not
-; grab the colors correctly.
 (require 'keybindings)
 
 ; (start-or-switch-irc t)

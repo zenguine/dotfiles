@@ -1,0 +1,22 @@
+
+(autoload 'project-root "util" nil t)
+(autoload 'erc "erc" nil t)
+(autoload 'start-irc "erc-config" nil t)
+(autoload 'start-or-switch-irc "erc-config" nil t)
+(autoload 'switch-to-other-buffer "util" nil t)
+(autoload 'multi-term-toggle "util" nil t)
+(autoload 'find-project-root "util" nil t)
+(autoload 'anyp "util" nil t)
+(autoload 'root-p "util" nil t)
+(autoload 'move-window-or-create "util" nil t)
+(autoload 'pytest-test-all "util" nil t)
+(autoload 'pytest-test-current-file "util" nil t)
+(autoload 'pytest-test-specific-test "util" nil t)
+(autoload 'delete-single-window "util" nil t)
+(autoload 'eshell-here "util" nil t)
+(autoload 'get-buffers-matching-mode "util" nil t)
+(autoload 'add-to-load-path-recursive "util" nil t)
+(autoload 'add-to-theme-path-recursive "util" nil t)
+
+(provide 'my-autoloads)
+

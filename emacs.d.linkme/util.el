@@ -1,3 +1,27 @@
+
+
+(defun add-to-load-path-recursive (basepath)
+  (let ((base (expand-file-name basepath)))
+    (add-to-list 'load-path base)
+    (dolist (f (directory-files base))
+      (let ((name (concat base "/" f)))
+	(when (and (file-directory-p name)
+		   (not (equal f ".."))
+		   (not (equal f ".git"))
+		   (not (equal f ".")))
+	  (add-to-load-path-recursive name))))))
+
+(defun add-to-theme-path-recursive (basepath)
+  (let ((base (expand-file-name basepath)))
+    (add-to-list 'custom-theme-load-path base)
+    (dolist (f (directory-files base))
+      (let ((name (concat base "/" f)))
+	(when (and (file-directory-p name)
+		   (not (equal f ".."))
+		   (not (equal f ".git"))
+		   (not (equal f ".")))
+	  (add-to-theme-path-recursive name))))))
+
 (defun project-root ()
   "Locate the root of the project by walking up the directory tree.
 The first directory containing one of project-root-markers is the root.
