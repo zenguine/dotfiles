@@ -9,7 +9,11 @@
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
  '(evil-search-module (quote evil-search))
- '(org-agenda-files (quote ("~/org/personal.org" "~/org/work.org" "~/org/refile.org"))))
+ '(org-agenda-files (quote ("~/org/personal.org" "~/org/work.org" "~/org/refile.org")))
+ '(projectile-enable-idle-timer t)
+ '(projectile-remember-window-configs t)
+ '(projectile-switch-project-action (quote projectile-find-file))
+ '(projectile-tags-command "ctags --python-kinds=-iv -Re %s"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

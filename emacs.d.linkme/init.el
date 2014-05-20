@@ -26,6 +26,7 @@
 (defvar packages-list
   '(
     ace-jump-mode
+    ag
     auto-complete
     evil
     evil-leader
@@ -38,19 +39,20 @@
     flycheck-haskell
     guide-key
     helm
+    helm-projectile
     ido-vertical-mode
     jedi
     key-chord
     magit
     multi-term
+    paredit
     popwin
     projectile
     smart-mode-line
-    sublimity
     smartparens
     smex
+    sublimity
     zenburn-theme
-    paredit
     )
   "List of packages needs to be installed at launch")
 
@@ -153,7 +155,7 @@
 (require 'comint-config)
 (require 'eshell-config)
 (require 'evil-config)
-(require 'helm-config)
+(require 'my-helm-config)
 (require 'misc-config)
 (require 'term-config)
 (require 'org-config)
