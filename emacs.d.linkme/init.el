@@ -6,6 +6,7 @@
 (setq package-enable-at-startup nil)
 (setq evil-want-C-u-scroll t)
 (setq evil-move-cursor-back nil)
+(setq tags-revert-without-query t)
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -168,6 +169,7 @@
 (require 'sml-config)
 (require 'python-config)
 (require 'paredit-config)
+(require 'projectile-config)
 
 (require 'keybindings)
 
