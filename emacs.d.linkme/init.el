@@ -19,7 +19,6 @@
   (global-surround-mode nil))
 
 (require 'cl)
-
 (defadvice terminal-init-xterm (around map-S-up-escape-sequence activate)
   (define-key input-decode-map (kbd "C-i") (kbd "H-i")))
 
@@ -107,10 +106,6 @@
 (setq key-chord-two-keys-delay 0.015)
 (setq key-chord-one-key-delay 0.08)
 
-; Enable auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
-
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x" "C-c"))
 (setq guide-key/recursive-key-sequence-flag t)
@@ -170,6 +165,9 @@
 (require 'python-config)
 (require 'paredit-config)
 (require 'projectile-config)
+; Yasnippet must come before autocomplete config for both to work together
+(require 'yasnippet-config)
+(require 'my-ac-config)
 
 (require 'keybindings)
 

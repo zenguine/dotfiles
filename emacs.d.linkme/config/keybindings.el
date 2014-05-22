@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-c m") 'mu4e)
 (global-set-key (kbd "C-,") popwin:keymap)
 (global-set-key (kbd "M-e") 'eval-region)
+(global-set-key (kbd "C-c y") 'yas-describe-tables)
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
 				(kill-buffer (current-buffer))))

@@ -175,3 +175,7 @@ window and a non-term window"
        (if (eq mode major-mode)
 	   (add-to-list 'buffer-mode-matches buf))))
    buffer-mode-matches))
+
+(defun backward-kill-line (arg)
+  (interactive "p")
+  (kill-line (- 1 arg)))
