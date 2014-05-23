@@ -49,7 +49,6 @@
     paredit
     popwin
     projectile
-    smart-mode-line
     smartparens
     smex
     sublimity
@@ -73,14 +72,8 @@
 
 ; General customization
 
-;; 'y' or 'n' instead of 'yes' or 'no'
-(fset 'yes-or-no-p 'y-or-n-p)
 ; highlight corresponding paren
 (winner-mode t)
-(show-paren-mode t)
-(setq-default highlight-tabs t)
-(setq inhibit-startup-message t)
-(setq-default show-trailing-whitespace nil)
 
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
@@ -95,13 +88,8 @@
       backup-inhibited t
       auto-save-default nil)
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
 (ido-vertical-mode)
 (sublimity-mode t)
-(global-hl-line-mode 1)
 (key-chord-mode +1)
 (setq key-chord-two-keys-delay 0.015)
 (setq key-chord-one-key-delay 0.08)
@@ -147,8 +135,7 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(load-theme 'solarized-dark t)
-
+(require 'appearance-config)
 (require 'comint-config)
 (require 'eshell-config)
 (require 'evil-config)
