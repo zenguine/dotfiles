@@ -115,6 +115,7 @@ window and a non-term window"
 		   results-buffer-name
 		   "jetpack"
 		   "test"
+		   "-s"
 		   test-file-full)
     (display-buffer results-buffer-name)))
 
@@ -137,6 +138,7 @@ window and a non-term window"
 		   results-buffer-name
 		   "jetpack"
 		   "test"
+		   "-s"
 		   test-file-full
 		   "-k"
 		   (format "%s" testname))
