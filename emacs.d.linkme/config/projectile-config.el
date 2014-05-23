@@ -11,4 +11,6 @@
 (remove-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags)
 (add-hook 'projectile-idle-timer-hook 'projectile/maybe-regenerate-tags)
 
+(projectile-global-mode 1)
+
 (provide 'projectile-config)

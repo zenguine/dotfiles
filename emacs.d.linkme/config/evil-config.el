@@ -1,3 +1,8 @@
+(setq evil-want-C-u-scroll t)
+(setq evil-move-cursor-back nil)
+(setq evil-overriding-maps nil)
+(setq evil-intercept-maps nil)
+
 (require 'evil)
 (require 'cl)
 
@@ -124,5 +129,10 @@
 				 (erc-mode . normal)
 				 (eshell-mode . emacs))
 	 do (evil-set-initial-state mode state))
+
+(evil-mode 1)
+
+(when (require 'surround nil 'noerror)
+  (global-surround-mode nil))
 
 (provide 'evil-config)
