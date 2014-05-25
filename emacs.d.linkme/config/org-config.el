@@ -31,6 +31,8 @@
                "* %?\n%U\n" :clock-in t :clock-resume t)
               ("w" "org-protocol" entry (file "~/org/refile.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
+	      ("l" "Link" entry (file+olp "~/org/personal.org" "Web Links")
+	       "* %a\n %?\n %i")
               ("m" "Meeting" entry (file "~/org/refile.org")
                "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
               ("p" "Phone call" entry (file "~/org/refile.org")
@@ -62,5 +64,8 @@
   (smartparens-mode nil))
 
 (add-hook 'org-mode-hook 'my-org-mode-hook)
+
+(require 'org-protocol)
+(setq org-protocol-default-template-key "l")
 
 (provide 'org-config)

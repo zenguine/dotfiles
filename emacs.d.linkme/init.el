@@ -104,4 +104,4 @@
 
 (require 'keybindings)
 
-;; (start-or-switch-irc t)
+(start-or-switch-irc t)
