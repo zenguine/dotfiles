@@ -11,6 +11,7 @@
   (add-to-list 'helm-boring-file-regexp-list ext))
 
 (global-set-key (kbd "M-t") 'helm-for-files)
+(setq helm-quick-update t)
 
 (setq helm-for-files-preferred-list
       '(helm-source-buffers-list
