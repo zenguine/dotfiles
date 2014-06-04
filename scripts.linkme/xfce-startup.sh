@@ -2,4 +2,4 @@
 deluge &
 t-init &
 redshift &
-emacs --daemon &
+xmodmap ~/.xmodmaprc &

@@ -9,7 +9,7 @@ main = xmonad $ gnomeConfig {
                  myStartupHook
            , terminal = "urxvt" }
            `additionalKeysP`
-           [ ("M-o", spawn "ALTERNATE_EDITOR=\"\" emacsclient -c")
+           [ ("M-o", spawn "echo 'ALTERNATE_EDITOR=\"\" emacsclient -c & exit' | zsh")
            , ("M-f", spawn "firefox")
            , ("M-p", spawn "synapse") ]
 
