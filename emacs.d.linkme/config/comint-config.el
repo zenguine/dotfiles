@@ -19,7 +19,10 @@
   (local-set-key (kbd "C-c C-h") 'helm-comint-input-ring)
   (local-set-key (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer)
   (local-set-key (kbd "C-c C-l") 'comint-clear)
-  (setq-local show-trailing-whitespace nil))
+  (setq-local show-trailing-whitespace nil)
+  (when (require 'evil nil 'noerror)
+    (evil-define-key 'insert comint-mode-map
+      (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer)))
 
 (add-hook 'comint-mode-hook 'my-comint-mode-hook)
 
