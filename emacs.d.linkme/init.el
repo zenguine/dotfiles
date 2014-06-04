@@ -30,7 +30,6 @@
     flx
     flx-ido
     flycheck
-    flycheck-haskell
     guide-key
     helm
     helm-projectile
@@ -101,6 +100,7 @@
 (require 'prog-config)
 (require 'python-config)
 (require 'lisp-config)
+(require 'haskell-config)
 
 (require 'keybindings)
 

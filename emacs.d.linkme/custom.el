@@ -10,6 +10,8 @@
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
  '(evil-search-module (quote evil-search))
+ '(haskell-font-lock-symbols (quote unicode))
+ '(haskell-mode-hook (quote (turn-on-eldoc-mode turn-on-haskell-doc turn-on-haskell-indent)))
  '(magit-use-overlays nil)
  '(org-agenda-files (quote ("~/org/personal.org" "~/org/work.org" "~/org/refile.org")))
  '(projectile-enable-idle-timer t)
