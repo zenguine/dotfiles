@@ -2,6 +2,12 @@
 
 (setq org-log-done t)
 
+;; Org-babel config..
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil)
+
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (add-hook 'org-mode-hook 'org-indent-mode)
 
