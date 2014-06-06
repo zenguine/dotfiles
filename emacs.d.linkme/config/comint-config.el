@@ -22,7 +22,8 @@
   (setq-local show-trailing-whitespace nil)
   (when (require 'evil nil 'noerror)
     (evil-define-key 'insert comint-mode-map
-      (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer)))
+      (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer)
+    (evil-emacs-state t)))
 
 (add-hook 'comint-mode-hook 'my-comint-mode-hook)
 

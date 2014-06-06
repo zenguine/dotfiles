@@ -17,7 +17,8 @@
  '(projectile-enable-idle-timer t)
  '(projectile-remember-window-configs t)
  '(projectile-switch-project-action (quote projectile-find-file))
- '(projectile-tags-command "ctags --python-kinds=-iv -Re %s"))
+ '(projectile-tags-command "ctags --python-kinds=-iv -Re %s")
+ '(safe-local-variable-values (quote ((eval when (require (quote proj-darkdynasty) nil (quote noerror)) (darkdynasty-mode t))))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
