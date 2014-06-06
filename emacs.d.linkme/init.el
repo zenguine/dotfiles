@@ -21,8 +21,8 @@
     ace-jump-mode
     ag
     auto-complete
-    evil
     elpy
+    evil
     evil-leader
     evil-matchit
     evil-nerd-commenter
@@ -30,6 +30,7 @@
     flx
     flx-ido
     flycheck
+    git-gutter
     guide-key
     helm
     helm-projectile
@@ -77,6 +78,7 @@
 (require 'comint-config)
 (require 'eshell-config)
 (require 'evil-org)
+(require 'git-gutter-config)
 (require 'guide-key-config)
 (require 'ido-config)
 (require 'key-chord-config)

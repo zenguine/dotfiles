@@ -10,6 +10,8 @@
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
  '(evil-search-module (quote evil-search))
+ '(git-gutter:disabled-modes (quote (org-mode)))
+ '(git-gutter:hide-gutter t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-eldoc-mode turn-on-haskell-doc turn-on-haskell-indent)))
  '(magit-use-overlays nil)
