@@ -95,6 +95,8 @@
 					  (find-file "~/.emacs.d/init.el")))
 
 (define-key evil-normal-state-map " l" 'linum-mode)
+(define-key evil-normal-state-map (kbd "SPC TAB") (lambda () (interactive)
+						    (switch-to-buffer "*scratch*")))
 
 (define-key evil-normal-state-map "gb" 'ido-switch-buffer)
 (define-key evil-normal-state-map "gs" 'eshell-here)

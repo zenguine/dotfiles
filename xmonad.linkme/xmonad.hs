@@ -11,6 +11,7 @@ main = xmonad $ gnomeConfig {
            `additionalKeysP`
            [ ("M-o", spawn "echo 'ALTERNATE_EDITOR=\"\" emacsclient -c & exit' | zsh")
            , ("M-f", spawn "firefox")
+           , ("M-m", spawn "banshee")
            , ("M-p", spawn "synapse") ]
 
 myStartupHook :: X ()

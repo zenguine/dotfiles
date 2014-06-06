@@ -11,6 +11,9 @@
 (remove-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags)
 (add-hook 'projectile-idle-timer-hook 'projectile/maybe-regenerate-tags)
 
+(define-key projectile-mode-map (kbd "C-c p a") 'projectile-ag)
+(define-key projectile-mode-map (kbd "C-c p A") 'projectile-ack)
+
 (projectile-global-mode 1)
 
 (provide 'projectile-config)
