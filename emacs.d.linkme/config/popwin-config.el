@@ -30,8 +30,8 @@
 (push '("*Org-Babel Results*" :height 20) popwin:special-display-config)
 (push '("*jedi:doc*" :height 20) popwin:special-display-config)
 
-(defadvice popwin:close-popup-window (before advice-for-before-close-popup-window activate)
-  (when popwin:popup-buffer
-    (popwin/maybe-kill-buffer popwin:popup-buffer)))
+;; (defadvice popwin:close-popup-window (before advice-for-before-close-popup-window activate)
+;;   (when popwin:popup-buffer
+;;     (popwin/maybe-kill-buffer popwin:popup-buffer)))
 
 (provide 'popwin-config)

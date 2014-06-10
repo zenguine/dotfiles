@@ -26,7 +26,7 @@
   "Run an inferior instance of `darkdynasty/bin/cli.py' inside Emacs."
   (interactive)
   (let* ((buffer (comint-check-proc "DarkdynastyCli")))
-    ;; pop to the "*Cassandra*" buffer if the process is dead, the
+    ;; pop to the "*DarkdynastyCli*" buffer if the process is dead, the
     ;; buffer is missing or it's got the wrong mode.
     (pop-to-buffer-same-window
      (if (or buffer (not (derived-mode-p 'darkdynasty-mode))
