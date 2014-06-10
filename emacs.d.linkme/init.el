@@ -23,6 +23,7 @@
     auto-complete
     elpy
     evil
+    evil-args
     evil-leader
     evil-matchit
     evil-nerd-commenter

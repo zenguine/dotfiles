@@ -137,4 +137,18 @@
 (when (require 'surround nil 'noerror)
   (global-surround-mode nil))
 
+(when (require 'evil-args nil 'noerror)
+  ;; bind evil-args text objects
+  (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+  (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+
+  ;; bind evil-forward/backward-args
+  (define-key evil-normal-state-map "gl" 'evil-forward-arg)
+  (define-key evil-normal-state-map "gh" 'evil-backward-arg)
+  (define-key evil-motion-state-map "gl" 'evil-forward-arg)
+  (define-key evil-motion-state-map "gh" 'evil-backward-arg)
+
+  ;; bind evil-jump-out-args
+  (define-key evil-normal-state-map "gk" 'evil-jump-out-args))
+
 (provide 'evil-config)
