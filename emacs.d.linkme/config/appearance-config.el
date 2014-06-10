@@ -12,7 +12,6 @@
 
 (global-hl-line-mode 1)
 
-(when (require 'solarized nil 'noerror)
-  (load-theme 'solarized-dark t))
+(load-theme 'solarized-dark t)
 
 (provide 'appearance-config)

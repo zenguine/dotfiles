@@ -8,5 +8,8 @@
 (setq c-basic-offset 4)
 
 (add-to-list 'auto-mode-alist '("\\.hscm\\'" . scheme-mode))
+(add-to-list 'completion-ignored-extensions ".hi")
+(add-to-list 'completion-ignored-extensions ".pyc")
+(add-to-list 'completion-ignored-extensions ".o")
 
 (provide 'prog-config)

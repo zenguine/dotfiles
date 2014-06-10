@@ -31,8 +31,11 @@
     flx
     flx-ido
     flycheck
+    ghc
+    ghci-completion
     git-gutter
     guide-key
+    haskell-mode
     helm
     helm-projectile
     ido-vertical-mode
@@ -43,6 +46,7 @@
     paredit
     popwin
     projectile
+    shm
     smartparens
     smex
     sublimity
