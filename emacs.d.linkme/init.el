@@ -110,5 +110,3 @@
 (require 'haskell-config)
 
 (require 'keybindings)
-
-(start-or-switch-irc t)
