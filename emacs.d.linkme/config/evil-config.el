@@ -129,7 +129,8 @@
 				 (semantic-symref-results-mode . emacs)
 				 (rdictcc-buffer-mode . emacs)
 				 (erc-mode . normal)
-				 (eshell-mode . emacs))
+				 (eshell-mode . emacs)
+				 (haskell-interactive-mode . emacs))
 	 do (evil-set-initial-state mode state))
 
 (evil-mode 1)
