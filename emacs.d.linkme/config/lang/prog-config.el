@@ -1,6 +1,9 @@
 (setq project-root-markers '(".git" ".svn"))
 (setq tags-revert-without-query t)
 
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      backup-directory-alist `((".*" . ,temporary-file-directory)))
+
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 (setq indent-tabs-mode nil)

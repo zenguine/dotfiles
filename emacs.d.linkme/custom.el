@@ -17,7 +17,7 @@
  '(evil-search-module (quote evil-search))
  '(git-gutter:disabled-modes (quote (org-mode)))
  '(git-gutter:hide-gutter t)
- '(haskell-font-lock-symbols (quote unicode))
+ '(haskell-font-lock-symbols nil)
  '(haskell-mode-hook (quote (turn-on-eldoc-mode turn-on-haskell-doc turn-on-haskell-indent)))
  '(haskell-stylish-on-save nil)
  '(haskell-tags-on-save t)

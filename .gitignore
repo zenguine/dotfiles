@@ -48,6 +48,7 @@ vim.linkme/haskellmode.config
 tags
 *.*~
 emacs.d.linkme/elpa/
+emacs.d.linkme/el-get/
 emacs.d.linkme/eshell
 *.dat
 emacs.d.linkme/url/
