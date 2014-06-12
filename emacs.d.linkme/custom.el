@@ -20,6 +20,7 @@
  '(haskell-font-lock-symbols nil)
  '(haskell-interactive-popup-errors nil)
  '(haskell-mode-hook (quote (turn-on-eldoc-mode turn-on-haskell-doc turn-on-haskell-indent)))
+ '(haskell-process-log t)
  '(haskell-stylish-on-save nil)
  '(haskell-tags-on-save t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
