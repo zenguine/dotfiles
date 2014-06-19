@@ -31,6 +31,7 @@
     evil-leader
     evil-matchit
     evil-nerd-commenter
+    expand-region
     fiplr
     flx
     flx-ido
@@ -125,6 +126,7 @@
 (require 'sml-config)
 (require 'sublimity-config)
 (require 'term-config)
+(require 'expand-region-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
