@@ -3,7 +3,8 @@
 (defun my-haskell-hook ()
   (interactive)
   (setq show-trailing-whitespace nil)
-  (flycheck-mode t))
+  (flycheck-mode t)
+  (setq flycheck-display-errors-delay .3))
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'hoogle)
 
