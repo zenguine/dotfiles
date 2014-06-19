@@ -1,0 +1,17 @@
+alex
+cabal-install
+free
+ghc-mod>=4.0.0
+goa
+happy
+hlint
+hoogle
+HsColour
+IPPrint
+lambdabot
+lens
+mtl
+parsec
+pointfree
+structured-haskell-mode
+stylish-haskell

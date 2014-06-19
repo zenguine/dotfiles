@@ -1,3 +1,22 @@
+:m - Prelude
+:m + GOA
+findPosixLambdabot >>= setLambdabotHome
+
+:def bs        lambdabot "botsnack"
+:def pl        lambdabot "pl"
+:def unpl      lambdabot "unpl"
+:def redo      lambdabot "redo"
+:def undo      lambdabot "undo"
+:def index     lambdabot "index"
+:def docs      lambdabot "docs"
+:def instances lambdabot "instances"
+:def lbhoogle  lambdabot "hoogle"
+:def source    lambdabot "source"
+:def where     lambdabot "where"
+:def version   lambdabot "version"
+:def src       lambdabot "src"
+
+:set prompt "λ: "
 let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
 :def! search return . (":! hoogle --count=15 " ++) . ghciEscapeShellArg
 :def! doc return . (":! hoogle --info " ++) . ghciEscapeShellArg
