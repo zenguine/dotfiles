@@ -103,6 +103,17 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Require autoloads files
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'pastebin-autoloads)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Require configuration files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; Load these first..
 (require 'misc-config)
 (require 'appearance-config)
