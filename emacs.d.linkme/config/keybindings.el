@@ -19,6 +19,7 @@
 (global-set-key (kbd "C-,") popwin:keymap)
 (global-set-key (kbd "M-e") 'eval-region)
 (global-set-key (kbd "C-c y") 'yas-describe-tables)
+(global-set-key (kbd "C-c C-\\") 'erc-track-switch-buffer)
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
 				(kill-buffer (current-buffer))))
