@@ -150,14 +150,20 @@ window and a non-term window"
   (let* ((parent (file-name-directory (buffer-file-name)))
 	 (name   (car
 		  (last
-		   (split-string parent "/" t)))))
-    (split-window-horizontally)
-    (other-window 1)
-    (eshell "new")
-    (rename-buffer (concat "*eshell: " name "*"))
+		   (split-string parent "/" t))))
+	 (eshell-buffer-name (concat "*eshell: " name "*"))
+	 (eshell-buffer nil)
+	 (eshell-window nil))
 
-    (insert (concat "ls"))
-    (eshell-send-input)))
+    (unless (setq eshell-buffer (get-buffer eshell-buffer-name))
+      (save-window-excursion (setq eshell-buffer (eshell)))
+      (with-current-buffer eshell-buffer
+	(goto-char (point-max))
+	(insert (concat "ls"))
+	(eshell-send-input)))
+    
+    (setq eshell-window (display-buffer eshell-buffer))
+    (select-window eshell-window)))
 
 (defun delete-single-window (&optional window)
   "Remove WINDOW from the display.  Default is `selected-window'."
