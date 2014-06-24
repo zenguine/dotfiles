@@ -4,7 +4,9 @@
   (interactive)
   (setq show-trailing-whitespace nil)
   (flycheck-mode t)
-  (setq flycheck-display-errors-delay .3))
+  (setq flycheck-display-errors-delay .3)
+  (when (require 'flycheck nil 'noerror)
+    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable"))))
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'hoogle)
 
@@ -20,6 +22,7 @@
   (define-key haskell-interactive-mode-map (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
   (define-key haskell-interactive-mode-map (kbd "C-w") 'backward-kill-word)
   (define-key haskell-interactive-mode-map (kbd "TAB") 'haskell-interactive-mode-tab)
+  (define-key haskell-interactive-mode-map (kbd "C-j") nil)
   (define-key haskell-interactive-mode-map
     (kbd "C-p") 'haskell-interactive-mode-history-previous)
   (evil-define-key 'insert haskell-interactive-mode-map

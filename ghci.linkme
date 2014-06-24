@@ -5,6 +5,7 @@ findPosixLambdabot >>= setLambdabotHome
 :def bs        lambdabot "botsnack"
 :def pl        lambdabot "pl"
 :def unpl      lambdabot "unpl"
+:def unmtl     lambdabot "unmtl"
 :def redo      lambdabot "redo"
 :def undo      lambdabot "undo"
 :def index     lambdabot "index"
