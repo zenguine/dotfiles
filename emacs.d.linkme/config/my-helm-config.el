@@ -14,10 +14,10 @@
 (setq helm-quick-update t)
 
 (setq helm-for-files-preferred-list
-      '(helm-source-buffers-list
+      '(helm-source-projectile-files-list
+	helm-source-buffers-list
 	helm-source-recentf
 	helm-source-files-in-current-dir
-	helm-source-projectile-files-list
 	helm-source-locate))
 
 (defun helm-multi-occur-in-this-mode ()
