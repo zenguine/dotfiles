@@ -18,6 +18,7 @@ findPosixLambdabot >>= setLambdabotHome
 :def src       lambdabot "src"
 
 :set prompt "λ: "
+:m + Control.Monad Control.Applicative Control.Monad.Error Control.Monad.State Control.Monad.Reader Control.Monad.Writer Control.Lens
 let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
 :def! search return . (":! hoogle --count=15 " ++) . ghciEscapeShellArg
 :def! doc return . (":! hoogle --info " ++) . ghciEscapeShellArg

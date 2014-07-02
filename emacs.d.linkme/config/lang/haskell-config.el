@@ -6,7 +6,7 @@
   (flycheck-mode t)
   (setq flycheck-display-errors-delay .3)
   (when (require 'flycheck nil 'noerror)
-    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable"))))
+    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'hoogle)
 
