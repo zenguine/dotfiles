@@ -14,17 +14,21 @@
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
+      (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s@/!)" "|" "DONE(d@/!)")
+              (sequence "WAIT(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
+	      (sequence "READ(r)" "EVENTUALLY(e)" "|" "ABSORBED(a@/!)"))))
 
 (setq org-todo-state-tags-triggers
-      (quote (("CANCELLED" ("CANCELLED" . t))
-              ("WAITING" ("WAITING" . t))
-              ("HOLD" ("WAITING") ("HOLD" . t))
-              (done ("WAITING") ("HOLD"))
-              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+      (quote (("CANCELLED" ("cancelled" . t))
+              ("WAIT" ("waiting" . t))
+              ("HOLD" ("waiting") ("hold" . t))
+              (done ("waiting") ("hold"))
+              ("TODO" ("waiting") ("cancelled") ("hold"))
+              ("NEXT" ("waiting") ("cancelled") ("hold"))
+              ("DONE" ("waiting") ("cancelled") ("hold"))
+	      ("ABSORBED" ("reading" . t) ("waiting") ("cancelled") ("hold"))
+	      ("READ" ("reading" . t) ("waiting") ("cancelled") ("hold"))
+	      ("EVENTUALLY" ("waiting") ("cancelled") ("hold")))))
 
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/org/refile.org")
