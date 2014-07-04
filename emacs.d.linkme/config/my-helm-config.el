@@ -14,11 +14,15 @@
 (setq helm-quick-update t)
 
 (setq helm-for-files-preferred-list
-      '(helm-source-projectile-files-list
-	helm-source-buffers-list
+      '(helm-source-buffers-list
+	helm-source-projectile-files-list
 	helm-source-recentf
 	helm-source-files-in-current-dir
 	helm-source-locate))
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z") 'helm-select-action)
 
 (defun helm-multi-occur-in-this-mode ()
   "Show all lines matching REGEXP in buffers with this major mode."

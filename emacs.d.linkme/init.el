@@ -40,6 +40,7 @@
     guide-key
     helm
     helm-projectile
+    helm-swoop
     ido-vertical-mode
     jedi
     key-chord
