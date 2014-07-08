@@ -1,6 +1,14 @@
 (require 'org)
 
-(setq org-log-done t)
+(setq org-treat-S-cursor-todo-selection-as-state-change nil
+      org-default-notes-file (concat org-directory "/refile.org")
+      org-refile-use-outline-path t
+      org-outline-path-complete-in-steps nil
+      org-refile-allow-creating-parent-nodes 'confirm
+      org-completion-use-ido t)
+
+(setq org-refile-targets '((nil :maxlevel . 3)
+			   (org-agenda-files :maxlevel . 4)))
 
 ;; Org-babel config..
 (setq org-edit-src-content-indentation 0
@@ -8,15 +16,30 @@
       org-src-fontify-natively t
       org-confirm-babel-evaluate nil)
 
-(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
-(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-log-done t
+      org-log-into-drawer t
+      org-use-property-inheritance '("STYLE"))
 
-(setq org-treat-S-cursor-todo-selection-as-state-change nil)
+;; Clocking
+(setq org-clock-out-remove-zero-time-clocks t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org mode TODO workflow settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s@/!)" "|" "DONE(d@/!)")
               (sequence "WAIT(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
 	      (sequence "READ(r)" "EVENTUALLY(e)" "|" "ABSORBED(a@/!)"))))
+
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "orange" :weight bold)
+              ("NEXT" :foreground "white" :weight bold)
+              ("READ" :foreground "white" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("ABSORBED" :foreground "grey" :weight bold)
+              ("WAIT" :foreground "forest green" :weight bold)
+              ("EVENTUALLY" :foreground "grey" :weight bold)
+              ("CANCELLED" :foreground "grey" :weight bold))))
 
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("cancelled" . t))
@@ -30,43 +53,39 @@
 	      ("READ" ("reading" . t) ("waiting") ("cancelled") ("hold"))
 	      ("EVENTUALLY" ("waiting") ("cancelled") ("hold")))))
 
+;; Capture templates
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("c" "Clocked subtask" entry (clock)
+               "* STARTED %?\n%U\n%a\n" :clock-in t :clock-keep t)
               ("r" "respond" entry (file "~/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
               ("n" "note" entry (file "~/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+datetree "~/org/diary.org")
-               "* %?\n%U\n" :clock-in t :clock-resume t)
-              ("w" "org-protocol" entry (file "~/org/refile.org")
-               "* TODO Review %c\n%U\n" :immediate-finish t)
-	      ("l" "Link" entry (file+olp "~/org/personal.org" "Web Links")
+	      ("l" "Link" entry (file+olp "~/org/personal.org" "Links" "Unsorted")
 	       "* %a\n %?\n %i")
-              ("m" "Meeting" entry (file "~/org/refile.org")
-               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-              ("p" "Phone call" entry (file "~/org/refile.org")
-               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file "~/org/refile.org")
+              ("h" "Habit" entry (file "~/org/personal.org" "Habits")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
-(setq org-default-notes-file (concat org-directory "/refile.org"))
 
-; Targets include this file and any file contributing to the agenda - up to 9 levels deep
-(setq org-refile-targets (quote ((nil :maxlevel . 9)
-                                 (org-agenda-files :maxlevel . 9))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org Custom Agenda Setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Use full outline paths for refile targets - we file directly with IDO
-(setq org-refile-use-outline-path t)
+;; Do not dim blocked tasks
+(setq org-agenda-dim-blocked-tasks nil)
 
-; Targets complete directly with IDO
-(setq org-outline-path-complete-in-steps nil)
+;; Compact the block agenda view
+(setq org-agenda-compact-blocks t)
 
-                                        ; Allow refile to create parent tasks with confirmation
-(setq org-refile-allow-creating-parent-nodes (quote confirm))
+;; Custom agenda command definitions
+(setq org-agenda-custom-commands
+      '(("n" "Agenda and all TODO's"
+	 ((agenda "")
+	  (alltodo)))))
 
-; Use IDO for both buffer and file completion and ido-everywhere to t
-(setq org-completion-use-ido t)
+
 
 (defun my-org-mode-hook ()
   (local-unset-key (kbd "C-j")) ;
@@ -74,6 +93,9 @@
   (smartparens-mode nil))
 
 (add-hook 'org-mode-hook 'my-org-mode-hook)
+(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
+(add-hook 'org-mode-hook 'org-indent-mode)
+
 
 (require 'org-protocol)
 (setq org-protocol-default-template-key "l")

@@ -32,11 +32,13 @@
 (global-set-key (kbd "C-\\") 'universal-argument)
 (define-key universal-argument-map (kbd "C-\\") 'universal-argument-more)
 
+;; Org mode bindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cc" 'org-capture)
-
+(global-set-key (kbd "M-0") 'org-clock-goto)
+(global-set-key (kbd "<f12>") 'visible-mode)
 
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
