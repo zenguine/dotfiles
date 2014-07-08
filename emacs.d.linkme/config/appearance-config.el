@@ -14,4 +14,15 @@
 
 (load-theme 'solarized-dark t)
 
+;; font size
+(set-face-attribute 'default nil :height 120)
+
+(defun set-small-font ()
+  (interactive)
+  (set-face-attribute 'default nil :height 120))
+
+(defun set-big-font ()
+  (interactive)
+  (set-face-attribute 'default nil :height 160))
+
 (provide 'appearance-config)
