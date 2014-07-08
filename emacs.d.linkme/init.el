@@ -25,6 +25,7 @@
     ace-jump-mode
     ag
     auto-complete
+    discover-my-major
     elpy
     evil
     evil-args
