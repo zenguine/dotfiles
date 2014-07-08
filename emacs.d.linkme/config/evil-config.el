@@ -85,6 +85,8 @@
 (define-key evil-visual-state-map "  " 'smex)
 (define-key evil-normal-state-map " 1" 'delete-other-windows)
 (define-key evil-normal-state-map " k" 'kill-this-buffer)
+(define-key evil-normal-state-map " rb" 'rainbow-blocks-mode)
+(define-key evil-normal-state-map " rd" 'rainbow-delimiters-mode)
 (define-key evil-normal-state-map " x" 'delete-single-window)
 (define-key evil-normal-state-map " b" 'ido-switch-buffer)
 (define-key evil-normal-state-map " f" 'ido-find-file)

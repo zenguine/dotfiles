@@ -52,6 +52,9 @@
     paredit
     popwin
     projectile
+    quack
+    rainbow-blocks
+    rainbow-delimiters
     smartparens
     smex
     sublimity
@@ -151,6 +154,7 @@
 (require 'prog-config)
 (require 'python-config)
 (require 'lisp-config)
+(require 'scheme-config)
 (require 'haskell-config)
 
 (require 'keybindings)
