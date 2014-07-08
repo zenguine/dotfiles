@@ -6,7 +6,8 @@
 ; no backup files
 (setq make-backup-files nil
       backup-inhibited t
-      auto-save-default nil)
+      auto-save-default nil
+      create-lockfiles nil)
 
 (put 'narrow-to-region 'disabled nil)
 
