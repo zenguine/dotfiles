@@ -39,8 +39,10 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cc" 'org-capture)
-(global-set-key (kbd "M-0") 'org-clock-goto)
+(global-set-key (kbd "C-c C-x C-j") 'org-clock-goto)
 (global-set-key (kbd "<f12>") 'visible-mode)
+(global-set-key (kbd "<f9> i") 'bh/punch-in)
+(global-set-key (kbd "<f9> o") 'bh/punch-out)
 
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))

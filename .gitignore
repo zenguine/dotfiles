@@ -58,3 +58,5 @@ projectile-bookmarks.eld
 /emacs.d.linkme/bookmarks
 semanticdb/
 TAGS
+emacs.d.linkme/.org-id-locations
+emacs.d.linkme/org-clock-save.el
