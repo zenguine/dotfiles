@@ -3,6 +3,7 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-c h") help-map)
+(define-key help-map (kbd "d") 'helm-descbinds)
 
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)

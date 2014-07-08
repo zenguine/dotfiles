@@ -39,6 +39,8 @@
     git-gutter
     guide-key
     helm
+    helm-descbinds
+    helm-google
     helm-projectile
     helm-swoop
     ido-vertical-mode
