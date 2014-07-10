@@ -45,6 +45,7 @@
     helm-projectile
     helm-swoop
     ido-vertical-mode
+    idris-mode
     jedi
     key-chord
     magit
@@ -156,5 +157,6 @@
 (require 'lisp-config)
 (require 'scheme-config)
 (require 'haskell-config)
+(require 'idris-config)
 
 (require 'keybindings)
