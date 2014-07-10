@@ -26,3 +26,10 @@ let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'"
 :def! docc return . (":! hoogle --color --info " ++) . ghciEscapeShellArg
 :set +t
 :seti -XNoMonomorphismRestriction
+:seti -XDataKinds
+:seti -XPolyKinds
+:seti -XGADTs
+:seti -XRankNTypes
+:seti -XTypeOperators
+:seti -XOverloadedLists
+:seti -XOverloadedStrings
