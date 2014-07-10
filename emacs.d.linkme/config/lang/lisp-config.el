@@ -6,6 +6,7 @@
 
 (defun my-lisp-interaction-mode-hook ()
   (local-unset-key (kbd "C-j"))
+  (define-key emacs-lisp-mode-map (kbd "C-0") 'eval-defun)
   (rainbow-delimiters-mode t))
 
 (add-hook 'lisp-interaction-mode-hook 'my-lisp-interaction-mode-hook)
