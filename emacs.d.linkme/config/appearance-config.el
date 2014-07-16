@@ -14,6 +14,7 @@
 
 (load-theme 'solarized-dark t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
+(when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 
 ;; font size
 (set-face-attribute 'default nil :height 120)

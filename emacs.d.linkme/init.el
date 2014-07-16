@@ -59,6 +59,7 @@
     quack
     rainbow-blocks
     rainbow-delimiters
+    rainbow-mode
     smartparens
     smex
     sublimity
