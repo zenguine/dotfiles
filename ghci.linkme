@@ -31,5 +31,3 @@ let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'"
 :seti -XGADTs
 :seti -XRankNTypes
 :seti -XTypeOperators
-:seti -XOverloadedLists
-:seti -XOverloadedStrings

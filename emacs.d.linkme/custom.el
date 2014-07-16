@@ -35,6 +35,7 @@
  '(projectile-remember-window-configs t)
  '(projectile-switch-project-action (quote projectile-find-file))
  '(projectile-tags-command "ctags --python-kinds=-iv -Re %s")
+ '(quack-programs (quote ("mechanics" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(safe-local-variable-values (quote ((eval when (require (quote proj-darkdynasty) nil (quote noerror)) (darkdynasty-mode t)))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(term-default-bg-color "#fdf6e3")
