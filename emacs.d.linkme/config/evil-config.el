@@ -1,4 +1,5 @@
 (setq evil-want-C-u-scroll t)
+(setq evil-want-C-i-jump nil)
 (setq evil-move-cursor-back nil)
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
@@ -44,9 +45,21 @@
 (define-key evil-normal-state-map  (kbd "C-p") 'helm-for-files)
 
 (define-key evil-operator-state-map (kbd "TAB") 'evil-jump-item)
+(define-key evil-motion-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)
-; Mapping for C-i
-(define-key evil-normal-state-map (kbd "H-i") 'evil-jump-forward)
+
+;; Evil-jumper
+(if (require 'evil-jumper nil 'noerror)
+    (progn
+      (define-key evil-motion-state-map (kbd "M-i") 'evil-jumper/forward)
+      (define-key evil-motion-state-map (kbd "M-o") 'evil-jumper/backward)
+      (define-key evil-normal-state-map (kbd "M-i") 'evil-jumper/forward)
+      (define-key evil-normal-state-map (kbd "M-o") 'evil-jumper/backward))
+  (define-key evil-normal-state-map (kbd "M-i") 'evil-jump-forward)
+  (define-key evil-normal-state-map (kbd "M-o") 'evil-jump-backward)
+  (define-key evil-motion-state-map (kbd "M-i") 'evil-jump-forward)
+  (define-key evil-motion-state-map (kbd "M-o") 'evil-jump-backward))
+
 (define-key evil-normal-state-map "L" 'evil-end-of-line)
 (define-key evil-normal-state-map (kbd "zn")
   (lambda () (interactive) (progn
