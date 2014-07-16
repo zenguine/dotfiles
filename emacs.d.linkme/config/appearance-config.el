@@ -13,6 +13,7 @@
 (global-hl-line-mode 1)
 
 (load-theme 'solarized-dark t)
+(when (require 'nyan-mode nil 'noerror) (nyan-mode))
 
 ;; font size
 (set-face-attribute 'default nil :height 120)

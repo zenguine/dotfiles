@@ -49,8 +49,10 @@
     jedi
     key-chord
     magit
+    molokai-theme
     multiple-cursors
     multi-term
+    nyan-mode
     paredit
     popwin
     projectile
