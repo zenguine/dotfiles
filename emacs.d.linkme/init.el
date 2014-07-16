@@ -49,6 +49,7 @@
     jedi
     key-chord
     magit
+    multiple-cursors
     multi-term
     paredit
     popwin
@@ -146,6 +147,7 @@
 (require 'sublimity-config)
 (require 'term-config)
 (require 'expand-region-config)
+(require 'multiple-cursors-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
