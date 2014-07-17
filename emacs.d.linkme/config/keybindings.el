@@ -44,9 +44,16 @@
 (global-set-key (kbd "<f9> i") 'bh/punch-in)
 (global-set-key (kbd "<f9> o") 'bh/punch-out)
 
+;; Window moving/resizing keybindings
+
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
 (global-set-key (kbd "C-k") (lambda () (interactive) (move-window-or-create 'above)))
 (global-set-key (kbd "C-l") (lambda () (interactive) (move-window-or-create 'right)))
+
+(global-set-key (kbd "S-<up>") 'enlarge-window)
+(global-set-key (kbd "S-<down>") 'shrink-window)
+(global-set-key (kbd "S-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-<left>") 'shrink-window-horizontally)
 
 (provide 'keybindings)
