@@ -8,8 +8,8 @@
       org-refile-allow-creating-parent-nodes 'confirm
       org-completion-use-ido t)
 
-(setq org-refile-targets '((nil :maxlevel . 3)
-			   (org-agenda-files :maxlevel . 4)))
+(setq org-refile-targets '((org-agenda-files :maxlevel . 4)
+			   (nil :maxlevel . 3)))
 
 ;; Org-babel config..
 (setq org-edit-src-content-indentation 0
@@ -59,10 +59,14 @@
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("n" "NEXT task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("C" "Misc clocked task" entry (file "~/org/refile.org")
+               "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
 	      ("c" "Clocked subtask" entry (clock)
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
-              ("r" "respond" entry (file "~/org/refile.org")
+              ("R" "respond" entry (file "~/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
+	      ("r" "Add to reading list" entry (file+olp "~/org/personal.org" "Learning" "Uncategorized")
+	       "* %x%? :reading:\n%U\n %i" :clock-in t :clock-resume t)
               ("n" "note" entry (file "~/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("l" "Link" entry (file+olp "~/org/personal.org" "Links" "Unsorted")
