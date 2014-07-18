@@ -11,7 +11,7 @@
 
 (global-hl-line-mode 1)
 
-(load-theme 'solarized-dark t)
+(load-theme 'monokai t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 
