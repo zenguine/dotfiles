@@ -5,10 +5,23 @@
   (setq show-trailing-whitespace nil)
   (flycheck-mode t)
   (setq flycheck-display-errors-delay .3)
+  (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
     (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
 
+(defun haskell/types-file-toggle ()
+  (interactive)
+  (let* ((fp (buffer-file-name))
+	 (dir (file-name-directory fp))
+	 (base (file-name-base fp)))
+    (if (equal base "Types")
+	(find-file (concat
+		    (substring dir 0 -1)
+		    ".hs"))
+      (find-file (concat dir base "/Types.hs")))))
+
 (define-key haskell-mode-map (kbd "C-c C-d") 'hoogle)
+(define-key haskell-mode-map (kbd "C-c C-c C-t") 'haskell/types-file-toggle)
 
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
