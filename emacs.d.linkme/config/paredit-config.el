@@ -35,7 +35,4 @@
 
 (defun my-enable-paredit ()  (interactive)  (paredit-mode t)  (evil-paredit-mode t))
 
-(add-hook 'emacs-lisp-mode-hook 'my-enable-paredit)
-(add-hook 'scheme-mode-hook 'my-enable-paredit)
-
 (provide 'paredit-config)

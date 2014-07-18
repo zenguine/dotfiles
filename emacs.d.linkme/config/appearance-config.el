@@ -1,4 +1,3 @@
-(show-paren-mode t)
 (setq-default highlight-tabs t)
 (setq inhibit-startup-message t)
 (setq-default show-trailing-whitespace nil)
