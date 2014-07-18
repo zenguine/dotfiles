@@ -11,7 +11,7 @@
 
 (global-hl-line-mode 1)
 
-(load-theme 'monokai t)
+(load-theme 'solarized-dark t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 
@@ -24,6 +24,6 @@
 
 (defun set-big-font ()
   (interactive)
-  (set-face-attribute 'default nil :height 160))
+  (set-face-attribute 'default nil :height 150))
 
 (provide 'appearance-config)
