@@ -60,7 +60,7 @@
     (kbd "M-L") 'sp-backward-barf-sexp))
 
 (smartparens-global-strict-mode t)
-(show-smartparens-global-mode t)
+(show-paren-mode t)
 
 (provide 'my-smartparens-config)
 
