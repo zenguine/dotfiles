@@ -17,6 +17,7 @@
 (autoload 'get-buffers-matching-mode "util" nil t)
 (autoload 'add-to-load-path-recursive "util" nil t)
 (autoload 'add-to-theme-path-recursive "util" nil t)
+(autoload 'helm-hoogle "helm-hoogle" nil t)
 
 (provide 'my-autoloads)
 
