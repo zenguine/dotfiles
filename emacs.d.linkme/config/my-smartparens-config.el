@@ -6,6 +6,7 @@
   (define-key map (kbd "M-?") 'sp-convolute-sexp)
 
   (evil-define-key 'normal map
+    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp
@@ -43,6 +44,7 @@
     )
 
   (evil-define-key 'insert map
+    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp
@@ -52,6 +54,7 @@
     )
 
   (evil-define-key 'emacs map
+    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp

@@ -20,7 +20,13 @@
 		    ".hs"))
       (find-file (concat dir base "/Types.hs")))))
 
-(define-key haskell-mode-map (kbd "C-c C-d") 'hoogle)
+(defun my-hoogle-fn (arg)
+  (interactive "P")
+  (if arg
+      (call-interactively 'hoogle)
+    (call-interactively 'helm-hoogle)))
+
+(define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
 (define-key haskell-mode-map (kbd "C-c C-c C-t") 'haskell/types-file-toggle)
 
 (add-hook 'haskell-mode-hook 'my-haskell-hook)

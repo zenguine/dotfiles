@@ -94,8 +94,8 @@
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
 
 (define-key evil-normal-state-map " c" 'evil-window-delete)
-(define-key evil-normal-state-map "  " 'smex)
-(define-key evil-visual-state-map "  " 'smex)
+(define-key evil-normal-state-map "  " 'helm-M-x)
+(define-key evil-visual-state-map "  " 'helm-M-x)
 (define-key evil-normal-state-map " 1" 'delete-other-windows)
 (define-key evil-normal-state-map " k" 'kill-this-buffer)
 (define-key evil-normal-state-map " rb" 'rainbow-blocks-mode)

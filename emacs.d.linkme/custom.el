@@ -23,6 +23,8 @@
  '(haskell-process-log t)
  '(haskell-stylish-on-save nil)
  '(haskell-tags-on-save t)
+ '(helm-split-window-default-side (quote right))
+ '(helm-split-window-in-side-p nil)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors (--map (solarized-color-blend it "#fdf6e3" 0.25) (quote ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#586e75")
