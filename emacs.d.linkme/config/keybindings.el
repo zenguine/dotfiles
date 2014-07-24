@@ -11,9 +11,15 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x C-m") 'helm-M-x)
 (global-set-key (kbd "C-c h a") 'helm-apropos)
-(global-set-key (kbd "C-c o") 'helm-occur)
-(global-set-key (kbd "C-c C-o") 'helm-multi-occur-in-this-mode)
+(global-set-key (kbd "C-c o") 'helm-swoop)
+(global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
 (global-set-key (kbd "C-c i") 'helm-imenu)
+
+(defun my-helm-multi-swoop (arg)
+  (interactive "P")
+  (if arg
+      (call-interactively 'helm-multi-swoop-all)
+    (call-interactively 'helm-multi-swoop)))
 
 (global-set-key (kbd "C-c t") 'multi-term-toggle)
 (global-set-key (kbd "C-c T") 'multi-term)

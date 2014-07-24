@@ -30,4 +30,12 @@
   (helm-multi-occur
    (get-buffers-matching-mode major-mode)))
 
+;; Helm-swoop config
+
+(when (require 'helm-swoop nil 'noerrors)
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  (when (require 'evil nil 'noerrors)
+    (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search))
+  (setq helm-multi-swoop-edit-save t))
+
 (provide 'my-helm-config)
