@@ -1,3 +1,5 @@
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (turn-on-eldoc-mode)
 (setq project-root-markers '(".git" ".svn"))
 (setq tags-revert-without-query t)
