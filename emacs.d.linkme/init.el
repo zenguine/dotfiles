@@ -41,9 +41,13 @@
     guide-key
     helm
     helm-descbinds
+    helm-git
     helm-google
+    helm-proc
     helm-projectile
+    helm-pydoc
     helm-swoop
+    helm-themes
     ido-vertical-mode
     idris-mode
     jedi
