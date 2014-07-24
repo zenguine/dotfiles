@@ -67,7 +67,7 @@
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
 	      ("r" "Add to reading list" entry (file+olp "~/org/personal.org" "Learning" "Uncategorized")
 	       "* %x%? :reading:\n%U\n %i" :clock-in t :clock-resume t)
-              ("n" "note" entry (file "~/org/refile.org")
+              ("N" "note" entry (file "~/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("l" "Link" entry (file+olp "~/org/personal.org" "Links" "Unsorted")
 	       "* %a\n %?\n %i")
