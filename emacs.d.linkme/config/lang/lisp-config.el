@@ -11,5 +11,6 @@
 
 (add-hook 'lisp-interaction-mode-hook 'my-lisp-interaction-mode-hook)
 (add-hook 'ielm-mode-hook 'my-lisp-interaction-mode-hook)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
 (provide 'lisp-config)

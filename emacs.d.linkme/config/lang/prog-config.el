@@ -1,3 +1,4 @@
+(turn-on-eldoc-mode)
 (setq project-root-markers '(".git" ".svn"))
 (setq tags-revert-without-query t)
 

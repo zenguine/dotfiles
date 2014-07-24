@@ -10,6 +10,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-hl-line-mode 1)
+(column-number-mode 1)
 
 (load-theme 'solarized-dark t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
