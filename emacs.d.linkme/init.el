@@ -38,6 +38,7 @@
     flx-ido
     flycheck
     git-gutter
+    gruvbox-theme
     guide-key
     helm
     helm-descbinds
@@ -48,6 +49,7 @@
     helm-pydoc
     helm-swoop
     helm-themes
+    ido-ubiquitous
     ido-vertical-mode
     idris-mode
     jedi
@@ -66,6 +68,8 @@
     rainbow-mode
     smartparens
     smex
+    spacegray-theme
+    sublime-themes
     sublimity
     zenburn-theme
     )
@@ -169,3 +173,5 @@
 (require 'idris-config)
 
 (require 'keybindings)
+
+(load-theme 'gruvbox t)
