@@ -178,5 +178,3 @@
 (require 'idris-config)
 
 (require 'keybindings)
-
-(load-theme 'gruvbox t)
