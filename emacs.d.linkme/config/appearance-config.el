@@ -43,14 +43,18 @@
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 
 ;; font size
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 130)
 
 (defun set-small-font ()
   (interactive)
   (set-face-attribute 'default nil :height 120))
 
-(defun set-big-font ()
+(defun set-medium-font ()
   (interactive)
   (set-face-attribute 'default nil :height 140))
+
+(defun set-big-font ()
+  (interactive)
+  (set-face-attribute 'default nil :height 160))
 
 (provide 'appearance-config)
