@@ -4,6 +4,12 @@
 (require 'package)
 (require 'my-autoloads)
 (require 'cl)
+(require 'dash-autoloads)
+(require 'dash-functional-autoloads)
+(require 'f-autoloads)
+(require 's-autoloads)
+
+
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -25,6 +31,8 @@
     ace-jump-mode
     ag
     auto-complete
+    dash
+    dash-functional
     discover-my-major
     elpy
     evil
@@ -33,6 +41,7 @@
     evil-matchit
     evil-nerd-commenter
     expand-region
+    f
     fiplr
     flx
     flx-ido
@@ -41,6 +50,7 @@
     gruvbox-theme
     guide-key
     helm
+    helm-dash
     helm-descbinds
     helm-git
     helm-google
@@ -66,6 +76,7 @@
     rainbow-blocks
     rainbow-delimiters
     rainbow-mode
+    s
     smartparens
     smex
     spacegray-theme
@@ -155,7 +166,8 @@
 (require 'popwin-config)
 (require 'projectile-config)
 (require 'sml-config)
-(require 'sublimity-config)
+(require 'sublimit
+y-config)
 (require 'term-config)
 (require 'expand-region-config)
 (require 'multiple-cursors-config)
