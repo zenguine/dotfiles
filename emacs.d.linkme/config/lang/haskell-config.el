@@ -1,14 +1,6 @@
 (require 'haskell-mode)
+(require 'shm)
 
-(defun my-haskell-hook ()
-  (interactive)
-  (setq show-trailing-whitespace nil)
-  (flycheck-mode t)
-  (smartparens-mode nil)
-  (setq flycheck-display-errors-delay .3)
-  (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
-  (when (require 'flycheck nil 'noerror)
-    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
 
 (defun haskell/types-file-toggle ()
   (interactive)
@@ -30,10 +22,6 @@
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
 (define-key haskell-mode-map (kbd "C-c C-c C-t") 'haskell/types-file-toggle)
 
-(add-hook 'haskell-mode-hook 'my-haskell-hook)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
 
 (defun setup-haskell-interactive-mode-bindings ()
   (interactive)
@@ -52,19 +40,100 @@
   (evil-define-key 'insert haskell-interactive-mode-map
     (kbd "C-n") 'haskell-interactive-mode-history-next))
 
+(defun shm/kill-whole-line ()
+  (interactive "P")
+  (evil-beginning-of-line)
+  (shm/kill-line))
+
+(defun my-haskell-hook ()
+  (interactive)
+  (setq show-trailing-whitespace nil)
+  (flycheck-mode t)
+
+  (setq flycheck-display-errors-delay .3)
+  (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
+  (when (require 'flycheck nil 'noerror)
+    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
+
+(define-key shm-map (kbd "M-l") 'sp-forward-slurp-sexp)
+(let ((map shm-map))
+  (define-key map (kbd "C-k") nil)
+  (define-key map (kbd "C-j") nil)
+  (define-key map (kbd "M-?") 'sp-convolute-sexp)
+  (evil-define-key 'normal map (kbd "D") 'shm/kill-line)
+  (evil-define-key 'normal map (kbd "R") 'shm/raise)
+  (evil-define-key 'visual map (kbd "d") 'shm/kill-region)
+  (evil-define-key 'insert map (kbd "=") 'shm/=)
+  (evil-define-key 'normal map (kbd "P") 'shm/yank)
+
+  (define-key map (kbd "C-j") nil)
+  (define-key map (kbd "M-RET") 'evil-ret-and-indent)
+  (define-key map (kbd "RET") 'shm/newline-indent)
+  (define-key map (kbd "C-k") nil)
+
+  (evil-define-key 'normal map
+    (kbd "M-t") 'sp-transpose-sexp
+    (kbd "M-k") 'sp-splice-sexp-killing-backward
+    (kbd "M-j") 'sp-splice-sexp-killing-forward
+    (kbd "M-h") 'sp-forward-barf-sexp
+    (kbd "M-H") 'sp-backward-slurp-sexp
+    (kbd "M-L") 'sp-backward-barf-sexp
+    (kbd "s") 'sp-splice-sexp
+    (kbd "S") 'shm/split-list
+    (kbd "M-R") 'sp-raise-sexp
+    (kbd "J") 'sp-join-sexp
+    (kbd ")") 'shm/forward-node
+    (kbd "(") 'shm/backward-node
+    (kbd "M-(") 'sp-backward-up-sexp
+    (kbd "M-)") 'sp-down-sexp
+    (kbd "C-(") 'sp-backward-down-sexp
+    (kbd "C-)") 'sp-up-sexp)
+
+  (evil-define-key 'operator map
+    (kbd ")") 'shm/forward-node
+    (kbd "(") 'shm/backward-node
+    (kbd "M-(") 'sp-backward-up-sexp
+    (kbd "M-)") 'sp-down-sexp
+    (kbd "C-(") 'sp-backward-down-sexp
+    (kbd "C-)") 'sp-up-sexp)
+
+  (evil-define-key 'motion map
+    (kbd ")") 'shm/forward-node
+    (kbd "(") 'shm/backward-node
+    (kbd "M-(") 'sp-backward-up-sexp
+    (kbd "M-)") 'sp-down-sexp
+    (kbd "C-(") 'sp-backward-down-sexp
+    (kbd "C-)") 'sp-up-sexp)
+
+  (evil-define-key 'insert map
+    (kbd "M-t") 'sp-transpose-sexp
+    (kbd "M-k") 'sp-splice-sexp-killing-backward
+    (kbd "M-j") 'sp-splice-sexp-killing-forward
+    (kbd "M-l") 'sp-forward-slurp-sexp
+    (kbd "M-h") 'sp-forward-barf-sexp
+    (kbd "M-H") 'sp-backward-slurp-sexp
+    (kbd "M-L") 'sp-backward-barf-sexp)
+
+  (evil-define-key 'emacs map
+    (kbd "M-t") 'sp-transpose-sexp
+    (kbd "M-k") 'sp-splice-sexp-killing-backward
+    (kbd "M-j") 'sp-splice-sexp-killing-forward
+    (kbd "M-l") 'sp-forward-slurp-sexp
+    (kbd "M-h") 'sp-forward-barf-sexp
+    (kbd "M-H") 'sp-backward-slurp-sexp
+    (kbd "M-L") 'sp-backward-barf-sexp))
+
+(defun my-shm-hook ()
+  (structured-haskell-mode t)
+  (smartparens-mode -1)
+  (smartparens-strict-mode -1)
+  (set-face-background 'shm-current-face "#47434D")
+  (set-face-background 'shm-quarantine-face "#47434D"))
+
+(add-hook 'haskell-mode-hook 'my-haskell-hook)
+(remove-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'my-shm-hook)
 (add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode-bindings)
-
-(if (require 'shm nil 'noerror)
-    (progn
-      ;; Faces for solarized light..
-      (set-face-background 'shm-current-face "#47434D")
-      (set-face-background 'shm-quarantine-face "#47434D")
-
-      (define-key shm-map (kbd "C-j") nil)
-      (define-key shm-map (kbd "C-k") nil)
-
-      (when (require 'evil nil 'noerror)
-	(evil-define-key 'normal shm-map (kbd "D") 'shm/kill-line)))
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent))
 
 (provide 'haskell-config)
