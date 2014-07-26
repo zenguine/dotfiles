@@ -4,12 +4,6 @@
 (require 'package)
 (require 'my-autoloads)
 (require 'cl)
-(require 'dash-autoloads)
-(require 'dash-functional-autoloads)
-(require 'f-autoloads)
-(require 's-autoloads)
-
-
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -166,8 +160,7 @@
 (require 'popwin-config)
 (require 'projectile-config)
 (require 'sml-config)
-(require 'sublimit
-y-config)
+(require 'sublimity-config)
 (require 'term-config)
 (require 'expand-region-config)
 (require 'multiple-cursors-config)
