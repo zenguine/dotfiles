@@ -48,6 +48,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key (kbd "C-c C-x C-j") 'org-clock-goto)
+(global-set-key (kbd "C-c C-x C-o") 'org-clock-out)
 (global-set-key (kbd "<f12>") 'visible-mode)
 (global-set-key (kbd "<f9> i") 'bh/punch-in)
 (global-set-key (kbd "<f9> o") 'bh/punch-out)
