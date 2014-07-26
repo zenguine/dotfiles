@@ -5,6 +5,7 @@
 ;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
+(setq-default line-spacing 2)
 
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
