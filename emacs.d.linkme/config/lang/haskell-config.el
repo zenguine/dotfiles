@@ -4,6 +4,7 @@
   (interactive)
   (setq show-trailing-whitespace nil)
   (flycheck-mode t)
+  (smartparens-mode nil)
   (setq flycheck-display-errors-delay .3)
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
