@@ -46,6 +46,7 @@
 (defun my-haskell-hook ()
   (interactive)
   (setq show-trailing-whitespace nil)
+  (setq haskell-stylish-on-save t)
   (flycheck-mode t)
 
   (setq flycheck-display-errors-delay .3)
@@ -56,7 +57,6 @@
 (let ((map shm-map))
   (define-key map (kbd "C-k") nil)
   (define-key map (kbd "C-j") nil)
-  (define-key map (kbd "M-?") 'sp-convolute-sexp)
   (evil-define-key 'normal map (kbd "D") 'shm/kill-line)
   (evil-define-key 'normal map (kbd "R") 'shm/raise)
   (evil-define-key 'insert map (kbd "=") 'shm/=)
