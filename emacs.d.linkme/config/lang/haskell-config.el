@@ -1,6 +1,8 @@
 (require 'haskell-mode)
 (require 'shm)
 
+(setq haskell-font-lock-symbols t)
+
 (defun haskell/types-file-toggle ()
   (interactive)
   (let* ((fp (buffer-file-name))
