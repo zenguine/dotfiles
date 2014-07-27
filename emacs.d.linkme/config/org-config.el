@@ -55,7 +55,9 @@
 
 ;; Capture templates
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/org/refile.org")
+      (quote (("T" "todo" entry (file "~/org/refile.org")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("t" "todo subtask" entry (clock)
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("n" "NEXT task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-resume t)
