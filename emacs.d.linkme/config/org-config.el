@@ -228,6 +228,37 @@
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+;; Advice for saving all org buffers.. when clocking in/out, captureing, or refiling,
+;; I want to guarantee that the changes are saved even if I forget to do it.
+;; XXX: There are some uses that dont actually change buffers when these functions
+;;      are given prefix arguments.. but the advice will still save all org-buffers
+;;      even for these uses.. this isn't ideal but it also isn't a big deal and this is
+;;      just a quick hack.
+(defadvice org-clock-in (after advice-for-after-org-clock-in activate)
+  (org-save-all-org-buffers))
+
+(defadvice org-clock-out (after advice-for-after-org-clock-out activate)
+  (org-save-all-org-buffers))
+
+(defadvice org-capture (after advice-for-after-org-capture activate)
+  (org-save-all-org-buffers))
+
+(defadvice org-refile (after advice-for-after-org-refile activate)
+  (org-save-all-org-buffers))
+
+;; Add effort estimate on the fly when clocking in on org-mode tasks
+(add-hook 'org-clock-in-prepare-hook
+          'my-org-mode-ask-effort)
+
+(defun my-org-mode-ask-effort ()
+  "Ask for an effort estimate when clocking in."
+  (unless (org-entry-get (point) "Effort")
+    (let ((effort
+           (completing-read
+            "Effort: "
+            (org-entry-get-multivalued-property (point) "Effort"))))
+      (unless (equal effort "")
+        (org-set-property "Effort" effort)))))
 
 (require 'org-protocol)
 (setq org-protocol-default-template-key "l")
