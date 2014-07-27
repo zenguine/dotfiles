@@ -39,7 +39,7 @@
 (global-hl-line-mode 1)
 (column-number-mode 1)
 
-(load-theme 'spolsky t)
+(load-theme 'gruvbox t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 ;; Diminish -- stop minor modes from cluttering up my modeline
