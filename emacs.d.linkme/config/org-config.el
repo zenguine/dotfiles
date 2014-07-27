@@ -55,16 +55,18 @@
 
 ;; Capture templates
 (setq org-capture-templates
-      (quote (("T" "todo" entry (file "~/org/refile.org")
+      (quote (("t" "todo" entry (file "~/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-	      ("t" "todo subtask" entry (clock)
+	      ("T" "todo subtask" entry (clock)
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("n" "NEXT task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-resume t)
-	      ("C" "Misc clocked task" entry (file "~/org/refile.org")
+	      ("c" "Misc clocked task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
-	      ("c" "Clocked subtask" entry (clock)
+	      ("C" "Clocked subtask" entry (clock)
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
+	      ("j" "Journal" entry (file+datetree "~/org/diary.org")
+               "* %?\n%U\n" :clock-in t :clock-resume t)
               ("R" "respond" entry (file "~/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
 	      ("r" "Add to reading list" entry (file+olp "~/org/personal.org" "Learning" "Uncategorized")
