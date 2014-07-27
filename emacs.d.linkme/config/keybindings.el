@@ -21,6 +21,7 @@
       (call-interactively 'helm-multi-swoop-all)
     (call-interactively 'helm-multi-swoop)))
 
+(global-set-key (kbd "C-c C-s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-c t") 'multi-term-toggle)
 (global-set-key (kbd "C-c T") 'multi-term)
 (global-set-key (kbd "C-x g") 'magit-status)
