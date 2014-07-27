@@ -1,7 +1,7 @@
 (require 'haskell-mode)
 (require 'shm)
 
-(setq haskell-font-lock-symbols t)
+(setq haskell-font-lock-symbols nil)
 
 (defun haskell/types-file-toggle ()
   (interactive)
