@@ -1,7 +1,6 @@
 (require 'haskell-mode)
 (require 'shm)
 
-
 (defun haskell/types-file-toggle ()
   (interactive)
   (let* ((fp (buffer-file-name))
@@ -21,7 +20,6 @@
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
 (define-key haskell-mode-map (kbd "C-c C-c C-t") 'haskell/types-file-toggle)
-
 
 (defun setup-haskell-interactive-mode-bindings ()
   (interactive)
@@ -55,26 +53,25 @@
   (when (require 'flycheck nil 'noerror)
     (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
 
-(define-key shm-map (kbd "M-l") 'sp-forward-slurp-sexp)
 (let ((map shm-map))
   (define-key map (kbd "C-k") nil)
   (define-key map (kbd "C-j") nil)
   (define-key map (kbd "M-?") 'sp-convolute-sexp)
   (evil-define-key 'normal map (kbd "D") 'shm/kill-line)
   (evil-define-key 'normal map (kbd "R") 'shm/raise)
-  (evil-define-key 'visual map (kbd "d") 'shm/kill-region)
   (evil-define-key 'insert map (kbd "=") 'shm/=)
   (evil-define-key 'normal map (kbd "P") 'shm/yank)
 
   (define-key map (kbd "C-j") nil)
-  (define-key map (kbd "M-RET") 'evil-ret-and-indent)
-  (define-key map (kbd "RET") 'shm/newline-indent)
+  (define-key map (kbd "M-RET") 'shm/newline-indent)
+  (define-key map (kbd "RET") 'evil-ret)
   (define-key map (kbd "C-k") nil)
 
   (evil-define-key 'normal map
     (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
+    (kbd "M-l") 'sp-forward-slurp-sexp
     (kbd "M-h") 'sp-forward-barf-sexp
     (kbd "M-H") 'sp-backward-slurp-sexp
     (kbd "M-L") 'sp-backward-barf-sexp
@@ -131,7 +128,6 @@
   (set-face-background 'shm-quarantine-face "#47434D"))
 
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
-(remove-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'my-shm-hook)
 (add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode-bindings)
