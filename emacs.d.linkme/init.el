@@ -27,6 +27,7 @@
     auto-complete
     dash
     dash-functional
+    diminish
     discover-my-major
     elpy
     evil

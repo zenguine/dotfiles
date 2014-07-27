@@ -43,6 +43,23 @@
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 
+;; Diminish -- stop minor modes from cluttering up my modeline
+(require 'diminish)
+
+(-each '(git-gutter-mode
+	 smartparens-mode
+	 projectile-mode
+	 guide-key-mode
+	 magit-auto-revert-mode
+	 undo-tree-mode
+	 haskell-doc-mode
+	 ) 'diminish)
+
+(-each '((haskell-indentation-mode . " ind")
+	 (structured-haskell-mode . " shm")
+	 (flycheck-mode . " flyc"))
+  (lambda (x) (diminish (car x) (cdr x))))
+
 ;; font size
 (set-face-attribute 'default nil :height 130)
 
