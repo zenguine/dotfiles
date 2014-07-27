@@ -52,9 +52,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
- '(helm-candidate-number ((t (:background "#2B2B2B" :foreground "#BFEBBF"))))
  '(helm-header ((t (:inherit header-line))))
- '(helm-selection ((t (:background "chocolate" :foreground "#D0BF8F" :underline t))))
  '(helm-source-header ((t (:background "#2B2B2B" :foreground "#F0DFAF" :box (:line-width -1 :style released-button) :underline nil :weight bold :height 1.3 :family "Sans Serif"))))
  '(helm-visible-mark ((t (:background "#D0BF8F" :foreground "#3F3F3F"))))
  '(org-done ((((class color) (min-colors 89)) (:bold t :weight bold :foreground "#008700" :background "#d7ff87" :box (:line-width 1 :style none)))))
