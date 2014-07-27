@@ -15,8 +15,14 @@
    "/usr/local/scmutils/mit-scheme/bin/scheme --library /usr/local/scmutils/mit-scheme/lib"))
 
 (defun my-inferior-scheme-mode-hook ()
+  (rainbow-delimiters-mode t)
+  (pretty-mode t))
+
+(defun my-scheme-mode-hook ()
+  (pretty-mode t)
   (rainbow-delimiters-mode t))
 
-(add-hook 'inferior-scheme-mode 'my-inferior-scheme-mode-hook)
+(add-hook 'inferior-scheme-mode-hook 'my-inferior-scheme-mode-hook)
+(add-hook 'scheme-mode-hook 'my-scheme-mode-hook)
 
 (provide 'scheme-config)

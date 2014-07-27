@@ -1,7 +1,7 @@
 (require 'haskell-mode)
 (require 'shm)
 
-(setq haskell-font-lock-symbols nil)
+(setq haskell-font-lock-symbols t)
 
 (defun haskell/types-file-toggle ()
   (interactive)
@@ -48,6 +48,7 @@
 (defun my-haskell-hook ()
   (interactive)
   (setq show-trailing-whitespace nil)
+  (rainbow-delimiters-mode t)
   (setq haskell-stylish-on-save t)
   (flycheck-mode t)
 

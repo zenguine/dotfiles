@@ -51,7 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil :family "Neep" :foundry "jmk" :slant normal :weight normal :height 113 :width normal))))
+ '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
  '(helm-candidate-number ((t (:background "#2B2B2B" :foreground "#BFEBBF"))))
  '(helm-header ((t (:inherit header-line))))
  '(helm-selection ((t (:background "chocolate" :foreground "#D0BF8F" :underline t))))
