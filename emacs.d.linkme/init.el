@@ -7,6 +7,9 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
+(require 'dash)
+(require 's)
+(require 'f)
 
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
