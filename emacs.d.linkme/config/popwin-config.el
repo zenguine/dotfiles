@@ -23,16 +23,12 @@
 
 (popwin-mode 1)
 
-(push '("^\*pytest.+\*$" :regexp t :height 20 :noselect t) popwin:special-display-config)
+(push '("^\*pytest.+\*$" :regexp t :height 30 :noselect t) popwin:special-display-config)
 (push '("*GHC Info*" :noselect t) popwin:special-display-config)
 (push '("*Warnings*" :noselect t) popwin:special-display-config)
-(push '("^\*ag.+\*$" :regexp t :height 20 :noselect t) popwin:special-display-config)
-(push '("*Backtrace*" :height 20) popwin:special-display-config)
-(push '("*Org-Babel Results*" :height 20) popwin:special-display-config)
-(push '("*jedi:doc*" :height 20) popwin:special-display-config)
-
-;; (defadvice popwin:close-popup-window (before advice-for-before-close-popup-window activate)
-;;   (when popwin:popup-buffer
-;;     (popwin/maybe-kill-buffer popwin:popup-buffer)))
+(push '("^\*ag.+\*$" :regexp t :height 30 :noselect t) popwin:special-display-config)
+(push '("*Backtrace*" :height 30) popwin:special-display-config)
+(push '("*Org-Babel Results*" :height 30) popwin:special-display-config)
+(push '("*jedi:doc*" :height 30) popwin:special-display-config)
 
 (provide 'popwin-config)
