@@ -48,13 +48,9 @@
   (define-key haskell-interactive-mode-map (kbd "C-c C-l") 'haskell-interactive-mode-clear)
   (define-key haskell-interactive-mode-map (kbd "C-j") nil)
   (define-key haskell-interactive-mode-map
-    (kbd "C-p") 'haskell-interactive-mode-history-previous)
-  (evil-define-key 'insert haskell-interactive-mode-map
-    (kbd "C-p") 'haskell-interactive-mode-history-previous)
+    (kbd "C-p") 'helm-for-files)
   (define-key haskell-interactive-mode-map
-    (kbd "C-n") 'haskell-interactive-mode-history-next)
-  (evil-define-key 'insert haskell-interactive-mode-map
-    (kbd "C-n") 'haskell-interactive-mode-history-next))
+    (kbd "C-n") nil))
 
 (defun shm/kill-whole-line ()
   (interactive "P")
