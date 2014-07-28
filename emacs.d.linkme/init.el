@@ -58,6 +58,8 @@
     helm-pydoc
     helm-swoop
     helm-themes
+    ibuffer-git
+    ibuffer-vc
     ido-ubiquitous
     ido-vertical-mode
     idris-mode
@@ -169,6 +171,7 @@
 (require 'term-config)
 (require 'expand-region-config)
 (require 'multiple-cursors-config)
+(require 'ibuffer-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)

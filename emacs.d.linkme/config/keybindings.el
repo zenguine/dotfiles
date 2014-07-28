@@ -6,7 +6,7 @@
 (define-key help-map (kbd "d") 'helm-descbinds)
 (define-key help-map (kbd "C-m") 'discover-my-major)
 
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x C-m") 'helm-M-x)
