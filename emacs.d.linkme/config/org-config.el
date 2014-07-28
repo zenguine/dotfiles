@@ -53,12 +53,23 @@
 	      ("READ" ("reading" . t) ("waiting") ("cancelled") ("hold"))
 	      ("EVENTUALLY" ("waiting") ("cancelled") ("hold")))))
 
+(defun org-clocked-parent ()
+  "Move to the parent of the task currently being clocked. If
+   the currently clocked task is a top level heading, then move to the end of
+   the file that it is in."
+  (org-clock-goto)
+  (interactive))
+
 ;; Capture templates
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("T" "todo subtask" entry (clock)
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("s" "TODO sibling of clocked" entry (function org-clocked-parent)
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("S" "Clock in as sibling of current task" entry (function org-clocked-parent)
+               "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
 	      ("n" "NEXT task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("c" "Misc clocked task" entry (file "~/org/refile.org")
