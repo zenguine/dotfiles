@@ -1,4 +1,13 @@
 ;;; -*- lexical-binding: t -*-
+;; Convenience macros
+
+(defmacro ifhave (x &rest body)
+  `(when (require ,x nil 'noerror)
+     ,@body))
+
+(defmacro after (x &rest body)
+  `(eval-after-load ,x
+     ',(cons 'progn body)))
 
 (defun const (val) (lambda (x) val))
 
@@ -187,3 +196,5 @@ window and a non-term window"
 (defun backward-kill-line (arg)
   (interactive "p")
   (kill-line (- 1 arg)))
+
+

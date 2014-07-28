@@ -30,5 +30,6 @@
 (push '("*Backtrace*" :height 30) popwin:special-display-config)
 (push '("*Org-Babel Results*" :height 30) popwin:special-display-config)
 (push '("*jedi:doc*" :height 30) popwin:special-display-config)
+(push '("*Help*" :height 15 :stick t) popwin:special-display-config)
 
 (provide 'popwin-config)

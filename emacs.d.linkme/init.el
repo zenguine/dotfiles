@@ -32,6 +32,7 @@
     dash-functional
     diminish
     discover-my-major
+    elisp-slime-nav
     elpy
     evil
     evil-args
