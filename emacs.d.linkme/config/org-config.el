@@ -224,7 +224,8 @@
 (defun my-org-mode-hook ()
   (local-unset-key (kbd "C-j")) ;
   (local-unset-key (kbd "C-k"))
-  (smartparens-mode nil))
+  (smartparens-mode -1)
+  (smartparens-strict-mode -1))
 
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
@@ -264,5 +265,7 @@
 
 (require 'org-protocol)
 (setq org-protocol-default-template-key "l")
+
+(add-hook 'org-clock-out-hook 'bh/clock-out-maybe)
 
 (provide 'org-config)

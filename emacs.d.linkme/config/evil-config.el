@@ -45,7 +45,11 @@
 (define-key evil-normal-state-map  (kbd "C-p") 'helm-for-files)
 
 (define-key evil-normal-state-map  (kbd "'") 'evil-goto-mark)
-(define-key evil-normal-state-map  (kbd "C-p") 'evil-goto-mark-line)
+(define-key evil-normal-state-map  (kbd "`") 'evil-goto-mark-line)
+(define-key evil-motion-state-map  (kbd "'") 'evil-goto-mark)
+(define-key evil-motion-state-map  (kbd "`") 'evil-goto-mark-line)
+(define-key evil-operator-state-map  (kbd "'") 'evil-goto-mark)
+(define-key evil-operator-state-map  (kbd "`") 'evil-goto-mark-line)
 
 (define-key evil-operator-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-item)

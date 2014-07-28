@@ -315,6 +315,7 @@ as the default task."
 
 (defun bh/clock-in-parent-task ()
   "Move point to the parent (project) task if any and clock in"
+  (interactive)
   (let ((parent-task))
     (save-excursion
       (save-restriction
@@ -342,7 +343,6 @@ as the default task."
              (not org-clock-resolving-clocks-due-to-idleness))
     (bh/clock-in-parent-task)))
 
-(add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; Focusing on work
