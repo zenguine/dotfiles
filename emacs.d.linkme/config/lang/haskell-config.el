@@ -1,7 +1,18 @@
 (require 'haskell-mode)
 (require 'shm)
 
-(setq haskell-font-lock-symbols t)
+;; Disabled because it doesn't work with structured-haskell-mode
+(setq haskell-font-lock-symbols nil)
+;; but a lambda symbol can safely replace '\' because they are the same length
+;; and it wont screw up indentation
+(defun pretty-lambdas-haskell ()
+  (font-lock-add-keywords
+   nil `((,(concat "\\(" (regexp-quote "\\") "\\)")
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil))))))
+
+(add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 
 (defun haskell/types-file-toggle ()
   (interactive)
@@ -30,6 +41,7 @@
   (define-key haskell-interactive-mode-map (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
   (define-key haskell-interactive-mode-map (kbd "C-w") 'backward-kill-word)
   (define-key haskell-interactive-mode-map (kbd "TAB") 'haskell-interactive-mode-tab)
+  (define-key haskell-interactive-mode-map (kbd "C-c C-l") 'haskell-interactive-mode-clear)
   (define-key haskell-interactive-mode-map (kbd "C-j") nil)
   (define-key haskell-interactive-mode-map
     (kbd "C-p") 'haskell-interactive-mode-history-previous)
@@ -62,12 +74,11 @@
   (define-key map (kbd "C-j") nil)
   (evil-define-key 'normal map (kbd "D") 'shm/kill-line)
   (evil-define-key 'normal map (kbd "R") 'shm/raise)
-  (evil-define-key 'insert map (kbd "=") 'shm/=)
   (evil-define-key 'normal map (kbd "P") 'shm/yank)
 
   (define-key map (kbd "C-j") nil)
-  (define-key map (kbd "M-RET") 'shm/newline-indent)
-  (define-key map (kbd "RET") 'evil-ret)
+  (define-key map (kbd "RET") 'shm/newline-indent)
+  (define-key map (kbd "M-RET") 'evil-ret)
   (define-key map (kbd "C-k") nil)
 
   (evil-define-key 'normal map
