@@ -44,6 +44,9 @@
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 (define-key evil-normal-state-map  (kbd "C-p") 'helm-for-files)
 
+(define-key evil-normal-state-map  (kbd "'") 'evil-goto-mark)
+(define-key evil-normal-state-map  (kbd "C-p") 'evil-goto-mark-line)
+
 (define-key evil-operator-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-motion-state-map (kbd "TAB") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-item)
