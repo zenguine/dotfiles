@@ -32,7 +32,11 @@
     (call-interactively 'helm-hoogle)))
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
-(define-key haskell-mode-map (kbd "C-c C-c C-t") 'haskell/types-file-toggle)
+(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
+(define-key haskell-mode-map (kbd "C-c t") 'haskell-process-do-type)
+(define-key haskell-mode-map (kbd "C-c d") 'haskell-process-add-dependency)
+(define-key haskell-mode-map (kbd "C-c T") 'haskell/types-file-toggle)
 
 (defun setup-haskell-interactive-mode-bindings ()
   (interactive)
@@ -77,8 +81,9 @@
   (evil-define-key 'normal map (kbd "P") 'shm/yank)
 
   (define-key map (kbd "C-j") nil)
-  (define-key map (kbd "RET") 'shm/newline-indent)
-  (define-key map (kbd "M-RET") 'evil-ret)
+  (evil-define-key 'insert map (kbd "RET") 'shm/newline-indent)
+  (evil-define-key 'normal map (kbd "RET") 'shm/newline-indent)
+  (evil-define-key 'insert map (kbd "M-RET") 'evil-ret)
   (define-key map (kbd "C-k") nil)
 
   (evil-define-key 'normal map
