@@ -92,7 +92,8 @@ window and a non-term window"
 	(funcall move-func 1)
       (error (progn
 	       (split-window nil nil dir)
-	       (funcall move-func 1))))))
+	       (funcall move-func 1)
+	       (balance-windows))))))
 
 (defun pytest-test-all ()
   "Run py.test from current directory running all tests"

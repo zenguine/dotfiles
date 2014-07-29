@@ -56,14 +56,17 @@
 
 ;; Window moving/resizing keybindings
 
+(global-set-key (kbd "M-[") 'winner-undo)
+(global-set-key (kbd "M-]") 'winner-redo)
+
 (global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
 (global-set-key (kbd "C-k") (lambda () (interactive) (move-window-or-create 'above)))
 (global-set-key (kbd "C-l") (lambda () (interactive) (move-window-or-create 'right)))
 
-(global-set-key (kbd "S-<up>") 'enlarge-window)
-(global-set-key (kbd "S-<down>") 'shrink-window)
-(global-set-key (kbd "S-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-<up>") (lambda () (interactive) (enlarge-window 3)))
+(global-set-key (kbd "S-<down>") (lambda () (interactive) (shrink-window 3)))
+(global-set-key (kbd "S-<right>") (lambda () (interactive) (enlarge-window-horizontally 3)))
+(global-set-key (kbd "S-<left>") (lambda () (interactive) (shrink-window-horizontally 3)))
 
 (provide 'keybindings)
