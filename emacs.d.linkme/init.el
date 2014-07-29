@@ -172,6 +172,7 @@
 (require 'expand-region-config)
 (require 'multiple-cursors-config)
 (require 'ibuffer-config)
+(require 'winner-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)

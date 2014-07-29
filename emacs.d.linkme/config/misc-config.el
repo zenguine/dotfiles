@@ -1,8 +1,6 @@
 ;; Sublimity
 (require 'sublimity)
 
-(winner-mode t)
-
 ; no backup files
 (setq make-backup-files nil
       backup-inhibited t
