@@ -73,6 +73,10 @@
   (interactive)
   (set-face-attribute 'default nil :height 98))
 
+(defun set-screen-font ()
+  (interactive)
+  (set-face-attribute 'default nil :height 110))
+
 (defun set-big-font ()
   (interactive)
   (set-face-attribute 'default nil :height 120))
