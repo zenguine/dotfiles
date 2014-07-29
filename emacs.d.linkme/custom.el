@@ -23,7 +23,8 @@
  '(haskell-process-log t)
  '(haskell-stylish-on-save nil)
  '(haskell-tags-on-save t)
- '(helm-split-window-default-side (quote right))
+ '(helm-buffer-details-flag t)
+ '(helm-split-window-default-side (quote same))
  '(helm-split-window-in-side-p nil)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors (--map (solarized-color-blend it "#fdf6e3" 0.25) (quote ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
@@ -51,7 +52,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
+ '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 80 :width normal))))
  '(helm-action ((t (:underline t))))
  '(helm-buffer-directory ((t (:foreground "#6E9B26"))))
  '(helm-ff-directory ((t (:background "#668B8B" :foreground "#D0BF8F"))))
