@@ -102,14 +102,6 @@
 ;; Compact the block agenda view
 (setq org-agenda-compact-blocks t)
 
-;; Custom agenda command definitions
-(setq org-agenda-custom-commands
-      '(("n" "Agenda and all TODO's"
-	 ((agenda "")
-	  (alltodo)))
-	("r" "All reading list items" tags "reading")
-	("u" "Unread reading list items" tags "reading-TODO=\"ABSORBED\"")))
-
 (setq org-agenda-custom-commands
       (quote (("N" "Notes" tags "NOTE"
                ((org-agenda-overriding-header "Notes")
@@ -121,6 +113,8 @@
               ("n" "All NEXT items" tags-todo "TODO=\"NEXT\""
                ((org-agenda-overriding-header "Next")))
 	      ("r" . "Reading List")
+              ("rn" "Next to read" tags "+reading/+READ"
+               ((org-agenda-overriding-header "Reading List: next up")))
               ("ru" "Unread reading items" tags "+reading/-ABSORBED"
                ((org-agenda-overriding-header "Reading List: unread")))
               ("ra" "All reading items" tags "+reading"
