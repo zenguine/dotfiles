@@ -63,7 +63,7 @@
     (eval-after-load (car x)
       `(diminish ',(cadr x) ,(cddr x)))))
 
-(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :height 110)
 
 (defun set-small-font ()
   (interactive)
