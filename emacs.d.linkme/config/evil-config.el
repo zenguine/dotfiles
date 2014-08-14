@@ -110,7 +110,6 @@
 (define-key evil-normal-state-map " x" 'delete-single-window)
 (define-key evil-normal-state-map " b" 'ido-switch-buffer)
 (define-key evil-normal-state-map " f" 'ido-find-file)
-(define-key evil-normal-state-map " t" 'multi-term-toggle)
 (define-key evil-normal-state-map " ev" (lambda () (interactive)
 					  (find-file "~/.vimrc")))
 (define-key evil-normal-state-map " ee" (lambda () (interactive)
@@ -129,7 +128,6 @@
 
 ; Key-chord bindings
 (key-chord-define evil-emacs-state-map " c" 'evil-window-delete)
-(key-chord-define evil-emacs-state-map " t" 'multi-term-toggle)
 (key-chord-define evil-emacs-state-map " 1" 'delete-other-windows)
 (key-chord-define evil-emacs-state-map " k" 'kill-this-buffer)
 (key-chord-define evil-emacs-state-map " x" 'delete-single-window)
