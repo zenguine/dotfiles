@@ -273,4 +273,10 @@
 
 (add-hook 'org-clock-out-hook 'bh/clock-out-maybe)
 
+;; Org-mode encryption settings
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance '("crypt"))
+(setq org-crypt-key nil)
+
 (provide 'org-config)

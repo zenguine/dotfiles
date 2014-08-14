@@ -44,6 +44,8 @@
 (define-key universal-argument-map (kbd "C-\\") 'universal-argument-more)
 
 ;; Org mode bindings
+(global-set-key (kbd "C-c x d h") 'org-decrypt-entry)
+(global-set-key (kbd "C-c x d b") 'org-decrypt-entries)
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
