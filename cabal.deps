@@ -15,3 +15,5 @@ parsec
 pointfree
 structured-haskell-mode
 stylish-haskell
+extensible-effects
+hasktags
