@@ -42,6 +42,7 @@
     expand-region
     f
     fiplr
+    firebelly-theme
     flx
     flx-ido
     flycheck
