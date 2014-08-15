@@ -1,21 +1,5 @@
 :m - Prelude
 :m + GOA
-findPosixLambdabot >>= setLambdabotHome
-
-:def bs        lambdabot "botsnack"
-:def pl        lambdabot "pl"
-:def unpl      lambdabot "unpl"
-:def unmtl     lambdabot "unmtl"
-:def redo      lambdabot "redo"
-:def undo      lambdabot "undo"
-:def index     lambdabot "index"
-:def docs      lambdabot "docs"
-:def instances lambdabot "instances"
-:def lbhoogle  lambdabot "hoogle"
-:def source    lambdabot "source"
-:def where     lambdabot "where"
-:def version   lambdabot "version"
-:def src       lambdabot "src"
 
 :set prompt "λ: "
 :m + Control.Monad Control.Applicative Control.Monad.Error Control.Monad.State Control.Monad.Reader Control.Monad.Writer Control.Lens
