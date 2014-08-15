@@ -32,6 +32,8 @@
     (call-interactively 'helm-hoogle)))
 
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
+(define-key haskell-mode-map (kbd "M-n") 'flycheck-next-error)
+(define-key haskell-mode-map (kbd "M-p") 'flycheck-previous-error)
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
 (define-key haskell-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
 (define-key haskell-mode-map (kbd "C-c t") 'haskell-process-do-type)
