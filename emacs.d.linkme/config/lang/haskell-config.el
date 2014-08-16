@@ -1,5 +1,7 @@
 (require 'haskell-mode)
 (require 'shm)
+(require 's)
+(require 'dash)
 
 ;; Disabled because it doesn't work with structured-haskell-mode
 (setq haskell-font-lock-symbols nil)
@@ -18,12 +20,13 @@
   "Get the text of the current shm node"
   (shm-node-string (shm-current-node)))
 
-(defun haskell/process-eval-string (use-type-p eval-string)
+(defun haskell/process-eval-string (use-type-p base-string)
   "Send 'eval-string' to the running haskell process to be evaluated.
    If use-type-p is non-nil, the type of eval-string is computed instead."
-  (haskell-process-do-simple-echo (if use-type-p
-				      (concat ":t " eval-string)
-				    eval-string)))
+  (let ((eval-strings
+	 (-map (lambda (s) (s-join " " (list ":t" s)))
+	       (s-lines base-string))))
+    (-each eval-strings 'haskell-process-do-simple-echo))))
 
 (defun haskell/process-send-current (arg start end)
   "Send either the current region if active, or the text in the current shm node
@@ -52,15 +55,16 @@
       (call-interactively 'hoogle)
     (call-interactively 'helm-hoogle)))
 
-(require 's)
 (defun haskell/process-send-current-with-prefix (start end prefix)
   (interactive (let ((prefix (read-string "Function to call: " "" nil "print")))
 		 (list (region-beginning) (region-end) prefix)))
   (let* ((eval-base (if (region-active-p)
 			 (buffer-substring start end)
 		       (shm/current-node-string)))
-	 (eval-string (s-join " " (list prefix "$" eval-base))))
-    (haskell-process-do-simple-echo eval-string)))
+	 (eval-strings (-map
+			(lambda (s) (s-join " " (list prefix "$" s)))
+			(s-lines eval-base))))
+    (-each eval-strings 'haskell-process-do-simple-echo)))
 
 (defun haskell/pprIO-current-with-prefix (arg start end)
   (interactive "P\nr")
