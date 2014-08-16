@@ -52,8 +52,38 @@
       (call-interactively 'hoogle)
     (call-interactively 'helm-hoogle)))
 
+(require 's)
+(defun haskell/process-send-current-with-prefix (start end prefix)
+  (interactive (let ((prefix (read-string "Function to call: " "" nil "print")))
+		 (list (region-beginning) (region-end) prefix)))
+  (let* ((eval-base (if (region-active-p)
+			 (buffer-substring start end)
+		       (shm/current-node-string)))
+	 (eval-string (s-join " " (list prefix "$" eval-base))))
+    (haskell-process-do-simple-echo eval-string)))
+
+(defun haskell/pprIO-current-with-prefix (arg start end)
+  (interactive "P\nr")
+  (progn (print arg)
+	 (print start)
+	 (print end)
+	 (if arg
+	     (call-interactively 'haskell/process-send-current-with-prefix)
+	   (haskell/process-send-current-with-prefix start end "pprIO"))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Convenient bindings for evaluating haskell code in the repl from a regular haskell buffer
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key haskell-mode-map (kbd "C-c S") 'haskell/process-send-current-with-prefix)
+(evil-define-key 'normal haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
+(evil-define-key 'visual haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
+
 (define-key haskell-mode-map (kbd "C-c s") 'haskell/process-send-current)
-(evil-define-key 'normal haskell-mode-map (kbd "M-RET") 'haskell/process-send-current)
+(evil-define-key 'normal shm-map (kbd "RET") nil)
+(evil-define-key 'normal haskell-mode-map (kbd "RET") 'haskell/process-send-current)
+(evil-define-key 'visual haskell-mode-map (kbd "RET") 'haskell/process-send-current)
+
+;; Bindings to check out haskell documentation / browse errors
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
 (define-key haskell-mode-map (kbd "M-n") 'flycheck-next-error)
 (define-key haskell-mode-map (kbd "M-p") 'flycheck-previous-error)
