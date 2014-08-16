@@ -17,6 +17,7 @@
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
  '(evil-search-module (quote evil-search))
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(git-gutter:disabled-modes (quote (org-mode)))
  '(git-gutter:hide-gutter t)
  '(haskell-interactive-popup-errors nil)
