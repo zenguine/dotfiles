@@ -14,6 +14,27 @@
 
 (add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 
+(defun shm/current-node-string ()
+  "Get the text of the current shm node"
+  (shm-node-string (shm-current-node)))
+
+(defun haskell/process-eval-string (use-type-p eval-string)
+  "Send 'eval-string' to the running haskell process to be evaluated.
+   If use-type-p is non-nil, the type of eval-string is computed instead."
+  (haskell-process-do-simple-echo (if use-type-p
+				      (concat ":t " eval-string)
+				    eval-string)))
+
+(defun haskell/process-send-current (arg start end)
+  "Send either the current region if active, or the text in the current shm node
+   to the running haskell process to be evaluated.  With prefix argument, the type
+   is printed instead."
+  (interactive "P\nr")
+  (let ((eval-string (if (region-active-p)
+			 (buffer-substring start end)
+		       (shm/current-node-string))))
+    (haskell/process-eval-string arg eval-string)))
+
 (defun haskell/types-file-toggle ()
   (interactive)
   (let* ((fp (buffer-file-name))
@@ -31,12 +52,18 @@
       (call-interactively 'hoogle)
     (call-interactively 'helm-hoogle)))
 
+(define-key haskell-mode-map (kbd "C-c s") 'haskell/process-send-current)
+(evil-define-key 'normal haskell-mode-map (kbd "M-RET") 'haskell/process-send-current)
 (define-key haskell-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
 (define-key haskell-mode-map (kbd "M-n") 'flycheck-next-error)
 (define-key haskell-mode-map (kbd "M-p") 'flycheck-previous-error)
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+
 (define-key haskell-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
+(evil-define-key 'normal haskell-mode-map (kbd "K") 'haskell-process-do-info)
+
 (define-key haskell-mode-map (kbd "C-c t") 'haskell-process-do-type)
+(evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
 (define-key haskell-mode-map (kbd "C-c d") 'haskell-process-add-dependency)
 (define-key haskell-mode-map (kbd "C-c T") 'haskell/types-file-toggle)
 
