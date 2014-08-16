@@ -20,23 +20,36 @@
   "Get the text of the current shm node"
   (shm-node-string (shm-current-node)))
 
-(defun haskell/process-eval-string (use-type-p base-string)
+(defun haskell/process-eval-string (use-type-p split-lines-p base-string)
   "Send 'eval-string' to the running haskell process to be evaluated.
    If use-type-p is non-nil, the type of eval-string is computed instead."
-  (let ((eval-strings
-	 (-map (lambda (s) (s-join " " (list ":t" s)))
-	       (s-lines base-string))))
-    (-each eval-strings 'haskell-process-do-simple-echo))))
+  (if split-lines-p
+      (let* ((eval-strings (s-lines base-string))
+	     (eval-strings
+	      (if use-type-p (-map (lambda (s) (s-join " " (list ":t" s)))
+				   eval-strings)
+		eval-strings)))
+	(-each eval-strings 'haskell-process-do-simple-echo))
+    (let* ((lines (s-lines base-string))
+	   (newhead (if use-type-p
+			(s-join " " (list ":t" (car lines)))
+		      (car lines)))
+	   (lines (cons newhead (cdr lines)))
+	   (eval-string (if (< 1 (length lines))
+			    (s-join "\n" (append (cons ":{" lines) '(":}")))
+			  (concat (car lines) "\n"))))
+      (haskell-process-do-simple-echo eval-string))))
 
 (defun haskell/process-send-current (arg start end)
   "Send either the current region if active, or the text in the current shm node
    to the running haskell process to be evaluated.  With prefix argument, the type
    is printed instead."
   (interactive "P\nr")
-  (let ((eval-string (if (region-active-p)
+  (let* ((is-region-active (region-active-p))
+	 (eval-string (if is-region-active
 			 (buffer-substring start end)
 		       (shm/current-node-string))))
-    (haskell/process-eval-string arg eval-string)))
+    (haskell/process-eval-string arg is-region-active eval-string)))
 
 (defun haskell/types-file-toggle ()
   (interactive)
@@ -55,25 +68,38 @@
       (call-interactively 'hoogle)
     (call-interactively 'helm-hoogle)))
 
-(defun haskell/process-send-current-with-prefix (start end prefix)
+(defun haskell/process-send-current-with-prefix (start end prefix split-lines-p)
   (interactive (let ((prefix (read-string "Function to call: " "" nil "print")))
-		 (list (region-beginning) (region-end) prefix)))
-  (let* ((eval-base (if (region-active-p)
-			 (buffer-substring start end)
-		       (shm/current-node-string)))
-	 (eval-strings (-map
-			(lambda (s) (s-join " " (list prefix "$" s)))
-			(s-lines eval-base))))
-    (-each eval-strings 'haskell-process-do-simple-echo)))
+		 (list (region-beginning) (region-end) prefix (region-active-p))))
+  (let ((base-string (if (region-active-p)
+			 (buffer-substring
+			  (region-beginning)
+			  (region-end))
+		       (shm/current-node-string))))
+    (if split-lines-p
+	(let* ((eval-strings (s-lines base-string))
+	       (eval-strings
+		(-map (lambda (s) (s-join " " (list prefix "$" s)))
+		      eval-strings)))
+	  (-each eval-strings 'haskell-process-do-simple-echo))
+      (let* ((lines (s-lines base-string))
+	     (full-prefix (concat prefix " $ ( "))A
+	     (fp-length (length full-prefix))
+	     (newhead (concat full-prefix (car lines)))
+	     (new-tail (-map (lambda (line) (concat (s-repeat fp-length " ")
+					       line))
+			     (cdr lines)))
+	     (lines (cons newhead new-tail))
+	     (eval-string (if (< 1 (length lines))
+			      (s-join "\n" (append (cons ":{" lines) '(")" ":}")))
+			    (concat (car lines) "\n"))))
+	(haskell-process-do-simple-echo eval-string)))))
 
 (defun haskell/pprIO-current-with-prefix (arg start end)
   (interactive "P\nr")
-  (progn (print arg)
-	 (print start)
-	 (print end)
-	 (if arg
-	     (call-interactively 'haskell/process-send-current-with-prefix)
-	   (haskell/process-send-current-with-prefix start end "pprIO"))))
+  (if arg
+      (call-interactively 'haskell/process-send-current-with-prefix)
+    (haskell/process-send-current-with-prefix start end "pprIO" (region-active-p))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Convenient bindings for evaluating haskell code in the repl from a regular haskell buffer
