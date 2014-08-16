@@ -72,6 +72,7 @@
     multiple-cursors
     multi-term
     nyan-mode
+    org-magit
     paredit
     popwin
     projectile
