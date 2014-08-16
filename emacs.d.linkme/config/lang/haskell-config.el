@@ -140,9 +140,7 @@
 (defun my-shm-hook ()
   (structured-haskell-mode t)
   (smartparens-mode -1)
-  (smartparens-strict-mode -1)
-  (set-face-background 'shm-current-face "#47434D")
-  (set-face-background 'shm-quarantine-face "#47434D"))
+  (smartparens-strict-mode -1))
 
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
