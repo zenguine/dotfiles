@@ -56,11 +56,11 @@
       (jazz-fg-1     "#c6a57b")
 
       (jazz-bg-1     "#101010")
-      (jazz-bg-05    "#151515")
-      (jazz-bg       "#151515")
-      (jazz-bg+1     "#202020")
-      (jazz-bg+2     "#505050")
-      (jazz-bg+3     "#606060")
+      (jazz-bg-05    "#282828")
+      (jazz-bg       "#282828")
+      (jazz-bg+1     "#353535")
+      (jazz-bg+2     "#454545")
+      (jazz-bg+3     "#555555")
 
       (jazz-red+1    "#8d4a4a")
       (jazz-red      "#953331")
@@ -129,6 +129,9 @@
    `(grep-hit-face ((,class (:foreground ,jazz-blue))))
    `(grep-match-face ((,class (:foreground ,jazz-orange :weight bold))))
    `(match ((,class (:background ,jazz-bg-1 :foreground ,jazz-orange :weight bold))))
+
+   ;; Structured haskell mode
+   `(shm-current-face ((t (:background ,jazz-bg+1))))
 
    ;; faces used by isearch
    `(isearch ((,class (:foreground ,jazz-yellow :background ,jazz-bg-1))))
