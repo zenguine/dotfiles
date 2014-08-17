@@ -48,6 +48,7 @@
     flycheck
     flycheck-pos-tip
     git-gutter
+    git-timemachine
     gruvbox-theme
     guide-key
     helm
