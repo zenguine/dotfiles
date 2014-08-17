@@ -8,8 +8,8 @@
       org-refile-allow-creating-parent-nodes 'confirm
       org-completion-use-ido t)
 
-(setq org-refile-targets '((org-agenda-files :maxlevel . 4)
-			   (nil :maxlevel . 3)))
+(setq org-refile-targets '((org-agenda-files :maxlevel . 5)
+			   (nil :maxlevel . 5)))
 
 ;; Org-babel config..
 (setq org-edit-src-content-indentation 0
