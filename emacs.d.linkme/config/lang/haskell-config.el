@@ -20,6 +20,11 @@
   "Get the text of the current shm node"
   (shm-node-string (shm-current-node)))
 
+(defun my-haskell-process-do-simple-echo (s)
+  (message "Passed to haskell repl:")
+  (message s)
+  (haskell-process-do-simple-echo s))
+
 (defun haskell/process-eval-string (use-type-p split-lines-p base-string)
   "Send 'eval-string' to the running haskell process to be evaluated.
    If use-type-p is non-nil, the type of eval-string is computed instead."
@@ -29,7 +34,7 @@
 	      (if use-type-p (-map (lambda (s) (s-join " " (list ":t" s)))
 				   eval-strings)
 		eval-strings)))
-	(-each eval-strings 'haskell-process-do-simple-echo))
+	(-each eval-strings 'my-haskell-process-do-simple-echo))
     (let* ((lines (s-lines base-string))
 	   (newhead (if use-type-p
 			(s-join " " (list ":t" (car lines)))
@@ -38,7 +43,7 @@
 	   (eval-string (if (< 1 (length lines))
 			    (s-join "\n" (append (cons ":{" lines) '(":}")))
 			  (concat (car lines) "\n"))))
-      (haskell-process-do-simple-echo eval-string))))
+      (my-haskell-process-do-simple-echo eval-string))))
 
 (defun haskell/process-send-current (arg start end)
   "Send either the current region if active, or the text in the current shm node
@@ -81,7 +86,7 @@
 	       (eval-strings
 		(-map (lambda (s) (s-join " " (list prefix "$" s)))
 		      eval-strings)))
-	  (-each eval-strings 'haskell-process-do-simple-echo))
+	  (-each eval-strings 'my-haskell-process-do-simple-echo))
       (let* ((lines (s-lines base-string))
 	     (full-prefix (concat prefix " $ ( "))A
 	     (fp-length (length full-prefix))
@@ -92,8 +97,8 @@
 	     (lines (cons newhead new-tail))
 	     (eval-string (if (< 1 (length lines))
 			      (s-join "\n" (append (cons ":{" lines) '(")" ":}")))
-			    (concat (car lines) "\n"))))
-	(haskell-process-do-simple-echo eval-string)))))
+			    (concat (car lines) ")\n"))))
+	(my-haskell-process-do-simple-echo eval-string)))))
 
 (defun haskell/pprIO-current-with-prefix (arg start end)
   (interactive "P\nr")
@@ -227,11 +232,13 @@
 (defun my-shm-hook ()
   (structured-haskell-mode t)
   (smartparens-mode -1)
-  (smartparens-strict-mode -1))
+  (smartparens-strict-mode -1)
+  (evil-define-key 'normal shm-map (kbd "RET") nil))
 
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'my-shm-hook)
 (add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode-bindings)
+
 
 (provide 'haskell-config)
