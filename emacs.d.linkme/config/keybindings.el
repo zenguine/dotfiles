@@ -4,6 +4,10 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-c h") help-map)
 (define-key help-map (kbd "d") 'helm-descbinds)
+(define-key help-map (kbd "C-l") 'find-library)
+(define-key help-map (kbd "C-f") 'find-function)
+(define-key help-map (kbd "C-k") 'find-function-on-key)
+(define-key help-map (kbd "C-v") 'find-variable)
 (define-key help-map (kbd "C-m") 'discover-my-major)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
