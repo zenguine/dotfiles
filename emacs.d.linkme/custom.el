@@ -67,4 +67,4 @@
  '(ido-subdir ((t (:foreground "#668B8B"))))
  '(org-done ((((class color) (min-colors 89)) (:bold t :weight bold :foreground "#008700" :background "#d7ff87" :box (:line-width 1 :style none)))))
  '(org-headline-done ((((class color) (min-colors 89)) (:foreground "#a1db00"))))
- '(shm-current-face ((t (:background "#454545")))))
+ '(shm-current-face ((t (:background "#606060")))))
