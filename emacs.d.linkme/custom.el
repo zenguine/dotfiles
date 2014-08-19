@@ -32,6 +32,7 @@
  '(highlight-symbol-foreground-color "#586e75")
  '(highlight-tail-colors (quote (("#eee8d5" . 0) ("#B4C342" . 20) ("#69CABF" . 30) ("#69B7F0" . 50) ("#DEB542" . 60) ("#F2804F" . 70) ("#F771AC" . 85) ("#eee8d5" . 100))))
  '(magit-diff-use-overlays nil)
+ '(magit-item-highlight-face (quote bold))
  '(magit-use-overlays nil)
  '(org-agenda-files (quote ("~/org/personal.org" "~/org/work.org" "~/org/refile.org")))
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
@@ -53,7 +54,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
+ '(default ((t (:background nil :family "Fantasque Sans Mono" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
  '(helm-action ((t (:underline t))))
  '(helm-buffer-directory ((t (:foreground "#6E9B26"))))
  '(helm-ff-directory ((t (:background "#668B8B" :foreground "#D0BF8F"))))
