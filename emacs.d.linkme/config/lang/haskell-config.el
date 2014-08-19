@@ -102,6 +102,7 @@
 
 (defun haskell/pprIO-current-with-prefix (arg start end)
   (interactive "P\nr")
+  (haskell-interactive-mode-clear)
   (if arg
       (call-interactively 'haskell/process-send-current-with-prefix)
     (haskell/process-send-current-with-prefix start end "pprIO" (region-active-p))))
