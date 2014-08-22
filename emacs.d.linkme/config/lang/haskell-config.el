@@ -133,7 +133,7 @@
 (define-key haskell-mode-map (kbd "C-c d") 'haskell-process-add-dependency)
 (define-key haskell-mode-map (kbd "C-c T") 'haskell/types-file-toggle)
 
-(defun setup-haskell-interactive-mode-bindings ()
+(defun setup-haskell-interactive-mode ()
   (interactive)
   (evil-define-key 'insert haskell-interactive-mode-map
     (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
@@ -145,7 +145,12 @@
   (define-key haskell-interactive-mode-map
     (kbd "C-p") 'helm-for-files)
   (define-key haskell-interactive-mode-map
-    (kbd "C-n") nil))
+    (kbd "C-n") nil)
+  (evil-define-key 'normal haskell-interactive-mode-map (kbd "G") 'end-of-buffer)
+  (define-key haskell-interactive-mode-map (kbd "C-c t") 'haskell-process-do-type)
+  (define-key haskell-interactive-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
+  (define-key haskell-interactive-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
+  (modify-syntax-entry ?_ "w"))
 
 (defun shm/kill-whole-line ()
   (interactive "P")
@@ -239,7 +244,7 @@
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'my-shm-hook)
-(add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode-bindings)
+(add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode)
 
 
 (provide 'haskell-config)

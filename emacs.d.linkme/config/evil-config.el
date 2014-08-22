@@ -151,7 +151,7 @@
 				 (rdictcc-buffer-mode . emacs)
 				 (erc-mode . normal)
 				 (eshell-mode . emacs)
-				 (haskell-interactive-mode . emacs)
+				 (haskell-interactive-mode . normal)
 				 (idris-repl-mode . emacs))
 	 do (evil-set-initial-state mode state))
 
