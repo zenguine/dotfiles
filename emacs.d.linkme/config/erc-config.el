@@ -41,7 +41,7 @@
   (erc-services-mode 1)
   (setq erc-prompt-for-nickserv-password nil)
   (setq erc-nickserv-passwords
-        `((freenode (("jcullen" . ,jcullen-pass))))))
+        `((freenode (("zenguine" . ,zenguine-pass))))))
 
 ; Notifications ---------------------------------------------------------
 (autoload 'erc-nick-notify-mode "erc-nick-notify"
@@ -85,7 +85,7 @@ mentioned in an erc channel" t)
   (interactive)
   (let ((confirmed (or confirm (y-or-n-p "Do you want to start IRC? "))))
     (when confirmed
-      (erc :server "irc.freenode.net" :port 6667 :nick "jcullen"))))
+      (erc :server "irc.freenode.net" :port 6667 :nick "zenguine"))))
 
 (defun start-or-switch-irc (&optional confirm)
   "Connect to IRC or switch to last active buffer in existing session"
