@@ -153,7 +153,6 @@
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
-(require 'my-ac-config)
 
 ;;; Language specific configuration
 (require 'prog-config)
