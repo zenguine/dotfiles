@@ -124,12 +124,12 @@
   (let* ((recipe-glob (locate-user-emacs-file (concat overlay "/recipes/*.rcp")))
          (recipe-files (file-expand-wildcards recipe-glob))
          (recipes (mapcar 'el-get-read-recipe-file recipe-files)))
+    (print recipe-glob)
     (mapcar (lambda (r) (add-to-list 'el-get-sources r)) recipes)
     (el-get 'sync (mapcar 'el-get-source-name recipes))))
 (setq el-get-user-package-directory user-emacs-directory)
 
 ;; EL-GET SYNC OVERLAYS
-(el-get-sync-recipes "el-get-haskell")
 (el-get-sync-recipes "el-get-user")
 
 ;; --------------------------------
