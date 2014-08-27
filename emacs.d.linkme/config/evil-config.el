@@ -114,7 +114,7 @@
 (define-key evil-normal-state-map " ev" (lambda () (interactive)
 					  (find-file "~/.vimrc")))
 (define-key evil-normal-state-map " ee" (lambda () (interactive)
-					  (find-file "~/.emacs.d/init.el")))
+					  (find-file user-init-file)))
 
 (define-key evil-normal-state-map " l" 'linum-mode)
 (define-key evil-normal-state-map (kbd "SPC TAB") (lambda () (interactive)

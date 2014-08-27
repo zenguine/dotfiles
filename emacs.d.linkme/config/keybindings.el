@@ -11,6 +11,7 @@
 (define-key help-map (kbd "C-m") 'discover-my-major)
 
 (global-set-key (kbd "C-x p") 'proced)
+(global-set-key (kbd "C-x C-p") 'package-list-packages-no-fetch)
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)

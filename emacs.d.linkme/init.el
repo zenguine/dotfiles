@@ -5,14 +5,15 @@
 (require 'my-autoloads)
 (require 'cl)
 
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+
 (setq package-enable-at-startup nil)
 (package-initialize)
 (require 'dash)
 (require 's)
 (require 'f)
 
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (add-to-theme-path-recursive "~/.emacs.d/themes")
 (add-to-load-path-recursive "~/.emacs.d/config")
