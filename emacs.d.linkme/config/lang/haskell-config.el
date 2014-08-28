@@ -7,8 +7,11 @@
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-auto-import-loaded-modules t)
   '(haskell-process-log t)
-  '(haskell-process-type 'cabal-repl)
-  )
+  '(haskell-process-type 'cabal-repl))
+
+;; ghc/ghc-mod stuff
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
 
 ;; Disabled because it doesn't work with structured-haskell-mode
 (setq haskell-font-lock-symbols nil)
@@ -21,7 +24,6 @@
           (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
-
 
 (defun shm/current-node-string ()
   "Get the text of the current shm node"
@@ -107,6 +109,13 @@
 			    (concat (car lines) ")\n"))))
 	(my-haskell-process-do-simple-echo eval-string)))))
 
+(defun my-template-insert-fn (arg)
+  (interactive "P")
+  (if arg
+      (call-interactively 'ghc-initial-code-from-signature)
+    (call-interactively 'ghc-insert-template)))
+
+
 (defun haskell/pprIO-current-with-prefix (arg start end)
   (interactive "P\nr")
   (haskell-interactive-mode-clear)
@@ -118,6 +127,7 @@
 ;; Convenient bindings for evaluating haskell code in the repl from a regular haskell buffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key haskell-mode-map (kbd "C-c S") 'haskell/process-send-current-with-prefix)
+(define-key haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
 (evil-define-key 'normal haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
 (evil-define-key 'visual haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
 
@@ -188,7 +198,9 @@
   (setq flycheck-display-errors-delay .3)
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
-    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell"))))
+    (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell")))
+  (when (require 'ghc nil 'noerror)
+    (ghc-init)))
 
 (let ((map shm-map))
   (define-key map (kbd "C-k") nil)
@@ -204,7 +216,6 @@
   (define-key map (kbd "C-k") nil)
 
   (evil-define-key 'normal map
-    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp
@@ -239,7 +250,6 @@
     (kbd "C-)") 'sp-up-sexp)
 
   (evil-define-key 'insert map
-    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp
@@ -248,7 +258,6 @@
     (kbd "M-L") 'sp-backward-barf-sexp)
 
   (evil-define-key 'emacs map
-    (kbd "M-t") 'sp-transpose-sexp
     (kbd "M-k") 'sp-splice-sexp-killing-backward
     (kbd "M-j") 'sp-splice-sexp-killing-forward
     (kbd "M-l") 'sp-forward-slurp-sexp
