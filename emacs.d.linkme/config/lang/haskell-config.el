@@ -131,6 +131,7 @@
 (define-key haskell-mode-map (kbd "M-n") 'flycheck-next-error)
 (define-key haskell-mode-map (kbd "M-p") 'flycheck-previous-error)
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
 
 (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
 (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
@@ -140,6 +141,8 @@
 (evil-define-key 'normal haskell-mode-map (kbd "K") 'haskell-process-do-info)
 
 (define-key haskell-mode-map (kbd "C-c t") 'haskell-process-do-type)
+(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+
 (evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
 (define-key haskell-mode-map (kbd "C-c d") 'haskell-process-add-dependency)
 (define-key haskell-mode-map (kbd "C-c T") 'haskell/types-file-toggle)
@@ -156,6 +159,7 @@
     (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
   (define-key haskell-interactive-mode-map (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
   (define-key haskell-interactive-mode-map (kbd "C-w") 'backward-kill-word)
+  (define-key haskell-interactive-mode-map (kbd "C-c C-z") 'haskell-interactive-switch-back)
   (define-key haskell-interactive-mode-map (kbd "TAB") 'haskell-interactive-mode-tab)
   (define-key haskell-interactive-mode-map (kbd "C-c C-l") 'haskell-interactive-mode-clear)
   (define-key haskell-interactive-mode-map (kbd "C-j") nil)
