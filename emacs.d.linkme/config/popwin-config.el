@@ -25,6 +25,7 @@
 
 (push '("^\*pytest.+\*$" :regexp t :height 30 :noselect t) popwin:special-display-config)
 (push '("*GHC Info*" :noselect t) popwin:special-display-config)
+(push '("*company-documentation*" :noselect t) popwin:special-display-config)
 (push '("*Warnings*" :noselect t) popwin:special-display-config)
 (push '("^\*ag.+\*$" :regexp t :height 30 :noselect t) popwin:special-display-config)
 (push '("*Backtrace*" :height 30) popwin:special-display-config)

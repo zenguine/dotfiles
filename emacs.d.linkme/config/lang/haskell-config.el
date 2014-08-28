@@ -127,7 +127,6 @@
 ;; Convenient bindings for evaluating haskell code in the repl from a regular haskell buffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key haskell-mode-map (kbd "C-c S") 'haskell/process-send-current-with-prefix)
-(define-key haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
 (evil-define-key 'normal haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
 (evil-define-key 'visual haskell-mode-map (kbd "M-RET") 'haskell/pprIO-current-with-prefix)
 
@@ -199,6 +198,7 @@
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
     (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell")))
+  (define-key haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
   (when (require 'ghc nil 'noerror)
     (ghc-init)))
 
