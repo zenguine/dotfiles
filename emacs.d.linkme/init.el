@@ -27,8 +27,8 @@
 (defvar packages-list
   '(
     ace-jump-mode
-    shm
     ag
+    company-ghc
     dash
     dash-functional
     diminish
@@ -47,6 +47,7 @@
     flx-ido
     flycheck
     flycheck-pos-tip
+    ghc
     git-gutter
     git-timemachine
     gruvbox-theme
@@ -82,6 +83,7 @@
     rainbow-delimiters
     rainbow-mode
     s
+    shm
     smartparens
     smex
     spacegray-theme
