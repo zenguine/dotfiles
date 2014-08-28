@@ -3,7 +3,7 @@
 (require 'erc-log)
 (require 'erc-notify)
 
-(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#haskell" "#darkdynasty" "#linux" "#clojure"
+(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#haskell" "#haskell-game" "#darkdynasty" "#linux" "#clojure"
 				     "#lesswrong" "#web" "#evil-mode")))
 
 ; Other interesting ones maybe to add: #angularjs #nodejs #nimrod #go-nuts #security #infra-talk
