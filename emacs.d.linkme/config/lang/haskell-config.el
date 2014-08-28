@@ -3,8 +3,16 @@
 (require 's)
 (require 'dash)
 
+(custom-set-variables
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-log t)
+  '(haskell-process-type 'cabal-repl)
+  )
+
 ;; Disabled because it doesn't work with structured-haskell-mode
 (setq haskell-font-lock-symbols nil)
+
 ;; but a lambda symbol can safely replace '\' because they are the same length
 ;; and it wont screw up indentation
 (defun pretty-lambdas-haskell ()
@@ -14,7 +22,6 @@
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
 
-(add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 
 (defun shm/current-node-string ()
   "Get the text of the current shm node"
@@ -125,6 +132,10 @@
 (define-key haskell-mode-map (kbd "M-p") 'flycheck-previous-error)
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
 
+(define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
+(define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+(define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
+
 (define-key haskell-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
 (evil-define-key 'normal haskell-mode-map (kbd "K") 'haskell-process-do-info)
 
@@ -132,6 +143,12 @@
 (evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
 (define-key haskell-mode-map (kbd "C-c d") 'haskell-process-add-dependency)
 (define-key haskell-mode-map (kbd "C-c T") 'haskell/types-file-toggle)
+
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
 (defun setup-haskell-interactive-mode ()
   (interactive)
@@ -245,6 +262,6 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'my-shm-hook)
 (add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode)
-
+(add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 
 (provide 'haskell-config)

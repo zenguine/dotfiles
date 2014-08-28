@@ -27,6 +27,7 @@
 (defvar packages-list
   '(
     ace-jump-mode
+    shm
     ag
     dash
     dash-functional
@@ -50,6 +51,7 @@
     git-timemachine
     gruvbox-theme
     guide-key
+    haskell-mode
     helm
     helm-dash
     helm-descbinds
@@ -160,7 +162,6 @@
 (require 'lisp-config)
 (require 'scheme-config)
 (require 'idris-config)
+(require 'haskell-config)
 
 (require 'keybindings)
-
-(require 'haskell-config)
