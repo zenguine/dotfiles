@@ -1,6 +1,6 @@
 (require 'company)
 
-(setq company-idle-delay 0)
+(setq company-idle-delay 0.3)
 (setq company-selection-wrap-around t)
 
 (define-key company-active-map (kbd "C-n") 'company-select-next)

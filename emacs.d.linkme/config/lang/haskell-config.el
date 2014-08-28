@@ -9,6 +9,8 @@
   '(haskell-process-log t)
   '(haskell-process-type 'cabal-repl))
 
+(setq ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing"))
+
 ;; ghc/ghc-mod stuff
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
@@ -189,6 +191,7 @@
 
 (defun my-haskell-hook ()
   (interactive)
+  (turn-on-haskell-indentation)
   (setq show-trailing-whitespace nil)
   (rainbow-delimiters-mode t)
   (setq haskell-stylish-on-save t)
@@ -198,7 +201,7 @@
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
     (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell")))
-  (define-key haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
+  (evil-define-key 'normal haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
   (when (require 'ghc nil 'noerror)
     (ghc-init)))
 
