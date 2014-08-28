@@ -154,6 +154,7 @@
 (require 'ibuffer-config)
 (require 'winner-config)
 (require 'flycheck-config)
+(require 'company-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
