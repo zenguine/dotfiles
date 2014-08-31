@@ -83,7 +83,6 @@
     rainbow-delimiters
     rainbow-mode
     s
-    shm
     smartparens
     smex
     spacegray-theme
