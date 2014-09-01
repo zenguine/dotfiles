@@ -198,4 +198,7 @@ window and a non-term window"
   (interactive "p")
   (kill-line (- 1 arg)))
 
-
+(defun trim-string (string)
+  "Remove white spaces in beginning and ending of STRING.
+White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
+  (replace-regexp-in-string "\\`[ \t\n]*" "" (replace-regexp-in-string "[ \t\n]*\\'" "" string)))

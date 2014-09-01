@@ -27,68 +27,7 @@
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
 
-(defun shm/current-node-string ()
-  "Get the text of the current shm node"
-  (shm-node-string (shm-current-node)))
-
-(defun haskell-process-get-type (name)
-  "Get the data type definition of the given name."
-  (let ((reply
-         (haskell-process-queue-sync-request (haskell-process)
-                                             (format ":t %s\n" name))))
-    (trim-string (car (last (split-string reply " :: "))))))
-
-(defun shm/my-case-split (name &optional expr-string)
-  "Do a case split on NAME at point."
-  (interactive (list (read-from-minibuffer "Type: ")))
-  (save-excursion
-    (let ((column (current-column))
-	  (case-expr (if expr-string
-			 expr-string
-		       "undefined")))
-      (insert (concat "case " case-expr " "))
-      (shm-evaporate (- (point) (+ 1 (length "undefined")))
-                     (- (point) 1))
-      (insert "of\n")
-      (indent-to (+ column 2))
-      (shm-case-split-insert-alts
-       (shm-case-split-alts-from-data-decl
-        (haskell-process-get-data-type name))))))
-
-(defun shm/cleanup-type-string-for-case (s)
-  "Remove constraints and replace polymorphic type variables with
-   ()."
-  (let* ((clean-s (car
-		   (last
-			(mapcar 'trim-string
-				(split-string s "=>"))))))
-    (if s
-	(let ((case-fold-search nil))
-	  (replace-regexp-in-string "\\b[a-z_][A-Za-z_]*\\b" "()" clean-s))
-      s)))
-
-(defun trim-string (string)
-  "Remove white spaces in beginning and ending of STRING.
-White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
-  (replace-regexp-in-string "\\`[ \t\n]*" "" (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
-
-(defun shm/case-split-shm-node ()
-  (interactive)
-  (let* ((expr (shm/current-node-string))
-	 (expr-type (haskell-process-get-type expr))
-	 (clean-expr (shm/cleanup-type-string-for-case expr-type)))
-    (message "expr:")
-    (print expr)
-    (message "expr-type:")
-    (print expr-type)
-    (message "clean-expr:")
-    (print clean-expr)
-    (if expr-type
-	(progn
-	  (shm/kill-node)
-	  (shm/my-case-split clean-expr expr)))))
-
-(define-key shm-map (kbd "C-c s") 'shm/case-split-shm-node)
+(define-key shm-map (kbd "C-c C-s") 'shm/do-case-split)
 
 (defun my-haskell-process-do-simple-echo (s)
   (message "Passed to haskell repl:")
