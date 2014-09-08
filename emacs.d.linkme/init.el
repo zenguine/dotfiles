@@ -112,6 +112,7 @@
 ;; My personal configuration stuff
 ;; --------------------------------
 (setq custom-file "~/.emacs.d/custom.el")
+(setq custom-faces-file "~/.emacs.d/custom-faces.el")
 (load custom-file 'noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
