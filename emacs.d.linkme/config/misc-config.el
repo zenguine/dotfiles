@@ -1,6 +1,5 @@
 ;; Sublimity
 (require 'sublimity)
-(require 'sublimity-scroll)
 
 ; no backup files
 (setq make-backup-files nil
@@ -14,9 +13,5 @@
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 (setq ace-jump-mode-scope 'window)
-(setq sublimity-scroll-weight 5
-      sublimity-scroll-drift-length 1)
-
-(sublimity-mode 1)
 
 (provide 'misc-config)
