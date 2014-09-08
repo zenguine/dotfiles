@@ -13,5 +13,6 @@
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 (setq ace-jump-mode-scope 'window)
+(set-fringe-mode 0)
 
 (provide 'misc-config)
