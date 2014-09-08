@@ -19,7 +19,7 @@
 (global-set-key (kbd "C-c h a") 'helm-apropos)
 (global-set-key (kbd "C-c o") 'helm-swoop)
 (global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
-(global-set-key (kbd "C-c i") 'helm-imenu)
+(global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
 
 (defun my-helm-multi-swoop (arg)
   (interactive "P")
