@@ -9,7 +9,7 @@
   '(haskell-process-log t)
   '(haskell-process-type 'cabal-repl))
 
-(setq ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing"))
+(setq ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing" "-fno-warn-orphans"))
 
 ;; ghc/ghc-mod stuff
 (autoload 'ghc-init "ghc" nil t)
