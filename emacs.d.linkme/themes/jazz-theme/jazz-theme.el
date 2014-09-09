@@ -86,12 +86,12 @@
       (jazz-cyan     "#34676f")
 
       (jazz-blue+1   "#5c737c")
-      (jazz-blue     "#385e6b")
-      (jazz-blue-1   "#385e6b")
-      (jazz-blue-2   "#385e6b")
-      (jazz-blue-3   "#385e6b")
-      (jazz-blue-4   "#385e6b")
-      (jazz-blue-5   "#385e6b")
+      (jazz-blue     "#496f7c")
+      (jazz-blue-1   "#496f7c")
+      (jazz-blue-2   "#496f7c")
+      (jazz-blue-3   "#496f7c")
+      (jazz-blue-4   "#496f7c")
+      (jazz-blue-5   "#496f7c")
 
       (jazz-magenta  "#7f355e"))
   (custom-theme-set-faces
