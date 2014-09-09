@@ -39,7 +39,7 @@
 (global-hl-line-mode 1)
 (column-number-mode 1)
 
-(load-theme 'jazz t)
+(load-theme 'zenburn t)
 ;; (load custom-faces-file 'noerror)
 
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
