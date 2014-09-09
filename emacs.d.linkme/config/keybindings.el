@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c R") 'revert-buffer)
 (global-set-key (kbd "C-x C-m") 'helm-M-x)
 (global-set-key (kbd "C-c h a") 'helm-apropos)
 (global-set-key (kbd "C-c o") 'helm-swoop)
