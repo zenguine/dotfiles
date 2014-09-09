@@ -1,5 +1,7 @@
 ;; Sublimity
 (require 'sublimity)
+(recentf-mode t)
+(semantic-mode t)
 
 ; no backup files
 (setq make-backup-files nil
