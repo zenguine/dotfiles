@@ -62,7 +62,7 @@
   (let* ((is-region-active (region-active-p))
 	 (eval-string (if is-region-active
 			 (buffer-substring start end)
-		       (shm/current-node-string))))
+		       (shm-current-node-string))))
     (haskell/process-eval-string arg is-region-active eval-string)))
 
 (defun haskell/types-file-toggle ()
@@ -89,7 +89,7 @@
 			 (buffer-substring
 			  (region-beginning)
 			  (region-end))
-		       (shm/current-node-string))))
+		       (shm-current-node-string))))
     (if split-lines-p
 	(let* ((eval-strings (s-lines base-string))
 	       (eval-strings
