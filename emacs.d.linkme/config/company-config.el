@@ -19,7 +19,7 @@
     (company-complete-common)))
 
 (setq tab-always-indent 'complete)
-(setq company-idle-delay 1)
+(setq company-idle-delay 0.7)
 (setq company-selection-wrap-around t)
 
 (define-key company-active-map (kbd "C-w") 'backward-kill-word)
