@@ -13,10 +13,11 @@
 
 (defun delete-window-and-balance (&optional window)
   "Delete given window (or current window) and then re-balance
-   the remaining windows."
+   the remaining child windows of its parent."
   (interactive)
-  (delete-window window)
-  (balance-windows))
+  (let ((window-par (window-parent (selected-window))))
+    (delete-window window)
+    (balance-windows window-par)))
 
 (defun add-to-load-path-recursive (basepath)
   (let ((base (expand-file-name basepath)))
@@ -97,10 +98,10 @@ window and a non-term window"
 		     (`below 'evil-window-down))))
     (condition-case nil
 	(funcall move-func 1)
-      (error (progn
+      (error (let ((window-par (window-parent (selected-window))))
 	       (split-window nil nil dir)
 	       (funcall move-func 1)
-	       (balance-windows))))))
+	       (balance-windows window-par))))))
 
 (defun pytest-test-all ()
   "Run py.test from current directory running all tests"
