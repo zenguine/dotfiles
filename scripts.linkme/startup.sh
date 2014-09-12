@@ -9,5 +9,5 @@ xrdb -merge .Xresources &
 redshift &
 deluge &
 t-init & # Set up initial tmux environment
-echo 'emacs --daemon & exit' | zsh &
 echo 'xmodmap ~/.xmodmaprc > /home/jcullen/xtempoutput.txt & exit' | zsh &
+xmodmap /home/jcullen/.xmodmaprc & 
