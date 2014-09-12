@@ -11,6 +11,13 @@
 
 (defun const (val) (lambda (x) val))
 
+(defun delete-window-and-balance (&optional window)
+  "Delete given window (or current window) and then re-balance
+   the remaining windows."
+  (interactive)
+  (delete-window window)
+  (balance-windows))
+
 (defun add-to-load-path-recursive (basepath)
   (let ((base (expand-file-name basepath)))
     (add-to-list 'load-path base)

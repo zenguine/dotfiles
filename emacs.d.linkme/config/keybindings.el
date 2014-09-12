@@ -65,6 +65,8 @@
 
 ;; Window moving/resizing keybindings
 
+(global-set-key (kbd "C-x 0") 'delete-window-and-balance)
+
 (global-set-key (kbd "M-[") 'winner-undo)
 (global-set-key (kbd "M-]") 'winner-redo)
 
