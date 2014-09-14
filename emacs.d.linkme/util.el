@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 ;; Convenience macros
+(require 'f)
 
 (defmacro ifhave (x &rest body)
   `(when (require ,x nil 'noerror)
@@ -210,3 +211,35 @@ window and a non-term window"
   "Remove white spaces in beginning and ending of STRING.
 White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
   (replace-regexp-in-string "\\`[ \t\n]*" "" (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
+
+(defun lookup-mode-config-file-exceptions (mode-symbol)
+  "Override default behavior for edit-mode-config-file for certain
+   major modes"
+  (case mode-symbol
+    (emacs-lisp-mode "lisp-config.el")
+    (inferior-emacs-lisp-mode "lisp-config.el")))
+
+(defun edit-mode-config-file (&optional config-file-name)
+  "Edit the configuration file corresponding to the current major
+   mode.  being in mode <modename>-mode corresponds to (find-file
+   ~/.emacs.d/config/<modename>-config.el) or (find-file
+   ~/.emacs.d/config/lang/<modename>-config.el) if the first does not
+   exist."
+  (interactive)
+  (let* ((mm-string (symbol-name major-mode))
+	 (mm-name (car (split-string mm-string "-mode")))
+	 (mm-file-name (or config-file-name
+			  (lookup-mode-config-file-exceptions major-mode)
+			  (concat mm-name "-config.el")))
+	 (mm-config-file-path (f-join
+			       user-emacs-directory
+			       "config"
+			       mm-file-name))
+	 (mm-config-file-path-with-lang (f-join
+					 user-emacs-directory
+					 "config"
+					 "lang"
+					 mm-file-name)))
+    (if (f-exists?  mm-config-file-path-with-lang)
+	(find-file mm-config-file-path-with-lang)
+      (find-file mm-config-file-path))))

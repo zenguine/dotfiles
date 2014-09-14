@@ -113,6 +113,9 @@
 (define-key evil-normal-state-map " x" 'delete-single-window)
 (define-key evil-normal-state-map " b" 'ido-switch-buffer)
 (define-key evil-normal-state-map " f" 'ido-find-file)
+
+;; keybindings to edit specific files
+(define-key evil-normal-state-map " em" 'edit-mode-config-file)
 (define-key evil-normal-state-map " ev" (lambda () (interactive)
 					  (find-file "~/.vimrc")))
 (define-key evil-normal-state-map " ee" (lambda () (interactive)
