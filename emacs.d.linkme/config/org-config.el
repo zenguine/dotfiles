@@ -1,6 +1,7 @@
 (require 'org)
 (require 'my-org-util)
 
+(setq org-files-home "~/org")
 (setq org-treat-S-cursor-todo-selection-as-state-change nil
       org-default-notes-file (concat org-directory "/refile.org")
       org-refile-use-outline-path t

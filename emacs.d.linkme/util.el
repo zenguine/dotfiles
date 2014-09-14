@@ -1,14 +1,51 @@
 ;;; -*- lexical-binding: t -*-
-;; Convenience macros
 (require 'f)
 
+;; Convenience macros
+
 (defmacro ifhave (x &rest body)
+  "Shorthand for (when (require X)) BODY)"
   `(when (require ,x nil 'noerror)
      ,@body))
 
 (defmacro after (x &rest body)
+  "Shorthand for (eval-after-load <x> <body>)"
   `(eval-after-load ,x
      ',(cons 'progn body)))
+
+(defmacro def-key (keymap key &rest definfo)
+  "Like `define-key' but automagically creates a wrapping lambda if
+   you pass it multiple arguments as the binding.  The first is
+   assumed to be a symbol for the function to be called, and the rest
+   are assumed to be the parameters to that function."
+  (if (> (length definfo) 1)
+      `(define-key
+	 ,keymap
+	 ,key
+	 (lambda () (interactive)
+	   (funcall
+	    ,(car definfo)
+	    ,@(cdr definfo)))
+	 )
+    `(define-key ,keymap ,key ,(car definfo))))
+
+(after 'evil
+       (defmacro evil-def-key (keymap state key &rest definfo)
+	 "The equivalent of `def-key' for `evil-define-key'.  The
+          other difference from `evil-define-key' is that evil-def-key
+          does not allow you to specify multiple key binding pairs in
+          a single call to it. "
+	 (if (> (length definfo) 1)
+	     `(evil-define-key
+		,keymap
+		,state
+		,key
+		(lambda () (interactive)
+		  (funcall
+		   ,(car definfo)
+		   ,@(cdr definfo)))
+		)
+	   `(evil-define-key ,keymap ,state ,key ,(car definfo)))))
 
 (defun const (val) (lambda (x) val))
 

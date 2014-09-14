@@ -1,3 +1,5 @@
+(require 'f)
+
 (setq evil-want-C-u-scroll t)
 (setq evil-want-C-i-jump nil)
 (setq evil-move-cursor-back nil)
@@ -116,16 +118,15 @@
 (define-key evil-normal-state-map " f" 'ido-find-file)
 
 ;; keybindings to edit specific files
+(def-key evil-normal-state-map " eo" 'find-file (f-join org-files-home "personal.org"))
 (define-key evil-normal-state-map " em" 'edit-mode-config-file)
-(define-key evil-normal-state-map " ev" (lambda () (interactive)
-					  (find-file "~/.vimrc")))
-(define-key evil-normal-state-map " ee" (lambda () (interactive)
-					  (find-file user-init-file)))
+(define-key evil-normal-state-map " em" 'edit-mode-config-file)
+(def-key evil-normal-state-map " ev" 'find-file "~/.vimrc")
+(def-key evil-normal-state-map " ee" 'find-file user-init-file)
 
 
 (define-key evil-normal-state-map " l" 'linum-mode)
-(define-key evil-normal-state-map (kbd "SPC TAB") (lambda () (interactive)
-						    (switch-to-buffer "*scratch*")))
+(def-key evil-normal-state-map (kbd "SPC TAB") 'switch-to-buffer "*scratch*")
 
 (define-key evil-normal-state-map "gb" 'ido-switch-buffer)
 (define-key evil-normal-state-map "gs" 'eshell-here)
