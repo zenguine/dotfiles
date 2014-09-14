@@ -107,6 +107,7 @@
 (define-key evil-normal-state-map "  " 'helm-M-x)
 (define-key evil-visual-state-map "  " 'helm-M-x)
 (define-key evil-normal-state-map " 1" 'delete-other-windows)
+(define-key evil-normal-state-map " o" 'delete-other-windows)
 (define-key evil-normal-state-map " k" 'kill-this-buffer)
 (define-key evil-normal-state-map " rb" 'rainbow-blocks-mode)
 (define-key evil-normal-state-map " rd" 'rainbow-delimiters-mode)
@@ -120,6 +121,7 @@
 					  (find-file "~/.vimrc")))
 (define-key evil-normal-state-map " ee" (lambda () (interactive)
 					  (find-file user-init-file)))
+
 
 (define-key evil-normal-state-map " l" 'linum-mode)
 (define-key evil-normal-state-map (kbd "SPC TAB") (lambda () (interactive)
