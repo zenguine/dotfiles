@@ -32,10 +32,12 @@
 
 (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)
 
+(define-key emacs-lisp-mode-map (kbd "C-0") 'eval-defun)
+(define-key emacs-lisp-mode-map (kbd "C-c C-l") 'prompt-to-eval)
+(define-key lisp-interaction-mode-map (kbd "C-0") 'eval-defun)
+
 (defun my-lisp-interaction-mode-hook ()
   (local-unset-key (kbd "C-j"))
-  (define-key emacs-lisp-mode-map (kbd "C-0") 'eval-defun)
-  (define-key emacs-lisp-mode-map (kbd "C-c C-l") 'prompt-to-eval)
   (pretty-mode t)
   (rainbow-delimiters-mode t)
   (elisp-slime-nav-mode t))
