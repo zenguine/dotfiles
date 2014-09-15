@@ -72,6 +72,7 @@
     load-theme-buffer-local
     magit
     molokai-theme
+    monokai-theme
     multiple-cursors
     multi-term
     nyan-mode
