@@ -39,8 +39,27 @@
 (global-hl-line-mode 1)
 (column-number-mode 1)
 
-(load-theme 'zenburn t)
-;; (load custom-faces-file 'noerror)
+(defvar random-theme-candidates
+  '(
+    zenburn
+    solarized-dark
+    monokai
+    gruvbox
+    spacegray
+    firebelly
+    )
+  "List of themes I like, one of which will be randomly selected to
+   load at emacs initialization time.")
+
+(defun load-theme-randomly (&optional candidates)
+  "Randomly pick a theme from CANDIDATES (if non-nil, otherwise use
+`random-theme-candidates'), and load it."
+  (interactive)
+  (let ((chosen (random-element (or candidates random-theme-candidates))))
+    (load-theme chosen t)
+    chosen))
+
+(load-theme 'solarized-dark t)
 
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))

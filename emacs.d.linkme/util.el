@@ -256,6 +256,11 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
     (emacs-lisp-mode "lisp-config.el")
     (inferior-emacs-lisp-mode "lisp-config.el")))
 
+(defun random-element (choices)
+  "Return a pseudo-randomly selected element of `choices'."
+  (let ((n (random (length choices))))
+    (elt choices n)))
+
 (defun edit-mode-config-file (&optional config-file-name)
   "Edit the configuration file corresponding to the current major
    mode.  being in mode <modename>-mode corresponds to (find-file
