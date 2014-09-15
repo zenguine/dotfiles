@@ -156,3 +156,16 @@
        ((t (:background ,(grey 0) :foreground ,(color 1))))))))
 
 ;;; firebelly-theme.el ends here
+
+;; Company wiki suggested faces for dark background themes
+(require 'color)
+
+(let ((bg (face-attribute 'default :background)))
+  (custom-set-faces
+   `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+   `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+   `(company-tooltip-selection ((t (:inherit font-lock-builtin-face))))
+   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
+
+(color-lighten-)
