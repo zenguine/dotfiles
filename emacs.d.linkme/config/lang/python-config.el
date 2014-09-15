@@ -129,7 +129,6 @@
 
 (elpy-enable)
 (elpy-use-ipython)
-(elpy-clean-modeline)
 
 (define-key elpy-mode-map (kbd "C-c C-z") 'my-ipython-shell-switch-to-shell)
 (define-key elpy-mode-map (kbd "C-c C-r") 'my-ipython-shell-reload-file-module)
