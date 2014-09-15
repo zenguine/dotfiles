@@ -70,6 +70,7 @@
     idris-mode
     jedi
     key-chord
+    load-theme-buffer-local
     magit
     molokai-theme
     multiple-cursors
