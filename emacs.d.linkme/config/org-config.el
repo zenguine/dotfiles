@@ -1,7 +1,10 @@
 (require 'org)
 (require 'my-org-util)
+(require 'f)
 
 (setq org-files-home "~/org")
+(setq org-agenda-diary-file (f-join org-files-home "diary.org"))
+
 (setq org-treat-S-cursor-todo-selection-as-state-change nil
       org-default-notes-file (concat org-directory "/refile.org")
       org-refile-use-outline-path t
@@ -79,7 +82,11 @@
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-keep t)
 	      ("n" "NEXT task" entry (file "~/org/refile.org")
                "* NEXT %?\n%U\n%a\n" :clock-in t :clock-resume t)
-	      ("j" "Journal" entry (file+datetree "~/org/diary.org")
+	      ("i" "Interruption (clock returns to where it was after C-c C-c)" entry (file+datetree "~/org/diary.org")
+               "* %? :interruption:\n%U\n" :clock-in t :clock-resume t)
+	      ("d" "Diary entry (clock remains active after C-c C-c)" entry (file+datetree "~/org/diary.org")
+               "* %?\n%U\n" :clock-in t :clock-keep t)
+	      ("j" "Journal" entry (file+datetree "~/org/journal.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
               ("R" "respond" entry (file "~/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
