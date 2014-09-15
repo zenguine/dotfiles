@@ -133,7 +133,7 @@
 
 (define-key elpy-mode-map (kbd "C-c C-z") 'my-ipython-shell-switch-to-shell)
 (define-key elpy-mode-map (kbd "C-c C-r") 'my-ipython-shell-reload-file-module)
-(define-key elpy-mode-map (kbd "C-c C-c") (lambda () (interactive) (my-python-send-region-or-buffer t)))
+(def-key elpy-mode-map (kbd "C-c C-c") 'my-python-send-region-or-buffer t)
 (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
 (define-key elpy-mode-map (kbd "C-c C-d") 'my-pydoc-fn)
 

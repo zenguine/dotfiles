@@ -166,8 +166,7 @@
   (interactive)
   (evil-define-key 'insert haskell-interactive-mode-map
     (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
-  (evil-define-key 'normal haskell-interactive-mode-map (kbd "RET") (lambda () (interactive)
-								      (haskell-interactive-mode-return)))
+  (evil-define-key 'normal haskell-interactive-mode-map (kbd "RET") 'haskell-interactive-mode-return)
   (define-key haskell-interactive-mode-map (kbd "C-u") 'haskell-interactive-mode-kill-whole-line)
   (define-key haskell-interactive-mode-map (kbd "C-w") 'backward-kill-word)
   (define-key haskell-interactive-mode-map (kbd "C-c C-z") 'haskell-interactive-switch-back)
