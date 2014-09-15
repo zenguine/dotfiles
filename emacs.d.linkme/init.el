@@ -7,7 +7,7 @@
 
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
-
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (setq package-enable-at-startup nil)
 (package-initialize)
 (require 'dash)
@@ -75,6 +75,7 @@
     multiple-cursors
     multi-term
     nyan-mode
+    org-plus-contrib
     paredit
     popwin
     projectile
