@@ -1,3 +1,7 @@
+(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-faces-file "~/.emacs.d/custom-faces.el")
+(load custom-file 'noerror)
+
 ;; Load ELPA
 ;;;; -*- lexical-binding: t -*-
 (add-to-list 'load-path "~/.emacs.d")
@@ -111,10 +115,6 @@
 ;; --------------------------------
 (require 'dash)
 (require 's)
-
-(setq custom-file "~/.emacs.d/custom.el")
-(setq custom-faces-file "~/.emacs.d/custom-faces.el")
-(load custom-file 'noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Require autoloads files
