@@ -59,8 +59,7 @@
     (load-theme chosen t)
     chosen))
 
-(load-theme 'zenburn t)
-
+(load-theme 'solarized-dark t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 ;; Diminish -- stop minor modes from cluttering up my modeline
@@ -71,6 +70,7 @@
 	 (guide-key . guide-key-mode)
 	 (magit . magit-auto-revert-mode)
 	 (undo-tree . undo-tree-mode)
+	 (elisp-slime-nav . elisp-slime-nav-mode)
 	 (haskell-doc . haskell-doc-mode)
 	 ) (lambda (x)
 	     (eval-after-load (car x)
