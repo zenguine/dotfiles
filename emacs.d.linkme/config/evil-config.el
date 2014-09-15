@@ -120,9 +120,9 @@
 ;; keybindings to edit specific files
 (def-key evil-normal-state-map " eo" 'find-file (f-join org-files-home "personal.org"))
 (define-key evil-normal-state-map " em" 'edit-mode-config-file)
-(define-key evil-normal-state-map " em" 'edit-mode-config-file)
-(def-key evil-normal-state-map " ev" 'find-file "~/.vimrc")
+(def-key evil-normal-state-map " ek" 'find-file (f-join user-emacs-directory "config" "keybindings.el"))
 (def-key evil-normal-state-map " ee" 'find-file user-init-file)
+(def-key evil-normal-state-map " ev" 'find-file (f-join user-emacs-directory "config" "evil-config.el"))
 
 
 (define-key evil-normal-state-map " l" 'linum-mode)
