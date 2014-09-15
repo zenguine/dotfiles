@@ -1,5 +1,16 @@
 (require 'company)
 
+;; nil causes company to always be there.  I'd like this except it
+;; doesn't work well in haskell mode..  This gets changed to 0.7 in
+;; the haskell mode hook and other hooks that have slow auto-complete
+(setq company-idle-delay 0)
+
+;; add this fucntion to any mode hook where company completion is
+;; annoyingly slow to be happening with no delay
+(defun increase-company-delay-locally ()
+  (interactive)
+  (setq-local company-idle-delay 0.7))
+
 (setq tab-always-indent 'complete)
 
 (define-key company-mode-map [remap indent-for-tab-command]
@@ -19,7 +30,6 @@
     (company-complete-common)))
 
 (setq tab-always-indent 'complete)
-(setq company-idle-delay 0.7)
 (setq company-selection-wrap-around t)
 
 (define-key company-active-map (kbd "C-w") 'backward-kill-word)

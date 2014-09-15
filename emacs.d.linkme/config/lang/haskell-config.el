@@ -275,6 +275,8 @@
   (smartparens-strict-mode -1)
   (evil-define-key 'normal shm-map (kbd "RET") nil))
 
+(add-hook 'haskell-mode-hook 'increase-company-delay-locally)
+(add-hook 'haskell-interactive-mode-hook 'increase-company-delay-locally)
 (add-hook 'haskell-mode-hook 'my-haskell-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'my-shm-hook)
