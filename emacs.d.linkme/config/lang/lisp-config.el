@@ -10,7 +10,9 @@
 	 (prompt-string (car info))
 	 (eval-func (cdr info)))
     (if (y-or-n-p prompt-string)
-	(call-interactively eval-func))))
+	(progn
+	  (call-interactively eval-func)
+	  (deactivate-mark)))))
 
 (defun my-elisp-mode-hook ()
   (modify-syntax-entry ?- "w")
