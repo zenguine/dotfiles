@@ -1,6 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-(require 'f)
-
 ;; Convenience macros
 
 (defmacro ifhave (x &rest body)
@@ -261,7 +259,7 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
   (let ((n (random (length choices))))
     (elt choices n)))
 
-(defun edit-mode-config-file (&optional config-file-name)
+(after 'f (defun edit-mode-config-file (&optional config-file-name)
   "Edit the configuration file corresponding to the current major
    mode.  being in mode <modename>-mode corresponds to (find-file
    ~/.emacs.d/config/<modename>-config.el) or (find-file
@@ -284,4 +282,5 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
 					 mm-file-name)))
     (if (f-exists?  mm-config-file-path-with-lang)
 	(find-file mm-config-file-path-with-lang)
-      (find-file mm-config-file-path))))
+      (find-file mm-config-file-path)))))
+

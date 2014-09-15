@@ -4,16 +4,11 @@
 (require 'package)
 (require 'my-autoloads)
 (require 'cl)
-
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (setq package-enable-at-startup nil)
 (package-initialize)
-(require 'dash)
-(require 's)
-(require 'f)
-
 
 (add-to-theme-path-recursive "~/.emacs.d/themes")
 (add-to-load-path-recursive "~/.emacs.d/config")
@@ -79,6 +74,7 @@
     org-plus-contrib
     paredit
     popwin
+    pretty-mode
     projectile
     quack
     rainbow-blocks
@@ -113,6 +109,9 @@
 ;; --------------------------------
 ;; My personal configuration stuff
 ;; --------------------------------
+(require 'dash)
+(require 's)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (setq custom-faces-file "~/.emacs.d/custom-faces.el")
 (load custom-file 'noerror)
