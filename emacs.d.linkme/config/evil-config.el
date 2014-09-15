@@ -158,6 +158,7 @@
 				 (semantic-symref-results-mode . emacs)
 				 (rdictcc-buffer-mode . emacs)
 				 (erc-mode . normal)
+				 (occur-mode . normal)
 				 (eshell-mode . emacs)
 				 (haskell-interactive-mode . emacs)
 				 (idris-repl-mode . emacs))

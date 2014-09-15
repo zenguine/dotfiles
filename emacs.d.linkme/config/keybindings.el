@@ -1,32 +1,25 @@
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Universal argument related
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-\\") 'universal-argument)
+(define-key universal-argument-map (kbd "C-\\") 'universal-argument-more)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Commands manipulating buffer lines matching a regexp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq regexp-manip-funcs-map (make-sparse-keymap))
+(define-key regexp-manip-funcs-map (kbd "k") 'keep-lines) ;; alias: delete-non-matching-lines
+(define-key regexp-manip-funcs-map (kbd "d") 'flush-lines) ;; alias: delete-matching-lines
+(define-key regexp-manip-funcs-map (kbd "c") 'count-matches) ;; alias: how-many
+(define-key regexp-manip-funcs-map (kbd "o") 'occur) ;; alias: list-matching-lines
+(define-key regexp-manip-funcs-map (kbd "h") 'highlight-lines-matching-regexp) ;; alias: list-matching-lines
+(global-set-key (kbd "C-c r") regexp-manip-funcs-map)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  Miscellaneous  / unsorted commands
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-c h") help-map)
-(define-key help-map (kbd "d") 'helm-descbinds)
-(define-key help-map (kbd "C-l") 'find-library)
-(define-key help-map (kbd "C-f") 'find-function)
-(define-key help-map (kbd "C-k") 'find-function-on-key)
-(define-key help-map (kbd "C-v") 'find-variable)
-(define-key help-map (kbd "C-m") 'discover-my-major)
-
-(global-set-key (kbd "C-x p") 'proced)
-(global-set-key (kbd "C-x C-p") 'package-list-packages-no-fetch)
-(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c R") 'revert-buffer)
-(global-set-key (kbd "C-x C-m") 'helm-M-x)
-(global-set-key (kbd "C-c h a") 'helm-apropos)
-(global-set-key (kbd "C-c o") 'helm-swoop)
-(global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
-(global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
-
-(defun my-helm-multi-swoop (arg)
-  (interactive "P")
-  (if arg
-      (call-interactively 'helm-multi-swoop-all)
-    (call-interactively 'helm-multi-swoop)))
 
 (global-set-key (kbd "C-c C-s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-c t") 'multi-term-toggle)
@@ -46,11 +39,45 @@
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
 				(kill-buffer (current-buffer))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Help / documentation  commands
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-c h") help-map)
+(define-key help-map (kbd "d") 'helm-descbinds)
+(define-key help-map (kbd "C-l") 'find-library)
+(define-key help-map (kbd "C-f") 'find-function)
+(define-key help-map (kbd "C-k") 'find-function-on-key)
+(define-key help-map (kbd "C-v") 'find-variable)
+(define-key help-map (kbd "C-m") 'discover-my-major)
 
-(global-set-key (kbd "C-\\") 'universal-argument)
-(define-key universal-argument-map (kbd "C-\\") 'universal-argument-more)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helm / commands that list things
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "C-x p") 'proced)
+(global-set-key (kbd "C-x C-p") 'package-list-packages-no-fetch)
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c R") 'revert-buffer)
+(global-set-key (kbd "C-x C-m") 'helm-M-x)
+(global-set-key (kbd "C-c h a") 'helm-apropos)
+(global-set-key (kbd "C-c o") 'helm-swoop)
+(global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
+(global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
 
+(defun my-helm-multi-swoop (arg)
+  (interactive "P")
+  (if arg
+      (call-interactively 'helm-multi-swoop-all)
+    (call-interactively 'helm-multi-swoop)))
+
+
+;;;;;;;;;;;;;;;;;;;;
 ;; Org mode bindings
+;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-c x d h") 'org-decrypt-entry)
 (global-set-key (kbd "C-c x d b") 'org-decrypt-entries)
 (global-set-key "\C-cl" 'org-store-link)
@@ -63,7 +90,9 @@
 (global-set-key (kbd "<f9> i") 'bh/punch-in)
 (global-set-key (kbd "<f9> o") 'bh/punch-out)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Window moving/resizing keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (global-set-key (kbd "C-x 0") 'delete-window-and-balance)
 
