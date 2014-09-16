@@ -101,15 +101,6 @@ If no root marker is found, the current working directory is used."
 (defun switch-to-other-buffer () (interactive)
   (switch-to-buffer (other-buffer)))
 
-(defun multi-term-toggle ()
-  "If there is only one multi-term window.. this should toggle between a term
-window and a non-term window"
-  (interactive)
-  (let ((start-buffer (current-buffer)))
-    (multi-term-next)
-    (if (eq start-buffer (current-buffer))
-	(switch-to-buffer (other-buffer)))))
-
 (defun anyp (pred seq)
   "True if any value in SEQ matches PRED."
   (catch 'found

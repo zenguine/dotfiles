@@ -74,7 +74,6 @@
     molokai-theme
     monokai-theme
     multiple-cursors
-    multi-term
     nyan-mode
     org-plus-contrib
     paredit

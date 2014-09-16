@@ -4,7 +4,6 @@
 (autoload 'start-irc "erc-config" nil t)
 (autoload 'start-or-switch-irc "erc-config" nil t)
 (autoload 'switch-to-other-buffer "util" nil t)
-(autoload 'multi-term-toggle "util" nil t)
 (autoload 'find-project-root "util" nil t)
 (autoload 'anyp "util" nil t)
 (autoload 'root-p "util" nil t)

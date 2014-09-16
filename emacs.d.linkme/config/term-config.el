@@ -15,9 +15,9 @@
 
 (defcustom term-unbind-key-list
   '("C-z" "C-x" "C-c" "C-h" "C-l" "C-j" "C-k" "C-y" "<ESC>")
-  "The key list that will need to be unbind."
+  "The key list that will need to be unbound."
   :type 'list
-  :group 'multi-term)
+  :group 'term)
 
 (defcustom term-bind-key-alist
   '(
@@ -33,6 +33,6 @@
   "The key alist that will need to be bind.
 If you do not like default setup, modify it, with (KEY . COMMAND) format."
   :type 'alist
-  :group 'multi-term)
+  :group 'term)
 
 (provide 'term-config)

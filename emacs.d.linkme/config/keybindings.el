@@ -22,8 +22,6 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 (global-set-key (kbd "C-c C-s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-(global-set-key (kbd "C-c t") 'multi-term-toggle)
-(global-set-key (kbd "C-c T") 'multi-term)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
 (global-set-key (kbd "C-c m") 'mu4e)
