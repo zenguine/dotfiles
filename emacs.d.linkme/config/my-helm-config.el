@@ -10,8 +10,10 @@
 (dolist (ext '("\\.elc$" "\\.pyc$"))
   (add-to-list 'helm-boring-file-regexp-list ext))
 
-(global-set-key (kbd "M-t") 'helm-for-files)
+;; General helm settings
 (setq helm-quick-update t)
+(setq helm-ff-search-library-in-sexp t) ;; TODO: What does this do?
+(setq helm-ff-file-name-history-use-recentf t)
 
 (setq helm-for-files-preferred-list
       '(helm-source-buffers-list

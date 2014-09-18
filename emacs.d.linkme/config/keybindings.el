@@ -65,6 +65,7 @@
 (global-set-key (kbd "C-c o") 'helm-swoop)
 (global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
 (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 (defun my-helm-multi-swoop (arg)
   (interactive "P")
