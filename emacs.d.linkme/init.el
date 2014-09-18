@@ -28,6 +28,7 @@
     ace-jump-mode
     ag
     async
+    color-theme-sanityinc-tomorrow
     company-ghc
     dash
     dash-functional
