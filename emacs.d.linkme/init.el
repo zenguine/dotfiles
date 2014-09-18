@@ -41,6 +41,7 @@
     evil-leader
     evil-matchit
     evil-nerd-commenter
+    evil-visualstar
     expand-region
     f
     fiplr

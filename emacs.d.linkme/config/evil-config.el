@@ -9,7 +9,10 @@
 (setq evil-auto-balance-windows t)
 
 (require 'evil)
+(require 'evil-visualstar)
 (require 'cl)
+
+(evil-define-key 'normal Custom-mode (kbd "RET") 'Custom-newline)
 
 (setq evil-emacs-state-cursor '("#fb4934" box))
 (setq evil-normal-state-cursor '("#d3869b" box))
@@ -18,9 +21,9 @@
 (setq evil-replace-state-cursor '("maroon" bar))
 (setq evil-operator-state-cursor '("maroon" hollow))
 
-(setq evil-search-module 'evil-search)
+(setq evil-search-module 'isearch)
 (setq evil-ex-search-vim-style-regexp t)
-(setq evil-magic 'very-magic)
+(setq evil-magic 'magic)
 
 (defadvice evil-ex-search-next (after advice-for-evil-ex-search-next activate)
   (evil-scroll-line-to-center (line-number-at-pos)))
@@ -158,6 +161,7 @@
 				 (semantic-symref-results-mode . emacs)
 				 (rdictcc-buffer-mode . emacs)
 				 (erc-mode . normal)
+				 (Custom-mode . normal)
 				 (occur-mode . normal)
 				 (eshell-mode . emacs)
 				 (haskell-interactive-mode . emacs)
