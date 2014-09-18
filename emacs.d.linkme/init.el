@@ -28,6 +28,7 @@
     ace-jump-mode
     ag
     async
+    birds-of-paradise-plus-theme
     color-theme-sanityinc-tomorrow
     company-ghc
     dash
