@@ -9,6 +9,7 @@
       auto-save-default nil
       create-lockfiles nil)
 
+(setq enable-recursive-minibuffers t)
 (put 'narrow-to-region 'disabled nil)
 
 (setq undo-tree-auto-save-history t)

@@ -27,6 +27,7 @@
   '(
     ace-jump-mode
     ag
+    async
     company-ghc
     dash
     dash-functional
@@ -88,6 +89,7 @@
     smartparens
     smex
     spacegray-theme
+    subatomic-theme
     sublime-themes
     sublimity
     zenburn-theme

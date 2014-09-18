@@ -1,3 +1,4 @@
+(setq org-clock-sound t)
 (require 'org)
 (require 'my-org-util)
 (require 'f)
@@ -7,6 +8,7 @@
 
 (setq org-treat-S-cursor-todo-selection-as-state-change nil
       org-default-notes-file (concat org-directory "/refile.org")
+      org-startup-indented t
       org-refile-use-outline-path t
       org-outline-path-complete-in-steps nil
       org-refile-allow-creating-parent-nodes 'confirm
