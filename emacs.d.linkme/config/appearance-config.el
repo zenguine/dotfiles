@@ -59,7 +59,7 @@
     (load-theme chosen t)
     chosen))
 
-(load-theme 'solarized-dark t)
+(load-theme 'monokai t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 ;; Diminish -- stop minor modes from cluttering up my modeline
