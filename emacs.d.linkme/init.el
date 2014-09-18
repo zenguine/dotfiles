@@ -46,6 +46,7 @@
     expand-region
     f
     fiplr
+    flatland-theme
     flx
     flx-ido
     flycheck
