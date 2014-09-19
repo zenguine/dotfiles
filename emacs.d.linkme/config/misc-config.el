@@ -7,7 +7,7 @@
 ;; minibuffer config..
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-minibuffer-features)
- 
+
 (after 'helm-eval
        (define-key helm-eval-expression-map (kbd "TAB") 'helm-lisp-completion-at-point)
        (define-key helm-eval-expression-map (kbd "RET") 'helm-eval-new-line-and-indent)
@@ -20,6 +20,18 @@
   "enable paredit-mode during eval-expression"
   (if (or inside-helm-eval-expression-p (eq this-command 'eval-expression))
       (smartparens-mode 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Info manual config
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(after 'ace-link (ace-link-setup-default))
+(after 'info (require 'info+))
+(define-key Info-mode-map (kbd "C-d") 'evil-scroll-down)
+(define-key Info-mode-map (kbd "C-u") 'evil-scroll-up)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Other
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; no backup files
 (setq make-backup-files nil

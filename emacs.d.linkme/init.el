@@ -26,6 +26,7 @@
 (defvar packages-list
   '(
     ace-jump-mode
+    ace-link
     ag
     async
     birds-of-paradise-plus-theme
@@ -72,6 +73,7 @@
     ido-ubiquitous
     ido-vertical-mode
     idris-mode
+    info+
     jedi
     key-chord
     load-theme-buffer-local
