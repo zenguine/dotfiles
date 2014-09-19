@@ -20,7 +20,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(global-set-key (kbd "C-c C-s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+(global-def-key (kbd "C-c C-s") 'switch-to-buffer "*scratch*")
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
 (global-set-key (kbd "C-c m") 'mu4e)
@@ -31,9 +31,7 @@
 (global-set-key (kbd "C-c y") 'yas-describe-tables)
 (global-set-key (kbd "C-c C-\\") 'erc-track-switch-buffer)
 (global-set-key (kbd "C-c B") 'erc-iswitchb)
-(global-set-key (kbd "C-x k") (lambda ()
-				(interactive)
-				(kill-buffer (current-buffer))))
+(global-def-key (kbd "C-x k") 'kill-buffer (current-buffer))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Help / documentation  commands
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -102,14 +100,14 @@
 (global-set-key (kbd "M-[") 'winner-undo)
 (global-set-key (kbd "M-]") 'winner-redo)
 
-(global-set-key (kbd "C-h") (lambda () (interactive) (move-window-or-create 'left)))
-(global-set-key (kbd "C-j") (lambda () (interactive) (move-window-or-create 'below)))
-(global-set-key (kbd "C-k") (lambda () (interactive) (move-window-or-create 'above)))
-(global-set-key (kbd "C-l") (lambda () (interactive) (move-window-or-create 'right)))
+(global-def-key (kbd "C-h") 'move-window-or-create 'left)
+(global-def-key (kbd "C-j") 'move-window-or-create 'below)
+(global-def-key (kbd "C-k") 'move-window-or-create 'above)
+(global-def-key (kbd "C-l") 'move-window-or-create 'right)
 
-(global-set-key (kbd "S-<up>") (lambda () (interactive) (enlarge-window 3)))
-(global-set-key (kbd "S-<down>") (lambda () (interactive) (shrink-window 3)))
-(global-set-key (kbd "S-<right>") (lambda () (interactive) (enlarge-window-horizontally 3)))
-(global-set-key (kbd "S-<left>") (lambda () (interactive) (shrink-window-horizontally 3)))
+(global-def-key (kbd "S-<up>") 'enlarge-window 3)
+(global-def-key (kbd "S-<down>") 'shrink-window 3)
+(global-def-key (kbd "S-<right>") 'enlarge-window-horizontally 3)
+(global-def-key (kbd "S-<left>") 'shrink-window-horizontally 3)
 
 (provide 'keybindings)

@@ -27,6 +27,18 @@
 	 )
     `(define-key ,keymap ,key ,(car definfo))))
 
+
+(defmacro global-def-key (key &rest definfo)
+  "The equivalent of `def-key' for `global-set-key'."
+  (if (> (length definfo) 1)
+      `(global-set-key
+	 ,key
+	 (lambda () (interactive)
+	   (funcall
+	    ,(car definfo)
+	    ,@(cdr definfo))))
+    `(global-set-key ,key ,(car definfo))))
+
 (after 'evil
        (defmacro evil-def-key (keymap state key &rest definfo)
 	 "The equivalent of `def-key' for `evil-define-key'.  The
