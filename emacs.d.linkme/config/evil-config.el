@@ -108,6 +108,11 @@
 (define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
 
+;; Switch eval-expresion and evil-ex bindings since eval-expression is
+;; more useful to me now
+(define-key evil-normal-state-map (kbd ":") 'eval-expression)
+(define-key evil-normal-state-map (kbd "M-:") 'evil-ex)
+
 (define-key evil-normal-state-map " c" 'evil-window-delete)
 (define-key evil-normal-state-map "  " 'helm-M-x)
 (define-key evil-visual-state-map "  " 'helm-M-x)
