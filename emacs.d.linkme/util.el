@@ -287,3 +287,35 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
 	(find-file mm-config-file-path-with-lang)
       (find-file mm-config-file-path)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom eval expression code
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defvar my-read-expression-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map read-expression-map)
+    (define-key map [(control ?g)] #'abort-recursive-edit)
+    (define-key map [up]   nil)
+    (define-key map [down] nil)
+    (define-key map [down] nil)
+    map))
+
+(defun my-read--expression (prompt &optional initial-contents)
+  (let ((minibuffer-completing-symbol t))
+    (minibuffer-with-setup-hook
+	(lambda ()
+	  (emacs-lisp-mode)
+	  (use-local-map my-read-expression-map)
+	  (setq font-lock-mode t)
+	  (funcall font-lock-function 1))
+      (read-from-minibuffer prompt initial-contents
+			    my-read-expression-map nil
+			    'read-expression-history))))
+
+(defun my-eval-expression (expression &optional arg)
+  (interactive (list (read (my-read--expression "Eval: "))
+		     current-prefix-arg))
+  (if arg
+      (insert (pp-to-string (eval expression lexical-binding)))
+    (pp-display-expression (eval expression lexical-binding)
+			   "*Pp Eval Output*")))

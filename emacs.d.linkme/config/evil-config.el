@@ -14,6 +14,7 @@
 
 ;; Define RET behavior in various modes
 (evil-define-key 'normal Custom-mode (kbd "RET") 'Custom-newline)
+(evil-define-key 'normal Custom-mode (kbd "q") 'Custom-buffer-done)
 (evil-define-key 'normal Info-mode (kbd "RET") 'Info-follow-nearest-node)
 (evil-define-key 'normal Info-mode (kbd "l") 'evil-forward-char)
 (evil-define-key 'normal Info-mode (kbd "h") 'evil-backward-char)
@@ -114,7 +115,7 @@
 
 ;; Switch eval-expresion and evil-ex bindings since eval-expression is
 ;; more useful to me now
-(define-key evil-normal-state-map (kbd ":") 'eval-expression)
+(define-key evil-normal-state-map (kbd ":") 'my-eval-expression)
 (define-key evil-normal-state-map (kbd "C-:") 'evil-ex)
 
 (define-key evil-normal-state-map " c" 'evil-window-delete)

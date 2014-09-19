@@ -5,6 +5,14 @@
   (define-key map (kbd "C-j") nil)
   (define-key map (kbd "M-?") 'sp-convolute-sexp)
 
+  (define-key map (kbd "M-t") 'sp-transpose-sexp)
+  (define-key map (kbd "M-k") 'sp-splice-sexp-killing-backward)
+  (define-key map (kbd "M-j") 'sp-splice-sexp-killing-forward)
+  (define-key map (kbd "M-l") 'sp-forward-slurp-sexp)
+  (define-key map (kbd "M-h") 'sp-forward-barf-sexp)
+  (define-key map (kbd "M-H") 'sp-backward-slurp-sexp)
+  (define-key map (kbd "M-L") 'sp-backward-barf-sexp)
+
   (evil-define-key 'normal map
     "gt" 'sp-transpose-sexp
     "gT" 'sp-transpose-hybrid-sexp

@@ -48,4 +48,32 @@
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
+(defvar my-read-expression-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map read-expression-map)
+    (define-key map [(control ?g)] #'minibuffer-keyboard-quit)
+    (define-key map [up]   nil)
+    (define-key map [down] nil)
+    map))
+
+(defun my-read--expression (prompt &optional initial-contents)
+  (let ((minibuffer-completing-symbol t))
+    (minibuffer-with-setup-hook
+	(lambda ()
+	  (emacs-lisp-mode)
+	  (use-local-map my-read-expression-map)
+	  (setq font-lock-mode t)
+	  (funcall font-lock-function 1))
+      (read-from-minibuffer prompt initial-contents
+			    my-read-expression-map nil
+			    'read-expression-history))))
+
+(defun my-eval-expression (expression &optional arg)
+  (interactive (list (read (my-read--expression ""))
+		     current-prefix-arg))
+  (if arg
+      (insert (pp-to-string (eval expression lexical-binding)))
+    (pp-display-expression (eval expression lexical-binding)
+			   "*Pp Eval Output*")))
+
 (provide 'lisp-config)

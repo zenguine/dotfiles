@@ -47,8 +47,20 @@
 ;; Commands to evaluate elisp expressions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "M-e") 'eval-region)
+(global-set-key (kbd "C-c :") 'my-eval-expression)
 (global-set-key (kbd "C-c C-j") 'eval-print-last-sexp)
-(global-set-key (kbd "M-:") 'helm-eval-expression-with-eldoc)
+
+(make-variable-buffer-local
+ (defvar inside-helm-eval-expression-p
+   nil
+   "hackish way to check if I'm in a helm-eval-expression.. yay dynamic binding.."))
+
+(defun my-helm-eval-expression-with-eldoc ()
+  (interactive)
+  (let ((inside-helm-eval-expression-p t))
+    (call-interactively 'helm-eval-expression-with-eldoc)))
+
+(global-set-key (kbd "M-:") 'my-helm-eval-expression-with-eldoc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helm / commands that list things
