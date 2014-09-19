@@ -32,6 +32,7 @@
 
 (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)
 
+(evil-define-key 'normal emacs-lisp-mode-map (kbd "C-]") 'elisp-slime-nav-find-elisp-thing-at-point)
 (define-key emacs-lisp-mode-map (kbd "C-0") 'eval-defun)
 (define-key emacs-lisp-mode-map (kbd "C-c C-l") 'prompt-to-eval)
 (define-key lisp-interaction-mode-map (kbd "C-0") 'eval-defun)
