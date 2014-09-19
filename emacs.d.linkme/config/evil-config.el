@@ -12,7 +12,11 @@
 (require 'evil-visualstar)
 (require 'cl)
 
+;; Define RET behavior in various modes
 (evil-define-key 'normal Custom-mode (kbd "RET") 'Custom-newline)
+(evil-define-key 'normal Info-mode (kbd "RET") 'Info-follow-nearest-node)
+(evil-define-key 'normal Info-mode (kbd "l") 'evil-forward-char)
+(evil-define-key 'normal Info-mode (kbd "h") 'evil-backward-char)
 
 (setq evil-emacs-state-cursor '("#fb4934" box))
 (setq evil-normal-state-cursor '("#d3869b" box))
