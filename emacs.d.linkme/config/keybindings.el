@@ -15,10 +15,9 @@
 (define-key regexp-manip-funcs-map (kbd "h") 'highlight-lines-matching-regexp) ;; alias: list-matching-lines
 (global-set-key (kbd "C-c r") regexp-manip-funcs-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  Miscellaneous  / unsorted commands
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 (global-set-key (kbd "C-c C-s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -29,8 +28,6 @@
 (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 (global-set-key (kbd "C-,") popwin:keymap)
-(global-set-key (kbd "M-e") 'eval-region)
-(global-set-key (kbd "C-c C-j") 'eval-print-last-sexp)
 (global-set-key (kbd "C-c y") 'yas-describe-tables)
 (global-set-key (kbd "C-c C-\\") 'erc-track-switch-buffer)
 (global-set-key (kbd "C-c B") 'erc-iswitchb)
@@ -47,6 +44,13 @@
 (define-key help-map (kbd "C-k") 'find-function-on-key)
 (define-key help-map (kbd "C-v") 'find-variable)
 (define-key help-map (kbd "C-m") 'discover-my-major)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Commands to evaluate elisp expressions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "M-e") 'eval-region)
+(global-set-key (kbd "C-c C-j") 'eval-print-last-sexp)
+(global-set-key (kbd "M-:") 'helm-eval-expression-with-eldoc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helm / commands that list things
