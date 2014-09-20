@@ -6,6 +6,7 @@
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
 
+(setq evil-shift-width 2)
 (setq evil-auto-balance-windows t)
 
 (require 'evil)
