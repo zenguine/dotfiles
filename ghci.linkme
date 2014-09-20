@@ -1,8 +1,7 @@
 :m - Prelude
-:m + GOA
 
 :set prompt "λ: "
-:m + Control.Monad Control.Applicative Control.Monad.Error Control.Monad.State Control.Monad.Reader Control.Monad.Writer Control.Lens
+:m + Control.Monad Control.Applicative Control.Lens 
 let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
 :def! search return . (":! hoogle --count=15 " ++) . ghciEscapeShellArg
 :def! doc return . (":! hoogle --info " ++) . ghciEscapeShellArg
@@ -11,7 +10,15 @@ let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'"
 :set +t
 :seti -XNoMonomorphismRestriction
 :seti -XDataKinds
-:seti -XPolyKinds
 :seti -XGADTs
 :seti -XRankNTypes
 :seti -XTypeOperators
+
+import qualified Data.Traversable as T
+import qualified Data.Foldable as F
+import Data.Foldable (Foldable(..))
+import Data.Traversable (Traversable(..))
+import Data.Bifunctor
+import Data.Profunctor
+import qualified Control.Arrow as A
+import Control.Arrow ((&&&), (|||), (***), (+++))
