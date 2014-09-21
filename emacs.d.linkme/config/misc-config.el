@@ -39,6 +39,10 @@
       auto-save-default nil
       create-lockfiles nil)
 
+(setq save-place-file "~/.emacs.d/.saveplace")
+(setq-default save-place t)
+(require 'saveplace)
+
 (setq enable-recursive-minibuffers t)
 (put 'narrow-to-region 'disabled nil)
 
