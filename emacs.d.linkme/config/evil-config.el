@@ -58,6 +58,9 @@
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 (define-key evil-normal-state-map  (kbd "C-p") 'helm-for-files)
 
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
 (define-key evil-normal-state-map  (kbd "'") 'evil-goto-mark)
 (define-key evil-normal-state-map  (kbd "`") 'evil-goto-mark-line)
 (define-key evil-motion-state-map  (kbd "'") 'evil-goto-mark)
