@@ -13,6 +13,7 @@ let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'"
 :seti -XGADTs
 :seti -XRankNTypes
 :seti -XTypeOperators
+:set -XNoOverloadedLists
 
 import qualified Data.Traversable as T
 import qualified Data.Foldable as F
