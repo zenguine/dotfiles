@@ -61,3 +61,4 @@ TAGS
 emacs.d.linkme/.org-id-locations
 emacs.d.linkme/org-clock-save.el
 /emacs.d.linkme/tramp
+/emacs.d.linkme/.saveplace
