@@ -2,6 +2,7 @@
 (require 'shm)
 (require 's)
 (require 'dash)
+(require 'haskell-tsp)
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
@@ -190,6 +191,7 @@
 
 (defun my-haskell-hook ()
   (interactive)
+  (tsp-mode t)
   (turn-on-haskell-indentation)
   (setq show-trailing-whitespace nil)
   (rainbow-delimiters-mode t)
