@@ -30,25 +30,25 @@
     (kbd ")") 'sp-forward-sexp
     (kbd "(") 'sp-backward-sexp
     (kbd "M-(") 'sp-backward-up-sexp
-    (kbd "M-)") 'sp-down-sexp
+    (kbd "M-)") 'sp-up-sexp
     (kbd "C-(") 'sp-backward-down-sexp
-    (kbd "C-)") 'sp-up-sexp)
+    (kbd "C-)") 'sp-down-sexp)
 
   (evil-define-key 'operator map
     (kbd ")") 'sp-forward-sexp
     (kbd "(") 'sp-backward-sexp
     (kbd "M-(") 'sp-backward-up-sexp
-    (kbd "M-)") 'sp-down-sexp
+    (kbd "M-)") 'sp-up-sexp
     (kbd "C-(") 'sp-backward-down-sexp
-    (kbd "C-)") 'sp-up-sexp)
+    (kbd "C-)") 'sp-down-sexp)
 
   (evil-define-key 'motion map
     (kbd ")") 'sp-forward-sexp
     (kbd "(") 'sp-backward-sexp
     (kbd "M-(") 'sp-backward-up-sexp
-    (kbd "M-)") 'sp-down-sexp
+    (kbd "M-)") 'sp-up-sexp
     (kbd "C-(") 'sp-backward-down-sexp
-    (kbd "C-)") 'sp-up-sexp)
+    (kbd "C-)") 'sp-down-sexp)
 
   (evil-define-key 'insert map
     (kbd "M-t") 'sp-transpose-sexp
