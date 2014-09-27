@@ -22,4 +22,4 @@ import Data.Traversable (Traversable(..))
 import Data.Bifunctor
 import Data.Profunctor
 import qualified Control.Arrow as A
-import Control.Arrow ((&&&), (|||), (***), (+++))
+import Control.Arrow (Arrow(..), (&&&), (|||), (***), (+++))
