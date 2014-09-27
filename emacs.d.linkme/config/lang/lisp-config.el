@@ -73,8 +73,8 @@
   (interactive (list (read (my-read--expression ""))
 		     current-prefix-arg))
   (if arg
-      (insert (pp-to-string (eval expression lexical-binding)))
-    (pp-display-expression (eval expression lexical-binding)
+      (insert (pp-to-string (eval-expression expression lexical-binding)))
+    (pp-display-expression (eval-expression expression lexical-binding)
 			   "*Pp Eval Output*")))
 
 (provide 'lisp-config)
