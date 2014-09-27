@@ -1,7 +1,7 @@
 (require 'uniquify)
 
 ;; Evil nerd commenter config
-(setq evilnc-hotkey-comment-operator " c")
+(setq evilnc-hotkey-comment-operator "\\")
 (require 'evil-nerd-commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
