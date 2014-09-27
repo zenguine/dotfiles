@@ -1,4 +1,10 @@
 (require 'uniquify)
+
+;; Evil nerd commenter config
+(setq evilnc-hotkey-comment-operator " c")
+(require 'evil-nerd-commenter)
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (turn-on-eldoc-mode)
 (setq project-root-markers '(".git" ".svn"))

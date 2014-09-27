@@ -122,7 +122,6 @@
 (define-key evil-normal-state-map (kbd ":") 'my-eval-expression)
 (define-key evil-normal-state-map (kbd "C-:") 'evil-ex)
 
-(define-key evil-normal-state-map " c" 'evil-window-delete)
 (define-key evil-normal-state-map "  " 'helm-M-x)
 (define-key evil-visual-state-map "  " 'helm-M-x)
 (define-key evil-normal-state-map " 1" 'delete-other-windows)
@@ -153,7 +152,6 @@
 (define-key evil-normal-state-map (kbd "SPC ,") 'switch-to-other-buffer)
 
 ; Key-chord bindings
-(key-chord-define evil-emacs-state-map " c" 'evil-window-delete)
 (key-chord-define evil-emacs-state-map " 1" 'delete-other-windows)
 (key-chord-define evil-emacs-state-map " k" 'kill-this-buffer)
 (key-chord-define evil-emacs-state-map " x" 'delete-single-window)
