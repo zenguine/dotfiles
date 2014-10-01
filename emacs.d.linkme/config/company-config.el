@@ -7,9 +7,9 @@
 
 ;; add this fucntion to any mode hook where company completion is
 ;; annoyingly slow to be happening with no delay
-(defun increase-company-delay-locally ()
+(defun increase-company-delay-locally (&optional val)
   (interactive)
-  (setq-local company-idle-delay 0.7))
+  (setq-local company-idle-delay (or val 0.7)))
 
 (setq tab-always-indent 'complete)
 

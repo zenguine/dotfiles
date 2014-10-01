@@ -32,7 +32,8 @@
   (add-to-list 'eshell-visual-commands "ssh")
   (add-to-list 'eshell-visual-commands "tail")
   (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)
-  (setenv "PAGER" "cat"))
+  (setenv "PAGER" "cat")
+  (increase-company-delay-locally 0.3))
 
 (eval-after-load 'esh-opt
   '(progn
@@ -44,3 +45,4 @@
                                     (kill-buffer))))
 
 (provide 'eshell-config)
+
