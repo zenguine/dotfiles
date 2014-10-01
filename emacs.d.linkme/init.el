@@ -27,6 +27,7 @@
   '(
     ace-jump-mode
     ace-link
+    ac-js2
     ag
     async
     birds-of-paradise-plus-theme
@@ -76,6 +77,7 @@
     info+
     jedi
     js2-mode
+    js2-refactor
     key-chord
     load-theme-buffer-local
     magit
