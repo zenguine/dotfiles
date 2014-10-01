@@ -4,3 +4,6 @@
 [submodule "emacs.d.linkme/site-lisp/structured-haskell-mode"]
 	path = emacs.d.linkme/site-lisp/structured-haskell-mode
 	url = https://github.com/phenguin/structured-haskell-mode
+[submodule "emacs.d.linkme/site-lisp/haskell-type-display"]
+	path = emacs.d.linkme/site-lisp/haskell-type-display
+	url = https://github.com/phenguin/haskell-type-display
