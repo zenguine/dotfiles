@@ -255,6 +255,7 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
    major modes"
   (case mode-symbol
     (emacs-lisp-mode "lisp-config.el")
+    (js2-mode "javascript-config.el")
     (inferior-emacs-lisp-mode "lisp-config.el")))
 
 (defun random-element (choices)

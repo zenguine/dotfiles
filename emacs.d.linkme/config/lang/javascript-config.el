@@ -1,0 +1,2 @@
+
+(provide 'javascript-config)

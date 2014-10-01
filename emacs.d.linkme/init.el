@@ -178,5 +178,6 @@
 (require 'scheme-config)
 (require 'idris-config)
 (require 'haskell-config)
+(require 'javascript-config)
 
 (require 'keybindings)
