@@ -75,6 +75,7 @@
     idris-mode
     info+
     jedi
+    js2-mode
     key-chord
     load-theme-buffer-local
     magit
@@ -92,12 +93,14 @@
     rainbow-delimiters
     rainbow-mode
     s
+    skewer-mode
     smartparens
     smex
     spacegray-theme
     subatomic-theme
     sublime-themes
     sublimity
+    web-mode
     zenburn-theme
     )
   "List of packages needs to be installed at launch")
