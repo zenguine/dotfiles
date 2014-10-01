@@ -172,12 +172,13 @@
 (require 'yasnippet-config)
 
 ;;; Language specific configuration
+(require 'haskell-config)
+(require 'idris-config)
+(require 'javascript-config)
+(require 'lisp-config)
 (require 'prog-config)
 (require 'python-config)
-(require 'lisp-config)
 (require 'scheme-config)
-(require 'idris-config)
-(require 'haskell-config)
-(require 'javascript-config)
+(require 'web-config)
 
 (require 'keybindings)
