@@ -39,6 +39,31 @@
 (global-hl-line-mode 1)
 (column-number-mode 1)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Theme stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun guess-company-face-defaults ()
+  (let ((bg (face-attribute 'default :background)))
+    (custom-set-faces
+     `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+     `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+     `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+     `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+     `(company-tooltip-common ((t (:inherit font-lock-constant-face)))))))
+
+(defun load-theme-with-extras (theme)
+  "Load theme while also enabling extra special configuration
+on a per-theme basis."
+  (interactive (list (intern (read-string "Load which theme?: "))))
+  (case theme
+    (gruvbox
+     (progn
+       ;; (load-theme 'zenburn)
+       (guess-company-face-defaults)))
+    (t nil))
+  (load-theme theme))
+
 (defvar random-theme-candidates
   '(
     zenburn
@@ -60,9 +85,13 @@
     chosen))
 
 (load-theme 'zenburn t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Diminish -- stop minor modes from cluttering up my modeline
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
-;; Diminish -- stop minor modes from cluttering up my modeline
 (require 'diminish)
 (-each '((git-gutter . git-gutter-mode)
 	 (smartparens . smartparens-mode)
