@@ -184,3 +184,8 @@
 (require 'web-config)
 
 (require 'keybindings)
+
+;; Start the server from here rather than with emacs --daemon since
+;; some appearance configuration appears to not work correctly when
+;; run like that.
+(server-start)

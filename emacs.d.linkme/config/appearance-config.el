@@ -59,7 +59,7 @@
     (load-theme chosen t)
     chosen))
 
-(load-theme 'monokai t)
+(load-theme 'zenburn t)
 (when (require 'nyan-mode nil 'noerror) (nyan-mode))
 (when (require 'rainbow-mode nil 'noerror) (rainbow-mode))
 ;; Diminish -- stop minor modes from cluttering up my modeline
@@ -84,22 +84,27 @@
     (eval-after-load (car x)
       `(diminish ',(cadr x) ,(cddr x)))))
 
+(defun change-font-size (size)
+  (interactive
+   (list (string-to-int (read-string "Font size? (default 110):" nil nil 110))))
+  (set-face-attribute 'default nil :height size))
+
 (defun set-small-font ()
   (interactive)
-  (set-face-attribute 'default nil :height 90))
+  (change-font-size 90))
 
 (defun set-medium-font ()
   (interactive)
-  (set-face-attribute 'default nil :height 98))
+  (change-font-size 98))
 
 (defun set-screen-font ()
   (interactive)
-  (set-face-attribute 'default nil :height 110))
+  (change-font-size 110))
 
 (defun set-big-font ()
   (interactive)
-  (set-face-attribute 'default nil :height 120))
+  (change-font-size 120))
 
-(set-medium-font)
+(change-font-size 110)
 
 (provide 'appearance-config)
