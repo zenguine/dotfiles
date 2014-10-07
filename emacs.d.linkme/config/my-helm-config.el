@@ -40,4 +40,6 @@
     (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search))
   (setq helm-multi-swoop-edit-save t))
 
+(helm-projectile-on)
+
 (provide 'my-helm-config)
