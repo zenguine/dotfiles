@@ -104,6 +104,10 @@
 (define-key evil-operator-state-map"(" 'backward-sexp)
 (define-key evil-motion-state-map"(" 'backward-sexp)
 
+; Folding commands
+(define-key evil-normal-state-map "zo" 'evil-open-folds)
+(define-key evil-normal-state-map "zr" 'evil-open-fold)
+
 ; Evil "leader" mappings
 
 (define-key evil-normal-state-map "]o" 'occur-next)
