@@ -84,7 +84,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'sanityinc-tomorrow-night t)
+(load-theme 'zenburn t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
@@ -134,6 +134,5 @@ on a per-theme basis."
   (interactive)
   (change-font-size 120))
 
-(change-font-size 110)
 
 (provide 'appearance-config)
