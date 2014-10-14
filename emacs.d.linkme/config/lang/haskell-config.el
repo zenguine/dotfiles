@@ -149,6 +149,7 @@
 
 (define-key haskell-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
 (evil-define-key 'normal haskell-mode-map (kbd "K") 'haskell-process-do-info)
+(evil-define-key 'normal haskell-interactive-mode-map (kbd "K") 'haskell-process-do-info)
 
 (define-key haskell-mode-map (kbd "C-c t") 'haskell-process-do-type)
 (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
@@ -180,6 +181,9 @@
     (kbd "C-n") nil)
   (evil-define-key 'normal haskell-interactive-mode-map (kbd "G") 'end-of-buffer)
   (define-key haskell-interactive-mode-map (kbd "C-c t") 'haskell-process-do-type)
+  (evil-define-key 'normal haskell-interactive-mode-map (kbd "K") 'haskell-process-do-info)
+  (evil-define-key 'normal haskell-interactive-mode-map (kbd "g K") 'haskell-process-do-type)
+  (define-key haskell-interactive-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   (define-key haskell-interactive-mode-map (kbd "C-c C-r") 'haskell-process-do-info)
   (define-key haskell-interactive-mode-map (kbd "C-c C-d") 'my-hoogle-fn)
   (modify-syntax-entry ?_ "w"))
@@ -191,7 +195,7 @@
 
 (defun my-haskell-hook ()
   (interactive)
-  (tsp-mode t)
+  ;; (tsp-mode t)
   (turn-on-haskell-indentation)
   (setq show-trailing-whitespace nil)
   (rainbow-delimiters-mode t)
