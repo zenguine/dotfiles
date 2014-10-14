@@ -32,7 +32,9 @@
     async
     birds-of-paradise-plus-theme
     color-theme-sanityinc-tomorrow
+    soothe-theme
     company-ghc
+    afternoon-theme
     dash
     dash-functional
     diminish
