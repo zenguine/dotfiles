@@ -4,7 +4,6 @@
 
 ;; Load ELPA
 ;;;; -*- lexical-binding: t -*-
-(add-to-list 'load-path "~/.emacs.d")
 (require 'package)
 (require 'my-autoloads)
 (require 'cl)
