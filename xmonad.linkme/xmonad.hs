@@ -7,6 +7,7 @@ main :: IO ()
 main = xmonad $ gnomeConfig {
   modMask = mod4Mask,
   layoutHook = smartBorders . layoutHook $ gnomeConfig,
+  focusedBorderColor = "purple",
   startupHook = do startupHook gnomeConfig
                    myStartupHook
   , terminal = "urxvt" }
