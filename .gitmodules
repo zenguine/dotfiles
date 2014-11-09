@@ -7,3 +7,6 @@
 [submodule "emacs.d.linkme/site-lisp/haskell-type-display"]
 	path = emacs.d.linkme/site-lisp/haskell-type-display
 	url = https://github.com/phenguin/haskell-type-display
+[submodule "emacs.d.linkme/themes/gotham-theme"]
+	path = emacs.d.linkme/themes/gotham-theme
+	url = https://github.com/wasamasa/gotham-theme
