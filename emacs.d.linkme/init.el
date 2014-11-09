@@ -28,13 +28,13 @@
     ace-jump-mode
     ace-link
     ac-js2
+    afternoon-theme
     ag
+    ample-theme
     async
     birds-of-paradise-plus-theme
     color-theme-sanityinc-tomorrow
-    soothe-theme
     company-ghc
-    afternoon-theme
     dash
     dash-functional
     diminish
@@ -98,8 +98,10 @@
     rainbow-mode
     s
     skewer-mode
+    smart-mode-line
     smartparens
     smex
+    soothe-theme
     spacegray-theme
     subatomic-theme
     sublime-themes
