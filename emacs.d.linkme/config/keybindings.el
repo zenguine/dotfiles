@@ -122,4 +122,12 @@
 (global-def-key (kbd "S-<right>") 'enlarge-window-horizontally 3)
 (global-def-key (kbd "S-<left>") 'shrink-window-horizontally 3)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Personal global map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-prefix-command 'personal-global-map)
+(global-set-key (kbd "C-x x") 'personal-global-map)
+(define-key personal-global-map (kbd "t") 'term)
+
+
 (provide 'keybindings)
