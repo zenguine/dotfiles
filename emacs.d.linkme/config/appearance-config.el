@@ -84,7 +84,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'ample-flat t)
+(load-theme 'gotham t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
@@ -124,7 +124,7 @@ on a per-theme basis."
 
 (defun set-medium-font ()
   (interactive)
-  (change-font-size 98))
+  (change-font-size ))
 
 (defun set-screen-font ()
   (interactive)

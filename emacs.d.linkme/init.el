@@ -58,6 +58,7 @@
     ghc
     git-gutter
     git-timemachine
+    gotham-theme
     gruvbox-theme
     guide-key
     haskell-mode
