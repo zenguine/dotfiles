@@ -115,7 +115,7 @@ on a per-theme basis."
 
 (defun change-font-size (size)
   (interactive
-   (list (string-to-int (read-string "Font size? (default 110):" nil nil 110))))
+   (list (string-to-int (read-string "Font size? (default 110):" nil nil "110"))))
   (set-face-attribute 'default nil :height size))
 
 (defun set-small-font ()
