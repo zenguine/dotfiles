@@ -84,7 +84,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'gotham t)
+(load-theme 'flatland t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
