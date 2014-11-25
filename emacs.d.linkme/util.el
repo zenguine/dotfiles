@@ -27,7 +27,6 @@
 	 )
     `(define-key ,keymap ,key ,(car definfo))))
 
-
 (defmacro global-def-key (key &rest definfo)
   "The equivalent of `def-key' for `global-set-key'."
   (if (> (length definfo) 1)

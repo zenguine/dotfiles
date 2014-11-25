@@ -141,9 +141,11 @@
 ;; keybindings to edit specific files
 (define-key evil-normal-state-map " em" 'edit-mode-config-file)
 (def-key evil-normal-state-map " ea" 'find-file (f-join user-emacs-directory "config" "appearance-config.el"))
-(def-key evil-normal-state-map " ee" 'find-file user-init-file)
+(def-key evil-normal-state-map " ee" 'find-file (f-join user-emacs-directory "config" "evil-config.el"))
+(def-key evil-normal-state-map " ei" 'find-file user-init-file)
 (def-key evil-normal-state-map " ek" 'find-file (f-join user-emacs-directory "config" "keybindings.el"))
 (def-key evil-normal-state-map " eo" 'find-file (f-join org-files-home "personal.org"))
+(def-key evil-normal-state-map " eu" 'find-file (f-join user-emacs-directory "util.el"))
 (def-key evil-normal-state-map " ev" 'find-file (f-join user-emacs-directory "config" "evil-config.el"))
 
 
