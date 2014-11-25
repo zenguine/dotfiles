@@ -174,6 +174,8 @@
 				 (ebib-index-mode . emacs)
 				 (ebib-log-mode . emacs)
 				 (erc-mode . normal)
+				 (diff-mode . emacs)
+				 (git-rebase-mode . emacs)
 				 (eshell-mode . emacs)
 				 (gtags-select-mode . emacs)
 				 (haskell-interactive-mode . emacs)
