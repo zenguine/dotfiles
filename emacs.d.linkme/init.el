@@ -35,6 +35,7 @@
     birds-of-paradise-plus-theme
     color-theme-sanityinc-tomorrow
     company-ghc
+    company-tern
     dash
     dash-functional
     diminish
