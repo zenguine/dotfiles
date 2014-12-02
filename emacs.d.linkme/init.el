@@ -107,6 +107,8 @@
     subatomic-theme
     sublime-themes
     sublimity
+    tern
+    tern-auto-complete
     web-mode
     zenburn-theme
     )
