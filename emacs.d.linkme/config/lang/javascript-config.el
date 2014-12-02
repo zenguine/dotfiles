@@ -3,9 +3,14 @@
 (require 'skewer-mode)
 (require 'tern)
 
+;; Useful when tern forgets to auto-refresh
+(defun delete-tern-process ()
+  (interactive)
+  (delete-process "Tern"))
+
 (defun my-javascript-hook ()
   (modify-syntax-entry ?_ "w")
-  (increase-company-delay-locally 1)
+  (increase-company-delay-locally 0)
   (tern-mode t))
 
 ;; Use js2-mode instead of default js-mode
