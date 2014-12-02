@@ -33,6 +33,17 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Sane scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 3
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
+;; Set mouse wheel / touchpad scrolling behavior
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control) . nil)))
+
 ;; 'y' or 'n' instead of 'yes' or 'no'
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -84,7 +95,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'gotham t)
+(load-theme 'zenburn t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
