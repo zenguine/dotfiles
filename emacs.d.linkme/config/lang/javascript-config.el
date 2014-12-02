@@ -11,6 +11,7 @@
 (defun my-javascript-hook ()
   (modify-syntax-entry ?_ "w")
   (increase-company-delay-locally 0)
+  (flycheck-mode t)
   (tern-mode t))
 
 ;; Use js2-mode instead of default js-mode

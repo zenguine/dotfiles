@@ -110,6 +110,7 @@
     sublimity
     tern
     tern-auto-complete
+    web-beautify
     web-mode
     zenburn-theme
     )
