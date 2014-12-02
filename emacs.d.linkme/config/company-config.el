@@ -43,4 +43,7 @@
   (add-to-list 'company-backends 'company-ghc)
   (custom-set-variables '(company-ghc-show-info t)))
 
+(when (require 'tern nil 'noerror)
+  (add-to-list 'company-backends 'company-tern))
+
 (provide 'company-config)
