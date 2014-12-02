@@ -8,6 +8,7 @@
 	evil-emacs-state
 	evil-end-of-line
 	evil-exit-emacs-state
+	evil-find-char
 	evil-first-non-blank
 	evil-forward-char
 	evil-forward-word-begin
@@ -28,6 +29,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+	evil-next-visual-line
+	evil-previous-visual-line
 	evil-scroll-line-to-center
 	evil-window-delete
 	))
