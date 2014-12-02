@@ -1,4 +1,5 @@
 (require 'js2-mode)
+(require 'js2-refactor)
 (require 'skewer-mode)
 
 (defun my-javascript-hook ()
@@ -9,5 +10,8 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-minor-mode-hook 'skewer-mode)
 (add-hook 'js2-mode-hook 'skewer-mode)
+
+;; js2-refactor keybindings
+(js2r-add-keybindings-with-prefix "C-c C-m")
 
 (provide 'javascript-config)
