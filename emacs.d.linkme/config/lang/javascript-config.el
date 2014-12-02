@@ -4,6 +4,7 @@
 (require 'tern)
 
 (defun my-javascript-hook ()
+  (modify-syntax-entry ?_ "w")
   (increase-company-delay-locally 1)
   (tern-mode t))
 
