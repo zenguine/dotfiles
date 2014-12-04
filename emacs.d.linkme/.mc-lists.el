@@ -17,6 +17,7 @@
 	evil-normal-state
 	evil-paredit-delete
 	evil-previous-line
+	evil-replace
 	evil-visual-char
 	kill-region
 	paredit-backward-barf-sexp
@@ -25,6 +26,8 @@
 	paredit-forward-slurp-sexp
 	paredit-splice-sexp
 	paredit-split-sexp
+	sp-backward-kill-word
+	sp-delete-char
 	))
 
 (setq mc/cmds-to-run-once
@@ -33,4 +36,5 @@
 	evil-previous-visual-line
 	evil-scroll-line-to-center
 	evil-window-delete
+	sp-backward-delete-char
 	))
