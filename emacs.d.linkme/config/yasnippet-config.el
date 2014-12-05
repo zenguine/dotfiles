@@ -9,11 +9,11 @@
                   (yas--get-snippet-tables)))
     names))
 
-(define-key yas-minor-mode-map (kbd "C-RET") 'yas-next-field)
-(define-key yas-minor-mode-map (kbd "<C-return>") 'yas-next-field)
-(define-key yas-minor-mode-map [(control return)] 'yas-next-field)
-(define-key yas-minor-mode-map [(tab)] nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
+;;(define-key yas-minor-mode-map (kbd "C-RET") 'yas-next-field)
+;;(define-key yas-minor-mode-map (kbd "<C-return>") 'yas-next-field)
+;;(define-key yas-minor-mode-map [(control return)] 'yas-next-field)
+;; (define-key yas-minor-mode-map [(tab)] nil)
+;; (define-key yas-minor-mode-map (kbd "TAB") nil)
 
 (when (require 'evil nil 'noerror)
   (evil-define-key 'insert yas-minor-mode-map (kbd "C-o") 'yas-expand-from-trigger-key))
