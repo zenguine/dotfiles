@@ -4,7 +4,7 @@
 (require 'popwin)
 
 (setq display-buffer-function 'popwin:display-buffer)
-(setq popwin:popup-window-position 'right)
+(setq popwin:popup-window-position 'bottom)
 (setq popwin:popup-window-height 0.3)
 (setq popwin:popup-window-width 0.4)
 
