@@ -8,7 +8,10 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (turn-on-eldoc-mode)
 (setq project-root-markers '(".git" ".svn"))
+
+;; Tags configuration
 (setq tags-revert-without-query t)
+(setq tags-table-list '("codex.tags" "TAGS"))
 
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       backup-directory-alist `((".*" . ,temporary-file-directory)))
