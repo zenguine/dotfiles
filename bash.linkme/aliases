@@ -23,6 +23,7 @@ alias open= 'xdg-open'
 alias locate='locate -i --regexp'
 alias lock='xscreensaver-command --lock'
 alias bp='echo -e "\a"'
+alias diskhogs='du -hsx * | sort -rh | head -20'
 
 # FASD aliases
 alias v='f -e vim'
