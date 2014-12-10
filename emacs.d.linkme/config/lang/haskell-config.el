@@ -1,3 +1,4 @@
+(require 'hindent)
 (require 'haskell-mode)
 (require 'shm)
 (require 's)
@@ -196,12 +197,11 @@
 (defun my-haskell-hook ()
   (interactive)
   ;; (tsp-mode t)
-  (turn-on-haskell-indentation)
   (setq show-trailing-whitespace nil)
   (rainbow-delimiters-mode t)
   (setq haskell-stylish-on-save t)
   (flycheck-mode t)
-
+  (turn-on-haskell-indentation)
   (setq flycheck-display-errors-delay .3)
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
