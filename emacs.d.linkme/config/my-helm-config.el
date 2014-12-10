@@ -1,4 +1,8 @@
+;; Fuzzy matching
 (setq helm-buffers-fuzzy-matching t)
+(setq helm-M-x-fuzzy-match t)
+(setq helm-apropos-fuzzy-match t)
+
 (require 'helm)
 (require 'helm-files)
 (require 'helm-projectile)
