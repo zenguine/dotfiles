@@ -1,6 +1,7 @@
 (require 'f)
 
 (setq evil-want-C-u-scroll t)
+(setq evil-want-fine-undo 'no)
 (setq evil-want-C-i-jump nil)
 (setq evil-move-cursor-back nil)
 (setq evil-overriding-maps nil)
