@@ -73,6 +73,7 @@
     helm-pydoc
     helm-swoop
     helm-themes
+    hi2
     ibuffer-git
     ibuffer-vc
     ido-ubiquitous
@@ -112,8 +113,7 @@
     tern-auto-complete
     web-beautify
     web-mode
-    zenburn-theme
-    )
+    zenburn-theme)
   "List of packages needs to be installed at launch")
 
 (defun has-package-not-installed ()
