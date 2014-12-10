@@ -289,4 +289,8 @@
 (add-hook 'haskell-interactive-mode-hook 'setup-haskell-interactive-mode)
 (add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 
+;; Hindent
+(setq hindent-style "chris-done")
+(define-key haskell-mode-map (kbd "C-c C-r") 'hindent/reformat-decl)
+
 (provide 'haskell-config)
