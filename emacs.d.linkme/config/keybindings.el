@@ -135,6 +135,9 @@
 (define-prefix-command 'my-tags-map)
 (global-set-key (kbd "C-x t") 'my-tags-map)
 (define-key my-tags-map (kbd "v") 'visit-tags-table)
+(define-key my-tags-map (kbd "f") 'find-tag)
+(define-key my-tags-map (kbd "F") 'find-tag-regexp)
+(define-key my-tags-map (kbd "h") 'helm-etags-select)
 (define-key my-tags-map (kbd "r") 'tags-reset-tags-tables)
 
 
