@@ -14,6 +14,10 @@
 (require 'evil-visualstar)
 (require 'cl)
 
+;; Tag navigation
+(define-key evil-normal-state-map (kbd "M-.") 'find-tag)
+(define-key evil-normal-state-map (kbd "C-M-.") 'find-tag-regexp)
+
 ;; Define RET behavior in various modes
 (evil-define-key 'normal Custom-mode (kbd "RET") 'Custom-newline)
 (evil-define-key 'normal Custom-mode (kbd "q") 'Custom-buffer-done)
