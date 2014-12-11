@@ -17,6 +17,7 @@
 ;; Tag navigation
 (define-key evil-normal-state-map (kbd "M-.") 'find-tag)
 (define-key evil-normal-state-map (kbd "C-M-.") 'find-tag-regexp)
+(define-key evil-normal-state-map (kbd "g ]") 'etags-select-find-tag-at-point)
 
 ;; Define RET behavior in various modes
 (evil-define-key 'normal Custom-mode (kbd "RET") 'Custom-newline)

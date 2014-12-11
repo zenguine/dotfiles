@@ -11,7 +11,6 @@
 
 ;; Tags configuration
 (setq tags-revert-without-query t)
-(setq tags-table-list '("codex.tags" "TAGS"))
 
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       backup-directory-alist `((".*" . ,temporary-file-directory)))

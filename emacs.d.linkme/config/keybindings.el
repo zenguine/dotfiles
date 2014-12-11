@@ -140,7 +140,10 @@
 (define-key my-tags-map (kbd "f") 'find-tag)
 (define-key my-tags-map (kbd "F") 'find-tag-regexp)
 (define-key my-tags-map (kbd "h") 'helm-etags-select)
+(define-key my-tags-map (kbd "s") 'tags-search)
+(define-key my-tags-map (kbd "a") 'tags-apropos)
 (define-key my-tags-map (kbd "r") 'tags-reset-tags-tables)
+(define-key my-tags-map (kbd "e") 'etags-select-find-tag)
 
 
 

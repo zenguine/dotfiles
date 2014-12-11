@@ -42,6 +42,7 @@
     discover-my-major
     elisp-slime-nav
     elpy
+    etags-select
     evil
     evil-args
     evil-leader
