@@ -129,5 +129,14 @@
 (global-set-key (kbd "C-x x") 'personal-global-map)
 (define-key personal-global-map (kbd "t") 'term)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Tags bindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-prefix-command 'my-tags-map)
+(global-set-key (kbd "C-x t") 'my-tags-map)
+(define-key my-tags-map (kbd "v") 'visit-tags-table)
+(define-key my-tags-map (kbd "r") 'tags-reset-tags-tables)
+
+
 
 (provide 'keybindings)
