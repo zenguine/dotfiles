@@ -88,14 +88,14 @@
 (define-key evil-normal-state-map "L" 'evil-end-of-line)
 (define-key evil-normal-state-map (kbd "zn")
   (lambda () (interactive) (progn
-			     (move-end-of-line nil)
-			     (newline-and-indent))))
+			(move-end-of-line nil)
+			(newline-and-indent))))
 
 
 (define-key evil-normal-state-map (kbd "zp")
   (lambda () (interactive) (progn
-			     (move-beginning-of-line nil)
-			     (newline-and-indent))))
+			(move-beginning-of-line nil)
+			(newline-and-indent))))
 
 (define-key evil-normal-state-map ")" 'forward-sexp)
 (define-key evil-operator-state-map")" 'forward-sexp)
@@ -105,11 +105,11 @@
 (define-key evil-operator-state-map"(" 'backward-sexp)
 (define-key evil-motion-state-map"(" 'backward-sexp)
 
-; Folding commands
+					; Folding commands
 (define-key evil-normal-state-map "zo" 'evil-open-folds)
 (define-key evil-normal-state-map "zr" 'evil-open-fold)
 
-; Evil "leader" mappings
+					; Evil "leader" mappings
 
 (define-key evil-normal-state-map "]o" 'occur-next)
 (define-key evil-normal-state-map "[o" 'occur-prev)
@@ -159,7 +159,7 @@
 
 (define-key evil-normal-state-map (kbd "SPC ,") 'switch-to-other-buffer)
 
-; Key-chord bindings
+					; Key-chord bindings
 (key-chord-define evil-emacs-state-map " 1" 'delete-other-windows)
 (key-chord-define evil-emacs-state-map " c" 'evil-window-delete)
 (key-chord-define evil-emacs-state-map " k" 'kill-this-buffer)
