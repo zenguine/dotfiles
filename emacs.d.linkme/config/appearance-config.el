@@ -95,7 +95,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'solarized-dark t)
+(load-theme 'flatland t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
@@ -128,6 +128,7 @@ on a per-theme basis."
   (interactive
    (list (string-to-int (read-string "Font size? (default 110):" nil nil "110"))))
   (set-face-attribute 'default nil :height size))
+
 
 (defun set-small-font ()
   (interactive)
