@@ -2,6 +2,8 @@
 (require 'org)
 (require 'my-org-util)
 (require 'f)
+(require 's)
+(require 'ido)
 
 (setq org-files-home "~/org")
 (setq org-agenda-diary-file (f-join org-files-home "diary.org"))
@@ -290,5 +292,27 @@
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 (setq org-crypt-key nil)
+
+(defun my/org-insert-quote-block (&optional quote-type)
+  "Insert a `QUOTE-TYPE' quoted block of text in org-mode.
+   `QUOTE-TYPE' can be one of 'center, 'quote, or 'verse.
+    See http://orgmode.org/manual/Paragraphs.html for the
+    different semantics."
+  (interactive
+   (let ((quote-types-list
+	  '("quote" "verse" "center")))
+     (list (ido-completing-read "Quoted text block type: " quote-types-list))))
+  (let* ((quote-type (or quote-type "quote"))
+	 (quote-type-cap (s-upcase quote-type)))
+    (progn
+      (newline-and-indent)
+      (insert (format "#+BEGIN_%s\n" quote-type-cap))
+      (newline-and-indent)
+      (insert (format "#+END_%s\n" quote-type-cap))
+      (previous-line 2))))
+
+
+;; Org-mode specific keybinings
+(define-key org-mode-map (kbd "C-c q") 'my/org-insert-quote-block)
 
 (provide 'org-config)
