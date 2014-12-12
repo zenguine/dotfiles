@@ -16,6 +16,8 @@
 
 ;; General helm settings
 (setq helm-quick-update t)
+(setq helm-bookmark-show-location t)
+(setq helm-split-window-in-side-p t)
 (setq helm-ff-search-library-in-sexp t) ;; TODO: What does this do?
 (setq helm-ff-file-name-history-use-recentf t)
 
@@ -45,5 +47,9 @@
   (setq helm-multi-swoop-edit-save t))
 
 (helm-projectile-on)
+
+;; Misc helm search keybindings
+(ifhave 'helm-ag
+  (global-set-key (kbd "M-s a") 'helm-ag))
 
 (provide 'my-helm-config)
