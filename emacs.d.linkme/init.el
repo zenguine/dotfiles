@@ -33,11 +33,11 @@
     ample-theme
     async
     birds-of-paradise-plus-theme
+    color-identifiers-mode
     color-theme-sanityinc-tomorrow
     company-ghc
     company-tern
     dash
-    color-identifiers-mode
     dash-functional
     diminish
     discover-my-major
@@ -66,6 +66,7 @@
     guide-key
     haskell-mode
     helm
+    helm-ag
     helm-dash
     helm-descbinds
     helm-git
@@ -115,7 +116,8 @@
     tern-auto-complete
     web-beautify
     web-mode
-    zenburn-theme)
+    zenburn-theme
+    )
   "List of packages needs to be installed at launch")
 
 (defun has-package-not-installed ()
