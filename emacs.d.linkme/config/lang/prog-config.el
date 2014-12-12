@@ -16,7 +16,13 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       backup-directory-alist `((".*" . ,temporary-file-directory)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; General programming mode hooks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+;; Start programming files with all folds closed in "outline" mode
+(after 'evil
+  (add-hook 'prog-mode-hook 'evil-close-folds))
 
 ;; Indentation config
 (setq indent-tabs-mode nil)
