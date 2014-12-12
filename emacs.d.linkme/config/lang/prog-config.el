@@ -27,14 +27,9 @@
 (add-to-list 'completion-ignored-extensions ".o")
 
 ;; Compilation mode stuff
-
-
 (require 'ansi-color)
 
 (defun colorize-compilation-buffer ()
-Follow output
-Follow output
-Follow output
   (toggle-read-only)
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))
