@@ -44,22 +44,22 @@
     `(global-set-key ,key ,(car definfo))))
 
 (after 'evil
-       (defmacro evil-def-key (keymap state key &rest definfo)
-	 "The equivalent of `def-key' for `evil-define-key'.  The
+  (defmacro evil-def-key (keymap state key &rest definfo)
+    "The equivalent of `def-key' for `evil-define-key'.  The
           other difference from `evil-define-key' is that evil-def-key
           does not allow you to specify multiple key binding pairs in
           a single call to it. "
-	 (if (> (length definfo) 1)
-	     `(evil-define-key
-		,keymap
-		,state
-		,key
-		(lambda () (interactive)
-		  (funcall
-		   ,(car definfo)
-		   ,@(cdr definfo)))
-		)
-	   `(evil-define-key ,keymap ,state ,key ,(car definfo)))))
+    (if (> (length definfo) 1)
+	`(evil-define-key
+	   ,keymap
+	   ,state
+	   ,key
+	   (lambda () (interactive)
+	     (funcall
+	      ,(car definfo)
+	      ,@(cdr definfo)))
+	   )
+      `(evil-define-key ,keymap ,state ,key ,(car definfo)))))
 
 (defun const (val) (lambda (x) val))
 

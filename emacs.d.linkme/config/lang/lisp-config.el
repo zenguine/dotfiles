@@ -27,7 +27,7 @@
   (switch-to-buffer-other-window "*Help*" t))
 
 (after 'evil
-       (evil-define-key 'normal emacs-lisp-mode-map "K" 'my-jump-to-elisp-docs))
+  (evil-define-key 'normal emacs-lisp-mode-map "K" 'my-jump-to-elisp-docs))
 
 
 (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)
