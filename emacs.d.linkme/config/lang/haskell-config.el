@@ -202,7 +202,7 @@
   (rainbow-delimiters-mode t)
   (setq haskell-stylish-on-save t)
   (flycheck-mode t)
-  (turn-on-hi2)
+  (turn-on-haskell-indentation)
   (setq flycheck-display-errors-delay .3)
   (evil-define-key 'normal haskell-mode-map " a" 'haskell/types-file-toggle)
   (when (require 'flycheck nil 'noerror)
