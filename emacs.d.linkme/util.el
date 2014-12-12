@@ -1,15 +1,20 @@
 ;;; -*- lexical-binding: t -*-
+
+;;;;;;;;;;;;;;;;;;;;;
 ;; Convenience macros
+;;;;;;;;;;;;;;;;;;;;;
 
 (defmacro ifhave (x &rest body)
   "Shorthand for (when (require X)) BODY)"
+  (declare (indent defun))
   `(when (require ,x nil 'noerror)
      ,@body))
 
-(defmacro after (x &rest body)
+(defmacro after (feature &rest body)
   "Shorthand for (eval-after-load <x> <body>)"
-  `(eval-after-load ,x
-     ',(cons 'progn body)))
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
 
 (defmacro def-key (keymap key &rest definfo)
   "Like `define-key' but automagically creates a wrapping lambda if
