@@ -22,6 +22,7 @@ alias man='LC_ALL=C LANG=C man'
 alias open='xdg-open'
 alias o='popd'
 alias p='pushd'
+alias rmf='rm -f'
 alias V='vim `ls -t | head -1`'
 alias x='exit'
 
