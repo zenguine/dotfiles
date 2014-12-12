@@ -39,5 +39,9 @@
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 (setq compilation-scroll-output t)
 
+;; Colorize identifiers
+(require 'color-identifiers-mode)
+;; I think I like each variable geting its own color.. lets test it out
+(global-color-identifiers-mode)
 
 (provide 'prog-config)

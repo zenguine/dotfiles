@@ -37,6 +37,7 @@
     company-ghc
     company-tern
     dash
+    color-identifiers-mode
     dash-functional
     diminish
     discover-my-major
