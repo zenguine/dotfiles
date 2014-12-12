@@ -1,12 +1,13 @@
 (require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; Evil nerd commenter config
 (setq evilnc-hotkey-comment-operator "\\")
 (require 'evil-nerd-commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (turn-on-eldoc-mode)
+
 (setq project-root-markers '(".git" ".svn"))
 
 ;; Tags configuration
@@ -17,9 +18,10 @@
 
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
+;; Indentation config
 (setq indent-tabs-mode nil)
-(setq tab-width 4)
-(setq c-basic-offset 4)
+(setq tab-width 2)
+(setq c-basic-offset 2)
 
 (add-to-list 'auto-mode-alist '("\\.hscm\\'" . scheme-mode))
 (add-to-list 'completion-ignored-extensions ".hi")
@@ -35,8 +37,6 @@
   (toggle-read-only))
 
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-
-
 (setq compilation-scroll-output t)
 
 
