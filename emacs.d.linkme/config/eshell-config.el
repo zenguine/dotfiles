@@ -33,7 +33,7 @@
   (add-to-list 'eshell-visual-commands "tail")
   (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)
   (setenv "PAGER" "cat")
-  (increase-company-delay-locally 0.3))
+  (increase-company-delay-locally 0.7))
 
 (eval-after-load 'esh-opt
   '(progn
