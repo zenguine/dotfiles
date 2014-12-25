@@ -62,7 +62,9 @@
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-o") 'yas-expand)
 (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
-(define-key evil-normal-state-map  (kbd "C-p") 'helm-for-files)
+
+(after 'helm-projectile
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-custom))
 
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)

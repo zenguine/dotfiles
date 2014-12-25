@@ -65,7 +65,6 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(projectile-enable-idle-timer t)
  '(projectile-remember-window-configs t)
- '(projectile-switch-project-action (quote projectile-find-file))
  '(projectile-tags-command "ctags --python-kinds=-iv -Re %s")
  '(quack-programs
    (quote

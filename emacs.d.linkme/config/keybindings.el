@@ -24,7 +24,6 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c e") 'start-or-switch-irc)
 (global-set-key (kbd "C-c m") 'mu4e)
-(global-set-key (kbd "C-c p s") 'projectile-switch-project)
 (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 (global-set-key (kbd "C-,") popwin:keymap)

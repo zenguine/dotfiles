@@ -148,7 +148,6 @@
 
 (require 'pastebin-autoloads)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Require configuration files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -166,13 +165,13 @@
 (require 'ido-config)
 (require 'key-chord-config)
 (require 'mu4e-config)
+(require 'projectile-config)
 (require 'my-helm-config)
 (require 'my-smartparens-config)
 (require 'org-config)
 (require 'org-mu4e)
 (require 'paredit-config)
 (require 'popwin-config)
-(require 'projectile-config)
 (require 'sml-config)
 (require 'sublimity-config)
 (require 'term-config)

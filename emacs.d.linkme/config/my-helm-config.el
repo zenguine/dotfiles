@@ -46,7 +46,43 @@
     (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search))
   (setq helm-multi-swoop-edit-save t))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helm-projectile configuration stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (helm-projectile-on)
+
+(define-key projectile-mode-map (kbd "C-c p p") 'helm-projectile-switch-project)
+(define-key projectile-mode-map (kbd "C-p") nil)
+
+(defun helm-projectile-custom ()
+  (interactive)
+  (let ((src '(helm-source-projectile-buffers-list
+	       helm-source-projectile-recentf-list
+	       helm-source-projectile-files-list
+	       helm-source-projectile-projects)))
+    (helm :sources src
+	  :buffer "*helm projectile: custom*"
+	  :prompt (projectile-prepend-project-name "pattern: "))))
+
+(setq helm-projectile-sources-list '(
+				     helm-source-projectile-projects
+				     helm-source-projectile-buffers-list
+				     helm-source-projectile-recentf-list
+				     helm-source-projectile-files-list
+				     ))
+
+;; helm-projectile-switch-project doesn't correctly save window
+;; configuration like regular projectile-switch-project this advice is
+;; a hack to fix the problem for now..
+(defun my-projectile-maybe-save-window-config (&rest args)
+  (interactive)
+  (when (and projectile-remember-window-configs
+             (projectile-project-p))
+    (projectile-save-window-config (projectile-project-name))))
+
+(advice-add 'helm-projectile-switch-project :before #'my-projectile-maybe-save-window-config)
+
+(setq projectile-switch-project-action 'helm-projectile)
 
 ;; Misc helm search keybindings
 (ifhave 'helm-ag

@@ -178,7 +178,7 @@
   (define-key haskell-interactive-mode-map (kbd "C-c C-l") 'haskell-interactive-mode-clear)
   (define-key haskell-interactive-mode-map (kbd "C-j") nil)
   (define-key haskell-interactive-mode-map
-    (kbd "C-p") 'helm-for-files)
+    (kbd "C-p") 'helm-projectile-custom)
   (define-key haskell-interactive-mode-map
     (kbd "C-n") nil)
   (evil-define-key 'normal haskell-interactive-mode-map (kbd "G") 'end-of-buffer)
