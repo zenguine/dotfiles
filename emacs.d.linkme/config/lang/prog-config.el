@@ -21,8 +21,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
 ;; Start programming files with all folds closed in "outline" mode
+
+(defun setup-and-close-hs-folds ()
+  (interactive)
+  (hs-minor-mode t)
+  (evil-close-folds))
+
 (after 'evil
-  (add-hook 'prog-mode-hook 'evil-close-folds))
+  (add-hook 'prog-mode-hook 'setup-and-close-hs-folds))
 
 ;; Indentation config
 (setq indent-tabs-mode nil)
