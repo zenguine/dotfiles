@@ -1,3 +1,17 @@
+;; This function got removed from the released version, so I snagged it from here:
+;; https://github.com/purcell/elisp-slime-nav/blob/master/elisp-slime-nav.el#L62
+(defun elisp-slime-nav--read-symbol-at-point ()
+  "Return the symbol at point as a string.
+If `current-prefix-arg' is not nil, the user is prompted for the symbol."
+  (let* ((sym-at-point (symbol-at-point))
+	 (at-point (and sym-at-point (symbol-name sym-at-point))))
+    (if (or current-prefix-arg (null at-point))
+	(completing-read "Symbol: "
+			 (elisp-slime-nav--all-navigable-symbol-names)
+			 nil t nil nil at-point)
+      at-point)))
+
+
 (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'pp-macroexpand-last-sexp)
 
 (defun prompt-to-eval ()
