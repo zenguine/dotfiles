@@ -191,6 +191,8 @@
 				 (inferior-emacs-lisp-mode . emacs)
 				 (magit-branch-manager-mode . emacs)
 				 (occur-mode . normal)
+				 (package-menu-mode . emacs)
+				 (paradox-menu-mode . emacs)
 				 (pylookup-mode . emacs)
 				 (rdictcc-buffer-mode . emacs)
 				 (semantic-symref-results-mode . emacs)

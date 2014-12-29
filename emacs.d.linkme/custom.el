@@ -63,6 +63,7 @@
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
+ '(paradox-automatically-star nil)
  '(projectile-enable-idle-timer t)
  '(projectile-remember-window-configs t)
  '(projectile-tags-command "ctags --python-kinds=-iv -Re %s")

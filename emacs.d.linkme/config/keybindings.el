@@ -68,7 +68,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-x p") 'proced)
-(global-set-key (kbd "C-x C-p") 'package-list-packages-no-fetch)
+(global-set-key (kbd "C-x C-p") 'paradox-list-packages)
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
