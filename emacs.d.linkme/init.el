@@ -94,6 +94,7 @@
     multiple-cursors
     nyan-mode
     org-plus-contrib
+    paradox
     paredit
     popwin
     pretty-mode
