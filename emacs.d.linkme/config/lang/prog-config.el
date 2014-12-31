@@ -27,8 +27,12 @@
   (hs-minor-mode t)
   (evil-close-folds))
 
+(defun my-prog-mode-hook ()
+  (interactive)
+  (hs-minor-mode t))
+
 (after 'evil
-  (add-hook 'prog-mode-hook 'setup-and-close-hs-folds))
+  (add-hook 'prog-mode-hook 'my-prog-mode-hook))
 
 ;; Indentation config
 (setq indent-tabs-mode nil)
