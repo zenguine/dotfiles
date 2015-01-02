@@ -95,7 +95,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'flatland t)
+(load-theme 'zenburn t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
