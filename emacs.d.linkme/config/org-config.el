@@ -8,6 +8,8 @@
 (setq org-files-home "~/org")
 (setq org-agenda-diary-file (f-join org-files-home "diary.org"))
 
+(setq org-agenda-files '("~/org/personal.org" "~/org/work.org" "~/org/refile.org" "~/org/projects"))
+
 (setq org-treat-S-cursor-todo-selection-as-state-change nil
       org-default-notes-file (concat org-directory "/refile.org")
       org-startup-indented t

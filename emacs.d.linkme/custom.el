@@ -57,9 +57,6 @@
  '(magit-diff-use-overlays nil)
  '(magit-item-highlight-face (quote bold))
  '(magit-use-overlays nil)
- '(org-agenda-files
-   (quote
-    ("~/org/personal.org" "~/org/work.org" "~/org/refile.org")))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
