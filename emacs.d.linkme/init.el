@@ -8,6 +8,7 @@
 (require 'package)
 (require 'my-autoloads)
 (require 'cl)
+
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -60,6 +61,7 @@
     flycheck-pos-tip
     ghc
     git-gutter
+    git-messenger
     git-timemachine
     gotham-theme
     gruvbox-theme

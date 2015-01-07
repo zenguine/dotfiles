@@ -31,6 +31,7 @@
 (global-set-key (kbd "C-c C-\\") 'erc-track-switch-buffer)
 (global-set-key (kbd "C-c B") 'erc-iswitchb)
 (global-def-key (kbd "C-x k") 'kill-buffer (current-buffer))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Help / documentation  commands
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,6 +42,11 @@
 (define-key help-map (kbd "C-k") 'find-function-on-key)
 (define-key help-map (kbd "C-v") 'find-variable)
 (define-key help-map (kbd "C-m") 'discover-my-major)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Version control
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Commands to evaluate elisp expressions
