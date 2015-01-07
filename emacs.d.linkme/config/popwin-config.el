@@ -27,6 +27,7 @@
 (popwin-mode 1)
 
 (push '("^\\*pytest.+\\*$" :regexp t ::noselect t) popwin:special-display-config)
+(push '("*git-messenger*" :noselect t) popwin:special-display-config)
 (push '("*GHC Info*" :noselect t) popwin:special-display-config)
 (push '("*skewer-error*" :noselect t :position bottom) popwin:special-display-config)
 (push '("*company-documentation*" :position bottom :height 15 :noselect t) popwin:special-display-config)
