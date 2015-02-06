@@ -69,6 +69,7 @@
     haskell-mode
     helm
     helm-ag
+    helm-company
     helm-dash
     helm-descbinds
     helm-git

@@ -88,4 +88,11 @@
 (ifhave 'helm-ag
   (global-set-key (kbd "M-s a") 'helm-ag))
 
+;; helm-company config
+(require 'helm-company)
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
+
 (provide 'my-helm-config)
