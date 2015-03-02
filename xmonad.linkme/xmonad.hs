@@ -15,6 +15,7 @@ main = xmonad $ gnomeConfig {
        [ ("M-o", spawn "echo 'ALTERNATE_EDITOR=\"\" emacsclient -c & exit' | zsh")
        , ("M-f", spawn "firefox")
        , ("M-m", spawn "banshee")
+       , ("M-s", spawn "urxvt")
        , ("M-F1", spawn "synclient TouchPadOff=1")
        , ("M-F2", spawn "synclient TouchPadOff=0")
        , ("M-m", spawn "banshee")
