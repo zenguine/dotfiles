@@ -2,6 +2,8 @@
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-M-x-fuzzy-match t)
 (setq helm-apropos-fuzzy-match t)
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match    t)
 
 (require 'helm)
 (require 'helm-files)
@@ -106,7 +108,7 @@
 
 ;; add this function to helm-before-initialize-hook if you want source headers
 ;; for helm commands with multiple sources. i.e:
-;; (add-hook 'helm-before-initialize-hook 'helm-toggle-header-line)
+;; (remove-hook 'helm-before-initialize-hook 'helm-toggle-header-line)
 (defun helm-toggle-header-line ()
   (if (= (length helm-sources) 1)
       (set-face-attribute 'helm-source-header nil :height 0.1)
