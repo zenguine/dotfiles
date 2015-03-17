@@ -95,4 +95,22 @@
      (define-key company-mode-map (kbd "C-:") 'helm-company)
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 
+;; Change helm appearance to look more like ido-verticle or grizzl..
+
+(setq helm-display-header-line nil) ;; t by default
+(set-face-attribute 'helm-source-header nil :height 0.1)
+(helm-autoresize-mode 1)
+(setq helm-autoresize-max-height 30)
+(setq helm-autoresize-min-height 30)
+(setq helm-split-window-in-side-p t)
+
+;; add this function to helm-before-initialize-hook if you want source headers
+;; for helm commands with multiple sources. i.e:
+;; (add-hook 'helm-before-initialize-hook 'helm-toggle-header-line)
+(defun helm-toggle-header-line ()
+  (if (= (length helm-sources) 1)
+      (set-face-attribute 'helm-source-header nil :height 0.1)
+    (set-face-attribute 'helm-source-header nil :height 1.0)))
+
+
 (provide 'my-helm-config)
