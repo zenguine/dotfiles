@@ -99,6 +99,8 @@
     org-plus-contrib
     paradox
     paredit
+    perspective
+    persp-projectile
     popwin
     pretty-mode
     projectile

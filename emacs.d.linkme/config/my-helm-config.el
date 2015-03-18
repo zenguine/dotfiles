@@ -53,7 +53,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (helm-projectile-on)
 
-(define-key projectile-mode-map (kbd "C-c p p") 'helm-projectile-switch-project)
+;; whoa snazzy.  rebind projectile-switch-project-by-name to
+;; use projectile-persp-switch-project.. but not recursively.
+;; hence the nested "letf"
+(defun jc/helm-projectile-switch-project (&rest args)
+  (interactive)
+  "Like helm-projectile-switch project but also switches perspectives
+   just like how projectile-persp-switch-project does."
+  (let ((oldf (symbol-function 'projectile-switch-project-by-name)))
+    (letf (((symbol-function 'projectile-switch-project-by-name)
+	    (lambda (&rest args)
+	      (letf (((symbol-function 'projectile-switch-project-by-name)
+		      oldf))
+		(apply 'projectile-persp-switch-project args)))))
+      (apply 'helm-projectile-switch-project args))))
+
+(helm-projectile-on)
+(define-key projectile-mode-map (kbd "C-c p p") 'jc/helm-projectile-switch-project)
 (define-key projectile-mode-map (kbd "C-p") nil)
 
 (defun helm-projectile-custom ()
@@ -72,17 +88,6 @@
 				     helm-source-projectile-recentf-list
 				     helm-source-projectile-files-list
 				     ))
-
-;; helm-projectile-switch-project doesn't correctly save window
-;; configuration like regular projectile-switch-project this advice is
-;; a hack to fix the problem for now..
-(defun my-projectile-maybe-save-window-config (&rest args)
-  (interactive)
-  (when (and projectile-remember-window-configs
-             (projectile-project-p))
-    (projectile-save-window-config (projectile-project-name))))
-
-(advice-add 'helm-projectile-switch-project :before #'my-projectile-maybe-save-window-config)
 
 (setq projectile-switch-project-action 'helm-projectile)
 

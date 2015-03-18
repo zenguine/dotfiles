@@ -1,5 +1,9 @@
 (require 'projectile)
 
+;; Projectile perspective integration
+(persp-mode t)
+(require 'persp-projectile)
+
 (setq projectile/dont-recur-tags-projects '(".dotfiles"))
 
 (defun projectile/maybe-regenerate-tags ()
