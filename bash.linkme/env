@@ -2,3 +2,4 @@
 
 export PATH=$PATH:~/bin
 export EDITOR=vim
+export TERM=xterm-256color

@@ -93,3 +93,4 @@ URxvt.pointerBlank: true
 xpdf.viKeys: True
 
 XTerm*faceName: Dejavu Sans Mono
+urxvt*termName: xterm-256color
