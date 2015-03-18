@@ -4,8 +4,8 @@
 
 ;; Load ELPA
 ;;;; -*- lexical-binding: t -*-
-(add-to-list 'load-path "~/.emacs.d")
 (require 'package)
+(add-to-list 'load-path (concat user-emacs-directory "elisp"))
 (require 'my-autoloads)
 (require 'cl)
 
@@ -15,9 +15,10 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(add-to-theme-path-recursive "~/.emacs.d/themes")
-(add-to-load-path-recursive "~/.emacs.d/config")
-(add-to-load-path-recursive "~/.emacs.d/site-lisp")
+(add-to-theme-path-recursive (concat user-emacs-directory "themes"))
+(add-to-load-path-recursive (concat user-emacs-directory "config")) ; configuration for packages
+(add-to-load-path-recursive (concat user-emacs-directory "site-lisp")) ; snippets / misc that I didn't completely write
+(add-to-load-path-recursive (concat user-emacs-directory "elisp")) ; my own custom library / utility code
 
 ;; ---------------------------------------------
 ;; ELPA Initialization
