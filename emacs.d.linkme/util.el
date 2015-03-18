@@ -292,6 +292,29 @@ White space here is any of: space, tab, emacs newline (line feed, ASCII 10)."
 	(find-file mm-config-file-path-with-lang)
       (find-file mm-config-file-path)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Define new places for setf, letf, etc macros
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; symbol-function-nonrec:
+(defun symbol-function-nonrec (f)
+  ;; like symbol-function, except when used as a setf or letf, it replaces uses of
+  ;; the function only one level deep.  namely, if you (setq (symbol-function-nonrec f) g),
+  ;; or (letf (((symbol-function f) g)) <Stuff>), the original value of f is saved, and any
+  ;; calls that g makes to f in its body will use the original f.  this is mostly helpful when
+  ;; using the letf form to replace the use of a function dynamically.. but only one level deep.
+  (symbol-function f))
+
+(gv-define-simple-setter symbol-function-nonrec
+			 (lambda (func newfunc)
+			   (lexical-let ((oldf (symbol-function func))
+					 (func func)
+					 (newfunc newfunc))
+			     (setf (symbol-function func)
+				   (lambda (&rest args)
+				     (letf (((symbol-function func)
+					     oldf))
+				       (apply newfunc args)))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom eval expression code
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

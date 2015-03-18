@@ -1,5 +1,6 @@
 
 (autoload 'project-root "util" nil t)
+(autoload 'symbol-function-nonrec "util" nil t)
 (autoload 'erc "erc" nil t)
 (autoload 'start-irc "erc-config" nil t)
 (autoload 'start-or-switch-irc "erc-config" nil t)

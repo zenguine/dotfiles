@@ -61,11 +61,8 @@
   "Like helm-projectile-switch project but also switches perspectives
    just like how projectile-persp-switch-project does."
   (let ((oldf (symbol-function 'projectile-switch-project-by-name)))
-    (letf (((symbol-function 'projectile-switch-project-by-name)
-	    (lambda (&rest args)
-	      (letf (((symbol-function 'projectile-switch-project-by-name)
-		      oldf))
-		(apply 'projectile-persp-switch-project args)))))
+    (letf (((symbol-function-nonrec 'projectile-switch-project-by-name)
+	    (symbol-function 'projectile-persp-switch-project)))
       (apply 'helm-projectile-switch-project args))))
 
 (helm-projectile-on)
