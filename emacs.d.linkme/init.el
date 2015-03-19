@@ -60,6 +60,7 @@
     flx-ido
     flycheck
     flycheck-pos-tip
+    ggtags
     ghc
     git-gutter
     git-messenger
@@ -75,6 +76,7 @@
     helm-descbinds
     helm-git
     helm-google
+    helm-gtags
     helm-proc
     helm-projectile
     helm-pydoc
@@ -200,6 +202,7 @@
 (require 'prog-config)
 (require 'python-config)
 (require 'scheme-config)
+(require 'c-config)
 (require 'web-config)
 
 (require 'keybindings)
