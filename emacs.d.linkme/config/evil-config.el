@@ -12,6 +12,7 @@
 
 (require 'evil)
 (require 'evil-visualstar)
+(require 'evil-anzu)
 (require 'cl)
 
 ;; Tag navigation

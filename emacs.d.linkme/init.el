@@ -33,6 +33,7 @@
     afternoon-theme
     ag
     ample-theme
+		anzu
     async
     birds-of-paradise-plus-theme
     color-identifiers-mode
@@ -47,6 +48,7 @@
     elpy
     etags-select
     evil
+		evil-anzu
     evil-args
     evil-leader
     evil-matchit
