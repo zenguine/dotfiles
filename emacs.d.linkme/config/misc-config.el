@@ -39,7 +39,7 @@
       auto-save-default nil
       create-lockfiles nil)
 
-(setq save-place-file "~/.emacs.d/.saveplace")
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
 (setq-default save-place t)
 (require 'saveplace)
 
