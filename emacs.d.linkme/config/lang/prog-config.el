@@ -57,7 +57,6 @@
 
 ;; Colorize identifiers
 (require 'color-identifiers-mode)
-;; I think I like each variable geting its own color.. lets test it out
-(global-color-identifiers-mode)
+;; <spc>ri to toggle color-identifiers-mode
 
 (provide 'prog-config)
