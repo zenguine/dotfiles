@@ -188,7 +188,7 @@
 (require 'org-mu4e)
 (require 'paredit-config)
 (require 'popwin-config)
-(require 'sml-config)
+(require 'my-modeline-config)
 (require 'sublimity-config)
 (require 'term-config)
 (require 'expand-region-config)
