@@ -36,6 +36,7 @@
 		anzu
     async
     birds-of-paradise-plus-theme
+		busybee-theme
     color-identifiers-mode
     color-theme-sanityinc-tomorrow
     company-ghc
@@ -100,7 +101,9 @@
     molokai-theme
     monokai-theme
     multiple-cursors
+		mustang-theme
     nyan-mode
+		obsidian-theme
     org-plus-contrib
     paradox
     paredit
@@ -118,6 +121,7 @@
     smart-mode-line
     smartparens
     smex
+		soft-charcoal-theme
     soothe-theme
     spacegray-theme
     subatomic-theme
@@ -125,6 +129,7 @@
     sublimity
     tern
     tern-auto-complete
+		warm-night-theme
     web-beautify
     web-mode
     zenburn-theme
