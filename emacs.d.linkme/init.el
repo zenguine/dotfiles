@@ -130,6 +130,7 @@
     sublimity
     tern
     tern-auto-complete
+		twilight-anti-bright-theme
 		warm-night-theme
     web-beautify
     web-mode
