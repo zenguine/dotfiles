@@ -110,6 +110,7 @@
     perspective
     persp-projectile
     popwin
+		powerline
     pretty-mode
     projectile
     quack

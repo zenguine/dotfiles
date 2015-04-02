@@ -318,5 +318,4 @@ if it covers only one line, else number of lines in the selection"
 (add-hook 'after-init-hook
 					'spacemacs//set-powerline-for-startup-buffers)
 
-
 (provide 'my-modeline-config)
