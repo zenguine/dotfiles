@@ -15,6 +15,7 @@
 (define-key regexp-manip-funcs-map (kbd "h") 'highlight-lines-matching-regexp) ;; alias: list-matching-lines
 (global-set-key (kbd "C-c r") regexp-manip-funcs-map)
 (global-set-key (kbd "M-\\") 'hippie-expand)
+(global-set-key (kbd "C-s-/") 'evil-ex-nohighlight)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  Miscellaneous  / unsorted commands
