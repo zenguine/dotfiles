@@ -23,6 +23,16 @@ alias rmf='rm -f'
 alias V='vim `ls -t | head -1`'
 alias x='exit'
 
+# Git related
+function git-grep-all-commits {
+		git rev-list --all | xargs git grep $@
+}
+
+function git-grep-commits {
+		echo $1
+		echo ${@:2}
+		git rev-list $1 | xargs git grep ${@:2}
+}
 # Emacs related
 
 function e {
