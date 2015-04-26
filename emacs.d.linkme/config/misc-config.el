@@ -39,6 +39,9 @@
       auto-save-default nil
       create-lockfiles nil)
 
+;; Save bookmarks after every change
+(setq bookmark-save-flag 1)
+
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 (setq-default save-place t)
 (require 'saveplace)
@@ -51,5 +54,8 @@
 
 (setq ace-jump-mode-scope 'window)
 (set-fringe-mode 0)
+
+;; Paradox github token configuration: temporary!!! dont commit this
+(setq paradox-github-token "7e2bac3eae766006574ccd74e35ed3907947bbf1")
 
 (provide 'misc-config)
