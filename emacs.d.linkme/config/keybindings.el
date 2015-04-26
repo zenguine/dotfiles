@@ -135,6 +135,7 @@
 (define-prefix-command 'personal-global-map)
 (global-set-key (kbd "C-x x") 'personal-global-map)
 (define-key personal-global-map (kbd "t") 'term)
+(define-key personal-global-map (kbd "b") 'helm-bookmarks)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tags bindings
