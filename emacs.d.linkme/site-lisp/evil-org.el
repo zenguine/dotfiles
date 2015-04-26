@@ -13,18 +13,28 @@
   (funcall fun)
   (evil-append nil))
 
+;; Define hydra for convenient moving around between headers with vim
+;; keybindings in org mode files
+(after 'hydra
+	;; to be backward compatible with older org version
+	(defhydra hydra-org-move (:color red)
+		"Goto org heading:"
+		("p" outline-up-heading "parent")
+		("h" outline-previous-visible-heading "next visible")
+		("l" outline-next-visible-heading "prev visible")
+		("j" org-forward-heading-same-level "next sibling")
+		("k" org-backward-heading-same-level "prev sibling")
+		("q" nil "cancel" :color blue))
+	(evil-define-key 'normal org-mode-map
+		"gp" 'hydra-org-move/outline-up-heading
+		"gh" 'hydra-org-move/outline-previous-visible-heading
+		"gj" 'hydra-org-move/org-forward-heading-same-level
+		"gk" 'hydra-org-move/org-backward-heading-same-level
+		"gl" 'hydra-org-move/outline-next-visible-heading))
+
     ;; normal state shortcuts
 (evil-define-key 'normal org-mode-map
   (kbd "RET") 'org-open-at-point
-  "gp" 'outline-up-heading
-  "gh" 'outline-previous-visible-heading
-  "gj" (if (fboundp 'org-forward-same-level) ;to be backward compatible with older org version
-           'org-forward-same-level
-         'org-forward-heading-same-level)
-  "gk" (if (fboundp 'org-backward-same-level)
-           'org-backward-same-level
-         'org-backward-heading-same-level)
-  "gl" 'outline-next-visible-heading
   "H" 'org-beginning-of-line
   "L" 'org-end-of-line
   "o" '(lambda () (interactive) (evil-org-eol-call 'org-insert-heading))
