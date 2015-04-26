@@ -86,6 +86,7 @@
     helm-swoop
     helm-themes
     hi2
+		hydra
     ibuffer-git
     ibuffer-vc
     ido-ubiquitous
@@ -199,6 +200,7 @@
 (require 'winner-config)
 (require 'flycheck-config)
 (require 'company-config)
+(require 'hydra-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
