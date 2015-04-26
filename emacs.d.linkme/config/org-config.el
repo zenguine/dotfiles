@@ -39,12 +39,13 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s@/!)" "|" "DONE(d@/!)")
               (sequence "WAIT(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
-	      (sequence "READ(r)" "EVENTUALLY(e)" "|" "ABSORBED(a@/!)"))))
+	      (sequence "READ(r)" "NEXT(n)" "STARTED(s@/!)" "EVENTUALLY(e)" "|" "ABSORBED(a@/!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "orange" :weight bold)
               ("NEXT" :foreground "white" :weight bold)
-              ("READ" :foreground "purple" :weight bold)
+              ("READ" :foreground "orange" :weight bold)
+              ("STARTED" :foreground "tomato" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("ABSORBED" :foreground "forest green" :weight bold)
               ("WAIT" :foreground "forest green" :weight bold)
@@ -58,6 +59,7 @@
               (done ("waiting") ("hold"))
               ("TODO" ("waiting") ("cancelled") ("hold"))
               ("NEXT" ("waiting") ("cancelled") ("hold"))
+              ("STARTED" ("waiting") ("cancelled") ("hold"))
               ("DONE" ("waiting") ("cancelled") ("hold"))
 	      ("ABSORBED" ("reading" . t) ("waiting") ("cancelled") ("hold"))
 	      ("READ" ("reading" . t) ("waiting") ("cancelled") ("hold"))
@@ -129,8 +131,12 @@
               ("n" "All NEXT items" tags-todo "TODO=\"NEXT\""
                ((org-agenda-overriding-header "Next")))
 	      ("r" . "Reading List")
-              ("rn" "Next to read" tags "+reading/+READ"
+              ("rc" "Currently reading" tags "+reading/+STARTED"
+               ((org-agenda-overriding-header "Reading List: current")))
+              ("rn" "Next to read" tags "+reading/+NEXT"
                ((org-agenda-overriding-header "Reading List: next up")))
+              ("rt" "Todo: read eventually" tags "+reading/+READ"
+               ((org-agenda-overriding-header "Reading List: todo")))
               ("ru" "Unread reading items" tags "+reading/-ABSORBED"
                ((org-agenda-overriding-header "Reading List: unread")))
               ("ra" "All reading items" tags "+reading"
@@ -316,5 +322,6 @@
 
 ;; Org-mode specific keybinings
 (define-key org-mode-map (kbd "C-c q") 'my/org-insert-quote-block)
+(evil-define-key 'normal org-mode-map (kbd "C-t") 'org-mark-ring-goto)
 
 (provide 'org-config)
