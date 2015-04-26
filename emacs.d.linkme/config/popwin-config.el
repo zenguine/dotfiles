@@ -33,7 +33,7 @@
 (push '("*company-documentation*" :position bottom :height 15 :noselect t) popwin:special-display-config)
 (push '("*Warnings*" :noselect t) popwin:special-display-config)
 (push '("^\\*ag.+\\*$" :regexp t :position bottom :height 0.4 :noselect t) popwin:special-display-config)
-(push '("*Backtrace*") popwin:special-display-config)
+(push '("*Backtrace*" :stick t) popwin:special-display-config)
 (push '("*Org-Babel Results*" :position bottom :height 0.2) popwin:special-display-config)
 (push '("*jedi:doc*") popwin:special-display-config)
 (push '("*Help*" :position bottom :height 0.5 :stick t :noselect t) popwin:special-display-config)
