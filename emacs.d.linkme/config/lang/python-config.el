@@ -10,6 +10,9 @@
  python-shell-completion-string-code
  "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
+(setq-default python-indent 2
+							python-indent-offset 2)
+
 (setq jedi:complete-on-dot t)
 (setq jedi:install-imenu t)
 (setq jedi:get-in-function-call-delay 100)
