@@ -35,7 +35,7 @@
   (add-hook 'prog-mode-hook 'my-prog-mode-hook))
 
 ;; Indentation config
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq tab-width 2)
 (setq c-basic-offset 2)
 
