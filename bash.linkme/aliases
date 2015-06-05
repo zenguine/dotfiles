@@ -22,6 +22,7 @@ alias p='pushd'
 alias rmf='rm -f'
 alias V='vim `ls -t | head -1`'
 alias x='exit'
+alias cbot="python $HOME/code/crypto_bot/interface.py"
 
 # Git related
 function git-grep-all-commits {

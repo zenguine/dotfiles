@@ -10,7 +10,7 @@ export PATH="$SCALA_HOME/bin":$PATH
 export PATH="$HOME/bin":$PATH
 export PATH="$HOME/code/darkdynasty/bin":$PATH
 export PATH="$HOME/code/jetpack/bin":$PATH
-export PYTHONPATH="$HOME/code/jetpack/src":$PYTHONPATH
+export PYTHONPATH="$HOME/code/darkdynasty/src":"$HOME/code/jetpack/src":$PYTHONPATH
 # Important for emacsclient.. makes it start the server if it is not already running.
 export ALTERNATE_EDITOR=""
 
