@@ -114,7 +114,9 @@
   (local-set-key (kbd "C-c T t") 'pytest-test-specific-test)
   (local-set-key (kbd "C-c C-l") 'my-ipython-shell-load-file-as-module)
   (hs-minor-mode t)
-  (modify-syntax-entry ?_ "w"))
+  (modify-syntax-entry ?_ "w")
+  (flymake-mode -1)
+  (auto-complete-mode -1))
 
 (defun my-jedi-setup ()
   (defmacro add-args (arg-list arg-name arg-value)
@@ -131,6 +133,7 @@
 (setq elpy-rpc-backend "jedi")
 
 (elpy-enable)
+(setq elpy-modules (delete 'elpy-module-flymake elpy-modules))
 (elpy-use-ipython)
 
 (define-key elpy-mode-map (kbd "C-c C-z") 'my-ipython-shell-switch-to-shell)
