@@ -157,6 +157,5 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
 
 (define-key helm-map (kbd "<escape>") 'helm-like-unite/body)
 (define-key helm-map (kbd "C-[") 'helm-like-unite/body)
-(define-key helm-map (kbd "C-c") 'helm-like-unite/body)
 
 (provide 'my-helm-config)
