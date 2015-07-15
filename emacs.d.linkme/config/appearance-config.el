@@ -95,7 +95,7 @@ on a per-theme basis."
     (load-theme chosen t)
     chosen))
 
-(load-theme 'zenburn t)
+(load-theme 'base16-default-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Diminish -- stop minor modes from cluttering up my modeline
