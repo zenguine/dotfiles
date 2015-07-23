@@ -27,14 +27,13 @@
 ;;; Elpa packages list to initialize on start
 (defvar packages-list
   '(
-    ace-jump-mode
-    ace-link
     ac-js2
     afternoon-theme
     ag
     ample-theme
 		anzu
     async
+    avy
     birds-of-paradise-plus-theme
 		busybee-theme
     color-identifiers-mode

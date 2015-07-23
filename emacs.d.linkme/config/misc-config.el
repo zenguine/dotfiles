@@ -52,7 +52,6 @@
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
-(setq ace-jump-mode-scope 'window)
 (set-fringe-mode 0)
 
 ;; Paradox github token configuration: temporary!!! dont commit this

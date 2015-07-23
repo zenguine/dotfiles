@@ -127,8 +127,8 @@
 (define-key evil-normal-state-map "[e" 'previous-error)
 (define-key evil-normal-state-map "gJ" 'evil-join)
 
-(define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-char-mode)
+(setf avy-all-windows nil)
+(define-key evil-motion-state-map (kbd "S-SPC") 'avy-goto-word-0)
 
 ;; Switch eval-expresion and evil-ex bindings since eval-expression is
 ;; more useful to me now
