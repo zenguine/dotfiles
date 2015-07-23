@@ -60,6 +60,7 @@
        (t (setq unread-command-events (append unread-command-events
 					      (list evt))))))))
 (define-key evil-insert-state-map (kbd "C-u") 'backward-kill-line)
+(define-key evil-emacs-state-map (kbd "C-u") 'backward-kill-line)
 (evil-define-key 'insert yas-minor-mode-map (kbd "C-o") 'yas-expand)
 (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
@@ -187,6 +188,7 @@
 				 (erc-mode . normal)
 				 (diff-mode . emacs)
 				 (git-rebase-mode . emacs)
+         (ein:notebook-multilang-mode . emacs)
 				 (eshell-mode . emacs)
 				 (gtags-select-mode . emacs)
 				 (haskell-interactive-mode . emacs)

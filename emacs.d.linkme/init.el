@@ -44,6 +44,7 @@
     dash-functional
     diminish
     discover-my-major
+    ein
     elisp-slime-nav
     elpy
     etags-select
