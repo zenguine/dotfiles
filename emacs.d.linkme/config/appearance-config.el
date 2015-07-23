@@ -108,7 +108,6 @@ on a per-theme basis."
 	 (smartparens . smartparens-mode)
 	 (projectile . projectile-mode)
 	 (guide-key . guide-key-mode)
-	 (magit . magit-auto-revert-mode)
 	 (undo-tree . undo-tree-mode)
 	 (elisp-slime-nav . elisp-slime-nav-mode)
 	 (haskell-doc . haskell-doc-mode)
