@@ -3,8 +3,8 @@
 (require 'erc-log)
 (require 'erc-notify)
 
-(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#haskell" "#haskell-game" "#darkdynasty" "#linux" "#clojure"
-				     "#lesswrong" "#web" "#evil-mode")))
+(setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#haskell" "#haskell-game" "#darkdynasty"
+				     "#evil-mode" "##machinelearning")))
 
 ; Other interesting ones maybe to add: #angularjs #nodejs #nimrod #go-nuts #security #infra-talk
 ;                                      ##math #archlinux #git ##javascript #bash ##networking
@@ -62,13 +62,13 @@ mentioned in an erc channel" t)
 (add-hook 'erc-server-PRIVMSG-functions 'erc-notify-on-private-msg)
 
 (require 'erc-match)
-(setq erc-keywords '("evil"))
+(setq erc-keywords '("monad"))
 (setq erc-pals '("uint64_t"))
 
 (erc-match-mode t)
 
 (defun erc-match-notify (match-type usernickhost msg)
-  (let* ((nick (first (split-string nick "!")))
+  (let* ((nick (first (split-string usernickhost "!")))
 	 (channel (erc-default-target)))
     (when (member match-type (list 'keyword 'pal))
       (message (format "%s on %s: %s" nick channel msg))

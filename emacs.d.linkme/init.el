@@ -201,6 +201,7 @@
 (require 'flycheck-config)
 (require 'company-config)
 (require 'hydra-config)
+(require 'erc-config)
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
