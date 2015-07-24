@@ -42,7 +42,6 @@
                             dedicated-proc-buffer-name
                           global-proc-buffer-name))))
 
-
 (defun python-package-dir-p (dir)
   (file-exists-p (concat dir "__init__.py")))
 
@@ -83,7 +82,6 @@
 	     containing-dir containing-dir))
     (python-shell-send-string
      (format "from %s import *" file-module-name))))
-
 
 (defun my-ipython-shell-reload-file-module ()
   (interactive)
@@ -147,5 +145,9 @@
   (if arg
       (call-interactively 'elpy-pydoc)
     (call-interactively 'helm-pydoc)))
+
+;; Ipython notebok setup
+(when (require 'ein)
+  (global-def-key (kbd "C-x i") 'ein:notebooklist-open (ein:default-url-or-port)))
 
 (provide 'python-config)
