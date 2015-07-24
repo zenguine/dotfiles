@@ -72,8 +72,8 @@
 (defun helm-projectile-custom ()
   (interactive)
   (let ((src '(helm-source-projectile-buffers-list
-	       helm-source-projectile-recentf-list
 	       helm-source-projectile-files-list
+	       helm-source-projectile-recentf-list
 	       helm-source-projectile-projects)))
     (helm :sources src
 	  :buffer "*helm projectile: custom*"
