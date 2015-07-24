@@ -207,6 +207,12 @@
 
 (evil-mode 1)
 
+;; Evil nerd commenter config
+(when (require 'evil-nerd-commenter)
+  (define-key evil-normal-state-map (kbd "\\") 'evilnc-comment-operator)
+  (define-key evil-visual-state-map (kbd "\\") 'evilnc-comment-operator)
+  (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines))
+
 (when (require 'surround nil 'noerror)
   (global-surround-mode nil))
 
