@@ -3,3 +3,4 @@
 export PATH=$PATH:~/bin
 export EDITOR=vim
 export TERM=xterm-256color
+export CLASSPATH=.:/home/jcullen/build/mde-test/MDELiteDir/bin/Avalon/Avalon.jar:/home/jcullen/build/mde-test/MDELiteDir/bin/MDELite3_05/MDELite3_05.jar

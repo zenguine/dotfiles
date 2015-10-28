@@ -1,6 +1,6 @@
 (setq
  python-shell-interpreter "ipython"
- python-shell-interpreter-args ""
+ python-shell-interpreter-args "-i"
  python-shell-prompt-regexp "In \\[[0-9]+\\]: "
  python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
  python-shell-completion-setup-code
@@ -148,6 +148,6 @@
 
 ;; Ipython notebok setup
 (when (require 'ein)
-  (global-def-key (kbd "C-x i") 'ein:notebooklist-open (ein:default-url-or-port)))
+  (global-set-key (kbd "C-x i") 'ein:notebooklist-open))
 
 (provide 'python-config)

@@ -29,6 +29,14 @@ function git-grep-all-commits {
 		git rev-list --all | xargs git grep $@
 }
 
+function pyprofile {
+    python -m cProfile $1
+}
+
+function gpyprofile {
+    python -m cProfile -o tmp.cprofile $1 && gprof2dot.py -f pstats tmp.cprofile | dot -Tpng -o out.png && eog out.png && rm -f tmp.cprofile
+}
+
 function git-grep-commits {
 		echo $1
 		echo ${@:2}
