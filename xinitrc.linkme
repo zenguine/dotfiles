@@ -12,8 +12,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+dconf write /org/gnome/settings-daemon/plugins/cursor/active false & 
+gnome-session &
 gnome-panel &
 exec xmonad
+
+# export WINDOW_MANAGER=xmonad
+# exec gnome-session
 
 # exec gnome-session
 # exec startkde
