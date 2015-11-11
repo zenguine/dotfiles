@@ -34,6 +34,7 @@
 		anzu
     async
     avy
+    beacon
     birds-of-paradise-plus-theme
 		busybee-theme
     color-identifiers-mode
@@ -119,6 +120,7 @@
     rainbow-delimiters
     rainbow-mode
     s
+    seq
     skewer-mode
     smart-mode-line
     smartparens
