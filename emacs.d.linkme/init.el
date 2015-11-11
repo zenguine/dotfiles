@@ -35,6 +35,7 @@
     async
     avy
     beacon
+    bind-key
     birds-of-paradise-plus-theme
 		busybee-theme
     color-identifiers-mode
@@ -119,6 +120,7 @@
     rainbow-blocks
     rainbow-delimiters
     rainbow-mode
+    req-package
     s
     seq
     skewer-mode
@@ -134,6 +136,7 @@
     tern
     tern-auto-complete
 		twilight-anti-bright-theme
+    use-package
 		warm-night-theme
     web-beautify
     web-mode
@@ -156,6 +159,11 @@
   (dolist (p packages-list)
     (when (not (package-installed-p p))
       (package-install p))))
+
+(setq use-package-always-ensure t)
+(setq use-package-verbose t)
+(require 'use-package)
+(require 'req-package)
 
 ;; --------------------------------
 ;; My personal configuration stuff
