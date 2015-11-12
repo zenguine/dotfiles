@@ -185,6 +185,7 @@
 (require 'misc-config)
 (require 'appearance-config)
 (require 'evil-config)
+(req-package-finish)
 
 (require 'comint-config)
 (require 'eshell-config)
