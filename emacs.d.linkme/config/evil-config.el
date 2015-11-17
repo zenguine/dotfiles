@@ -1,7 +1,7 @@
 (require 'cl)
 
 (req-package evil
-  :require f avy
+  :require (f avy)
   :init
   (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo 'no)
@@ -65,8 +65,7 @@
   (define-key evil-insert-state-map "j" 'cofi/maybe-exit)
   (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 
-  (after 'helm-projectile
-    (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-custom))
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-custom)
 
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
@@ -201,7 +200,8 @@
 
 ;; Evil-jumper
 (req-package evil-jumper
-  :require evil f
+  :require (evil f)
+  :config
   (define-key evil-motion-state-map (kbd "M-i") 'evil-jumper/forward)
   (define-key evil-motion-state-map (kbd "M-o") 'evil-jumper/backward)
   (define-key evil-normal-state-map (kbd "M-i") 'evil-jumper/forward)
@@ -220,11 +220,10 @@
   (define-key evil-visual-state-map (kbd "\\") 'evilnc-comment-operator)
   (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines))
 
-
 (req-package surround
-  :require evil
-  :config
-  (global-surround-mode nil))
+  :load-path "site-lisp/"
+  :ensure nil
+  :require evil)
 
 (req-package evil-args
   :require evil
@@ -243,7 +242,7 @@
   ;; bind evil-jump-out-args
   (define-key evil-normal-state-map "gk" 'evil-jump-out-args))
 
-(req-package evil-visualstar-mode
+(req-package evil-visualstar
   :require evil)
 
 (req-package evil-anzu

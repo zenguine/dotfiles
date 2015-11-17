@@ -35,10 +35,12 @@
   (setenv "PAGER" "cat")
   (increase-company-delay-locally 0.7))
 
-(eval-after-load 'esh-opt
-  '(progn
-     (add-hook 'eshell-mode-hook 'my-eshell-mode-hook)))
+(req-package esh-opt
+  :ensure nil
+  :config
+  (add-hook 'eshell-mode-hook 'my-eshell-mode-hook))
 
+; XXX: Wtf is this?
 (add-hook 'emacs-startup-hook #'(lambda ()
                                   (let ((default-directory (getenv "HOME")))
                                     (command-execute 'eshell)

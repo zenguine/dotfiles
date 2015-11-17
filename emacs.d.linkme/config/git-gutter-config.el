@@ -1,28 +1,27 @@
-(require 'git-gutter)
+(req-package git-gutter
+  :bind (("C-c g t" . git-gutter:toggle)
+         ("C-c g T" . global-git-gutter-mode)
+         ("C-c g P" . git-gutter:popup-hunk)
 
-;; If you enable global minor mode
-(global-git-gutter-mode t)
+         ;; Jump to next/previous hunk
+         ("C-c g p" . git-gutter:previous-hunk)
+         ("C-c g n" . git-gutter:next-hunk)
 
-(global-set-key (kbd "C-c g t") 'git-gutter:toggle)
-(global-set-key (kbd "C-c g T") 'global-git-gutter-mode)
-(global-set-key (kbd "C-c g P") 'git-gutter:popup-hunk)
+         ;; Stage current hunk
+         ("C-c g s" . git-gutter:stage-hunk)
 
-;; Jump to next/previous hunk
-(global-set-key (kbd "C-c g p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-c g n") 'git-gutter:next-hunk)
+         ;; Revert current hunk
+         ("C-c g r" . git-gutter:revert-hunk))
+  :config
+  ;; If you enable global minor mode
+  (global-git-gutter-mode t)
 
-;; Stage current hunk
-(global-set-key (kbd "C-c g s") 'git-gutter:stage-hunk)
+  ;; inactivate git-gutter-mode in asm-mode and image-mode
 
-;; Revert current hunk
-(global-set-key (kbd "C-c g r") 'git-gutter:revert-hunk)
+  (setq git-gutter:modified-sign "*")
 
-;; inactivate git-gutter-mode in asm-mode and image-mode
-
-(setq git-gutter:modified-sign "*")
-
-(set-face-foreground 'git-gutter:modified "dodger blue")
-(set-face-foreground 'git-gutter:added "#6ac214")
-(set-face-foreground 'git-gutter:deleted "tomato")
+  (set-face-foreground 'git-gutter:modified "dodger blue")
+  (set-face-foreground 'git-gutter:added "#6ac214")
+  (set-face-foreground 'git-gutter:deleted "tomato"))
 
 (provide 'git-gutter-config)

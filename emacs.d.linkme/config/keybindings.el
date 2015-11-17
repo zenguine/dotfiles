@@ -38,7 +38,6 @@
 ;; Help / documentation  commands
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-c h") help-map)
-(define-key help-map (kbd "d") 'helm-descbinds)
 (define-key help-map (kbd "C-l") 'find-library)
 (define-key help-map (kbd "C-f") 'find-function)
 (define-key help-map (kbd "C-k") 'find-function-on-key)
@@ -57,43 +56,16 @@
 (global-set-key (kbd "C-c :") 'my-eval-expression)
 (global-set-key (kbd "C-c C-j") 'eval-print-last-sexp)
 
-(make-variable-buffer-local
- (defvar inside-helm-eval-expression-p
-   nil
-   "hackish way to check if I'm in a helm-eval-expression.. yay dynamic binding.."))
-
-(defun my-helm-eval-expression-with-eldoc ()
-  (interactive)
-  (let ((inside-helm-eval-expression-p t))
-    (call-interactively 'helm-eval-expression-with-eldoc)))
-
-(global-set-key (kbd "M-:") 'my-helm-eval-expression-with-eldoc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helm / commands that list things
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-x p") 'proced)
 (global-set-key (kbd "C-x C-p") 'paradox-list-packages)
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c R") 'revert-buffer)
-(global-set-key (kbd "C-x C-m") 'helm-M-x)
-(global-set-key (kbd "C-c h a") 'helm-apropos)
-(global-set-key (kbd "C-c o") 'helm-swoop)
-(global-set-key (kbd "C-c C-o") 'my-helm-multi-swoop)
-(global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-
-(defun my-helm-multi-swoop (arg)
-  (interactive "P")
-  (if arg
-      (call-interactively 'helm-multi-swoop-all)
-    (call-interactively 'helm-multi-swoop)))
-
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; Org mode bindings
@@ -129,29 +101,6 @@
 (global-def-key (kbd "S-<right>") 'enlarge-window-horizontally 3)
 (global-def-key (kbd "S-<left>") 'shrink-window-horizontally 3)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Personal global map
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-prefix-command 'personal-global-map)
-(global-set-key (kbd "C-x x") 'personal-global-map)
-(define-key personal-global-map (kbd "t") 'term)
-(define-key personal-global-map (kbd "b") 'helm-bookmarks)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Tags bindings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-prefix-command 'my-tags-map)
-(global-set-key (kbd "C-x t") 'my-tags-map)
-(define-key my-tags-map (kbd "v") 'visit-tags-table)
-(def-key my-tags-map (kbd "d") 'message tags-file-name)
-(def-key my-tags-map (kbd "D") 'message (string-join tags-table-list " | "))
-(define-key my-tags-map (kbd "f") 'find-tag)
-(define-key my-tags-map (kbd "F") 'find-tag-regexp)
-(define-key my-tags-map (kbd "h") 'helm-etags-select)
-(define-key my-tags-map (kbd "s") 'tags-search)
-(define-key my-tags-map (kbd "a") 'tags-apropos)
-(define-key my-tags-map (kbd "r") 'tags-reset-tags-tables)
-(define-key my-tags-map (kbd "e") 'etags-select-find-tag)
 
 
 

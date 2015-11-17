@@ -140,6 +140,7 @@
 		warm-night-theme
     web-beautify
     web-mode
+    ws-butler
     zenburn-theme
     )
   "List of packages needs to be installed at launch")
@@ -162,6 +163,7 @@
 
 (setq use-package-always-ensure t)
 (setq use-package-verbose t)
+(setq req-package-log-level 'debug)
 (require 'use-package)
 (require 'req-package)
 
@@ -185,8 +187,6 @@
 (require 'misc-config)
 (require 'appearance-config)
 (require 'evil-config)
-(req-package-finish)
-
 (require 'comint-config)
 (require 'eshell-config)
 (require 'evil-org)
@@ -197,9 +197,11 @@
 (require 'mu4e-config)
 (require 'projectile-config)
 (require 'my-helm-config)
+(req-package-finish)
+
 (require 'my-smartparens-config)
 (require 'org-config)
-(require 'org-mu4e)
+;; (require 'org-mu4e)
 (require 'paredit-config)
 (require 'popwin-config)
 (require 'my-modeline-config)
@@ -234,3 +236,4 @@
 ;; some appearance configuration appears to not work correctly when
 ;; run like that.
 (server-start)
+;; (switch-to-buffer "*Messages*")
