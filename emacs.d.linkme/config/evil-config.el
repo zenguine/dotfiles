@@ -1,9 +1,9 @@
 (require 'cl)
+(setq evil-want-C-u-scroll t)
 
 (req-package evil
   :require (f avy)
   :init
-  (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo 'no)
   (setq evil-want-C-i-jump nil)
   (setq evil-move-cursor-back nil)
@@ -201,6 +201,7 @@
 ;; Evil-jumper
 (req-package evil-jumper
   :require (evil f)
+  :commands (evil-jumper/forward evil-jumper/backward)
   :config
   (define-key evil-motion-state-map (kbd "M-i") 'evil-jumper/forward)
   (define-key evil-motion-state-map (kbd "M-o") 'evil-jumper/backward)

@@ -150,7 +150,6 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
 (req-package helm-projectile
   :require (helm projectile)
   :commands (jc/helm-projectile-switch-project helm-projectile-custom)
-  :bind
   :init
   (bind-key "C-c p p" 'jc/helm-projectile-switch-project projectile-mode-map)
   :config
@@ -191,7 +190,7 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
 )
 
 (req-package helm-swoop
-  :require evil
+  :require (evil helm)
   :bind (("C-c o" . helm-swoop)
          ("C-c C-o" . my-helm-multi-swoop))
   :commands helm-multi-swoop-all-from-helm-swoop helm-swoop-from-evil-search

@@ -1,7 +1,6 @@
 (req-package projectile
-  :require (persp-projectile perspective)
+  :require (perspective persp-projectile)
   :config
-
   ;; Projectile perspective integration
   (persp-mode t)
   (setq projectile/dont-recur-tags-projects '(".dotfiles"))

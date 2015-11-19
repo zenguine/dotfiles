@@ -226,7 +226,6 @@
 (require 'winner-config)
 (message "Fuck this 10")
 (require 'flycheck-config)
-(req-package-finish)
 (message "Fuck this 11")
 (message "Fuck this 12")
 (require 'hydra-config)
@@ -240,6 +239,7 @@
 
 ;;; Language specific configuration
 (require 'haskell-config)
+(req-package-finish)
 (message "Fuck this 16")
 (require 'idris-config)
 (message "Fuck this 17")
