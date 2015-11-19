@@ -1,4 +1,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
+
+(setq debug-on-error t)
 (setq custom-faces-file "~/.emacs.d/custom-faces.el")
 (load custom-file 'noerror)
 
@@ -31,13 +33,13 @@
     afternoon-theme
     ag
     ample-theme
-		anzu
+    anzu
     async
     avy
     beacon
     bind-key
     birds-of-paradise-plus-theme
-		busybee-theme
+    busybee-theme
     color-identifiers-mode
     color-theme-sanityinc-tomorrow
     company-ghc
@@ -51,7 +53,7 @@
     elpy
     etags-select
     evil
-		evil-anzu
+    evil-anzu
     evil-args
     evil-leader
     evil-matchit
@@ -88,7 +90,7 @@
     helm-swoop
     helm-themes
     hi2
-		hydra
+    hydra
     ibuffer-git
     ibuffer-vc
     ido-ubiquitous
@@ -104,16 +106,16 @@
     molokai-theme
     monokai-theme
     multiple-cursors
-		mustang-theme
+    mustang-theme
     nyan-mode
-		obsidian-theme
+    obsidian-theme
     org-plus-contrib
     paradox
     paredit
     perspective
     persp-projectile
     popwin
-		powerline
+    powerline
     pretty-mode
     projectile
     quack
@@ -127,7 +129,7 @@
     smart-mode-line
     smartparens
     smex
-		soft-charcoal-theme
+    soft-charcoal-theme
     soothe-theme
     spacegray-theme
     subatomic-theme
@@ -135,9 +137,9 @@
     sublimity
     tern
     tern-auto-complete
-		twilight-anti-bright-theme
+    twilight-anti-bright-theme
     use-package
-		warm-night-theme
+    warm-night-theme
     web-beautify
     web-mode
     ws-butler
@@ -161,7 +163,7 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(setq use-package-always-ensure t)
+;; (setq use-package-always-ensure t)
 (setq use-package-verbose t)
 (setq req-package-log-level 'debug)
 (require 'use-package)
@@ -188,8 +190,10 @@
 (require 'appearance-config)
 (require 'evil-config)
 (require 'comint-config)
+(require 'company-config)
 (require 'eshell-config)
-(require 'evil-org)
+;; (require 'evil-org)
+
 (require 'git-gutter-config)
 (require 'guide-key-config)
 (require 'ido-config)
@@ -197,40 +201,64 @@
 (require 'mu4e-config)
 (require 'projectile-config)
 (require 'my-helm-config)
-(req-package-finish)
-
 (require 'my-smartparens-config)
 (require 'org-config)
+(message "Fuck this 1")
+(req-package-finish)
+
 ;; (require 'org-mu4e)
 (require 'paredit-config)
+(message "Fuck this 2")
 (require 'popwin-config)
-(require 'my-modeline-config)
+(message "Fuck this 3")
+;; (require 'my-modeline-config)
+(message "Fuck this 4")
 (require 'sublimity-config)
+(message "Fuck this 5")
 (require 'term-config)
+(message "Fuck this 6")
 (require 'expand-region-config)
+(message "Fuck this 7")
 (require 'multiple-cursors-config)
+(message "Fuck this 8")
 (require 'ibuffer-config)
+(message "Fuck this 9")
 (require 'winner-config)
+(message "Fuck this 10")
 (require 'flycheck-config)
-(require 'company-config)
+(message "Fuck this 11")
+(message "Fuck this 12")
 (require 'hydra-config)
+(message "Fuck this 13")
 (require 'erc-config)
+(message "Fuck this 14")
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
+(message "Fuck this 15")
 
 ;;; Language specific configuration
 (require 'haskell-config)
+(message "Fuck this 16")
 (require 'idris-config)
+(message "Fuck this 17")
 (require 'javascript-config)
+(message "Fuck this 18")
 (require 'lisp-config)
+(message "Fuck this 20")
 (require 'prog-config)
+(message "Fuck this 21")
 (require 'python-config)
+(message "Fuck this 22")
 (require 'scheme-config)
+(message "Fuck this 23")
 (require 'c-config)
+(message "Fuck this 24")
 (require 'web-config)
+(message "Fuck this 25")
 
 (require 'keybindings)
+(message "Fuck this 26")
 
 ;; Start the server from here rather than with emacs --daemon since
 ;; some appearance configuration appears to not work correctly when

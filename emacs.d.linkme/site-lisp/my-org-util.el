@@ -1,5 +1,3 @@
-(require 'org)
-(require 'org-id)
 
 ;; Most of this stuff is from "organize your life in plain text"
 
@@ -366,10 +364,6 @@ as the default task."
           (org-agenda-redo)))
     (widen)))
 
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "W" (lambda () (interactive) (setq bh/hide-scheduled-and-waiting-next-tasks t) (bh/widen))))
-          'append)
-
 (defun bh/narrow-to-org-subtree ()
   (widen)
   (org-narrow-to-subtree)
@@ -385,10 +379,6 @@ as the default task."
         (when org-agenda-sticky
           (org-agenda-redo)))
     (bh/narrow-to-org-subtree)))
-
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
-          'append)
 
 (defun bh/narrow-up-one-org-level ()
   (widen)
@@ -411,10 +401,6 @@ as the default task."
         (org-agenda-redo))
     (bh/narrow-up-one-org-level)))
 
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "U" 'bh/narrow-up-one-level))
-          'append)
-
 (defun bh/narrow-to-org-project ()
   (widen)
   (save-excursion
@@ -435,10 +421,6 @@ as the default task."
     (bh/narrow-to-org-project)
     (save-restriction
       (org-agenda-set-restriction-lock))))
-
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "P" 'bh/narrow-to-project))
-          'append)
 
 (defvar bh/project-list nil)
 
@@ -483,10 +465,6 @@ as the default task."
         (setq bh/hide-scheduled-and-waiting-next-tasks t)
         (error "All projects viewed.")))))
 
-(add-hook 'org-agenda-mode-hook
-          '(lambda () (org-defkey org-agenda-mode-map "V" 'bh/view-next-project))
-          'append)
-
 ;; Org babel stuff
 (defun org-insert-src-block (src-code-type)
   "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
@@ -505,7 +483,6 @@ as the default task."
     (insert "#+END_SRC\n")
     (previous-line 2)
     (org-edit-src-code)))
-(define-key org-mode-map (kbd "C-c s") 'org-insert-src-block)
 
 
 (provide 'my-org-util)
