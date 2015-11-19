@@ -76,6 +76,10 @@
   (defun my-mu4e-mode-hook ()
     (setq show-trailing-whitespace nil)))
 
+;; (req-package org-mu4e
+;;   :require mu4e
+;;   :defer t)
+
 ;;----------------------------------------------------------
 ;; ---- END Email client ----
 ;;----------------------------------------------------------

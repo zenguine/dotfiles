@@ -1,6 +1,8 @@
-(require 'sublimity)
-;; (require 'sublimity-scroll)
-
-;; (sublimity-mode t)
+(req-package sublimity
+  :ensure t
+  :config
+  ;; (require 'sublimity-scroll)
+  ;; (sublimity-mode t)
+  )
 
 (provide 'sublimity-config)
