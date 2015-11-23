@@ -1,9 +1,8 @@
-(use-package perspective :ensure t)
 
 (use-package projectile
   :config
-  (require 'perspective)
-  (require 'persp-projectile)
+  (use-package perspective :ensure t)
+  (use-package persp-projectile :ensure t)
   ;; Projectile perspective integration
   (persp-mode t)
   (setq projectile/dont-recur-tags-projects '(".dotfiles"))

@@ -1,6 +1,5 @@
 (setq custom-file "~/.emacs.d/custom.el")
 
-(setq debug-on-error t)
 (setq custom-faces-file "~/.emacs.d/custom-faces.el")
 (load custom-file 'noerror)
 
@@ -163,17 +162,15 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;; (setq use-package-always-ensure t)
 (setq use-package-verbose t)
-;; (setq req-package-log-level 'debug)
 (require 'use-package)
-;; (require 'req-package)
 
 ;; --------------------------------
-;; My personal configuration stuff
+;; Libraries that everything pretty much uses..
 ;; --------------------------------
 (require 'dash)
 (require 's)
+(require 'f)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Require autoloads files
@@ -192,7 +189,6 @@
 (require 'term-config)
 (require 'company-config)
 (require 'eshell-config)
-;; (require 'evil-org)
 
 (require 'git-gutter-config)
 (require 'guide-key-config)
@@ -204,61 +200,34 @@
 (require 'misc-config)
 (require 'my-smartparens-config)
 (require 'org-config)
-(message "Fuck this 1")
 
-;; (require 'org-mu4e)
-;; (require 'paredit-config)
-(message "Fuck this 2")
 (require 'popwin-config)
-(message "Fuck this 3")
-;; (require 'my-modeline-config)
-(message "Fuck this 4")
+(require 'my-modeline-config)
 (require 'sublimity-config)
 
-(message "Fuck this 5")
-(message "Fuck this 6")
 (require 'expand-region-config)
-(message "Fuck this 7")
 (require 'multiple-cursors-config)
-(message "Fuck this 8")
 (require 'ibuffer-config)
-(message "Fuck this 9")
 (require 'winner-config)
-(message "Fuck this 10")
 (require 'flycheck-config)
-(message "Fuck this 11")
-(message "Fuck this 12")
 (require 'hydra-config)
-(message "Fuck this 13")
 (require 'erc-config)
-(message "Fuck this 14")
 
 ;;; Yasnippet must come before autocomplete config for both to work together
 (require 'yasnippet-config)
-(message "Fuck this 15")
 
 ;;; Language specific configuration
-;; (require 'haskell-config)
-;; (message "Fuck this 16")
-;; (require 'idris-config)
-;; (message "Fuck this 17")
-;; (require 'javascript-config)
-;; (message "Fuck this 18")
-;; (require 'lisp-config)
-;; (message "Fuck this 20")
-;; (require 'prog-config)
-;; (message "Fuck this 21")
-;; (require 'python-config)
-;; (message "Fuck this 22")
-;; (require 'scheme-config)
-;; (message "Fuck this 23")
-;; (require 'c-config)
-;; (message "Fuck this 24")
-;; (require 'web-config)
-;; (message "Fuck this 25")
+(require 'haskell-config)
+(require 'idris-config)
+(require 'javascript-config)
+(require 'lisp-config)
+(require 'scheme-config)
+(require 'prog-config)
+(require 'python-config)
+(require 'c-config)
+(require 'web-config)
 
 (require 'keybindings)
-(message "Fuck this 26")
 
 ;; Start the server from here rather than with emacs --daemon since
 ;; some appearance configuration appears to not work correctly when

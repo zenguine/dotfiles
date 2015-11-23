@@ -68,4 +68,5 @@
           ))
       '(normal insert))
 
+(evil-define-key 'normal org-mode-map (kbd "C-t") 'org-mark-ring-goto)
 (provide 'evil-org)

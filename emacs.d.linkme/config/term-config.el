@@ -1,4 +1,5 @@
 (use-package term
+  :commands term-mode
   :defer t
   :config
 

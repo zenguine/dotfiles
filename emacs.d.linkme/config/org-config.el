@@ -7,6 +7,7 @@
 
 (use-package org
   :ensure t
+  :commands org-mode
   :defer t
   :config
   (require 'org-id)
@@ -354,6 +355,12 @@
 
   ;; Org-mode specific keybinings
   (define-key org-mode-map (kbd "C-c q") 'my/org-insert-quote-block)
-  (evil-define-key 'normal org-mode-map (kbd "C-t") 'org-mark-ring-goto))
+  
+  (after 'evil
+    (use-package evil-org
+      :load-path "elisp/"))
+  
+  (after 'mu4e
+    (require 'org-mu4e)))
 
 (provide 'org-config)

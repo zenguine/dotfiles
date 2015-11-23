@@ -1,6 +1,5 @@
 (use-package smartparens
   :ensure t
-  :defer t
   :config
   (require 'smartparens-config)
   (require 'evil)

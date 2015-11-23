@@ -102,6 +102,4 @@
 (global-def-key (kbd "S-<left>") 'shrink-window-horizontally 3)
 
 
-
-
 (provide 'keybindings)
