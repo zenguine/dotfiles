@@ -115,9 +115,7 @@ on a per-theme basis."
 	     (eval-after-load (car x)
 	       `(diminish ',(cdr x)))))
 
-(-each '((haskell-indentation . (haskell-indentation-mode . " ind"))
-	 (haskell-indent . (haskell-indent-mode . " Ind"))
-	 (shm . (structured-haskell-mode . " shm"))
+(-each '((shm . (structured-haskell-mode . " shm"))
 	 (flycheck . (flycheck-mode . " flyc")))
   (lambda (x)
     (eval-after-load (car x)

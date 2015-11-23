@@ -238,8 +238,8 @@
 (message "Fuck this 15")
 
 ;;; Language specific configuration
-(require 'haskell-config)
 (req-package-finish)
+(require 'haskell-config)
 (message "Fuck this 16")
 (require 'idris-config)
 (message "Fuck this 17")
@@ -265,4 +265,4 @@
 ;; some appearance configuration appears to not work correctly when
 ;; run like that.
 (server-start)
-;; (switch-to-buffer "*Messages*")
+(switch-to-buffer "*Messages*")
