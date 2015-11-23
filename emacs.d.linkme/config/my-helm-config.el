@@ -31,8 +31,8 @@
   (let ((inside-helm-eval-expression-p t))
     (call-interactively 'helm-eval-expression-with-eldoc)))
 
-(req-package helm
-  :require hydra
+(use-package helm
+  :ensure t
   :bind (("M-:" . my-helm-eval-expression-with-eldoc)
          ("M-x" . helm-M-x)
          ("C-x b" . helm-buffers-list)
@@ -51,6 +51,7 @@
   (bind-key "b" 'helm-bookmarks personal-global-map)
   (bind-key "h" 'helm-etags-select my-tags-map)
   :config
+  (require 'hydra)
   (require 'helm-files)
   (setq helm-idle-delay 0.1
         helm-input-idle-delay 0.1
@@ -147,8 +148,8 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
   (bind-key "<escape>" 'helm-like-unite/body helm-map)
   (bind-key "C-[" 'helm-like-unite/body helm-map))
 
-(req-package helm-projectile
-  :require (helm projectile)
+(use-package helm-projectile
+  :ensure t
   :commands (jc/helm-projectile-switch-project helm-projectile-custom)
   :init
   (bind-key "C-c p p" 'jc/helm-projectile-switch-project projectile-mode-map)
@@ -189,12 +190,13 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
   (setq projectile-switch-project-action 'helm-projectile)
 )
 
-(req-package helm-swoop
-  :require (evil helm)
+(use-package helm-swoop
+  :ensure t
   :bind (("C-c o" . helm-swoop)
          ("C-c C-o" . my-helm-multi-swoop))
   :commands helm-multi-swoop-all-from-helm-swoop helm-swoop-from-evil-search
   :init
+  (require 'evil)
   (bind-key "M-i" 'helm-swoop-from-evil-search evil-motion-state-map)
   :config
   (defun my-helm-multi-swoop (arg)
@@ -207,13 +209,13 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
   (setq helm-multi-swoop-edit-save t))
 
 ;; Misc helm search keybindings
-(req-package helm-ag
-  :require helm
+(use-package helm-ag
+  :ensure t
   :bind ("M-s a" . helm-ag))
 
 ;; helm-company config
-(req-package helm-company
-  :require (helm company)
+(use-package helm-company
+  :ensure t
   :commands helm-company
   :defer t
   :init

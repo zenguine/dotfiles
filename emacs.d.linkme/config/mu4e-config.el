@@ -1,11 +1,11 @@
-(req-package mu4e
-  :require smtpmail
+(use-package mu4e
   :load-path "site-lisp/mu4e"
   :defer t
   :bind ("C-c m" . mu4e)
   :ensure nil
   :config
   ;; default
+  (require 'smtpmail)
   (setq mail-user-agent 'mu4e-user-agent)
   (setq mu4e-maildir "~/.mail")
   (setq mu4e-drafts-folder "/drafts")

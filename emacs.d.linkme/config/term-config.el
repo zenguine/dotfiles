@@ -1,5 +1,4 @@
-(req-package term
-  :require comint
+(use-package term
   :defer t
   :config
 

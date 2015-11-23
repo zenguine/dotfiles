@@ -1,4 +1,5 @@
-(req-package git-gutter
+(use-package git-gutter
+  :ensure t
   :bind (("C-c g t" . git-gutter:toggle)
          ("C-c g T" . global-git-gutter-mode)
          ("C-c g P" . git-gutter:popup-hunk)

@@ -1,5 +1,4 @@
 ;; Sublimity
-(require 'sublimity)
 (recentf-mode t)
 (semantic-mode t)
 
@@ -60,6 +59,9 @@
 ;; Paradox github token configuration: temporary!!! dont commit this
 (setq paradox-github-token "7e2bac3eae766006574ccd74e35ed3907947bbf1")
 
-(ifhave 'beacon (beacon-mode 1))
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1))
 
 (provide 'misc-config)

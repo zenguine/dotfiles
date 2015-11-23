@@ -1,7 +1,7 @@
-(req-package eshell
-  :require company
+(use-package eshell
   :defer t
   :config
+  (use-package company :ensure t)
   (defun eshell/x (&rest args)
     (delete-single-window))
 

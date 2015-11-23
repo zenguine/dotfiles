@@ -1,4 +1,4 @@
-(req-package ido
+(use-package ido
   :config
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)

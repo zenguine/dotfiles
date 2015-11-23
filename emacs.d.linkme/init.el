@@ -165,9 +165,9 @@
 
 ;; (setq use-package-always-ensure t)
 (setq use-package-verbose t)
-(setq req-package-log-level 'debug)
+;; (setq req-package-log-level 'debug)
 (require 'use-package)
-(require 'req-package)
+;; (require 'req-package)
 
 ;; --------------------------------
 ;; My personal configuration stuff
@@ -186,7 +186,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Load these first..
-(require 'misc-config)
 (require 'appearance-config)
 (require 'evil-config)
 (require 'comint-config)
@@ -202,6 +201,7 @@
 (require 'mu4e-config)
 (require 'projectile-config)
 (require 'my-helm-config)
+(require 'misc-config)
 (require 'my-smartparens-config)
 (require 'org-config)
 (message "Fuck this 1")
@@ -238,25 +238,24 @@
 (message "Fuck this 15")
 
 ;;; Language specific configuration
-(req-package-finish)
-(require 'haskell-config)
-(message "Fuck this 16")
-(require 'idris-config)
-(message "Fuck this 17")
-(require 'javascript-config)
-(message "Fuck this 18")
-(require 'lisp-config)
-(message "Fuck this 20")
-(require 'prog-config)
-(message "Fuck this 21")
-(require 'python-config)
-(message "Fuck this 22")
-(require 'scheme-config)
-(message "Fuck this 23")
-(require 'c-config)
-(message "Fuck this 24")
-(require 'web-config)
-(message "Fuck this 25")
+;; (require 'haskell-config)
+;; (message "Fuck this 16")
+;; (require 'idris-config)
+;; (message "Fuck this 17")
+;; (require 'javascript-config)
+;; (message "Fuck this 18")
+;; (require 'lisp-config)
+;; (message "Fuck this 20")
+;; (require 'prog-config)
+;; (message "Fuck this 21")
+;; (require 'python-config)
+;; (message "Fuck this 22")
+;; (require 'scheme-config)
+;; (message "Fuck this 23")
+;; (require 'c-config)
+;; (message "Fuck this 24")
+;; (require 'web-config)
+;; (message "Fuck this 25")
 
 (require 'keybindings)
 (message "Fuck this 26")
@@ -265,4 +264,3 @@
 ;; some appearance configuration appears to not work correctly when
 ;; run like that.
 (server-start)
-(switch-to-buffer "*Messages*")

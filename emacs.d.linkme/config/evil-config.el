@@ -1,8 +1,12 @@
 (require 'cl)
 (setq evil-want-C-u-scroll t)
 
-(req-package evil
-  :require (f avy)
+(use-package avy
+  :ensure t
+  :defer t)
+
+(use-package evil
+  :ensure t
   :init
   (setq evil-want-fine-undo 'no)
   (setq evil-want-C-i-jump nil)
@@ -13,8 +17,7 @@
   (setq evil-shift-width 2)
   (setq evil-auto-balance-windows t)
   :config
-
-
+  (use-package f :ensure t)
   ;; Tag navigation
   (define-key evil-normal-state-map (kbd "M-.") 'find-tag)
   (define-key evil-normal-state-map (kbd "C-M-.") 'find-tag-regexp)
@@ -199,8 +202,8 @@
   )
 
 ;; Evil-jumper
-(req-package evil-jumper
-  :require (evil f)
+(use-package evil-jumper
+  :ensure t
   :commands (evil-jumper/forward evil-jumper/backward)
   :config
   (define-key evil-motion-state-map (kbd "M-i") 'evil-jumper/forward)
@@ -213,24 +216,25 @@
   (define-key evil-motion-state-map (kbd "M-o") 'evil-jump-backward))
 
 ;; Evil nerd commenter config
-(req-package evil-nerd-commenter
-  :require evil
+(use-package evil-nerd-commenter
+  :ensure t
   :commands evilnc-comment-operator evilnc-comment-or-uncomment-lines
   :init
+  (require 'evil)
   (define-key evil-normal-state-map (kbd "\\") 'evilnc-comment-operator)
   (define-key evil-visual-state-map (kbd "\\") 'evilnc-comment-operator)
   (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines))
 
-(req-package surround
+(use-package surround
   :load-path "site-lisp/"
-  :ensure nil
-  :require evil)
+  :ensure nil)
 
-(req-package evil-args
-  :require evil
+(use-package evil-args
+  :ensure t
   :commands evil-inner-arg evil-outer-arg evil-forward-arg evil-backward-arg evil-jump-out-args
   ;; bind evil-args text objects
   :init
+  (require 'evil)
   (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
   (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
 
@@ -243,10 +247,10 @@
   ;; bind evil-jump-out-args
   (define-key evil-normal-state-map "gk" 'evil-jump-out-args))
 
-(req-package evil-visualstar
-  :require evil)
+(use-package evil-visualstar
+  :ensure t)
 
-(req-package evil-anzu
-  :require evil)
+(use-package evil-anzu
+  :ensure t)
 
 (provide 'evil-config)

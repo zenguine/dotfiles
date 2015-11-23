@@ -1,4 +1,5 @@
-(req-package flycheck
+(use-package flycheck
+  :ensure t
   :defer t
   :config
   (use-package flycheck-pos-tip)

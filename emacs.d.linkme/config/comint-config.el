@@ -1,4 +1,4 @@
-(req-package comint
+(use-package comint
   :defer t
   :config
   (defun comint-delchar-or-eof-or-kill-buffer (arg)

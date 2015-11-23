@@ -1,4 +1,5 @@
-(req-package expand-region
+(use-package expand-region
+  :ensure t
   :defer t
   :config
   (after 'evil

@@ -1,4 +1,4 @@
-(req-package sublimity
+(use-package sublimity
   :ensure t
   :config
   ;; (require 'sublimity-scroll)

@@ -1,4 +1,5 @@
-(req-package erc
+(use-package erc
+  :ensure t
   :defer t
   :init
   ; Commands to start erc ---------------------

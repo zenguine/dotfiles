@@ -1,6 +1,9 @@
-(req-package smartparens
-  :require (smartparens-config evil)
+(use-package smartparens
+  :ensure t
+  :defer t
   :config
+  (require 'smartparens-config)
+  (require 'evil)
   (let ((map smartparens-mode-map))
     (define-key map (kbd "C-k") nil)
     (define-key map (kbd "C-j") nil)

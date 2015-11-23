@@ -1,15 +1,19 @@
 (setq org-clock-sound t)
 
-(req-package my-org-util
+(use-package my-org-util
   :load-path "site-lisp"
   :defer t
   :ensure nil)
 
-(req-package org
-  :require (my-org-util f s ido)
+(use-package org
+  :ensure t
   :defer t
   :config
   (require 'org-id)
+  (require 'my-org-util)
+  (require 'f)
+  (require 's)
+  (require 'ido)
   (setq org-files-home "~/org")
   (setq org-agenda-diary-file (f-join org-files-home "diary.org"))
 

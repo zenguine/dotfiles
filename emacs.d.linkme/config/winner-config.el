@@ -1,4 +1,5 @@
-(req-package winner
+(use-package winner
+  :ensure t
   :config
   (setq winner-boring-buffers '("*Completions*"
                                 "*Compile-Log*"

@@ -1,5 +1,5 @@
-(req-package company
-  :defer t
+(use-package company
+  :ensure t
   :config
   ;; nil causes company to always be there.  I'd like this except it
   ;; doesn't work well in haskell mode..  This gets changed to 0.7 in
@@ -40,11 +40,11 @@
 
   (add-hook 'after-init-hook 'global-company-mode)
 
-  (when (require 'company-ghc nil 'noerror)
+  (after 'company-ghc
     (add-to-list 'company-backends 'company-ghc)
     (custom-set-variables '(company-ghc-show-info t)))
 
-  (when (require 'tern nil 'noerror)
+  (after 'tern
     (add-to-list 'company-backends 'company-tern)))
 
 (provide 'company-config)

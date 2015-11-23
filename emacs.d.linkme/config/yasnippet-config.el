@@ -1,4 +1,5 @@
-(req-package yasnippet
+(use-package yasnippet
+  :ensure t
   :defer t
   :config
   (defun active-snippet-names ()

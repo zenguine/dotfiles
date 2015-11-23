@@ -1,4 +1,5 @@
-(req-package ibuffer
+(use-package ibuffer
+  :ensure t
   :defer t
   :config
   (use-package ibuffer-vc)
