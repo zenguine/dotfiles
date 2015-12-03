@@ -7,7 +7,7 @@
 
 (use-package org
   :ensure t
-  :commands (org-mode bh/punch-in jump-to-org-agenda)
+  :commands (org-mode bh/punch-in jump-to-org-agenda org-clock-goto org-clock-select-task)
   :defer t
   :init
   (setq org-agenda-idle-display-timeout 180)
