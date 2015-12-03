@@ -146,7 +146,9 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
     ("f" helm-follow-mode))
 
   (bind-key "<escape>" 'helm-like-unite/body helm-map)
-  (bind-key "C-[" 'helm-like-unite/body helm-map))
+  (bind-key "C-[" 'helm-like-unite/body helm-map)
+  (helm-mode 1))
+
 
 (use-package helm-projectile
   :ensure t
