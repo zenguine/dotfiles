@@ -21,8 +21,15 @@
    '(haskell-process-log t)
    '(haskell-process-type 'cabal-repl))
 
-  (setq ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing" "-fno-warn-orphans"))
-
+  (setq 
+   ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing" "-fno-warn-orphans")
+   haskell-compile-cabal-build-command "cd %s && stack build"
+   haskell-process-type 'stack-ghci
+   haskell-interactive-popup-errors nil
+   haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng")
+   haskell-process-path-ghci "stack"
+   haskell-process-args-cabal-repl '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
+  
   ;; ghc/ghc-mod stuff
   (autoload 'ghc-init "ghc" nil t)
   (autoload 'ghc-debug "ghc" nil t)
@@ -160,10 +167,12 @@
   (evil-define-key 'normal haskell-interactive-mode-map (kbd "K") 'haskell-process-do-info)
 
   (bind-key "C-c t" 'haskell-process-do-type haskell-mode-map)
-  (bind-key "C-c C-t" 'haskell-process-do-type haskell-mode-map)
+  (bind-key "C-c C-t" 'haskell-mode-show-type-at haskell-mode-map)
 
   (evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
   (bind-key "C-c d" 'haskell-process-add-dependency haskell-mode-map)
+  (bind-key "C-?" 'haskell-mode-find-uses haskell-mode-map)
+  (bind-key "C-]" 'haskell-mode-goto-loc haskell-mode-map)
   (bind-key "C-c T" 'haskell/types-file-toggle haskell-mode-map)
 
   (eval-after-load 'haskell-cabal '(progn
@@ -189,7 +198,7 @@
     (bind-key "C-c t" 'haskell-process-do-type haskell-interactive-mode-map)
     (evil-define-key 'normal haskell-interactive-mode-map (kbd "K") 'haskell-process-do-info)
     (evil-define-key 'normal haskell-interactive-mode-map (kbd "g K") 'haskell-process-do-type)
-    (bind-key "C-c C-t" 'haskell-process-do-type haskell-interactive-mode-map)
+    (bind-key "C-c C-t" 'haskell-mode-show-type-at haskell-interactive-mode-map)
     (bind-key "C-c C-r" 'haskell-process-do-info haskell-interactive-mode-map)
     (bind-key "C-c C-d" 'my-hoogle-fn haskell-interactive-mode-map)
     (modify-syntax-entry ?_ "w"))
