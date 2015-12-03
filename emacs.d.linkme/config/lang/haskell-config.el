@@ -159,21 +159,10 @@
   (bind-key "C-c C-z" 'haskell-interactive-switch haskell-mode-map)
 
   (bind-key "C-`" 'haskell-interactive-bring haskell-mode-map)
-  (bind-key "C-c C-n C-c" 'haskell-process-cabal-build haskell-mode-map)
-  (bind-key "C-c C-n c" 'haskell-process-cabal haskell-mode-map)
 
   (bind-key "C-c C-r" 'haskell-process-do-info haskell-mode-map)
   (evil-define-key 'normal haskell-mode-map (kbd "K") 'haskell-process-do-info)
   (evil-define-key 'normal haskell-interactive-mode-map (kbd "K") 'haskell-process-do-info)
-
-  (bind-key "C-c t" 'haskell-process-do-type haskell-mode-map)
-  (bind-key "C-c C-t" 'haskell-mode-show-type-at haskell-mode-map)
-
-  (evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
-  (bind-key "C-c d" 'haskell-process-add-dependency haskell-mode-map)
-  (bind-key "C-?" 'haskell-mode-find-uses haskell-mode-map)
-  (bind-key "C-]" 'haskell-mode-goto-loc haskell-mode-map)
-  (bind-key "C-c T" 'haskell/types-file-toggle haskell-mode-map)
 
   (eval-after-load 'haskell-cabal '(progn
                                      (bind-key "C-`" 'haskell-interactive-bring haskell-cabal-mode-map)
@@ -217,7 +206,17 @@
       (setq flycheck-ghc-language-extensions '("DeriveFunctor" "DeriveDataTypeable" "DeriveFoldable" "DeriveTraversable" "TemplateHaskell")))
     (evil-define-key 'normal haskell-mode-map (kbd "M-t") 'my-template-insert-fn)
     (when (require 'ghc nil 'noerror)
-      (ghc-init)))
+      (ghc-init))
+    
+    (bind-key "C-c t" 'haskell-process-do-type haskell-mode-map)
+    (bind-key "C-c C-t" 'haskell-mode-show-type-at haskell-mode-map)
+
+    (evil-define-key 'normal haskell-mode-map (kbd "g K") 'haskell-process-do-type)
+    (bind-key "C-c d" 'haskell-process-add-dependency haskell-mode-map)
+    (bind-key* "C-?" 'haskell-mode-find-uses)
+    (bind-key* "C-]" 'haskell-mode-goto-loc)
+    (bind-key "C-c T" 'haskell/types-file-toggle haskell-mode-map)
+    )
 
   (add-hook 'haskell-mode-hook 'increase-company-delay-locally)
   (add-hook 'haskell-interactive-mode-hook 'increase-company-delay-locally)

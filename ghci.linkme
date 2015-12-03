@@ -1,25 +1,27 @@
-:m - Prelude
-
-:set prompt ">> "
-let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
-:def! search return . (":! hoogle --count=15 " ++) . ghciEscapeShellArg
-:def! doc return . (":! hoogle --info " ++) . ghciEscapeShellArg
-:def! searchc return . (":! hoogle --color --count=15 " ++) . ghciEscapeShellArg
-:def! docc return . (":! hoogle --color --info " ++) . ghciEscapeShellArg
-:set +t
-:set +c
 :seti -XNoMonomorphismRestriction
 :seti -XDataKinds
 :seti -XGADTs
 :seti -XRankNTypes
 :seti -XTypeOperators
 :set -XNoOverloadedLists
+:set +c
+:set prompt ">> "
+
+import Prelude
 
 import qualified Data.Traversable as T
 import qualified Data.Foldable as F
 import Data.Foldable (Foldable(..))
 import Data.Traversable (Traversable(..))
 import Data.Bifunctor
-import Data.Profunctor
 import qualified Control.Arrow as A
 import Control.Arrow (Arrow(..), (&&&), (|||), (***), (+++))
+
+let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
+:def search return . (":! hoogle --count=15 " ++) . ghciEscapeShellArg
+:def doc return . (":! hoogle --info " ++) . ghciEscapeShellArg
+:def searchc return . (":! hoogle --color --count=15 " ++) . ghciEscapeShellArg
+:def docc return . (":! hoogle --color --info " ++) . ghciEscapeShellArg
+
+:set +t
+
