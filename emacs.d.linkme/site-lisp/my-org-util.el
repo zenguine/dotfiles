@@ -1,6 +1,8 @@
 
 ;; Most of this stuff is from "organize your life in plain text"
 
+(setq current-project nil)
+
 (defun bh/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
