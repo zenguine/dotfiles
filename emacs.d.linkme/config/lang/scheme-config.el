@@ -20,10 +20,11 @@
 
   (defun my-inferior-scheme-mode-hook ()
     (rainbow-delimiters-mode t)
-    (pretty-mode t))
+    ;; (pretty-mode t)
+    )
 
   (defun my-scheme-mode-hook ()
-    (pretty-mode t)
+    ;; (pretty-mode t)
     (rainbow-delimiters-mode t))
 
   (add-hook 'inferior-scheme-mode-hook 'my-inferior-scheme-mode-hook)

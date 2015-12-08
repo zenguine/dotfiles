@@ -32,7 +32,7 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
 
   (defun my-elisp-mode-hook ()
     (modify-syntax-entry ?- "w")
-    (pretty-mode t)
+    ;; (pretty-mode t)
     (rainbow-delimiters-mode t)
     (elisp-slime-nav-mode t))
 
@@ -54,7 +54,7 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
 
   (defun my-lisp-interaction-mode-hook ()
     (local-unset-key (kbd "C-j"))
-    (pretty-mode t)
+    ;; (pretty-mode t)
     (rainbow-delimiters-mode t)
     (elisp-slime-nav-mode t))
 
