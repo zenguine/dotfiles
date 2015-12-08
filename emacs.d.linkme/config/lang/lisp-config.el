@@ -1,6 +1,7 @@
 (use-package lisp-mode
   :commands (emacs-lisp-mode lisp-mode lisp-interaction-mode my-eval-expression)
   :config
+  
   ;; This function got removed from the released version, so I snagged it from here:
   ;; https://github.com/purcell/elisp-slime-nav/blob/master/elisp-slime-nav.el#L62
   (defun elisp-slime-nav--read-symbol-at-point ()
@@ -88,6 +89,7 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
   (defun my-eval-expression (expression &optional arg)
     (interactive (list (read (my-read--expression ""))
 		       current-prefix-arg))
+    (require 'pp)
     (if arg
 	(insert (pp-to-string (eval-expression expression lexical-binding)))
       (pp-display-expression (eval-expression expression lexical-binding)
