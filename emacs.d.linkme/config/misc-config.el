@@ -7,9 +7,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-minibuffer-features)
 
-(after 'ws-butler
-  (ws-butler-global-mode))
-
 (after 'helm-eval
   (define-key helm-eval-expression-map (kbd "TAB") 'helm-lisp-completion-at-point)
   (define-key helm-eval-expression-map (kbd "RET") 'helm-eval-new-line-and-indent)

@@ -3,6 +3,10 @@
     ;; <spc>ri to toggle color-identifiers-mode
     :commands color-identifiers-mode)
 
+(use-package ws-butler
+  :commands (ws-butler-mode ws-butler-global-mode)
+  :ensure t)
+
 (use-package prog-mode
   :commands prog-mode
   :init
@@ -57,6 +61,7 @@
     (toggle-read-only))
 
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-  (setq compilation-scroll-output t))
+  (setq compilation-scroll-output t)
+  (ws-butler-global-mode))
 
 (provide 'prog-config)
