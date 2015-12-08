@@ -397,4 +397,10 @@
   (after 'mu4e
     (require 'org-mu4e)))
 
+(use-package clocker
+  :ensure t
+  :commands (clocker-mode)
+  :config
+  (setq clocker-keep-org-file-always-visible nil))
+
 (provide 'org-config)

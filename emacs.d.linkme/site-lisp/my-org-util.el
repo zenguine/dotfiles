@@ -280,6 +280,7 @@ selected task.  If no task is selected set the Organization task
 as the default task."
   (interactive "p")
   (setq bh/keep-clock-running t)
+  (clocker-mode 1)
   (if (equal major-mode 'org-agenda-mode)
       ;;
       ;; We're in the agenda
@@ -304,6 +305,7 @@ as the default task."
   (setq bh/keep-clock-running nil)
   (when (org-clock-is-active)
     (org-clock-out))
+  (clocker-mode 0)
   (org-agenda-remove-restriction-lock))
 
 (defun bh/clock-in-default-task ()
