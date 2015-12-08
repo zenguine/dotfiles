@@ -1,3 +1,10 @@
+(use-package magit
+  :ensure t
+  :defer t
+  :commands (magit-status)
+  :config
+  (message "hi"))
+
 (use-package git-gutter
   :ensure t
   :bind (("C-c g t" . git-gutter:toggle)
@@ -25,4 +32,4 @@
   (set-face-foreground 'git-gutter:added "#6ac214")
   (set-face-foreground 'git-gutter:deleted "tomato"))
 
-(provide 'git-gutter-config)
+(provide 'git-config)

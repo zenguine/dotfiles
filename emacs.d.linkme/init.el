@@ -193,7 +193,7 @@
   (require 'company-config)
   (require 'eshell-config)
 
-  (require 'git-gutter-config)
+  (require 'git-config)
   (require 'guide-key-config)
   (require 'ido-config)
   (require 'key-chord-config)
