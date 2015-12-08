@@ -2,6 +2,13 @@
 (recentf-mode t)
 (semantic-mode t)
 
+(use-package smooth-scroll
+  :ensure t
+  :config
+  (setf smooth-scroll/vscroll-step-size 6)
+  (smooth-scroll-mode))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; minibuffer config..
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -29,6 +29,7 @@
   ;; ---------------------------------------------
 
 ;;; Elpa packages list to initialize on start
+;;; TODO: Get rid of this in favor of use-package :ensure t dependencies.
   (defvar packages-list
     '(
       ac-js2
