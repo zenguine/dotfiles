@@ -77,7 +77,6 @@
       git-timemachine
       gotham-theme
       gruvbox-theme
-      guide-key
       haskell-mode
       helm
       helm-ag
@@ -195,7 +194,7 @@
   (require 'eshell-config)
 
   (require 'git-config)
-  (require 'guide-key-config)
+  (require 'which-key-config)
   (require 'ido-config)
   (require 'key-chord-config)
   (require 'mu4e-config)
