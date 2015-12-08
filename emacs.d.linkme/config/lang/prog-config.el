@@ -3,6 +3,10 @@
     ;; <spc>ri to toggle color-identifiers-mode
     :commands color-identifiers-mode)
 
+(use-package volatile-highlights
+  :ensure t
+  :commands (volatile-highlights-mode))
+
 (use-package ws-butler
   :commands (ws-butler-mode ws-butler-global-mode)
   :ensure t)
@@ -62,6 +66,7 @@
 
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
   (setq compilation-scroll-output t)
-  (ws-butler-global-mode))
+  (ws-butler-global-mode)
+  (volatile-highlights-mode t))
 
 (provide 'prog-config)
