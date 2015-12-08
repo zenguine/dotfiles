@@ -119,7 +119,8 @@
   (define-key evil-normal-state-map "gJ" 'evil-join)
 
   (setf avy-all-windows nil)
-  (define-key evil-motion-state-map (kbd "S-SPC") 'avy-goto-word-0)
+  (define-key evil-motion-state-map (kbd "S-SPC") 'avy-goto-subword-1)
+  (define-key evil-motion-state-map (kbd "C-SPC") 'avy-goto-char-2)
 
 
   ;; Switch eval-expresion and evil-ex bindings since eval-expression is
