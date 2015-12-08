@@ -130,7 +130,7 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
     ("J" helm-scroll-other-window)
     ;; mark
     ("m" helm-toggle-visible-mark)
-    ("t" helm-toggle-all-marks)
+    ("M" helm-toggle-all-marks)
     ("U" helm-unmark-all)
     ;; exit
     ("<escape>" keyboard-escape-quit "" :exit t)
@@ -147,6 +147,7 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
 
   (bind-key "<escape>" 'helm-like-unite/body helm-map)
   (bind-key "C-[" 'helm-like-unite/body helm-map)
+  (key-chord-define helm-map "jk" 'helm-like-unite/body)
   (helm-mode 1))
 
 
