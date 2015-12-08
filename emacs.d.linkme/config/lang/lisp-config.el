@@ -1,5 +1,5 @@
 (use-package lisp-mode
-  :commands (emacs-lisp-mode lisp-mode lisp-interaction-mode my-eval-expression)
+  :commands (emacs-lisp-mode lisp-mode lisp-interaction-mode my-eval-expression eval-and-replace)
   :config
   
   ;; This function got removed from the released version, so I snagged it from here:
@@ -15,8 +15,6 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
 			   nil t nil nil at-point)
 	at-point)))
 
-
-  (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'pp-macroexpand-last-sexp)
 
   (defun prompt-to-eval ()
     "Yes or no prompt user and if yes, evaluate the current buffer as
@@ -93,6 +91,18 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
     (if arg
 	(insert (pp-to-string (eval-expression expression lexical-binding)))
       (pp-display-expression (eval-expression expression lexical-binding)
-			     "*Pp Eval Output*"))))
+			     "*Pp Eval Output*")))
+
+  (defun eval-and-replace ()
+    "Replace the preceding sexp with its value."
+    (interactive)
+    (backward-kill-sexp)
+    (condition-case nil
+        (insert (format "%s" (eval (read (current-kill 0)))))
+      (error (message "Invalid expression")
+             (insert (current-kill 0)))))
+  
+  (bind-key "C-c C-e" 'pp-macroexpand-last-sexp emacs-lisp-mode-map)
+  (bind-key "C-c C-r" 'eval-and-replace emacs-lisp-mode-map))
 
 (provide 'lisp-config)
