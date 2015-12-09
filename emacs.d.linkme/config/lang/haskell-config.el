@@ -21,12 +21,14 @@
    '(haskell-process-log t)
    '(haskell-process-type 'cabal-repl))
 
+  (setq haskell-interactive-prompt ">> ")
+
   (setq 
    ghc-ghc-options '("-fno-warn-missing-signatures" "-fno-warn-name-shadowing" "-fno-warn-orphans")
    haskell-compile-cabal-build-command "cd %s && stack build"
    haskell-process-type 'stack-ghci
    haskell-interactive-popup-errors nil
-   haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng")
+   haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng --no-load")
    haskell-process-path-ghci "stack"
    haskell-process-args-cabal-repl '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
   
