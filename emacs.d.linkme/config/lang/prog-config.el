@@ -5,14 +5,17 @@
 
 (use-package volatile-highlights
   :ensure t
+  :diminish volatile-highlights-mode
   :commands (volatile-highlights-mode))
 
 (use-package ws-butler
   :commands (ws-butler-mode ws-butler-global-mode)
+  :diminish ws-butler-mode
   :ensure t)
 
 (use-package prog-mode
   :commands prog-mode
+  :diminish eldoc-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.hscm\\'" . scheme-mode))
   (add-to-list 'completion-ignored-extensions ".hi")
@@ -22,7 +25,7 @@
   (require 'uniquify)
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-  (turn-on-eldoc-mode)
+  (eldoc-mode)
 
   (setq project-root-markers '(".git" ".svn"))
 

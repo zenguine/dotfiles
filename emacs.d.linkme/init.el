@@ -205,7 +205,6 @@
   (require 'org-config)
 
   (require 'popwin-config)
-  (require 'my-modeline-config)
   (require 'sublimity-config)
 
   (require 'expand-region-config)
