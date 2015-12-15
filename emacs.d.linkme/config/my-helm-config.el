@@ -48,6 +48,7 @@
   (setq helm-semantic-fuzzy-match t
         helm-imenu-fuzzy-match    t)
   (bind-key "d" 'helm-descbinds help-map)
+  (bind-key "a" 'helm-apropos help-map)
   (bind-key "b" 'helm-bookmarks personal-global-map)
   (bind-key "h" 'helm-etags-select my-tags-map)
   :config
