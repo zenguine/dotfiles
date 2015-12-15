@@ -28,7 +28,7 @@
    haskell-compile-cabal-build-command "cd %s && stack build"
    haskell-process-type 'stack-ghci
    haskell-interactive-popup-errors nil
-   haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng --no-load")
+   haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng")
    haskell-process-path-ghci "stack"
    haskell-process-args-cabal-repl '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
   
