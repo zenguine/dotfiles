@@ -156,7 +156,7 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
   :ensure t
   :commands (jc/helm-projectile-switch-project helm-projectile-custom)
   :init
-  (bind-key "C-c p p" 'jc/helm-projectile-switch-project projectile-mode-map)
+  (bind-key* "C-c p p" 'jc/helm-projectile-switch-project)
   :config
   (helm-projectile-on)
   ;; whoa snazzy.  rebind projectile-switch-project-by-name to

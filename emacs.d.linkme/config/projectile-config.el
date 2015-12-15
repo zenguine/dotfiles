@@ -18,6 +18,8 @@
 
   (bind-key "C-c p a" 'projectile-ag projectile-mode-map)
   (bind-key "C-c p A" 'projectile-ack projectile-mode-map)
+  (bind-key "C-c p )" 'persp-next persp-mode-map)
+  (bind-key "C-c p (" 'persp-prev persp-mode-map)
 
   (projectile-global-mode 1)
 
