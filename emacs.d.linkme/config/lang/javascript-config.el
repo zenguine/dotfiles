@@ -17,6 +17,10 @@
   :ensure t
   :defer t)
 
+(use-package json-mode
+  :ensure t
+  :commands (json-mode))
+
 (use-package js2-mode
   :ensure t
   :commands js2-mode
@@ -45,5 +49,7 @@
   ;; Skewer configuration
   (add-hook 'js2-minor-mode-hook 'skewer-mode)
   (add-hook 'js2-mode-hook 'skewer-mode))
+
+
 
 (provide 'javascript-config)
