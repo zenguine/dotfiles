@@ -19,7 +19,12 @@
 
 (use-package json-mode
   :ensure t
-  :commands (json-mode))
+  :commands (json-mode)
+  :config
+  (defun my-json-mode-hook ()
+    (interactive)
+    (js2-minor-mode -1))
+  (add-hook 'json-mode-hook 'my-json-mode-hook))
 
 (use-package js2-mode
   :ensure t

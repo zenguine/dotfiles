@@ -35,7 +35,8 @@
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
     (setq web-mode-code-indent-offset 2)
-    (flycheck-mode t))
+    (flycheck-mode t)
+    (tern-mode t))
 
   (add-hook 'web-mode-hook 'my-web-mode-hook))
 
