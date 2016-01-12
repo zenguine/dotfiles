@@ -44,6 +44,9 @@
     (add-to-list 'company-backends 'company-ghc)
     (custom-set-variables '(company-ghc-show-info t)))
 
+  (after 'company-nixos-options
+    (add-to-list 'company-backends 'company-nixos-options))
+
   (after 'tern
     (add-to-list 'company-backends 'company-tern)))
 

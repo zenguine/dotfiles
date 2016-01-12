@@ -68,3 +68,4 @@ emacs.d.linkme/org-clock-save.el
 emacs.d.linkme/request/
 emacs.d.linkme/session.*
 *.bak
+*.elc
