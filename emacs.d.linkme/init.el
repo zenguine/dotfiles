@@ -24,10 +24,6 @@
   (add-to-load-path-recursive (concat user-emacs-directory "site-lisp")) ; snippets / misc that I didn't completely write
   (add-to-load-path-recursive (concat user-emacs-directory "elisp")) ; my own custom library / utility code
 
-  (mapcar (lambda (folder)
-            (byte-recompile-directory (expand-file-name (concat user-emacs-directory folder)) nil))
-          '("config" "elisp" "site-lisp" "themes"))
-
   ;; ---------------------------------------------
   ;; ELPA Initialization
   ;; ---------------------------------------------
