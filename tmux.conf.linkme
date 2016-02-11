@@ -10,7 +10,7 @@ bind-key E command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key e command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 # Default shell
-set-option -g default-shell /bin/zsh
+set-option -g default-shell /run/current-system/sw/bin/zsh
 
 # Copy mode settings with vim hotkeys
 setw -g mode-keys vi

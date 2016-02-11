@@ -3,4 +3,4 @@ if [ -f $HOME/.Xdefaults ]; then
 fi
 
 /* exec startxfce4 */
-/* exec xmonad */
+exec xmonad
