@@ -59,7 +59,6 @@
  '(magit-diff-use-overlays nil)
  '(magit-item-highlight-face (quote bold))
  '(magit-use-overlays nil)
- '(menu-bar-mode nil)
  '(org-agenda-files
    (quote
     ("~/org/personal.org" "~/org/refile.org" "~/org/work.org" "/home/jcullen/org/projects/darkdynasty-haskell.org" "/home/jcullen/org/projects/darkdynasty.org" "/home/jcullen/org/projects/dotfiles.org" "/home/jcullen/org/projects/haskell-learning.org")))
@@ -117,7 +116,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil :family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
+ '(default ((t (:background nil :family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
  '(company-scrollbar-bg ((t (:background "#414141"))))
  '(company-scrollbar-fg ((t (:background "#343434"))))
  '(company-tooltip ((t (:inherit default :background "#2d2d2d"))))
