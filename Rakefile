@@ -38,8 +38,7 @@ task :install do
 
   # Update vim plugin git submodules
   puts "Retrieving git submodules.."
-  `git submodule init`
-  `git submodule update`
+  `git submodule update --init --recursive`
 
   # Build source in build/ sub-dir --------
   puts "Building source from 'build' sub-directory"
