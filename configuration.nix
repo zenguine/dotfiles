@@ -111,6 +111,24 @@
 
    ];
 
+    environment.interactiveShellInit = ''
+    # A nix query helper function
+    nq()
+    {
+      case "$@" in
+        -h|--help|"")
+          printf "nq: A tiny nix-env wrapper to search for packages in package name, attribute name and description fields\n";
+          printf "\nUsage: nq <case insensitive regexp>\n";
+          return;;
+      esac
+      nix-env -qaP --description \* | grep -i "$@"
+    }
+    export HISTCONTROL=ignoreboth   # ignorespace + ignoredups
+    export HISTSIZE=1000000         # big big history
+    export HISTFILESIZE=$HISTSIZE
+    shopt -s histappend             # append to history, don't overwrite it
+    '';
+
    sound = {
      enableMediaKeys = true;
    };
