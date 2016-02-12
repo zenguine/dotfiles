@@ -48,7 +48,7 @@
     enableAdobeFlash = true;
   };
 
-  };
+    };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -86,6 +86,7 @@
      nix-repl
      nodejs
      nodePackages.peerflix
+     nox
      pass
      pavucontrol
      pcmanfm
@@ -160,6 +161,7 @@
          enableContribAndExtras = true;
          enable = true;
        };
+       displayManager.kdm.enable = true;
        desktopManager.kde4.enable = true;
        synaptics = {
          enable = true;
