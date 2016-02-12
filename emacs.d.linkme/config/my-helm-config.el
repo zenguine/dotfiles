@@ -113,7 +113,7 @@
     "
 Nav ^^^^^^^^^        Mark ^^          Other ^^       Quit
 ^^^^^^^^^^------------^^----------------^^----------------------
-_K_ ^ ^ _k_ ^ ^     _m_ark           _v_iew         _i_: cancel
+_K_ ^ ^ _k_ ^ ^     _m_ark toggle    _v_iew         _i_: cancel
 ^↕^ _h_ ^✜^ _l_     _t_oggle mark    _H_elp         _o_: quit
 _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
 ^^^^^^^^^^                           _f_ollow: %(helm-attr 'follow)
@@ -131,6 +131,7 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
     ("J" helm-scroll-other-window)
     ;; mark
     ("m" helm-toggle-visible-mark)
+    ("t" helm-toggle-visible-mark)
     ("M" helm-toggle-all-marks)
     ("U" helm-unmark-all)
     ;; exit
