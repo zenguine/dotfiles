@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhistory
 HISTSIZE=1000000
@@ -25,12 +27,14 @@ if ! zgen saved; then
 
     # plugins
     zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/extract
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/fancy-ctrl-z
     zgen oh-my-zsh plugins/cabal
     zgen oh-my-zsh plugins/mosh
     zgen oh-my-zsh plugins/pass
     zgen oh-my-zsh plugins/colored-man-pages
+    zgen oh-my-zsh plugins/history-substring-search
     zgen load zsh-users/zsh-syntax-highlighting
 
     # bulk load
@@ -111,3 +115,22 @@ bindkey -s '\eu' '^Ucd ..; ls^M'
 
 # If AUTO_PUSHD is set, Meta-p pops the dir stack
 bindkey -s '\ep' '^Upopd >/dev/null; dirs -v^M'
+
+## Bindings for history-substring-search plugin
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
