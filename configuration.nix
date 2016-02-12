@@ -59,6 +59,7 @@
      chromium
      clang
      cmake
+     ctags
      curl
      deluge
      dropbox
@@ -67,18 +68,26 @@
      encfs
      fasd
      ffmpeg
+     file
      firefox
      gcc
+     gdb
      ghc
      gitAndTools.gitFull
      gnumake
      gnupg
      gnupg1compat
+     gparted
      htop
+     lsof
+     manpages
+     mercurial
+     mosh
      nix-repl
      nodejs
      nodePackages.peerflix
      pass
+     pavucontrol
      pcmanfm
      python27Full
      python27Packages.ipython
@@ -90,44 +99,33 @@
      screen
      silver-searcher
      slim
+     spotify
      sshfsFuse
+     telnet
      # texLiveFull
      thinkfan
      tmux
      tomahawk
+     traceroute
+     tree
+     unrar
      unzip
      valgrind
      vimHugeX
      vlc
      w3m
      wget
+     wireshark
      wpa_supplicant
      xf86_input_mtrack
      xmonad-with-packages
      xorg.xf86inputsynaptics
      xorg.xmodmap
+     youtube-dl
      zathura
      zsh
 
    ];
-
-    environment.interactiveShellInit = ''
-    # A nix query helper function
-    nq()
-    {
-      case "$@" in
-        -h|--help|"")
-          printf "nq: A tiny nix-env wrapper to search for packages in package name, attribute name and description fields\n";
-          printf "\nUsage: nq <case insensitive regexp>\n";
-          return;;
-      esac
-      nix-env -qaP --description \* | grep -i "$@"
-    }
-    export HISTCONTROL=ignoreboth   # ignorespace + ignoredups
-    export HISTSIZE=1000000         # big big history
-    export HISTFILESIZE=$HISTSIZE
-    shopt -s histappend             # append to history, don't overwrite it
-    '';
 
    sound = {
      enableMediaKeys = true;
@@ -135,6 +133,7 @@
 
    # hardware configuration
    hardware = {
+     pulseaudio.enable = true;
      trackpoint = {
        enable = true;
        emulateWheel = true;
@@ -195,7 +194,7 @@
   { isNormalUser = true;
     home = "/home/jcullen";
     description = "Justin Cullen";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 }
