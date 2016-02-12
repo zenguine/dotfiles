@@ -69,3 +69,4 @@ emacs.d.linkme/request/
 emacs.d.linkme/session.*
 *.bak
 *.elc
+emacs.d.linkme/recentf

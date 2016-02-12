@@ -151,6 +151,7 @@
   (def-key evil-normal-state-map " eo" 'find-file (f-join org-files-home "personal.org"))
   (def-key evil-normal-state-map " eu" 'find-file (f-join user-emacs-directory "elisp" "util.el"))
   (def-key evil-normal-state-map " ev" 'find-file (f-join user-emacs-directory "config" "evil-config.el"))
+  (def-key evil-normal-state-map " en" 'find-file "/sudo::/etc/nixos/configuration.nix" )
 
 
   (define-key evil-normal-state-map " l" 'linum-mode)
