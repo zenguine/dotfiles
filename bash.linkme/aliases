@@ -24,9 +24,22 @@ alias V='vim `ls -t | head -1`'
 alias x='exit'
 alias cbot="python $HOME/code/crypto_bot/interface.py"
 
+# NIx related
+# A nix query helper function
+nq()
+{
+    case "$@" in
+        -h|--help|"")
+            printf "nq: A tiny nix-env wrapper to search for packages in package name, attribute name and description fields\n";
+            printf "\nUsage: nq <case insensitive regexp>\n";
+            return;;
+    esac
+    nix-env -qaP --description \* | grep -i "$@"
+}
+
 # Git related
 function git-grep-all-commits {
-		git rev-list --all | xargs git grep $@
+    git rev-list --all | xargs git grep $@
 }
 
 function pyprofile {
