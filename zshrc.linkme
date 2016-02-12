@@ -1,0 +1,113 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zhistory
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt appendhistory extendedglob notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/jcullen/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+#
+# Stuff from zgen example config
+# load zgen
+source "${HOME}/scripts/zgen.zsh"
+
+
+# check if there's no init script
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+
+    # plugins
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/fancy-ctrl-z
+    zgen oh-my-zsh plugins/cabal
+    zgen oh-my-zsh plugins/mosh
+    zgen oh-my-zsh plugins/pass
+    zgen oh-my-zsh plugins/colored-man-pages
+    zgen load zsh-users/zsh-syntax-highlighting
+
+    # bulk load
+    zgen loadall <<EOPLUGINS
+        zsh-users/zsh-history-substring-search
+EOPLUGINS
+    # ^ can't indent this EOPLUGINS
+
+    # completions
+    zgen load zsh-users/zsh-completions src
+
+    # theme
+    zgen oh-my-zsh themes/geoffgarside
+
+    # save all to init script
+    zgen save
+fi
+
+# Other customizations
+
+eval "$(fasd --init auto)"
+
+export _Z_CMD='j'
+export PYTHONSTARTUP=~/.pythonrc
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
+
+# Customize to your needs...
+
+
+# -x4 = Set tab stops to 4 spaces.
+# -F = Don't open with less if entire file fits on screen.
+# -R = Output "raw" control characters. (colors)
+# -s = Squeeze multiple blank lines.
+# -X = Ignore ignore termcap initialization. With xterms it keeps
+#        the last page of the document on the screen. (see
+#        http://www.shallowsky.com/linux/noaltscreen.html)
+alias less='less -x4RFsX'
+
+source $HOME/.bashrc
+
+# export _Z_CMD='j'
+export PYTHONSTARTUP=~/.pythonrc
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin
+
+export PAGER="less"
+export LESS="-R"
+# nicer highlighting
+if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
+    # ubuntu 12.10: sudo apt-get install source-highlight
+    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+elif [ -f "/usr/bin/src-hilite-lesspipe.sh" ]; then
+    # fedora 18: sudo yum install source-highlight
+    export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+fi
+
+# Force a reload of completion system if nothing matched; this fixes installing
+# a program and then trying to tab-complete its name
+_force_rehash() {
+    (( CURRENT == 1 )) && rehash
+    return 1 # Because we didn't really complete anything
+}
+
+# configuration for "z" script
+. ~/scripts/z.sh
+function precmd () {
+  _z --add "$(pwd -P)"
+}
+
+# Binding to edit current line in editor
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+#
+# Meta-u to chdir to the parent directory
+bindkey -s '\eu' '^Ucd ..; ls^M'
+
+# If AUTO_PUSHD is set, Meta-p pops the dir stack
+bindkey -s '\ep' '^Upopd >/dev/null; dirs -v^M'
