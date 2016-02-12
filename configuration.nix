@@ -10,6 +10,12 @@
       ./hardware-configuration.nix
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_4_3;
+
+  # Use the gummiboot efi boot loader.
+  boot.loader.gummiboot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   boot.loader.grub = {
     enable = true;
     version = 2;
@@ -34,36 +40,75 @@
   time.timeZone = "America/New_York";
 
   nixpkgs.config = {
-    vimHugeX.python = true;
+  vimHugeX.python = true;
+  allowUnfree = true;
+
+  firefox = {
+    enableGoogleTalkPlugin = true;
+    enableAdobeFlash = true;
+  };
+
   };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =  with pkgs; [
+
+     alsaUtils
      audacious
+     chromium
+     clang
+     cmake
+     curl
      deluge
+     dropbox
+     dropbox-cli
      emacs
      encfs
      fasd
+     ffmpeg
      firefox
      gcc
      ghc
      gitAndTools.gitFull
+     gnumake
      gnupg
      gnupg1compat
+     htop
+     nix-repl
+     nodejs
      nodePackages.peerflix
      pass
+     pcmanfm
+     python27Full
+     python27Packages.ipython
+     python27Packages.pip
+     python27Packages.virtualenv
      python27Packages.virtualenvwrapper
+     rsync
      rxvt_unicode
+     screen
+     silver-searcher
+     slim
+     sshfsFuse
+     # texLiveFull
      thinkfan
      tmux
      tomahawk
+     unzip
+     valgrind
      vimHugeX
      vlc
+     w3m
      wget
      wpa_supplicant
      xf86_input_mtrack
+     xmonad-with-packages
+     xorg.xf86inputsynaptics
+     xorg.xmodmap
+     zathura
      zsh
+
    ];
 
    sound = {
@@ -93,6 +138,7 @@
        enable = true;
        layout = "us";
        xkbOptions = "eurosign:e";
+       windowManager.default = "xmonad";
        windowManager.xmonad = {
          enableContribAndExtras = true;
          enable = true;
@@ -111,8 +157,20 @@
 
   # Mount /home partition.
   fileSystems."/home" =
-    { device ="/dev/sda3";
+    { device ="/dev/sda7";
+      fsType = "btrfs";
+    };
+
+  # Mount /data partition.
+  fileSystems."/data" =
+    { device ="/dev/sda5";
       fsType = "ext4";
+    };
+
+  # Mount /data partition.
+  fileSystems."/boot" =
+    { device ="/dev/sda6";
+      fsType = "vfat";
     };
 
   users.extraUsers.jcullen =
