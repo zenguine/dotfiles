@@ -13,13 +13,14 @@
   boot.kernelPackages = pkgs.linuxPackages_4_3;
 
   # Use the gummiboot efi boot loader.
-  boot.loader.gummiboot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
+  boot.loader = {
+   gummiboot.enable = true;
+   efi.canTouchEfiVariables = true;
+   grub = {
+     enable = true;
+     version = 2;
+     device = "nodev";
+   };
   };
 
   security.pam.enableEcryptfs = true;
@@ -134,7 +135,11 @@
 
    # hardware configuration
    hardware = {
-     pulseaudio.enable = true;
+     opengl.driSupport32Bit = true;
+     pulseaudio = {
+       enable = true;
+       support32Bit = true;
+     };
      trackpoint = {
        enable = true;
        emulateWheel = true;
@@ -143,6 +148,7 @@
 
    # configure services
    services = {
+     nixosManual.showManual = true;
      # Enable the OpenSSH daemon.
      openssh.enable = true;
 
@@ -195,8 +201,32 @@
   users.extraUsers.jcullen =
   { isNormalUser = true;
     home = "/home/jcullen";
+    createHome = true;
+    group = "users";
     description = "Justin Cullen";
     extraGroups = [ "wheel" "networkmanager" "audio" ];
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = "${pkgs.zsh}/bin/zsh";
   };
+
+  programs = {
+    zsh.enable = true;
+    ssh.startAgent = true;
+  };
+
+  fonts = {
+    fontconfig.enable      = true;
+    enableFontDir          = true;
+    enableGhostscriptFonts = true;
+    fontconfig.defaultFonts.monospace = ["Terminus"];
+    fonts = [
+       pkgs.corefonts
+       pkgs.clearlyU
+       pkgs.cm_unicode
+       pkgs.dejavu_fonts
+       pkgs.freefont_ttf
+       pkgs.terminus_font
+       pkgs.ttf_bitstream_vera
+    ];
+  };
+
 }
