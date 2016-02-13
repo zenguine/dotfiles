@@ -33,7 +33,6 @@ Bundle 'mileszs/ack.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'tpope/vim-commentary.git'
 Bundle 'tpope/vim-repeat.git'
-" Bundle 'tmhedberg/SimpylFold.git'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'teramako/jscomplete-vim.git'
@@ -48,7 +47,7 @@ Bundle 'vim-scripts/AutoTag'
 Bundle 'Shougo/unite.vim'
 
 Bundle 'tsukkee/unite-tag'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'SirVer/ultisnips'
@@ -253,7 +252,7 @@ if executable('ack')
 endif
 
 let g:unite_source_history_yank_enable = 1
-call unite#set_profile('files', 'smartcase', 1)
+" call unite#set_profile('files', 'smartcase', 1)
 call unite#custom#source('line,outline,file,file_rec,file_rec/async','matchers','matcher_fuzzy')
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
