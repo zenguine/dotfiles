@@ -6,8 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      [ # Include the results of the hardware scan.
+          ./hardware-configuration.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_4_3;
@@ -162,7 +162,7 @@
        enable = true;
        layout = "us";
        xkbOptions = "eurosign:e";
-       windowManager.default = "xmonad";
+        windowManager.default = "xmonad";
        windowManager.xmonad = {
          enableContribAndExtras = true;
          enable = true;
