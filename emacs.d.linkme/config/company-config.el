@@ -40,6 +40,10 @@
 
   (add-hook 'after-init-hook 'global-company-mode)
 
+  ;; Setup company backends>
+
+  (add-to-list 'company-backends 'company-elisp)
+
   (after 'company-ghc
     (add-to-list 'company-backends 'company-ghc)
     (custom-set-variables '(company-ghc-show-info t)))
