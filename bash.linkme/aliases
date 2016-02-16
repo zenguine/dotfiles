@@ -21,6 +21,7 @@ alias o='popd'
 alias p='pushd'
 alias rmf='rm -f'
 alias V='vim `ls -t | head -1`'
+alias v="vim -u $HOME/.dotfiles/vimrc.minimal"
 alias x='exit'
 alias cbot="python $HOME/code/crypto_bot/interface.py"
 
@@ -72,7 +73,7 @@ alias et='ALTERNATE_EDITOR="emacs -nw" emacsclient -t'
 alias E='emacs -nw `ls -t | head -1`'
 
 # FASD aliases
-alias v='f -e vim'
+# alias v='f -e vim'
 
 # Function either sends the argument files to be editted in the active vim server, or creates the vim server first if it doesn't already exist
 # Further, if we are in a tmux session, each tmux session gets its own vim server depending on the session name

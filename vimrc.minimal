@@ -1,0 +1,90 @@
+set nocompatible
+let mapleader=' '
+
+" Dont jump on * or #
+nnoremap * *''
+nnoremap # #''
+
+noremap ' `
+noremap ` '
+
+noremap n nzz
+noremap N Nzz
+
+" Sane regex syntax
+noremap / /\v
+noremap ? ?\v
+
+" Better window navigation
+" C-[hjkl] moves to neighboring window or if it doesn't exist then it
+" creates it.
+
+" Tab to switch between matching braces
+map <Tab> %
+
+" Easier to type
+noremap H ^
+noremap L g_
+
+
+nnoremap <leader>wc <C-w>c
+nnoremap <silent> <leader>wo :on<CR>
+
+" No arrow keys allowed - Remapped to resize windows
+nmap <left>  3<c-w><
+nmap <right> 3<c-w>>
+nmap <up>    3<c-w>+
+nmap <down>  3<c-w>-
+imap <left>  <c-o><left>
+imap <right> <c-o><right>
+imap <up>    <c-o><up>
+imap <down>  <c-o><down>
+
+function! WinMove(key, blank)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr()) "we havent moved
+        if a:key == 'k' " going up
+            if a:blank == 1
+                leftabove new
+            else
+                leftabove split
+            endif
+        elseif a:key == 'j' " going down
+            if a:blank == 1
+                rightbelow new
+            else
+                rightbelow split
+            endif
+        elseif a:key == 'h' " going left
+            if a:blank == 1
+                leftabove vnew
+            else
+                leftabove vnew
+            endif
+        elseif a:key == 'l' " going right
+            if a:blank == 1
+                rightbelow vnew
+            else
+                rightbelow vsplit
+            endif
+        endif
+        exec "wincmd ".a:key
+    else " We have moved and if in max mode stay there
+        if g:win_maxed_mode
+            call MaximizeWindow()
+        endif
+    endif
+endfunction
+
+set cursorline
+au WinEnter * setlocal cursorline
+au WinLeave * setlocal nocursorline
+
+nnoremap <silent> <C-h> :call WinMove('h',0)<CR>
+nnoremap <silent> <C-j> :call WinMove('j',0)<CR>
+nnoremap <silent> <C-@> :call WinMove('j',0)<CR>
+nnoremap <silent> <C-k> :call WinMove('k',0)<CR>
+nnoremap <silent> <C-l> :call WinMove('l',0)<CR>
+
+imap jk <Esc>

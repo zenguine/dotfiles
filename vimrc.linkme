@@ -411,7 +411,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 " Window Navigation {{{
 
 " Window navigation quick shortcuts
-nnoremap <leader>wd <C-w>c
+nnoremap <leader>wc <C-w>c
 nnoremap <silent> <leader>wo :on<CR>
 
 " No arrow keys allowed - Remapped to resize windows
