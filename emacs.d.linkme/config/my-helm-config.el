@@ -31,6 +31,12 @@
   (let ((inside-helm-eval-expression-p t))
     (call-interactively 'helm-eval-expression-with-eldoc)))
 
+(use-package helm-flx
+  :ensure t
+  :defer t
+  :config
+  (helm-flx-mode +1))
+
 (use-package helm
   :ensure t
   :bind (("M-:" . my-helm-eval-expression-with-eldoc)
@@ -54,6 +60,7 @@
   :config
   (require 'hydra)
   (require 'helm-files)
+  (require 'helm-flx)
   (setq helm-idle-delay 0.1
         helm-input-idle-delay 0.1
         helm-locate-command "locate %s -e %s")
@@ -151,7 +158,6 @@ _J_ ^ ^ _j_ ^ ^     _U_nmark all     _d_elete
   (bind-key "C-[" 'helm-like-unite/body helm-map)
   (key-chord-define helm-map "jk" 'helm-like-unite/body)
   (helm-mode 1))
-
 
 (use-package helm-projectile
   :ensure t
