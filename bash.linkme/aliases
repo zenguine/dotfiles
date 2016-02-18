@@ -6,7 +6,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias diskhogs='du -hsx * | sort -rh | head -20'
-# alias g='gvim --remote-silent'
 alias gv='gvim'
 alias hnb-partecs='hnb $HOME/partecs/partecs-hnb.xml'
 alias la='ls -A'
@@ -24,6 +23,8 @@ alias V='vim `ls -t | head -1`'
 alias v="vim -u $HOME/.dotfiles/vimrc.minimal"
 alias x='exit'
 alias cbot="python $HOME/code/crypto_bot/interface.py"
+alias serve="python -m SimpleHTTPServer 8000"
+alias xx='atool -x'
 
 # NIx related
 # A nix query helper function
