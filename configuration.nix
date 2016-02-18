@@ -96,6 +96,7 @@
      python27Packages.pip
      python27Packages.virtualenv
      python27Packages.virtualenvwrapper
+     redshift
      rsync
      rxvt_unicode
      screen
@@ -155,7 +156,11 @@
      # Enable CUPS to print documents.
      printing.enable = true;
 
-     # thinkfan.enable = true;
+     redshift = {
+       enable = true;
+       latitude = "40.44";
+       longitude = "79.98";
+     };
 
      # X11 stuff
      xserver = {
